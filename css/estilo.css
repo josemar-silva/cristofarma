@@ -1,0 +1,229 @@
+* {
+    padding: 0px;
+    margin: 0px;
+    font-family: sans-serif;
+}
+
+#nomeEmpresa {
+    font-size: 65pt;
+    text-align: center;
+    margin-top: 20px;
+    padding: 20px;
+}
+
+#missao {
+    padding: 25px;
+    width: 85%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#contatos {
+    text-align: center;
+    font-size: 35pt;
+    border: 1px solid yellowgreen;
+    margin-top: 80px;
+}
+
+label, input {
+    display: block  ;   
+    font-size: 10pt;
+    margin-bottom: 5px; 
+}
+
+#feminino, #masculino {
+    display: inline-block;
+    margin-right: 20px;
+}
+
+form {
+    margin-top: 5px;
+    display: inline-block;
+    width: 31%;
+    height: 450px;
+    padding: 5px;
+    border: 1px solid rgba(0, 0, 0, .4);
+}
+
+form label, input {
+    display: inline;
+}
+
+form input {
+    margin-right: 15px;
+}
+
+table {
+    float: left;
+    border-collapse: collapse;
+}
+
+table th, td {
+    border: solid black 1px;
+    padding: 2px;
+    font-size: 10pt;
+}
+
+#tabelaVendasCaixa {
+    width: 800px;
+    margin: 30px auto;
+}
+
+#tabelaNotaFiscal {
+    width: 1100px;
+}
+
+table#produto {
+    width: 750px;
+    margin-top: 20px;
+}
+
+#cadastro {
+    float: right;
+    width: 800px;
+    margin-right: 10px;
+    margin-top: 10px;
+}
+
+button {
+    font-size: 10pt;
+    padding: 5px;
+    cursor: pointer;
+    font-weight: bolder;
+}
+
+#menu {
+    text-align: center;
+    display: block;
+    width: 10%;
+    float: left;
+    height: 650px;
+    border: red solid 1px;
+    background: rgb(55, 55, 226);
+}
+
+#menu p {
+    display: block;
+    height: 70px;
+    border: rgb(228, 225, 225) solid 1px;
+    width: 100%;
+    border-collapse: collapse;
+    text-decoration: none;
+    text-align: center;
+}
+
+p a {
+    margin-top: 10px;
+    padding-top: 20px;
+    display: block;
+    color: whitesmoke;
+    text-decoration: none;
+}
+
+section#principal {
+    border: palevioletred 1px solid;
+    width: 89%;
+    height: 600px;
+    float: right;
+}
+
+section#btn {
+    border: royalblue 1px solid;
+    width: 89%;
+    height: 50px;
+    float: right;
+    margin-top: 0px;
+}
+
+form input#btnCadastrar {
+    margin-top: 20px;
+    cursor: pointer;
+    line-height: 15px;
+    width: 60%;
+    margin-left: 60px;
+    height: 25px;
+}
+
+#relatorioGerencialVendas input, label {
+    display: inline-block;
+    font-size: 10pt;
+}
+
+#itensSelecionados input, label {
+    display: inline-block;
+}
+
+#vendaCliente {
+    display: block;
+    width: 35%;
+    height: 250px;
+    float: right;
+    margin-right: 20px;
+    margin-top: 200px;
+    border: rgba(0, 0, 0, .2) solid 2px;
+    padding: 5PX;
+}
+
+#saidaDados {
+    width: 99%;
+    border: royalblue 1px solid;
+    margin-top: 15%;
+    float: left;
+    margin-right: 0px;
+    display: block;
+}
+
+#vendaCliente  input, labe l{
+    display: inline-block;
+}
+
+legend {
+    text-align: center;
+    font-size: 15pt;
+    margin-top: 0px;
+}
+
+#notaFiscal input, label {
+    display: inline-block;
+}
+
+#fecharVenda {
+    width: 20%;
+    height: 500px;
+    float: right;
+    margin-top: 10px;
+    margin-right: 10px;
+    padding: 10px;
+    border: rgba(0, 0, 0, .2) solid 2px;
+
+}
+
+#fecharVenda h4 {
+    font-size: 15pt;
+}
+
+#fecharVenda output {
+    border: rgba(0, 0, 0, .1) solid 2px;
+    display: block;
+    height: 40px;
+    width: 50%;
+    font-size: 20px;
+    margin-bottom: 30px;
+}
+
+#fecharVenda input {
+    height: 40px;
+    width: 50%;
+    font-size: 20px;
+    margin-bottom: 30px;
+}
+
+#fecharVenda p {
+    margin-bottom: 10px;
+}
+
+
+fieldset#formEndereco {
+    margin-left: auto;
+    margin-right: auto;
+}
