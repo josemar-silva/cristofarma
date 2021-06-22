@@ -155,7 +155,7 @@
                 $pessoaJuridica->deletePessoaJuridica($id);
                 header("location: Clientes.php");
             }
-            ?>
+            ?> 
         </table>
     </section>
     </section>
