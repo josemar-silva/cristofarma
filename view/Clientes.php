@@ -70,10 +70,20 @@
 
             <legend>CADASTRO DE CLIENTES</legend><br>
 
-            <input type="radio" name="tipoPessoa" value="pj">
+            <input type="radio" name="tipoPessoa" value="pj" id="pessoaJuridica">
             <label for="pj">Pessoa Juridica</label><br>
-            <input type="radio" name="tipoPessoa" value="pf">
+            <input type="radio" name="tipoPessoa" value="pf" id="pessoaFisica">
             <label for="pf">Pessoa Fisica</label><br>
+
+            <!--<script>
+                var radio = document.getElementById('tipoPessoa');
+
+                if (radio == "pf") {
+                    document.getElementById("pessoaJuridica").disabled = true;
+                } else {
+                    document.getElementById("pessoaFisica").disabled = true;
+                }
+            </script>-->
 
 
             <label for="nome" id="nome">Nome:</label>
