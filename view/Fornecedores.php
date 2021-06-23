@@ -91,44 +91,7 @@ require_once 'PessoaFisica.php';
                                                                                                             echo "Cadastar";
                                                                                                         } ?>">
         </form>
-        <table id="cadastro">
-            <tr>
-                <th>Nome do Cliente</th>
-                <th>Endereço de e-mail</th>
-                <th>Telefone Fixo</th>
-                <th>Telefone Celular</th>
-                <th colspan="2">Endereço</th>
-            </tr>
-            <?php
-            $dados = $fornecedor->selectAllFornecedor(); // variavel local recebendo os dados selecionados pelo metodo buscarDados()
-
-            if (count($dados) > 0) { // chacando se a variavel nao está vazia
-                for ($i = 0; $i < count($dados); $i++) { // for () + foreach para trabalhar com leitura de uma matriz
-                    echo "<tr>"; # HTML dentro de PHP USAR 'echo "<TAG>"
-                    foreach ($dados[$i] as $k => $v) { // for () + foreach para trabalhar com leitura de uma matriz
-                        if ($k != "id_pessoa") { #negar a coluna ID, nao selecionar a coluna informada
-                            echo "<td>.$v.</td>";
-                        }
-                    }
-            ?>
-            <td>
-                <a href="Fornecedores.php?id_fornecedor_update=<?php echo $dados[$i]['id_pessoa']; ?>">Editar</a>
-                <a href="Fornecedores.php?id_fornecedor=<?php echo $dados[$i]['id_pessoa']; ?>">Excluir</a>
-            </td>
-            <?php
-                    echo "</tr>";
-                }
-            }
-            ?>
-
-            <?php
-            if (isset($_GET['id_fornecedor'])) {
-                $id = addslashes($_GET['id_fornecedor']);
-                $fornecedor->deleteFornecedor($id);
-                header("location: Fornecedores.php");
-            }
-            ?>
-        </table>
+      
     </section>
 </body>
 
