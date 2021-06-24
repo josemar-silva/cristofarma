@@ -52,11 +52,11 @@ require_once 'PessoaFisica.php';
     <section id="principal">
         <?php
         // PEGAR ID/ATRIBUTO DA TABELA PELO METODO _GET
-        //if (isset($_GET['id_fornecedor_update'])) {
-        //$id_fornecedor_up = addslashes($_GET['id_fornecedor_update']);
-        //$dadosRetorno = $fornecedor->selectPessoaJuridica($id_fornecedor_up);
-        //header("location: Clientes.php");
-        //}
+        if (isset($_GET['id_fornecedor_update'])) {
+        $id_fornecedor_up = addslashes($_GET['id_fornecedor_update']);
+        $dadosRetorno = $fornecedor->selectPessoaJuridica($id_fornecedor_up);
+        header("location: Clientes.php");
+        }
         ?>
         <form id="cadatroFormecedor" method="POST">
             <legend>CADASTRO DE FORNECEDORES</legend><br>

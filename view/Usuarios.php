@@ -8,10 +8,11 @@
 </head>
 <?php
 
-require_once 'Funcionario.php';
+require_once 'Conexao.php';
 require_once 'Pessoa.php';
+require_once 'PessoaJuridica.php';
 require_once 'PessoaFisica.php';
-
+require_once 'Funcionario.php';
 
 $funcionario = new Funcionario();
 
@@ -51,8 +52,7 @@ if (isset($_POST['nome'])) {
         <p><a href="Relatorios.php">RELATÓRIO</a></p>
     </section>
     <section id="principal">
-
-        <form action="cadastroUsuario">
+        <form action="cadastroUsuario" method="POST">
             <legend>CADASTRO DE USUÁRIOS</legend><br>
             <label id="nome">Nome:</label>
             <input id="nome" type="text" name="nome" size="35" value="<?php if (isset($dadosRetorno)) {
@@ -67,11 +67,11 @@ if (isset($_POST['nome'])) {
                                                                                 echo $dadosRetorno['email'];
                                                                             } ?>"><br>
             <label id="telefoneFixo">Telefone:</label>
-            <input id="telefoneFixo" type="tel" name="telefoneFixo" size="15" minlength="11" value="<?php if (isset($dadosRetorno)) {
+            <input id="telefoneFixo" type="text" name="telefoneFixo" size="15" value="<?php if (isset($dadosRetorno)) {
                                                                                                         echo $dadosRetorno['telefoneFixo'];
                                                                                                     } ?>"><br>
             <label id="telefoneCelular">Celular:</label>
-            <input id="telefoneCelular" type="tel" name="telefoneCelular" size="15" minlength="11" value="<?php if (isset($dadosRetorno)) {
+            <input id="telefoneCelular" type="text" name="telefoneCelular" size="15" value="<?php if (isset($dadosRetorno)) {
                                                                                                                 echo $dadosRetorno['telefoneCelular'];
                                                                                                             } ?>"><br>
             <label id="labelEnderecoUsuario">Endereço:</label>
@@ -88,7 +88,12 @@ if (isset($_POST['nome'])) {
             <input id="senha" type="password" name="senha" size="10" value="<?php if (isset($dadosRetorno)) {
                                                                                 echo $dadosRetorno['senha'];
                                                                             } ?>"><br>
-            <input id="btnCadastrar" type="submit" id="btnCadastrar" name="btnGravarClientes">
+
+            <input id="btnCadastrar" type="submit" id="btnCadastrar" name="btnGravarClientes" value="<?php if (isset($dadosRetorno)) {
+                                                                                                            echo "Atualizar";
+                                                                                                        } else {
+                                                                                                            echo "Cadastar";
+                                                                                                        } ?>">
         </form>
     </section>
 </body>
