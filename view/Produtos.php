@@ -49,15 +49,6 @@
                 <input id="precoCusto" type="text" name="precoCusto" size="5"> <br>
                 <button type="submit" id="btnGravarClientes" name="gravarClientes">Gravar</button>
             </form>
-            <table id="cadastro">
-                <tr>
-                    <th>Código</th>
-                    <th>Descrição/Nome do Produto</th>
-                    <th>Fornecedor</th>
-                    <th>Valor Custo</th>
-                    <th>Valor Venda</th>
-                </tr>
-            </table>
         </section>
         <section id="btn">
             <button id="btnCancelarProdutos" name="cancelarProdutos">Cancelar</button>

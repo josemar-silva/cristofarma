@@ -50,47 +50,24 @@ require_once 'PessoaFisica.php';
         <p><a href="Relatorios.php">RELATÓRIO</a></p>
     </section>
     <section id="principal">
-        <?php
-        // PEGAR ID/ATRIBUTO DA TABELA PELO METODO _GET
-        if (isset($_GET['id_fornecedor_update'])) {
-        $id_fornecedor_up = addslashes($_GET['id_fornecedor_update']);
-        $dadosRetorno = $fornecedor->selectPessoaJuridica($id_fornecedor_up);
-        header("location: Clientes.php");
-        }
-        ?>
+    
         <form id="cadatroFormecedor" method="POST">
             <legend>CADASTRO DE FORNECEDORES</legend><br>
             <label id="nome">Nome:</label>
-            <input id="nome" type="text" name="nome" size="35" value="<?php if (isset($dadosRetorno)) {
-                                                                            echo $dadosRetorno['nome'];
-                                                                        } ?>"><br>
+            <input id="nome" type="text" name="nome" size="35" value=""><br>
             <label id="cnpj">CNPJ:</label>
-            <input id="cnpj" type="text" name="cnpj" size="20" value="<?php if (isset($dadosRetorno)) {
-                                                                            echo $dadosRetorno['cnpj'];
-                                                                        } ?>"><br>
+            <input id="cnpj" type="text" name="cnpj" size="20" value=""><br>
             <label id="telefoneFixo">Telefone:</label>
-            <input id="telefoneFixo" type="tel" name="telefoneFixo" size="15" minlength="11" value="<?php if (isset($dadosRetorno)) {
-                                                                            echo $dadosRetorno['telefone_fixo'];
-                                                                        } ?>"><br>
+            <input id="telefoneFixo" type="tel" name="telefoneFixo" size="15" minlength="11" value=""><br>
             <label id="telefoneCelular">Celular:</label>
-            <input id="telefoneCelular" type="tel" name="telefoneCelular" size="15" minlength="11" value="<?php if (isset($dadosRetorno)) {
-                                                                            echo $dadosRetorno['telefone_celular'];
-                                                                        } ?>"><br>
+            <input id="telefoneCelular" type="tel" name="telefoneCelular" size="15" minlength="11" value=""><br>
             <label id="email">E-mail:</label>
-            <input id="email" type="email" name="email" size="30" value="<?php if (isset($dadosRetorno)) {
-                                                                            echo $dadosRetorno['email'];
-                                                                        } ?>"><br>
+            <input id="email" type="email" name="email" size="30" value=""><br>
             <label id="endereco">Endereço:</label>
-            <input id="endereco" type="text" name="endereco" size="30" value="<?php if (isset($dadosRetorno)) {
-                                                                            echo $dadosRetorno['endereco'];
-                                                                        } ?>">
+            <input id="endereco" type="text" name="endereco" size="30" value="">
             <a href="FormEndereco.php">Editar</a><br>
 
-            <input id="btnCadastrar" type="submit" id="btnCadastrar" name="btnGravarClientes" value="<?php if (isset($dadosRetorno)) {
-                                                                                                            echo "Atualizar";
-                                                                                                        } else {
-                                                                                                            echo "Cadastar";
-                                                                                                        } ?>">
+            <input id="btnCadastrar" type="submit" id="btnCadastrar" name="btnGravarClientes" value="<?php  echo "Cadastar";?>">
         </form>
 
     </section>

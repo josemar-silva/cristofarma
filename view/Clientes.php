@@ -58,14 +58,6 @@
         <p><a href="Relatorios.php">RELATÓRIO</a></p>
     </section>
     <section id="principal">
-        <?php
-        if (isset($_GET['id_pessoa_update'])) {
-            $id_up = addslashes($_GET['id_pessoa_update']);
-            $dadosRetorno = $pessoaFisica->selectPessoaFisica($id_up);
-            $dadosRetorno2 = $pessoaJuridica->selectPessoaJuridica($id_up);
-            //header("location: Clientes.php");
-        }
-        ?>
         <form id="cadastroClientes" method="POST">
 
             <legend>CADASTRO DE CLIENTES</legend><br>
@@ -87,45 +79,27 @@
 
 
             <label for="nome" id="nome">Nome:</label>
-            <input id="nome" type="text" name="nome" size="35" value="<?php if (isset($dadosRetorno)) {
-                                                                            echo $dadosRetorno['nome'];
-                                                                        } ?>"><br>
+            <input id="nome" type="text" name="nome" size="35" value=""><br>
 
             <label for="cpf" id="cpf">CPF:</label>
-            <input id="cpf" type="text" name="cpf" size="20" value="<?php if (isset($dadosRetorno['cpf '])) {
-                                                                        echo $dadosRetorno['cpf'];
-                                                                    } ?>"><br>
-            <label id="cnpj">CNPJ:</label>
-            <input id="cnpj" type="text" name="cnpj" size="20" value="<?php if (isset($dadosRetorno['cnpj '])) {
-                                                                            echo $dadosRetorno['cnpj'];
-                                                                        } ?>"><br>
+            <input id="cpf" type="text" name="cpf" size="20" value="><br>
+            <label id=" cnpj">CNPJ:</label>
+            <input id="cnpj" type="text" name="cnpj" size="20" value="><br>
 
-            <label for="telefoneFixo" id="telefoneFixo">Telefone:</label>
-            <input id="telefoneFixo" type="text" name="telefoneFixo" size="15" value="<?php if (isset($dadosRetorno)) {
-                                                                                            echo $dadosRetorno['telefone_fixo'];
-                                                                                        } ?>"><br>
+            <label for=" telefoneFixo" id="telefoneFixo">Telefone:</label>
+            <input id="telefoneFixo" type="text" name="telefoneFixo" size="15" value=""><br>
 
             <label for="telefoneCelular" id="lebelCelularCliente">Celular:</label>
-            <input id="telefoneCelular" type="text" name="telefoneCelular" size="15" value="<?php if (isset($dadosRetorno)) {
-                                                                                                echo $dadosRetorno['telefone_celular'];
-                                                                                            } ?>"><br>
+            <input id="telefoneCelular" type="text" name="telefoneCelular" size="15" value=""><br>
 
             <label for="email" id="email">E-mail:</label>
-            <input id="email" type="email" name="email" size="30" value="<?php if (isset($dadosRetorno)) {
-                                                                                echo $dadosRetorno['email'];
-                                                                            } ?>"><br>
+            <input id="email" type="email" name="email" size="30" value=""><br>
 
             <label for="endereco" id="endereco">Endereço:</label>
-            <input id="endereco" type="text" name="endereco" size="30" value="<?php if (isset($dadosRetorno)) {
-                                                                                    echo $dadosRetorno['endereco'];
-                                                                                } ?>">
+            <input id="endereco" type="text" name="endereco" size="30" value="">
             <a href="FormEndereco.php">Editar</a><br>
 
-            <input id="btnCadastrar" type="submit" id="btnCadastrar" name="btnGravarClientes" value="<?php if (isset($dadosRetorno)) {
-                                                                                                            echo "Atualizar";
-                                                                                                        } else {
-                                                                                                            echo "Cadastar";
-                                                                                                        } ?>">
+            <input id="btnCadastrar" type="submit" id="btnCadastrar" name="btnGravarClientes" value="<?php echo "Cadastar"; ?>">
         </form>
 
     </section>
