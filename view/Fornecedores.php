@@ -51,36 +51,37 @@ require_once 'PessoaFisica.php';
     </section>
     <section id="principal">
         <?php
-    if (isset($_GET['id_fornecedor_update'])) {
-        $id_fornecedor_up = addslashes($_GET['id_fornecedor_update']);
-        $dadosRetorno = $fornecedor->selectPessoaJuridica($id_fornecedor_up);
+        // PEGAR ID/ATRIBUTO DA TABELA PELO METODO _GET
+        //if (isset($_GET['id_fornecedor_update'])) {
+        //$id_fornecedor_up = addslashes($_GET['id_fornecedor_update']);
+        //$dadosRetorno = $fornecedor->selectPessoaJuridica($id_fornecedor_up);
         //header("location: Clientes.php");
-    }
-    ?>
+        //}
+        ?>
         <form id="cadatroFormecedor" method="POST">
             <legend>CADASTRO DE FORNECEDORES</legend><br>
             <label id="nome">Nome:</label>
-            <input id="nome" type="text" name="nome" size="35"  value="<?php if (isset($dadosRetorno)) {
+            <input id="nome" type="text" name="nome" size="35" value="<?php if (isset($dadosRetorno)) {
                                                                             echo $dadosRetorno['nome'];
                                                                         } ?>"><br>
             <label id="cnpj">CNPJ:</label>
-            <input id="cnpj" type="text" name="cnpj" size="20"  value="<?php if (isset($dadosRetorno)) {
+            <input id="cnpj" type="text" name="cnpj" size="20" value="<?php if (isset($dadosRetorno)) {
                                                                             echo $dadosRetorno['cnpj'];
                                                                         } ?>"><br>
             <label id="telefoneFixo">Telefone:</label>
-            <input id="telefoneFixo" type="tel" name="telefoneFixo" size="15" minlength="11"  value="<?php if (isset($dadosRetorno)) {
+            <input id="telefoneFixo" type="tel" name="telefoneFixo" size="15" minlength="11" value="<?php if (isset($dadosRetorno)) {
                                                                             echo $dadosRetorno['telefone_fixo'];
                                                                         } ?>"><br>
             <label id="telefoneCelular">Celular:</label>
-            <input id="telefoneCelular" type="tel" name="telefoneCelular" size="15" minlength="11"  value="<?php if (isset($dadosRetorno)) {
+            <input id="telefoneCelular" type="tel" name="telefoneCelular" size="15" minlength="11" value="<?php if (isset($dadosRetorno)) {
                                                                             echo $dadosRetorno['telefone_celular'];
                                                                         } ?>"><br>
             <label id="email">E-mail:</label>
-            <input id="email" type="email" name="email" size="30"  value="<?php if (isset($dadosRetorno)) {
+            <input id="email" type="email" name="email" size="30" value="<?php if (isset($dadosRetorno)) {
                                                                             echo $dadosRetorno['email'];
                                                                         } ?>"><br>
             <label id="endereco">Endereço:</label>
-            <input id="endereco" type="text" name="endereco" size="30"  value="<?php if (isset($dadosRetorno)) {
+            <input id="endereco" type="text" name="endereco" size="30" value="<?php if (isset($dadosRetorno)) {
                                                                             echo $dadosRetorno['endereco'];
                                                                         } ?>">
             <a href="FormEndereco.php">Editar</a><br>
@@ -91,7 +92,7 @@ require_once 'PessoaFisica.php';
                                                                                                             echo "Cadastar";
                                                                                                         } ?>">
         </form>
-      
+
     </section>
 </body>
 
