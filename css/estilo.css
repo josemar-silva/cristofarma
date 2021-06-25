@@ -154,7 +154,7 @@ form input#btnCadastrar {
 
 #vendaCliente {
     display: block;
-    width: 35%;
+    width: 30%;
     height: 250px;
     float: right;
     margin-right: 20px;
@@ -164,7 +164,7 @@ form input#btnCadastrar {
 }
 
 #saidaDados {
-    width: 99%;
+    width: 90%;
     border: royalblue 1px solid;
     margin-top: 15%;
     float: left;

@@ -45,14 +45,12 @@
         </table>
         <fieldset id="vendaCliente">
             <legend>Cliente:</legend>
+            <label id="Nome">Nome:</label>
+            <input id="nome" type="text" name="nome" size="35">
             <label id="Cpf">CPF:</label>
             <input id="Cpf" type="text" name="cpf" size="20">
-            <a href="Clientes.html" id="linkNovoCliente">Buscar Cliente</a>
-            <br>
-            <label id="Nome">Nome:</label>
-            <input id="nome" type="text" name="nome" size="35"><br>
-            <label id="endereco">Endereço:</label>
-            <input id="endereco" type="text" name="endereco" size="35"><br>
+            <a href="Clientes.html" id="linkNovoCliente">Buscar Cliente</a><br>
+            
             <div id="saidaDados">
                 <h3>Total sem Desconto: R$</h3>
                 <output id="totalSemDesconto" name="totalSemDesconto"></output><br>
