@@ -25,8 +25,8 @@
     <section id="principal">
         <div id="itensSelecionados">
             <legend>REALIZAR ORÇAMENTO</legend><br>
-            <input id="buscarItem" type="text" name="buscarItem" size="50" placeholder="Digite aqui para pesquisar o produto">
-            <button type="submit" id="btnGerarNotaFiscal" name="gerarNotaFiscal">Buscar</button>
+            <input id="buscarItem" type="text" name="buscarItem" size="60" placeholder="Digite aqui para pesquisar o produto">
+            <button type="submit" id="btnGerarNotaFiscal" name="gerarNotaFiscal">Buscar</button><br><br>
             <label id="quantidade">Quantidade:</label>
             <input id="quantidade" type="text" name="quantidade" size="5" min="1" placeholder="Qtd">
             <label id="desconto">Desconto (%):</label>
@@ -34,36 +34,22 @@
             <button type="submit" id="btnAdicionarItenVenda" name="adicionarItemVenda">Adicionar</button>
             <button type="submit" id="btnRemoverItemVenda" name="removerItemVenda">Remover</button>
         </div><br>
-        <table id="produto">
-            <tr>
-                <th>Código Produto</th>
-                <th>Descrição/Nome do Produto</th>
-                <th>Fornecedor</th>
-                <th>Valor R$</th>
-                <th>Qtd Estoque</th>
-            </tr>
-        </table>
-        <fieldset id="vendaCliente">
-            <legend>Cliente:</legend>
+        <fieldset id="clienteVenda">
+            <legend>Dados da Venda:</legend>
             <label id="Nome">Nome:</label>
-            <input id="nome" type="text" name="nome" size="35">
+            <input id="nome" type="text" name="nome" size="35"><br>
             <label id="Cpf">CPF:</label>
             <input id="Cpf" type="text" name="cpf" size="20">
             <a href="Clientes.html" id="linkNovoCliente">Buscar Cliente</a><br>
-            
             <div id="saidaDados">
-                <h3>Total sem Desconto: R$</h3>
+                <h4>Total sem Desconto: R$</h4>
                 <output id="totalSemDesconto" name="totalSemDesconto"></output><br>
                 <p>
-                <h2>Total com Desconto: R$</h2>
-                <output id="TotalComDesconto" name="totalComDesconto"></output><br>
+                <h3>Total com Desconto: R$</h3>
+                <output id="TotalComDesconto" name="totalComDesconto"></output>
                 </p>
             </div>
-
         </fieldset>
-    </section>
-    <section id="btn">
-        <button id="btnGerarVenda" name="gerarVenda">Gerar Venda</button>
     </section>
 </body>
 

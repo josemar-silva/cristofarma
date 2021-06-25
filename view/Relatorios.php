@@ -48,10 +48,8 @@
             <label for="relatorioVendaCredito">Venda a Crédito</label><br>
             <input type="radio" id="estoque" name="tipoRelatorio" value="Eestoque">
             <label for="estoque">Relatório de Estoque</label><br>
+            <button id="btnGerarRelatorioGerencial">Gerar Relatório</button>
         </div>
-    </section>
-    <section id="btn">
-        <button id="btnGerarRelatorioGerencial">Gerar Relatório</button>
     </section>
 </body>
 

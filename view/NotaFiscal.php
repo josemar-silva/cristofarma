@@ -32,26 +32,12 @@
             <label for="numCpf">Nº CPF</label>
             <input type="text" size="60" placeholder="Digite aqui para pesquisar">
             <button type="submit" id="btnGerarNotaFiscal" name="gerarNotaFiscal">Buscar</button>
-        </div><br>
-        <table id="tabelaNotaFiscal">
-            <tr>
-                <th>Nº da Venda</th>
-                <th>Valor da Venda</th>
-                <th>Desconto</th>
-                <th>Valor Total</th>
-                <th>Pagamento</th>
-                <th>Data da Venda</th>
-                <th>Total Itens</th>
-            </tr>
-        </table>
-    </section>
-    <section id="btn">
-        <button type="submit" id="btnGerarNotaFiscal" name="gerarNotaFiscal">Emitir NotaFiscal</button>
-    </section>
-    </section>
-    <footer>
 
-    </footer>
+            <button type="submit" id="btnGerarNotaFiscal" name="gerarNotaFiscal">Emitir NotaFiscal</button>
+
+        </div><br>
+    </section>
+    </section>
 </body>
 
 </html>

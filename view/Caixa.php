@@ -48,20 +48,6 @@
             <button id="btnCancelar" name="cancelar" onclick="window.location.href='Caixa.html'">Cancelar</button>
             <button id="btnFinalizar" name="finalizar">Finalizar</button>
         </fieldset>
-        <table id="tabelaVendasCaixa">
-            <tr>
-                <th>Nº da Venda</th>
-                <th>Nome do Cliente</th>
-                <th>CPF/CNPJ</th>
-                <th>Vendedor</th>
-                <th>Valor R$</th>
-            </tr>
-        </table>
-    </section>
-    <section id="btn">
-        <button id="btnCancelarVenda">Cancelar Venda</button>
-        <button id="btnReceber">Receber</button>
-        <button id="btnImprirCupom">Imprimir Cupom</button>
     </section>
 </body>
 

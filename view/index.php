@@ -46,9 +46,6 @@
                 <h1>WhatsApp: (62) 9 9999-9999</h1>
             </div>
         </section>
-        <section id="btn">
-
-        </section>
 </body>
 
 </html>
