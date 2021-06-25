@@ -28,30 +28,22 @@
 label, input {
     display: block  ;   
     font-size: 10pt;
-    margin-bottom: 5px; 
-}
-
-#feminino, #masculino {
-    display: inline-block;
-    margin-right: 20px;
+    margin-bottom: 10px;
 }
 
 form {
     margin-top: 10%;
     display: inline-block;
-    width: 40%;
+    width: 35%;
     height: 450px;
-    padding: 5px;
+    padding: 20px;
     margin-right: auto;
     margin-left: 25%;
+    border: rgba(0, 0, 0, .1) solid 1px;
 }
 
 form label, input {
     display: inline;
-}
-
-form input {
-    margin-right: 15px;
 }
 
 #cadastro {
@@ -67,7 +59,7 @@ form input {
     width: 10%;
     float: left;
     height: 650px;
-    border: red solid 1px;
+    border: blueviolet solid 1px;
 }
 
 #menu p {
@@ -107,14 +99,13 @@ form input#btnCadastrar {
     margin-top: 20px;
     cursor: pointer;
     line-height: 15px;
-    width: 60%;
-    margin-left: 60px;
+    width: 30%;
+    margin-left: 35%;
     height: 25px;
 }
 
 #relatorioGerencialVendas input, label {
     display: inline-block;
-    font-size: 10pt;
 }
 
 #itensSelecionados input, label {
@@ -140,7 +131,7 @@ form input#btnCadastrar {
     margin-top: 120%;
 }
 
-#vendaCliente  input, labe l{
+#vendaCliente  input, label{
     display: inline-block;
 }
 

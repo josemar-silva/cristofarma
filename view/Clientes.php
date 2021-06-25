@@ -63,9 +63,9 @@
             <legend>CADASTRO DE CLIENTES</legend><br>
 
             <input type="radio" name="tipoPessoa" value="pj" id="pessoaJuridica">
-            <label for="pj">Pessoa Juridica</label><br>
+            <label for="pj">Pessoa Juridica</label>&nbsp;&nbsp;&nbsp;&nbsp;
             <input type="radio" name="tipoPessoa" value="pf" id="pessoaFisica">
-            <label for="pf">Pessoa Fisica</label><br>
+            <label for="pf">Pessoa Fisica</label><br><br>
 
             <!--<script>
                 var radio = document.getElementById('tipoPessoa');
