@@ -2,8 +2,8 @@
 class Estoque
 {
     // declaração de propriedade
-    protected string $id_estoque;
-    protected string $quantidade;
+    protected string $produto_id_estoque;
+    protected string $quantidade_estoque;
 }
 
     function incluir() 

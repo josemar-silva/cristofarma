@@ -52,7 +52,7 @@ if (isset($_POST['nome'])) {
         <p><a href="Relatorios.php">RELATÓRIO</a></p>
     </section>
     <section id="principal">
-        <form action="cadastroUsuario" method="POST">
+        <form id="cadastroUsuario" method="POST">
             <legend>CADASTRO DE USUÁRIOS</legend><br>
             <label id="nome">Nome:</label>
             <input id="nome" type="text" name="nome" size="35" value=""><br>

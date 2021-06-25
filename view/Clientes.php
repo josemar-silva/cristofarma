@@ -82,11 +82,11 @@
             <input id="nome" type="text" name="nome" size="35" value=""><br>
 
             <label for="cpf" id="cpf">CPF:</label>
-            <input id="cpf" type="text" name="cpf" size="20" value="><br>
-            <label id=" cnpj">CNPJ:</label>
-            <input id="cnpj" type="text" name="cnpj" size="20" value="><br>
+            <input id="cpf" type="text" name="cpf" size="20" value=""><br>
+            <label id="cnpj">CNPJ:</label>
+            <input id="cnpj" type="text" name="cnpj" size="20" value=""><br>
 
-            <label for=" telefoneFixo" id="telefoneFixo">Telefone:</label>
+            <label for="telefoneFixo" id="telefoneFixo">Telefone:</label>
             <input id="telefoneFixo" type="text" name="telefoneFixo" size="15" value=""><br>
 
             <label for="telefoneCelular" id="lebelCelularCliente">Celular:</label>

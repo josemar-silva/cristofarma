@@ -104,7 +104,7 @@ button {
 #menu p {
     display: block;
     height: 70px;
-    border: solid 1px red (228, 225, 225);
+    border: red solid 1px;
     width: 100%;
     border-collapse: collapse;
     text-decoration: none;

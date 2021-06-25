@@ -34,7 +34,6 @@ class Funcionario extends PessoaFisica
             $dados->bindValue(":tf", $telefoneFixo);
             $dados->bindValue(":tc", $telefoneCelular);
             $dados->bindValue(":ed", $endereco);
-
             $dados->execute();
 
             $dados = $conexao->pdo->prepare("SELECT id_pessoa FROM pessoa WHERE email = :e");
@@ -48,7 +47,7 @@ class Funcionario extends PessoaFisica
             $dados->bindValue(":fk", $res2);
             $dados->execute();
 
-            $dados = $conexao->pdo->prepare("INSERT INTO funcionario (maticula, senha, pessoa_fisica_cpf) VALUES (:m, :s, :fk)");
+            $dados = $conexao->pdo->prepare("INSERT INTO funcionario (matricula, senha, pessoa_fisica_cpf) VALUES (:m, :s, :fk)");
             $dados->bindValue(":m", $matricula);
             $dados->bindValue(":s", $senha);
             $dados->bindValue(":fk", $cpf);

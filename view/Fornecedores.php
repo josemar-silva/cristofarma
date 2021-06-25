@@ -58,9 +58,9 @@ require_once 'PessoaFisica.php';
             <label id="cnpj">CNPJ:</label>
             <input id="cnpj" type="text" name="cnpj" size="20" value=""><br>
             <label id="telefoneFixo">Telefone:</label>
-            <input id="telefoneFixo" type="tel" name="telefoneFixo" size="15" minlength="11" value=""><br>
+            <input id="telefoneFixo" type="tel" name="telefoneFixo" size="15" value=""><br>
             <label id="telefoneCelular">Celular:</label>
-            <input id="telefoneCelular" type="tel" name="telefoneCelular" size="15" minlength="11" value=""><br>
+            <input id="telefoneCelular" type="tel" name="telefoneCelular" size="15"value=""><br>
             <label id="email">E-mail:</label>
             <input id="email" type="email" name="email" size="30" value=""><br>
             <label id="endereco">Endereço:</label>
