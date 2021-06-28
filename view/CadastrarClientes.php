@@ -97,7 +97,7 @@
 
             <label for="endereco" id="endereco">Endereço:</label><br>
             <input id="endereco" type="text" name="endereco" size="40" value="">
-            <a href="FormEndereco.php">+</a><br>
+            <a href="CadastrarEndereco.php">+</a><br>
 
             <input id="btnCadastrar" type="submit" id="btnCadastrar" name="btnGravarClientes"
                 value="<?php echo "Cadastar"; ?>">

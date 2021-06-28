@@ -5,8 +5,8 @@ class Endereco
     protected string $logradouro;
     protected string $quadra;
     protected string $lote;
+    protected string $bairro;
     protected string $cidade;
-    protected string $estado;
     protected string $cep;
     protected string $complemento;
 
