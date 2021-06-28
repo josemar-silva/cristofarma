@@ -53,15 +53,15 @@ class PessoaFisica extends Pessoa
 
     public function selectPessoaFisica($id_up)
     {
-        $dadosSelecionados = array();
+        $dadosSelecionados = array(); // cria-se uma variavel ARRAY que armanenará a busca que o PDO retorna como ARRAY
 
-        $conexao = new Conexao("projeto_cristofarma", "localhost", "root", "");
+        $conexao = new Conexao("projeto_cristofarma", "localhost", "root", ""); // instancia nova conexão com o BD
 
-        $dados  = $conexao->pdo->prepare("SELECT * FROM pessoa WHERE id_pessoa = :id");
-        $dados->bindValue("id", $id_up);
-        $dados->execute();
-        $dadosSelecionados = $dados->fetch(PDO::FETCH_ASSOC);
-        return $dadosSelecionados;
+        $dados  = $conexao->pdo->prepare("SELECT * FROM pessoa WHERE id_pessoa = :id"); // dados retornam como ARRAY
+        $dados->bindValue("id", $id_up); // substituíção dos valores com o método BINDVALUE
+        $dados->execute(); // comando que executa a busca no BD
+        $dadosSelecionados = $dados->fetch(PDO::FETCH_ASSOC); // método fatch retorana um ARRAY, fatchAll retorna uma matriz
+        return $dadosSelecionados; //varialvel de retorno da funcao
     }
 
     public function updatePessoaFisica()

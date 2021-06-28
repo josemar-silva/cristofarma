@@ -41,40 +41,45 @@ if (isset($_POST['nome'])) {
 
     </header>
     <section id="menu">
-        <p><a href="index.php">HOME</a></p>
+    <p><a href="index.php">HOME</a></p>
         <p><a href="Vendas.php">VENDAS</a></p>
         <p><a href="Caixa.php">CAIXA</a></p>
-        <p><a href="Produtos.php">PRODUTOS</a></p>
-        <p><a href="Fornecedores.php">FORNECEDOR</a></p>
-        <p><a href="Clientes.php">CLIENTES</a></p>
-        <p><a href="Usuarios.php">USUÁRIOS</a></p>
+        <p><a href="CadastrarProdutos.php">PRODUTOS</a></p>
+        <p><a href="CadastrarFornecedores.php">FORNECEDOR</a></p>
+        <p><a href="CadastrarClientes.php">CLIENTES</a></p>
+        <p><a href="CadastrarUsuarios.php">USUÁRIOS</a></p>
         <p><a href="NotaFiscal.php">NOTA FISCAL</a></p>
         <p><a href="Relatorios.php">RELATÓRIO</a></p>
     </section>
     <section id="principal">
         <form id="cadastroUsuario" method="POST">
             <legend>CADASTRO DE USUÁRIOS</legend><br>
-            <label id="nome">Nome:</label>
-            <input id="nome" type="text" name="nome" size="35" value=""><br>
-            <label id="cpf">CPF:</label>
+            <label id="nome">Nome:</label><br>
+            <input id="nome" type="text" name="nome" size="40" value=""><br>
+            <label id="cpf">CPF:</label><br>
             <input id="cpf" type="text" name="cpf" size="20" value=""><br>
-            <label id="email">E-mail:</label>
+            <label id="email">E-mail:</label><br>
             <input id="email" type="email" name="email" size="30" value=""><br>
-            <label id="telefoneFixo">Telefone:</label>
+            <label id="telefoneFixo">Telefone:</label><br>
             <input id="telefoneFixo" type="text" name="telefoneFixo" size="15" value=""><br>
-            <label id="telefoneCelular">Celular:</label>
+            <label id="telefoneCelular">Celular:</label><br>
             <input id="telefoneCelular" type="text" name="telefoneCelular" size="15" value=""><br>
-            <label id="labelEnderecoUsuario">Endereço:</label>
-            <input id="endereco" type="text" name="endereco" size="30" value="">
-            <a href="FormEndereco.php">Editar</a><br>
-
-            <label id="matricula">Matrícula:</label>
-            <input id="matricula" type="text" name="matricula" size="10" value="">
-            <label for="senha">Senha:</label>
+            <label id="matricula">Matrícula:</label><br>
+            <input id="matricula" type="text" name="matricula" size="10" value=""><br>
+            <label for="senha">Senha:</label><br>
             <input id="senha" type="password" name="senha" size="10" value=""><br>
+            <label id="labelEnderecoUsuario">Endereço:</label><br>
+            <input id="endereco" type="text" name="endereco" size="40" value="">
+            <a href="FormEndereco.php">+</a><br>
 
             <input id="btnCadastrar" type="submit" id="btnCadastrar" name="btnGravarClientes" value="<?php echo "Cadastar"; ?>">
         </form>
+        <aside id="buscaUsuario">
+            <legend>PESQUISAR USUÁRIOS</legend><br>
+            <label for="buscarCliente">Buscar Usuário:</label><br>
+            <input id="buscarUsuario" type="text" name="buscarUsuario" size="70" placeholder="Nome do usuário">
+            <a href="procurarUsuario" href="">+</a>
+        </aside>
     </section>
 </body>
 

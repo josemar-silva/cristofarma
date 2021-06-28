@@ -10,9 +10,8 @@ class Endereco
     protected string $cep;
     protected string $complemento;
 
-    public function __construct(string $logradouro, string $complemento) {
-        $this->logradouro = $logradouro;
-        $this->complemento = $complemento;
+    public function __construct() {
+   
     }
 
     //metodos de acesso 

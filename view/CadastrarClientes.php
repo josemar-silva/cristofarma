@@ -50,10 +50,10 @@
         <p><a href="index.php">HOME</a></p>
         <p><a href="Vendas.php">VENDAS</a></p>
         <p><a href="Caixa.php">CAIXA</a></p>
-        <p><a href="Produtos.php">PRODUTOS</a></p>
-        <p><a href="Fornecedores.php">FORNECEDOR</a></p>
-        <p><a href="Clientes.php">CLIENTES</a></p>
-        <p><a href="Usuarios.php">USUÁRIOS</a></p>
+        <p><a href="CadastrarProdutos.php">PRODUTOS</a></p>
+        <p><a href="CadastrarFornecedores.php">FORNECEDOR</a></p>
+        <p><a href="CadastrarClientes.php">CLIENTES</a></p>
+        <p><a href="CadastrarUsuarios.php">USUÁRIOS</a></p>
         <p><a href="NotaFiscal.php">NOTA FISCAL</a></p>
         <p><a href="Relatorios.php">RELATÓRIO</a></p>
     </section>
@@ -78,29 +78,48 @@
             </script>-->
 
 
-            <label for="nome" id="nome">Nome:</label>
-            <input id="nome" type="text" name="nome" size="35" value=""><br>
+            <label for="nome" id="nome">Nome:</label><br>
+            <input id="nome" type="text" name="nome" size="40" value=""><br>
 
-            <label for="cpf" id="cpf">CPF:</label>
+            <label for="cpf" id="cpf">CPF:</label><br>
             <input id="cpf" type="text" name="cpf" size="20" value=""><br>
-            <label id="cnpj">CNPJ:</label>
+            <label id="cnpj">CNPJ:</label><br>
             <input id="cnpj" type="text" name="cnpj" size="20" value=""><br>
 
-            <label for="telefoneFixo" id="telefoneFixo">Telefone:</label>
+            <label for="telefoneFixo" id="telefoneFixo">Telefone:</label><br>
             <input id="telefoneFixo" type="text" name="telefoneFixo" size="15" value=""><br>
 
-            <label for="telefoneCelular" id="lebelCelularCliente">Celular:</label>
+            <label for="telefoneCelular" id="lebelCelularCliente">Celular:</label><br>
             <input id="telefoneCelular" type="text" name="telefoneCelular" size="15" value=""><br>
 
-            <label for="email" id="email">E-mail:</label>
+            <label for="email" id="email">E-mail:</label><br>
             <input id="email" type="email" name="email" size="30" value=""><br>
 
-            <label for="endereco" id="endereco">Endereço:</label>
-            <input id="endereco" type="text" name="endereco" size="30" value="">
-            <a href="FormEndereco.php">Editar</a><br>
+            <label for="endereco" id="endereco">Endereço:</label><br>
+            <input id="endereco" type="text" name="endereco" size="40" value="">
+            <a href="FormEndereco.php">+</a><br>
 
-            <input id="btnCadastrar" type="submit" id="btnCadastrar" name="btnGravarClientes" value="<?php echo "Cadastar"; ?>">
+            <input id="btnCadastrar" type="submit" id="btnCadastrar" name="btnGravarClientes"
+                value="<?php echo "Cadastar"; ?>">
         </form>
+
+        <aside id="buscaCliente">
+            <legend>PESQUISAR CLIENTES</legend><br>
+            <label for="buscarCliente">Buscar Clientes:</label><br>
+            <input id="buscarCliente" type="text" name="buscarCliente" size="70" placeholder="Nome do cliente">
+            <a href="procurarCliente" href="">+</a><br><br>
+            <table>
+                <tr>
+                    <th>ID</th>
+                    <th>NOME</th>
+                    <th>CPF/CNPJ</th>
+                    <th>EMAIL</th>
+                    <th>TELEFONE</th>
+                    <th>CELULAR</th>
+                    <th>ENDEREÇO</th>
+                </tr>
+            </table>
+        </aside>
 
     </section>
     </section>

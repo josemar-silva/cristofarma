@@ -15,16 +15,16 @@
         <p><a href="index.php">HOME</a></p>
         <p><a href="Vendas.php">VENDAS</a></p>
         <p><a href="Caixa.php">CAIXA</a></p>
-        <p><a href="Produtos.php">PRODUTOS</a></p>
-        <p><a href="Fornecedores.php">FORNECEDOR</a></p>
-        <p><a href="Clientes.php">CLIENTES</a></p>
-        <p><a href="Usuarios.php">USUÁRIOS</a></p>
+        <p><a href="CadastrarProdutos.php">PRODUTOS</a></p>
+        <p><a href="CadastrarFornecedores.php">FORNECEDOR</a></p>
+        <p><a href="CadastrarClientes.php">CLIENTES</a></p>
+        <p><a href="CadastrarUsuarios.php">USUÁRIOS</a></p>
         <p><a href="NotaFiscal.php">NOTA FISCAL</a></p>
         <p><a href="Relatorios.php">RELATÓRIO</a></p>
     </section>
     <section id="principal">
         <div id="itensSelecionados">
-            <legend>REALIZAR ORÇAMENTO</legend><br>
+            <legend>REALIZAR VENDA/ORÇAMENTO</legend><br>
             <input id="buscarItem" type="text" name="buscarItem" size="60" placeholder="Digite aqui para pesquisar o produto">
             <button type="submit" id="btnGerarNotaFiscal" name="gerarNotaFiscal">Buscar</button><br><br>
             <label id="quantidade">Quantidade:</label>
@@ -40,7 +40,7 @@
             <input id="nome" type="text" name="nome" size="35"><br>
             <label id="Cpf">CPF:</label>
             <input id="Cpf" type="text" name="cpf" size="20">
-            <a href="Clientes.html" id="linkNovoCliente">Buscar Cliente</a><br>
+            <a href="" id="linkNovoCliente">+</a><br>
             <div id="saidaDados">
                 <h4>Total sem Desconto: R$</h4>
                 <output id="totalSemDesconto" name="totalSemDesconto"></output><br>
