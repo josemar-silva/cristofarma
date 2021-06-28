@@ -13,10 +13,10 @@
     </header>
     <?php
 
-require_once 'PessoaJuridica.php';
-require_once 'Fornecedor.php';
-require_once 'Pessoa.php';
-require_once 'PessoaFisica.php';
+    require_once 'PessoaJuridica.php';
+    require_once 'Fornecedor.php';
+    require_once 'Pessoa.php';
+    require_once 'PessoaFisica.php';
 
 
     $fornecedor = new Fornecedor();
@@ -40,6 +40,7 @@ require_once 'PessoaFisica.php';
     ?>
     <section id="menu">
         <p><a href="index.php">HOME</a></p>
+        <p><a href="Pesquisar.php">CONSULTAS</a></p>
         <p><a href="Vendas.php">VENDAS</a></p>
         <p><a href="Caixa.php">CAIXA</a></p>
         <p><a href="CadastrarProdutos.php">PRODUTOS</a></p>
@@ -68,7 +69,7 @@ require_once 'PessoaFisica.php';
             <a href="CadastrarEndereco.php">+</a><br>
 
             <input id="btnCadastrar" type="submit" id="btnCadastrar" name="btnGravarClientes"
-                value="<?php  echo "Cadastar";?>">
+                value="<?php echo "Cadastar"; ?>">
         </form>
         <aside id="buscaFornecedor">
             <legend>PESQUISAR FORNECEDORES</legend><br>

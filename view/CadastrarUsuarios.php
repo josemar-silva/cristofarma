@@ -41,7 +41,8 @@ if (isset($_POST['nome'])) {
 
     </header>
     <section id="menu">
-    <p><a href="index.php">HOME</a></p>
+        <p><a href="index.php">HOME</a></p>
+        <p><a href="Pesquisar.php">CONSULTAS</a></p>
         <p><a href="Vendas.php">VENDAS</a></p>
         <p><a href="Caixa.php">CAIXA</a></p>
         <p><a href="CadastrarProdutos.php">PRODUTOS</a></p>
@@ -72,7 +73,8 @@ if (isset($_POST['nome'])) {
             <input id="endereco" type="text" name="endereco" size="40" value="">
             <a href="CadastrarEndereco.php">+</a><br>
 
-            <input id="btnCadastrar" type="submit" id="btnCadastrar" name="btnGravarClientes" value="<?php echo "Cadastar"; ?>">
+            <input id="btnCadastrar" type="submit" id="btnCadastrar" name="btnGravarClientes"
+                value="<?php echo "Cadastar"; ?>">
         </form>
         <aside id="buscaUsuario">
             <legend>PESQUISAR USUÁRIOS</legend><br>

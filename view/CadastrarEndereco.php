@@ -13,41 +13,42 @@
     </header>
     <?php
 
-        require_once 'PessoaFisica.php';
-        require_once 'PessoaJuridica.php';
+    require_once 'PessoaFisica.php';
+    require_once 'PessoaJuridica.php';
 
-        $pessoaFisica = new PessoaFisica();
-        $pessoaJuridica =  new PessoaJuridica();
+    $pessoaFisica = new PessoaFisica();
+    $pessoaJuridica =  new PessoaJuridica();
 
-        $tipo = filter_input(INPUT_POST, 'tipoPessoa');
+    $tipo = filter_input(INPUT_POST, 'tipoPessoa');
 
-        if (isset($_POST['nome'])) {
-            $nome = addslashes($_POST['nome']);
-            $email = addslashes($_POST['email']);
-            $telefoneFixo = addslashes($_POST['telefoneFixo']);
-            $telefoneCelular = addslashes($_POST['telefoneCelular']);
-            $endereco = addslashes($_POST['endereco']);
-            $cpf = addslashes($_POST['cpf']);
-            $cnpj = addslashes($_POST['cnpj']);
+    if (isset($_POST['nome'])) {
+        $nome = addslashes($_POST['nome']);
+        $email = addslashes($_POST['email']);
+        $telefoneFixo = addslashes($_POST['telefoneFixo']);
+        $telefoneCelular = addslashes($_POST['telefoneCelular']);
+        $endereco = addslashes($_POST['endereco']);
+        $cpf = addslashes($_POST['cpf']);
+        $cnpj = addslashes($_POST['cnpj']);
 
-            if (!empty($nome) && !empty($email))  // validar se há ao menos um dado a ser cadastrado
-            {
-                if ($tipo == 'pf') {
-                    if (!$pessoaFisica->createPessoaFisica($nome, $email, $telefoneFixo, $telefoneCelular, $endereco, $cpf)) {
-                        echo "Email já está cadastrado!";
-                    }
-                } else {
-                    if (!$pessoaJuridica->createPessoaJuridica($nome, $email, $telefoneFixo, $telefoneCelular, $endereco, $cnpj)) {
-                        echo "Email já está cadastrado!";
-                    }
+        if (!empty($nome) && !empty($email))  // validar se há ao menos um dado a ser cadastrado
+        {
+            if ($tipo == 'pf') {
+                if (!$pessoaFisica->createPessoaFisica($nome, $email, $telefoneFixo, $telefoneCelular, $endereco, $cpf)) {
+                    echo "Email já está cadastrado!";
                 }
             } else {
-                echo "Preencha todos os campos!";
+                if (!$pessoaJuridica->createPessoaJuridica($nome, $email, $telefoneFixo, $telefoneCelular, $endereco, $cnpj)) {
+                    echo "Email já está cadastrado!";
+                }
             }
+        } else {
+            echo "Preencha todos os campos!";
         }
-        ?>
+    }
+    ?>
     <section id="menu">
         <p><a href="index.php">HOME</a></p>
+        <p><a href="Pesquisar.php">CONSULTAS</a></p>
         <p><a href="Vendas.php">VENDAS</a></p>
         <p><a href="Caixa.php">CAIXA</a></p>
         <p><a href="CadastrarProdutos.php">PRODUTOS</a></p>
@@ -83,7 +84,7 @@
             <label for="complemento" id="complemento">Complemento:</label><br>
             <input id="complemento" type="text" name="complemento" size="40" value=""><br>
 
-           
+
 
             <input id="btnCadastrar" type="submit" id="btnCadastrar" name="btnGravarClientes"
                 value="<?php echo "Cadastar"; ?>">

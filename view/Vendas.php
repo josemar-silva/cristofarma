@@ -13,6 +13,7 @@
     </header>
     <section id="menu">
         <p><a href="index.php">HOME</a></p>
+        <p><a href="Pesquisar.php">CONSULTAS</a></p>
         <p><a href="Vendas.php">VENDAS</a></p>
         <p><a href="Caixa.php">CAIXA</a></p>
         <p><a href="CadastrarProdutos.php">PRODUTOS</a></p>
@@ -25,7 +26,8 @@
     <section id="principal">
         <div id="itensSelecionados">
             <legend>REALIZAR VENDA/ORÇAMENTO</legend><br>
-            <input id="buscarItem" type="text" name="buscarItem" size="60" placeholder="Digite aqui para pesquisar o produto">
+            <input id="buscarItem" type="text" name="buscarItem" size="60"
+                placeholder="Digite aqui para pesquisar o produto">
             <button type="submit" id="btnGerarNotaFiscal" name="gerarNotaFiscal">Buscar</button><br><br>
             <label id="quantidade">Quantidade:</label>
             <input id="quantidade" type="text" name="quantidade" size="5" min="1" placeholder="Qtd">

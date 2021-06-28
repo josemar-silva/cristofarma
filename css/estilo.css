@@ -46,7 +46,7 @@ form {
 
 #menu p {
     display: block;
-    height: 70px;
+    height: 20%;
     border: red solid 1px;
     width: 100%;
     border-collapse: collapse;
