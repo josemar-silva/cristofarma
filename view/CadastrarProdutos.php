@@ -64,9 +64,6 @@
                 <label id="IdFornecedor">ID Fornecedor:</label><br>
                 <input id="IdFornecedor" type="text" name="IdFornecedor" size="25"><br>
 
-                <label id="Nomefornecedor">Nome do Fornecedor:</label><br>
-                <input id="Nomefornecedor" type="text" name="Nomefornecedor" size="25"><br>
-
                 <label id="quantidade">Qtd em Estoque:</label><br>
                 <input id="quantidade" type="text" name="quantidadeProduto" size="10"><br>
 
@@ -79,12 +76,6 @@
                 <input id="btnCadastrar" type="submit" id="btnCadastrar" name="btnGravarClientes"
                     value="<?php echo "Cadastar"; ?>">
             </form>
-            <aside id="buscaProduto">
-                <legend>PESQUISAR PRODUTOS</legend><br>
-                <label for="buscarCliente">Buscar Produtos:</label><br>
-                <input id="buscarProduto" type="text" name="buscarProduto" size="70" placeholder="Descrição do produto">
-                <a href="procurarProduto" href="">+</a>
-            </aside>
         </section>
 </body>
 

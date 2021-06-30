@@ -52,7 +52,7 @@
     </section>
     <section id="principal">
 
-        <form id="cadatro" method="POST">
+        <form id="cadastro" method="POST">
             <legend>CADASTRO DE FORNECEDORES</legend><br>
             <label id="nome">Nome:</label><br>
             <input id="nome" type="text" name="nome" size="40" value=""><br>
@@ -71,13 +71,6 @@
             <input id="btnCadastrar" type="submit" id="btnCadastrar" name="btnGravarClientes"
                 value="<?php echo "Cadastar"; ?>">
         </form>
-        <aside id="buscaFornecedor">
-            <legend>PESQUISAR FORNECEDORES</legend><br>
-            <label for="buscarCliente">Buscar Fornecedores:</label><br>
-            <input id="buscarFornecedor" type="text" name="buscarFornecedor" size="70" placeholder="Nome do fornecedor">
-            <a href="procurarFornecedor" href="">+</a>
-        </aside>
-
     </section>
 </body>
 

@@ -103,14 +103,6 @@
             <input id="btnCadastrar" type="submit" id="btnCadastrar" name="btnGravarClientes"
                 value="<?php echo "Cadastar"; ?>">
         </form>
-
-        <aside id="buscaCliente">
-            <legend>PESQUISAR CLIENTES</legend><br>
-            <label for="buscarCliente">Buscar Clientes:</label><br>
-            <input id="buscarCliente" type="text" name="buscarCliente" size="70" placeholder="Nome do cliente">
-            <a href="procurarCliente" href="">+</a><br><br>
-        </aside>
-
     </section>
     </section>
 </body>

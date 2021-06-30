@@ -24,7 +24,7 @@
         <p><a href="Relatorios.php">RELATÓRIO</a></p>
     </section>
     <section id="principal">
-        <legend>PESQUISAR</legend><br>
+        <legend>PESQUISAR CADASTROS</legend><br>
         <div id="consultas">
             <a href="ConsultaClientes.php">Clientes</a>
             <a href="ConsultaProdutos.php">Produtos</a>
