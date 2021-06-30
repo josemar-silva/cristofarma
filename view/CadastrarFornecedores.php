@@ -52,7 +52,7 @@
     </section>
     <section id="principal">
 
-        <form id="cadatroFormecedor" method="POST">
+        <form id="cadatro" method="POST">
             <legend>CADASTRO DE FORNECEDORES</legend><br>
             <label id="nome">Nome:</label><br>
             <input id="nome" type="text" name="nome" size="40" value=""><br>

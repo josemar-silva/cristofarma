@@ -53,7 +53,7 @@ if (isset($_POST['nome'])) {
         <p><a href="Relatorios.php">RELATÓRIO</a></p>
     </section>
     <section id="principal">
-        <form id="cadastroUsuario" method="POST">
+        <form id="cadastro" method="POST">
             <legend>CADASTRO DE USUÁRIOS</legend><br>
             <label id="nome">Nome:</label><br>
             <input id="nome" type="text" name="nome" size="40" value=""><br>
@@ -69,6 +69,12 @@ if (isset($_POST['nome'])) {
             <input id="matricula" type="text" name="matricula" size="10" value=""><br>
             <label for="senha">Senha:</label><br>
             <input id="senha" type="password" name="senha" size="10" value=""><br>
+            <label id="funcao">Função:</label>
+            <select id="listFuncao" name="listaFuncao">
+                <option value="Gerente">Gerente</option>
+                <option value="Vendedor" selected>Vendedor</option>
+                <option value="Operador de Caixa">Operador de Caixa</option>
+            </select><br />
             <label id="labelEnderecoUsuario">Endereço:</label><br>
             <input id="endereco" type="text" name="endereco" size="40" value="">
             <a href="CadastrarEndereco.php">+</a><br>

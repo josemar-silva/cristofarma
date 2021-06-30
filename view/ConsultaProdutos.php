@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8" />
     <link rel="stylesheet" href="../css/estilo.css">
-    <title>Pesquisar</title>
+    <title>Pesquisar Produtos</title>
 </head>
 
 <body>
@@ -24,13 +24,18 @@
         <p><a href="Relatorios.php">RELATÓRIO</a></p>
     </section>
     <section id="principal">
-        <legend>PESQUISAR</legend><br>
-        <div id="consultas">
-            <a href="ConsultaClientes.php">Clientes</a>
-            <a href="ConsultaProdutos.php">Produtos</a>
-            <a href="ConsultaFornecedor.php">Fornecedor</a>
-            <a href="ConsultaFuncionarios.php">Funcionários</a>
-        </div>
+    <?php
+    echo "<table>";
+    echo "<tr>";
+    echo "<th> ID </th>";
+    echo "<th> DESCRIÇÃO PRODUTO </th>";
+    echo "<th> FORNECEDOR </th>";
+    echo "<th> PREÇO CUSTO </th>";
+    echo "<th> PREÇO VENDA </th>";
+    echo "<th> CÓDIGO DE BARRAS </th>";
+    echo "</tr>";
+    echo "</table>";
+    ?>
     </section>
 </body>
 

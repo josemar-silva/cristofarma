@@ -59,7 +59,7 @@
         <p><a href="Relatorios.php">RELATÓRIO</a></p>
     </section>
     <section id="principal">
-        <form id="cadastroClientes" method="POST">
+        <form id="formEndereco" method="POST">
 
             <legend>CADASTRO DE ENDEREÇO</legend><br>
 

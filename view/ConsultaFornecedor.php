@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8" />
     <link rel="stylesheet" href="../css/estilo.css">
-    <title>Pesquisar</title>
+    <title>Pesquisar Fornecedores</title>
 </head>
 
 <body>
@@ -24,13 +24,19 @@
         <p><a href="Relatorios.php">RELATÓRIO</a></p>
     </section>
     <section id="principal">
-        <legend>PESQUISAR</legend><br>
-        <div id="consultas">
-            <a href="ConsultaClientes.php">Clientes</a>
-            <a href="ConsultaProdutos.php">Produtos</a>
-            <a href="ConsultaFornecedor.php">Fornecedor</a>
-            <a href="ConsultaFuncionarios.php">Funcionários</a>
-        </div>
+    <?php
+     echo "<table>";
+     echo "<tr>";
+     echo "<th> ID </th>";
+     echo "<th> NOME FORNECEDOR </th>";
+     echo "<th> CPF/CNPJ </th>";
+     echo "<th> EMAIL </th>";
+     echo "<th> TELEFONE FIXO </th>";
+     echo "<th> TELEFONE CELULAR </th>";
+     echo "<th> ENDEREÇO </th>";
+     echo "</tr>";
+     echo "</table>";
+    ?>
     </section>
 </body>
 

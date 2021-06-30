@@ -52,7 +52,7 @@
             <p><a href="Relatorios.php">RELATÓRIO</a></p>
         </section>
         <section id="principal">
-            <form id="cadastroProdutos" method="POST">
+            <form id="cadastro" method="POST">
                 <legend>CADASTRO DE PRODUTOS</legend><br>
 
                 <label id="descricao">Descrição:</label><br>

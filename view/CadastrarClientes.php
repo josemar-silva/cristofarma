@@ -59,7 +59,7 @@
         <p><a href="Relatorios.php">RELATÓRIO</a></p>
     </section>
     <section id="principal">
-        <form id="cadastroClientes" method="POST">
+        <form id="cadastro" method="POST">
 
             <legend>CADASTRO DE CLIENTES</legend><br>
 
@@ -109,17 +109,6 @@
             <label for="buscarCliente">Buscar Clientes:</label><br>
             <input id="buscarCliente" type="text" name="buscarCliente" size="70" placeholder="Nome do cliente">
             <a href="procurarCliente" href="">+</a><br><br>
-            <table>
-                <tr>
-                    <th>ID</th>
-                    <th>NOME</th>
-                    <th>CPF/CNPJ</th>
-                    <th>EMAIL</th>
-                    <th>TELEFONE</th>
-                    <th>CELULAR</th>
-                    <th>ENDEREÇO</th>
-                </tr>
-            </table>
         </aside>
 
     </section>
