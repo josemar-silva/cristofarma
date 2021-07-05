@@ -47,11 +47,12 @@ form#cadastro {
 
 #menu p {
     display: block;
-    height: 40px;
+    height: 15%;
     width: 100%;
     border-collapse: collapse;
     text-decoration: none;
     text-align: center;
+    border: red 1px solid;
 }
 
 #menu p a {

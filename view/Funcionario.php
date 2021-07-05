@@ -10,6 +10,7 @@ class Funcionario extends PessoaFisica
     // declaração de propriedade
     public string $matricula;
     public string $senha;
+    public string $funcao;
     
     // método contrutor
     function __construct_funcionario() {
