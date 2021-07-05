@@ -27,19 +27,24 @@
         $telefoneFixo = addslashes($_POST['telefoneFixo']);
         $telefoneCelular = addslashes($_POST['telefoneCelular']);
         $endereco = addslashes($_POST['endereco']);
-        $cpf = addslashes($_POST['cpf']);
-        $cnpj = addslashes($_POST['cnpj']);
+        $cpfAndCnpj = addslashes($_POST['cpfAndCnpj']);
+        #$cnpj = addslashes($_POST['cnpj']);
 
         if (!empty($nome) && !empty($email))  // validar se há ao menos um dado a ser cadastrado
         {
-            if ($tipo == 'pf') {
-                if (!$pessoaFisica->createPessoaFisica($nome, $email, $telefoneFixo, $telefoneCelular, $endereco, $cpf)) {
-                    echo "Email já está cadastrado!";
+            if (!empty($tipo)) {
+
+                if ($tipo == 'pf') {
+                    if (!$pessoaFisica->createPessoaFisica($nome, $email, $telefoneFixo, $telefoneCelular, $endereco, $cpfAndCnpj)) {
+                        echo "Email já está cadastrado!";
+                    }
+                } else {
+                    if (!$pessoaJuridica->createPessoaJuridica($nome, $email, $telefoneFixo, $telefoneCelular, $endereco, $cpfAndCnpj)) {
+                        echo "Email já está cadastrado!";
+                    }
                 }
             } else {
-                if (!$pessoaJuridica->createPessoaJuridica($nome, $email, $telefoneFixo, $telefoneCelular, $endereco, $cnpj)) {
-                    echo "Email já está cadastrado!";
-                }
+                echo "Selecione o tipo de pessoa a ser cadastrada";
             }
         } else {
             echo "Preencha todos os campos!";
@@ -82,10 +87,8 @@
             <label for="nome" id="nome">Nome:</label><br>
             <input id="nome" type="text" name="nome" size="40" value=""><br>
 
-            <label for="cpf" id="cpf">CPF:</label><br>
-            <input id="cpf" type="text" name="cpf" size="20" value=""><br>
-            <label id="cnpj">CNPJ:</label><br>
-            <input id="cnpj" type="text" name="cnpj" size="20" value=""><br>
+            <label for="cpfAndCnpj" id="cpf">CPF/CNPJ:</label><br>
+            <input id="cpfAndCnpj" type="text" name="cpfAndCnpj" size="20" value=""><br>
 
             <label for="telefoneFixo" id="telefoneFixo">Telefone:</label><br>
             <input id="telefoneFixo" type="text" name="telefoneFixo" size="15" value=""><br>
@@ -100,8 +103,7 @@
             <input id="endereco" type="text" name="endereco" size="40" value="">
             <a href="CadastrarEndereco.php">+</a><br>
 
-            <input id="btnCadastrar" type="submit" id="btnCadastrar" name="btnGravarClientes"
-                value="<?php echo "Cadastar"; ?>">
+            <input id="btnCadastrar" type="submit" id="btnCadastrar" name="btnGravarClientes" value="<?php echo "Cadastar"; ?>">
         </form>
     </section>
     </section>
