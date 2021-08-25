@@ -61,7 +61,7 @@
                 <label id="codigoDeBarras">Código de Barras:</label><br>
                 <input id="codigoDeBarras" type="text" name="codigoDeBarras" size="25"><br>
 
-                <label id="IdFornecedor">ID Fornecedor:</label><br>
+                <label id="IdFornecedor">Fornecedor:</label><br>
                 <input id="IdFornecedor" type="text" name="IdFornecedor" size="25"><br>
 
                 <label id="quantidade">Quantidade:</label><br>
