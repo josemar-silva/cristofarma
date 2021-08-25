@@ -24,18 +24,19 @@
         <p><a href="Relatorios.php">RELATÓRIO</a></p>
     </section>
     <section id="principal">
-    <?php
-    echo "<table>";
-    echo "<tr>";
-    echo "<th> ID </th>";
-    echo "<th> DESCRIÇÃO PRODUTO </th>";
-    echo "<th> FORNECEDOR </th>";
-    echo "<th> PREÇO CUSTO </th>";
-    echo "<th> PREÇO VENDA </th>";
-    echo "<th> CÓDIGO DE BARRAS </th>";
-    echo "</tr>";
-    echo "</table>";
-    ?>
+        <?php
+            echo "<table>";
+            echo "<tr>";
+            echo "<th> ID </th>";
+            echo "<th> DESCRIÇÃO PRODUTO </th>";
+            echo "<th> FORNECEDOR </th>";
+            echo "<th> PREÇO CUSTO </th>";
+            echo "<th> PREÇO VENDA </th>";
+            echo "<th> CÓDIGO DE BARRAS </th>";
+            echo "</tr>";
+            echo "</table>";
+        ?>
+        <p><a href="Pesquisar.php"><<< voltar</a>
     </section>
 </body>
 

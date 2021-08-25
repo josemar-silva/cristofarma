@@ -24,19 +24,21 @@
         <p><a href="Relatorios.php">RELATÓRIO</a></p>
     </section>
     <section id="principal">
-    <?php
-    echo "<table>";
-    echo "<tr>";
-    echo "<th> ID </th>";
-    echo "<th> NOME DO CLIENTE</th>";
-    echo "<th> EMAIL </th>";
-    echo "<th> TELEFONE FIXO </th>";
-    echo "<th> TELEFONE CELULAR </th>";
-    echo "<th> ENDEREÇO </th>";
-    echo "</tr>";
-    echo "</table>";
-    ?>
+        <?php
+            echo "<table>";
+            echo "<tr>";
+            echo "<th> ID </th>";
+            echo "<th> NOME DO CLIENTE</th>";
+            echo "<th> EMAIL </th>";
+            echo "<th> TELEFONE FIXO </th>";
+            echo "<th> TELEFONE CELULAR </th>";
+            echo "<th> ENDEREÇO </th>";
+            echo "</tr>";
+            echo "</table>";
+        ?>
+            <p><a href="Pesquisar.php"><<< voltar</a>
     </section>
+    
 </body>
 
 </html>
