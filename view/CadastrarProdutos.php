@@ -64,7 +64,7 @@
                 <label id="IdFornecedor">ID Fornecedor:</label><br>
                 <input id="IdFornecedor" type="text" name="IdFornecedor" size="25"><br>
 
-                <label id="quantidade">Qtd em Estoque:</label><br>
+                <label id="quantidade">Quantidade:</label><br>
                 <input id="quantidade" type="text" name="quantidadeProduto" size="10"><br>
 
                 <label id="precoVenda">Preço de Venda:</label><br>
