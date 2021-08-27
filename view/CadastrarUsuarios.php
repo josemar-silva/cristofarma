@@ -79,7 +79,8 @@ if (isset($_POST['nome'])) {
             <input id="endereco" type="text" name="endereco" size="40" value="">
             <a href="CadastrarEndereco.php">+</a><br>
 
-            <input id="btnCadastrar" type="submit" id="btnCadastrar" name="btnGravarClientes" value="<?php echo "Cadastar"; ?>">
+            <input id="btnCadastrar" type="submit" id="btnCadastrar" name="btnGravarClientes" 
+                value="<?php echo "Cadastrar"; ?>">
         </form>
     </section>
 </body>

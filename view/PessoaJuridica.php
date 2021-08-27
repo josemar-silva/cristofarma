@@ -38,8 +38,8 @@ class PessoaJuridica extends Pessoa
             $dados->bindValue(":e", $email);
             $dados->execute();
             $res = $dados->fetch(PDO::FETCH_ASSOC);
-
             $res2 = $res['id_pessoa'];
+            
             $dados = $conexao->pdo->prepare("INSERT INTO pessoa_juridica (cnpj, pessoa_id_pessoa) VALUES (:c, :fk)");
             $dados->bindValue(":c", $cnpj);
             $dados->bindValue(":fk", $res2);

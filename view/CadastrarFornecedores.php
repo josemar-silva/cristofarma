@@ -69,7 +69,7 @@
             <a href="CadastrarEndereco.php">+</a><br>
 
             <input id="btnCadastrar" type="submit" id="btnCadastrar" name="btnGravarClientes"
-                value="<?php echo "Cadastar"; ?>">
+                value="<?php echo "Cadastrar"; ?>">
         </form>
     </section>
 </body>
