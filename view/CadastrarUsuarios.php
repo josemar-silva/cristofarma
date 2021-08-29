@@ -17,17 +17,17 @@ require_once 'Funcionario.php';
 $funcionario = new Funcionario();
 
 if (isset($_POST['nome'])) {
-    $nome = addslashes($_POST['nome']);
-    $email = addslashes($_POST['email']);
-    $telefoneFixo = addslashes($_POST['telefoneFixo']);
-    $telefoneCelular = addslashes($_POST['telefoneCelular']);
-    $endereco = addslashes($_POST['endereco']);
-    $cpf = addslashes($_POST['cpf']);
-    $matricula = addslashes($_POST['matricula']);
-    $senha = addslashes($_POST['senha']);
-    if (!empty($nome) && !empty($email))  // validar se há ao menos um dado a ser cadastrado
+    $_nome = addslashes($_POST['nome']);
+    $_email = addslashes($_POST['email']);
+    $_telefoneFixo = addslashes($_POST['telefoneFixo']);
+    $_telefoneCelular = addslashes($_POST['telefoneCelular']);
+    $_endereco = addslashes($_POST['endereco']);
+    $_cpf = addslashes($_POST['cpf']);
+    $_matricula = addslashes($_POST['matricula']);
+    $_senha = addslashes($_POST['senha']);
+    if (!empty($_nome) && !empty($_email))  // validar se há ao menos um dado a ser cadastrado
     {
-        if (!$funcionario->createFuncionario($nome, $email, $telefoneFixo, $telefoneCelular, $endereco, $cpf, $matricula, $senha)) {
+        if (!$funcionario->createFuncionario($_nome, $_email, $_telefoneFixo, $_telefoneCelular, $_endereco, $_cpf, $_matricula, $_senha)) {
             echo "Email já está cadastrado!";
         }
     } else {

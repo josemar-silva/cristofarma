@@ -7,7 +7,6 @@ class PessoaFisica extends Pessoa
 {
     // declaração de propriedade
     protected string $cpf;
-    protected string $sexo;
 
     // método contrutor,
     function __construct_pessoaFisica(string $nome, string $cpf)

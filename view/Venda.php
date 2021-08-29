@@ -10,7 +10,7 @@ require_once 'Funcionario.php';
 class Venda
 {
     // declaração de propriedade
-    protected string $codigo_venda;
+    protected string $id_venda;
     protected string $valor_venda_sem_desconto;
     protected string $desconto;
     protected string $valor_venda_com_desconto;

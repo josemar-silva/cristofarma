@@ -14,6 +14,32 @@
 
     <?php
 
+    require_once 'Conexao.php';
+    require_once 'Pessoa.php';
+    require_once 'PessoaFisica.php';
+    require_once 'Funcionario.php';
+    require_once 'Produto.php';
+    require_once 'Estoque.php';
+
+    $produto = new Produto();
+
+    if (isset($_POST['descricaoProduto'])) {
+        $produto_nome = addslashes($_POST['descricaoProduto']);
+        $produto_fornecedor = addslashes($_POST['fornecedor']);
+        $produto_preco_custo = addslashes($_POST['precoCusto']);
+        $produto_preco_venda = addslashes($_POST['precoVenda']);
+        $produto_codigo_barras = addslashes($_POST['codigoDeBarras']);
+        $fornecedor_pessoa_juridica_cnpj = addslashes($_POST['quantidade']);
+
+        if (!empty($produto_nome) && !empty($produto_codigo_barras))  // validar se há ao menos um dado a ser cadastrado
+        {
+            if (!$produto->createProduto($produto_nome, $produto_fornecedor, $produto_preco_custo, $produto_preco_venda, $produto_codigo_barras, $fornecedor_pessoa_juridica_cnpj)) {
+                echo "Produto já está cadastrado!";
+            }
+        } else {
+            echo "Preencha todos os campos!";
+        }
+    }
     
     ?>
 
@@ -34,8 +60,8 @@
             <form id="cadastro" method="POST">
                 <legend>CADASTRO DE PRODUTOS</legend><br>
 
-                <label id="descricao">Descrição:</label><br>
-                <input id="descricao" type="text" name="descricaoProduto" size="40"> <br>
+                <label id="descricaoProduto">Descrição:</label><br>
+                <input id="descricaoProduto" type="text" name="descricaoProduto" size="40"> <br>
 
                 <label id="codigoDeBarras">Código de Barras:</label><br>
                 <input id="codigoDeBarras" type="text" name="codigoDeBarras" size="25"><br>

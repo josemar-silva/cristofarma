@@ -6,8 +6,8 @@ require_once 'Conexao.php';
 class Estoque
 {
     // declaração de propriedade
-    protected string $produto_id_estoque;
-    protected string $produto_quantidade_estoque;
+    protected string $id_produto;
+    protected string $quantidade;
 }
 
     function incluir() 

@@ -7,7 +7,7 @@ abstract class Pessoa extends Conexao
 
 {
     // declaração de propriedade
-    protected string $id;
+    protected string $id_pessoa;
     protected string $nome;
     protected string $email;
     protected Endereco $endereço;

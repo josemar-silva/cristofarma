@@ -9,10 +9,11 @@ class PessoaJuridica extends Pessoa
     protected string $cnpj;
         
     // método contrutor
-    function __construct_pessoaJuridica() 
+    function __construct_pessoaJuridica($cnpj) 
     {
-        
+        $this->nome = $cnpj;
     }
+    
     
     public function createPessoaJuridica($nome, $email, $telefoneFixo, $telefoneCelular, $endereco, $cnpj)
     {
