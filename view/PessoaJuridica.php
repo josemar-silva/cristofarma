@@ -6,7 +6,7 @@ require_once 'Pessoa.php';
 class PessoaJuridica extends Pessoa
 {
     // declaração de propriedade
-    protected string $cnpj;
+    public string $cnpj;
         
     // método contrutor
     function __construct_pessoaJuridica($cnpj) 

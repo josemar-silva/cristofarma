@@ -29,11 +29,11 @@
         $produto_preco_custo = addslashes($_POST['precoCusto']);
         $produto_preco_venda = addslashes($_POST['precoVenda']);
         $produto_codigo_barras = addslashes($_POST['codigoDeBarras']);
-        $fornecedor_pessoa_juridica_cnpj = addslashes($_POST['quantidade']);
 
+        
         if (!empty($produto_nome) && !empty($produto_codigo_barras))  // validar se há ao menos um dado a ser cadastrado
         {
-            if (!$produto->createProduto($produto_nome, $produto_fornecedor, $produto_preco_custo, $produto_preco_venda, $produto_codigo_barras, $fornecedor_pessoa_juridica_cnpj)) {
+            if (!$produto->createProduto($produto_nome, $produto_fornecedor, $produto_preco_custo, $produto_preco_venda, $produto_codigo_barras)) {
                 echo "Produto já está cadastrado!";
             }
         } else {
@@ -67,7 +67,8 @@
                 <input id="codigoDeBarras" type="text" name="codigoDeBarras" size="25"><br>
 
                 <label id="fornecedor">Fornecedor:</label><br>
-                <input id="fornecedor" type="text" name="fornecedor" size="25"><br>
+                <input id="fornecedor" type="text" name="fornecedor" size="25">
+                <a href="ConsultaFornecedor.php">+</a><br>
 
                 <label id="quantidade">Quantidade:</label><br>
                 <input id="quantidade" type="text" name="quantidade" size="10"><br>

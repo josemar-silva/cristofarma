@@ -6,7 +6,7 @@ require_once 'Pessoa.php';
 class PessoaFisica extends Pessoa
 {
     // declaração de propriedade
-    protected string $cpf;
+    public string $cpf;
 
     // método contrutor,
     function __construct_pessoaFisica(string $nome, string $cpf)

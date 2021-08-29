@@ -7,12 +7,12 @@ abstract class Pessoa extends Conexao
 
 {
     // declaração de propriedade
-    protected string $id_pessoa;
-    protected string $nome;
-    protected string $email;
-    protected Endereco $endereço;
-    protected string $telefoneFixo;
-    protected string $telefoneCelular;
+    public string $id_pessoa;
+    public string $nome;
+    public string $email;
+    public Endereco $endereço;
+    public string $telefoneFixo;
+    public string $telefoneCelular;
     
     // método contrutor
     function __construct() 

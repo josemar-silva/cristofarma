@@ -162,8 +162,8 @@ legend {
     margin-right: auto;
 }
 
-th {
-    border: 1px solid;
+th,td {
+    border: 1px solid black;
     border-collapse: collapse;
     font-size: 10pt;
     padding: 3px;
