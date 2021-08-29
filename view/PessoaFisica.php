@@ -1,6 +1,7 @@
 <?php
 
 require_once 'Conexao.php';
+require_once 'PessoaFisica.php';
 require_once 'Pessoa.php';
 
 class PessoaFisica extends Pessoa
@@ -59,24 +60,31 @@ class PessoaFisica extends Pessoa
         $dados  = $conexao->pdo->prepare("SELECT * FROM pessoa WHERE id_pessoa = :id"); // dados retornam como ARRAY
         $dados->bindValue("id", $id_up); // substituíção dos valores com o método BINDVALUE
         $dados->execute(); // comando que executa a busca no BD
-        $dadosSelecionados = $dados->fetch(PDO::FETCH_ASSOC); // método fatch retorana um ARRAY, fatchAll retorna uma matriz
+        $dadosSelecionados = $dados->fetchAll(PDO::FETCH_ASSOC); // método fatch retorana um ARRAY, fatchAll retorna uma matriz
         return $dadosSelecionados; //varialvel de retorno da funcao
     }
 
-    public function updatePessoaFisica()
+    public function updatePessoaFisica($id_up, $email)
     {
+        $conexao = new Conexao("projeto_cristofarma", "localhost", "root", "");
+
+        $dados = $conexao->pdo->prepare("UPDATE pessoa_fisica SET email = :e WHERE id_pessoa = :id");
+        $dados->bindValue("id", $id_up);
+        $dados->bindValue("e", $email);
+
+        $dados->execute();
     }
 
-    public function deletePessoaFisica($id)
+    public function deletePessoaFisica($id_up)
     {
         $conexao = new Conexao("projeto_cristofarma", "localhost", "root", "");
 
         $dados = $conexao->pdo->prepare("DELETE FROM pessoa_fisica WHERE pessoa_id_pessoa = :id");
-        $dados->bindValue("id", $id);
+        $dados->bindValue("id", $id_up);
         $dados->execute();
 
         $dados = $conexao->pdo->prepare("DELETE FROM pessoa WHERE id_pessoa = :id");
-        $dados->bindValue("id", $id);
+        $dados->bindValue("id", $id_up);
         $dados->execute();
     }
 

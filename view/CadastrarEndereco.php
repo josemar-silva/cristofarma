@@ -47,7 +47,7 @@
     }
     ?>
     <section id="menu">
-        <p><a href="index.php">HOME</a></p>
+        <p><a href="home.php">HOME</a></p>
         <p><a href="Pesquisar.php">CONSULTAS</a></p>
         <p><a href="Vendas.php">VENDAS</a></p>
         <p><a href="Caixa.php">CAIXA</a></p>

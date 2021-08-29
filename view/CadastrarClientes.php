@@ -15,19 +15,22 @@
 
     require_once 'PessoaFisica.php';
     require_once 'PessoaJuridica.php';
+    //require_once 'ConsultaClientes.php';
+
 
     $pessoaFisica = new PessoaFisica();
     $pessoaJuridica =  new PessoaJuridica();
 
     $tipo = filter_input(INPUT_POST, 'tipoPessoa');
 
-    if (isset($_POST['nome'])) {
-        $nome = addslashes($_POST['nome']);
+    if (isset($_POST['nome'])) # evitar codigos maliciosos
+    {
+        $nome = addslashes($_POST['nome']); # verificando se existe dados dentro do parametro/variavel
         $email = addslashes($_POST['email']);
         $telefoneFixo = addslashes($_POST['telefoneFixo']);
-        $telefoneCelular = addslashes($_POST['telefoneCelular']);
+        $telefoneCelular = addslashes($_POST['telefoneCelular']); # verificando se existe dados dentro do parametro/variavel
         $endereco = addslashes($_POST['endereco']);
-        $cpfAndCnpj = addslashes($_POST['cpfAndCnpj']);
+        $cpfAndCnpj = addslashes($_POST['cpfAndCnpj']); # verificando se existe dados dentro do parametro/variavel
         #$cnpj = addslashes($_POST['cnpj']);
 
         if (!empty($nome) && !empty($email))  // validar se há ao menos um dado a ser cadastrado
@@ -52,7 +55,7 @@
     }
     ?>
     <section id="menu">
-        <p><a href="index.php">HOME</a></p>
+        <p><a href="home.php">HOME</a></p>
         <p><a href="Pesquisar.php">CONSULTAS</a></p>
         <p><a href="Vendas.php">VENDAS</a></p>
         <p><a href="Caixa.php">CAIXA</a></p>
@@ -85,22 +88,22 @@
 
 
             <label for="nome" id="nome">Nome:</label><br>
-            <input id="nome" type="text" name="nome" size="40" value=""><br>
+            <input id="nome" type="text" name="nome" size="40" value="<?php if(isset($retornoConsulta)){echo $retornoConsulta['nome'];}?>"><br>
 
             <label for="cpfAndCnpj" id="cpf">CPF/CNPJ:</label><br>
             <input id="cpfAndCnpj" type="text" name="cpfAndCnpj" size="20" value=""><br>
 
             <label for="telefoneFixo" id="telefoneFixo">Telefone:</label><br>
-            <input id="telefoneFixo" type="text" name="telefoneFixo" size="15" value=""><br>
+            <input id="telefoneFixo" type="text" name="telefoneFixo" size="15" value="<?php if(isset($retornoConsulta)){echo $retornoConsulta['telefone_fixo'];}?>"><br>
 
             <label for="telefoneCelular" id="lebelCelularCliente">Celular:</label><br>
-            <input id="telefoneCelular" type="text" name="telefoneCelular" size="15" value=""><br>
+            <input id="telefoneCelular" type="text" name="telefoneCelular" size="15" value="<?php if(isset($retornoConsulta)){echo $retornoConsulta['telefone_celular'];}?>"><br>
 
             <label for="email" id="email">E-mail:</label><br>
-            <input id="email" type="email" name="email" size="30" value=""><br>
+            <input id="email" type="email" name="email" size="30" value="<?php if(isset($retornoConsulta)){echo $retornoConsulta['email'];}?>"><br>
 
             <label for="endereco" id="endereco">Endereço:</label><br>
-            <input id="endereco" type="text" name="endereco" size="40" value="">
+            <input id="endereco" type="text" name="endereco" size="40" value="<?php if(isset($retornoConsulta)){echo $retornoConsulta['endereco'];}?>">
             <a href="CadastrarEndereco.php">+</a><br>
 
             <input id="btnCadastrar" type="submit" id="btnCadastrar" name="btnGravarClientes" 

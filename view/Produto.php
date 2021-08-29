@@ -24,21 +24,19 @@ class Produto
     {
         $conexao = new Conexao("projeto_cristofarma", "localhost", "root", "");
 
-            global $res2;
-            $dados = $conexao->pdo->prepare("SELECT id_pessoa FROM pessoa WHERE nome  = :f");
-            $dados->bindValue(":f", $produto_fornecedor);
-            $dados->execute();
-            $res = $dados->fetch(PDO::FETCH_ASSOC);
-            $res2 = $res['id_pessoa'];
+        global $res2;
+        $dados = $conexao->pdo->prepare("SELECT id_pessoa FROM pessoa WHERE nome  = :f");
+        $dados->bindValue(":f", $produto_fornecedor);
+        $dados->execute();
+        $res = $dados->fetch(PDO::FETCH_ASSOC);
+        $res2 = $res['id_pessoa'];
 
-            global $res4;
-            $dados = $conexao->pdo->prepare("SELECT cnpj  FROM pessoa_juridica WHERE pessoa_id_pessoa = :fk");
-            $dados->bindValue(":fk", $res2);
-            $dados->execute();
-            $res3 = $dados->fetch(PDO::FETCH_ASSOC);
-            $res4 = $res3['cnpj'];
-
-            
+        global $res4;
+        $dados = $conexao->pdo->prepare("SELECT cnpj  FROM pessoa_juridica WHERE pessoa_id_pessoa = :fk");
+        $dados->bindValue(":fk", $res2);
+        $dados->execute();
+        $res3 = $dados->fetch(PDO::FETCH_ASSOC);
+        $res4 = $res3['cnpj'];          
         
         $dados = $conexao->pdo->prepare("SELECT id_produto  FROM produto WHERE codigo_barras = :cb");
         //$cadastrar = $this->pdo->query("SELECT * id FROM pessoa WHERE email = ".$email);
@@ -55,27 +53,10 @@ class Produto
             $dados->bindValue(":pv", $produto_preco_venda);
             $dados->bindValue(":cb", $produto_codigo_barras);
             $dados->bindValue(":pfk", $res4);
-            
-            
             $dados->execute();
-
-            //$dados = $conexao->pdo->prepare("SELECT id_pessoa FROM pessoa WHERE email = :e");
-            //$dados->bindValue(":e", $email);
-            //$dados->execute();
-            //$res = $dados->fetch(PDO::FETCH_ASSOC);
-
-            //$res2 = $res['id_pessoa'];
-            //$dados = $conexao->pdo->prepare("INSERT INTO pessoa_juridica (cnpj, pessoa_id_pessoa) VALUES (:c, :fk)");
-            //$dados->bindValue(":c", $cnpj);
-            //$dados->bindValue(":fk", $res2);
-            //$dados->execute();
-
-            //$dados = $conexao->pdo->prepare("INSERT INTO fornecedor (pessoa_juridica_cnpj) VALUE (:fk)");
-            //$dados->bindValue(":fk", $cnpj);
-            //$dados->execute();
-            return true;
+            
         }
     }
 }
-
+ 
 ?>
