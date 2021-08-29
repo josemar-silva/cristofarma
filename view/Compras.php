@@ -23,5 +23,5 @@ class Compras{
     }
 
 }
-
+echo teste
 ?>
