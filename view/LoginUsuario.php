@@ -3,23 +3,23 @@
 
 <head>
     <meta charset="UTF-8" />
-    <link rel="stylesheet" href="../css/estilo.css">
+    <link rel="stylesheet" href="../css/bootstrap/formularios/bootstrap.css">
     <title>Login</title>
 </head>
 
-<body>
+<body class="body">
     <header>
 
     </header>
-    <section id="login">
+    <section >
         <h1>Bem Vindo!</h1>
         <form id="formLoginUsuario">
             <label for="matricula">Matrícula:</label>
-            <input id="matricula" type="text" name="matricula" size="20"><br><br>
+            <input id="matricula" type="text" name="matricula" size="20" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"><br><br>
             <label for="senha">Senha:</label>
-            <input id="get-senha" type="password" name="senha">
-            <button type="submit" id="btnGravarLoginUsuario" name="gravarLoginUsuario">Entrar</button>
-            <button type="submit" id="btnSairLoginUsuario" name="sairLoginUsuario">Sair</button>
+            <input id="get-senha" type="password" name="senha" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"><br><br>
+            <button type="submit" id="btnGravarLoginUsuario" name="gravarLoginUsuario" class="btn btn-outline-danger">Entrar</button>
+            <button type="submit" id="btnSairLoginUsuario" name="sairLoginUsuario" class="btn btn-outline-danger" >Sair</button>
         </form>
     </section>
 </body>
