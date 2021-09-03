@@ -63,11 +63,11 @@ article, aside, figcaption, figure, footer, header, hgroup, main, nav, section {
   font-family:Arial, Helvetica, sans-serif;
   font-size: 0px;
   font-weight: 200;
-  color: #dc3545;
+  color: #61000a;
   text-align: center;
   background-image: url("/cristofarma/img/logo.png");  
-  margin-top: 15%;
-  
+  margin-top: 15%; 
+  font: bold;
 }
 
 [tabindex="-1"]:focus {
