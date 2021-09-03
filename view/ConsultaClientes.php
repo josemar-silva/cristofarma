@@ -1,6 +1,6 @@
 <?php
-    require_once 'PessoaFisica.php';
-    $pessoa = new PessoaFisica();
+    require_once 'Pessoa.php';
+    $pessoa = new Pessoa();
 ?>
 
 <!doctype html>
@@ -22,7 +22,7 @@
         if (isset($_GET['id_get_up'])) 
         {
             $id_up = addslashes($_GET['id_get_up']); 
-            $retornoConsulta = $pessoa->selectPessoaFisica($id_up); #retorno da consulta armazenado na variavel $retornoConsulta
+            $retornoConsulta = $pessoa->selectPessoa($id_up); #retorno da consulta armazenado na variavel $retornoConsulta
         
         }
     ?>
@@ -52,7 +52,7 @@
         </tr>
         <?php
 
-            $dados = $pessoa->selectAllPessoaFisica();
+            $dados = $pessoa->selectAllPessoa();
 
             //echo"<pre>"; // organizar o array (matriz de array)
             //var_dump($dados); // imprimir na tela o resultado do array
@@ -97,7 +97,7 @@
     if (isset($_GET['id_get_del'])) # verificando se existe dados selecionado para exclusão
     {
         $id_up = addslashes($_GET['id_get_del']); # pegar ID desejado no array
-        $pessoa->deletePessoaFisica($id_up); 
+        $pessoa->deletePessoa($id_up); 
         header("location: ConsultaClientes.php"); #atualizar a pagina ao executar a exclusão
     }
 ?>
