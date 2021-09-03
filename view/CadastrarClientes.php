@@ -13,13 +13,11 @@
     </header>
     <?php
 
-    require_once 'PessoaFisica.php';
-    require_once 'PessoaJuridica.php';
+    require_once 'Pessoa.php';
+    require_once 'Endereco.php.php';
     //require_once 'ConsultaClientes.php';
 
-
-    $pessoaFisica = new PessoaFisica();
-    $pessoaJuridica =  new PessoaJuridica();
+    $pessoa =  new Pessoa();
 
     $tipo = filter_input(INPUT_POST, 'tipoPessoa');
 
@@ -95,6 +93,19 @@
 
             <label for="telefoneFixo" id="telefoneFixo">Telefone:</label><br>
             <input id="telefoneFixo" type="text" name="telefoneFixo" size="15" value="<?php if(isset($retornoConsulta)){echo $retornoConsulta['telefone_fixo'];}?>"><br>
+
+            <label id="matricula">Matrícula:</label><br>
+            <input id="matricula" type="text" name="matricula" size="10" value=""><br>
+
+            <label for="senha">Senha:</label><br>
+            <input id="senha" type="password" name="senha" size="10" value=""><br>
+
+            <label id="funcao">Função:</label>
+            <select id="listFuncao" name="listaFuncao">
+                <option value="Gerente">Gerente</option>
+                <option value="Vendedor" selected>Vendedor</option>
+                <option value="Operador de Caixa">Operador de Caixa</option>
+            </select><br />
 
             <label for="telefoneCelular" id="lebelCelularCliente">Celular:</label><br>
             <input id="telefoneCelular" type="text" name="telefoneCelular" size="15" value="<?php if(isset($retornoConsulta)){echo $retornoConsulta['telefone_celular'];}?>"><br>
