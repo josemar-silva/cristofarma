@@ -3,7 +3,7 @@
 require_once 'Conexao.php';
 require_once 'Endereco.php';
 
-class Pessoa
+class Pessoa 
 
 {
     // declaração de propriedade
@@ -42,7 +42,7 @@ class Pessoa
             return false;
         } else {
             $dados = $conexao->pdo->prepare("INSERT INTO pessoa (nome, cpf_cnpj, 
-            tipo_pessoa, email, telefoneFixo, telefoneCelular, matricula, senha)
+            tipo_pessoa, email, telefone_fixo, telefone_celular, matricula, senha, funcao)
             VALUES (:n, :c, :tp, :e, :tf, :tc, :m, :s, :f)");
             $dados->bindValue(":n", $nome);
             $dados->bindValue(":c", $cpf_cnpj);
@@ -53,8 +53,6 @@ class Pessoa
             $dados->bindValue(":m", $matricula);
             $dados->bindValue(":s", $senha);
             $dados->bindValue(":f", $funcao);
-
-
             $dados->execute();
 
             return true;

@@ -23,15 +23,16 @@
 
     if (isset($_POST['descricaoProduto'])) {
         $produto_nome = addslashes($_POST['descricaoProduto']);
-        $produto_fornecedor = addslashes($_POST['fornecedor']);
         $produto_preco_custo = addslashes($_POST['precoCusto']);
         $produto_preco_venda = addslashes($_POST['precoVenda']);
         $produto_codigo_barras = addslashes($_POST['codigoDeBarras']);
+        $produto_fornecedor = addslashes($_POST['fornecedor']);
+
 
         
         if (!empty($produto_nome) && !empty($produto_codigo_barras))  // validar se há ao menos um dado a ser cadastrado
         {
-            if (!$produto->createProduto($produto_nome, $produto_fornecedor, $produto_preco_custo, $produto_preco_venda, $produto_codigo_barras)) {
+            if (!$produto->createProduto($produto_nome, $produto_preco_custo, $produto_preco_venda, $produto_codigo_barras, $produto_fornecedor)) {
                 echo "Produto já está cadastrado!";
             }
         } else {
