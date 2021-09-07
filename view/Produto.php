@@ -10,7 +10,7 @@ class Produto
 {   
     public string $id_produto;
     public string $nome_produto;
-    public Fornecedor $fornecedor;
+    public Pessoa $fornecedor;
     public string $preco_custo;
     public string $preco_venda;
     public string $codigo_barras;

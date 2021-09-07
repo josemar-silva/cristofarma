@@ -16,8 +16,6 @@
 
     require_once 'Conexao.php';
     require_once 'Pessoa.php';
-    require_once 'PessoaFisica.php';
-    require_once 'Funcionario.php';
     require_once 'Produto.php';
     require_once 'Estoque.php';
 
@@ -50,9 +48,7 @@
             <p><a href="Vendas.php">VENDAS</a></p>
             <p><a href="Caixa.php">CAIXA</a></p>
             <p><a href="CadastrarProdutos.php">PRODUTOS</a></p>
-            <p><a href="CadastrarFornecedores.php">FORNECEDOR</a></p>
-            <p><a href="CadastrarClientes.php">CLIENTES</a></p>
-            <p><a href="CadastrarUsuarios.php">USUÁRIOS</a></p>
+            <p><a href="Cadastros.php">CADASTROS</a></p>
             <p><a href="NotaFiscal.php">NOTA FISCAL</a></p>
             <p><a href="Relatorios.php">RELATÓRIO</a></p>
         </section>
