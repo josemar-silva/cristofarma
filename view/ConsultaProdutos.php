@@ -26,11 +26,11 @@
             echo "<table>";
             echo "<tr>";
             echo "<th> ID </th>";
-            echo "<th> DESCRIÇÃO PRODUTO </th>";
-            echo "<th> FORNECEDOR </th>";
+            echo "<th> NOME DO PRODUTO </th>";
             echo "<th> PREÇO CUSTO </th>";
             echo "<th> PREÇO VENDA </th>";
             echo "<th> CÓDIGO DE BARRAS </th>";
+            echo "<th> FORNECEDOR </th>";
             echo "</tr>";
             echo "</table>";
         ?>
