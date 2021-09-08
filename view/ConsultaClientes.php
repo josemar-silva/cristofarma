@@ -22,22 +22,20 @@
         if (isset($_GET['id_get_up'])) 
         {
             $id_up = addslashes($_GET['id_get_up']); 
-            $retornoConsulta = $pessoa->selectPessoa($id_up); #retorno da consulta armazenado na variavel $retornoConsulta
+            $retornoConsulta = $pessoa->selectPessoaCliente($id_up); #retorno da consulta armazenado na variavel $retornoConsulta
         
         }
     ?>
     
     <section id="menu">
-        <p><a href="home.php">HOME</a></p>
-        <p><a href="Pesquisar.php">CONSULTAS</a></p>
-        <p><a href="Vendas.php">VENDAS</a></p>
-        <p><a href="Caixa.php">CAIXA</a></p>
-        <p><a href="CadastrarProdutos.php">PRODUTOS</a></p>
-        <p><a href="CadastrarFornecedores.php">FORNECEDOR</a></p>
-        <p><a href="CadastrarClientes.php">CLIENTES</a></p>
-        <p><a href="CadastrarUsuarios.php">USUÁRIOS</a></p>
-        <p><a href="NotaFiscal.php">NOTA FISCAL</a></p>
-        <p><a href="Relatorios.php">RELATÓRIO</a></p>
+            <p><a href="home.php">HOME</a></p>
+            <p><a href="Pesquisar.php">CONSULTAS</a></p>
+            <p><a href="Vendas.php">VENDAS</a></p>
+            <p><a href="Caixa.php">CAIXA</a></p>
+            <p><a href="CadastrarProdutos.php">PRODUTOS</a></p>
+            <p><a href="Cadastros.php">CADASTROS</a></p>
+            <p><a href="NotaFiscal.php">NOTA FISCAL</a></p>
+            <p><a href="Relatorios.php">RELATÓRIO</a></p>
     </section>
     <section id="principal">
             
@@ -45,14 +43,19 @@
         <tr>
             <th> ID </th>
             <th> NOME DO CLIENTE</th>
+            <th> CPF/CNPJ</th>
+            <th> TIPO PESSOA </th>
             <th> EMAIL </th>
             <th> TELEFONE FIXO </th>
             <th> TELEFONE CELULAR </th>
-            <th> ENDEREÇO </th>
+            <th> MATRICULA </th>
+            <th> SENHA </th>
+            <th> FUNCAO </th>
+            <th>  </th>
         </tr>
         <?php
 
-            $dados = $pessoa->selectAllPessoa();
+            $dados = $pessoa->selectAllPessoaCliente();
 
             //echo"<pre>"; // organizar o array (matriz de array)
             //var_dump($dados); // imprimir na tela o resultado do array

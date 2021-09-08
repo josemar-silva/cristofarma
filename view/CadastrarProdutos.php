@@ -16,8 +16,6 @@
 
     require_once 'Conexao.php';
     require_once 'Pessoa.php';
-    require_once 'PessoaFisica.php';
-    require_once 'Funcionario.php';
     require_once 'Produto.php';
     require_once 'Estoque.php';
 
@@ -25,15 +23,16 @@
 
     if (isset($_POST['descricaoProduto'])) {
         $produto_nome = addslashes($_POST['descricaoProduto']);
-        $produto_fornecedor = addslashes($_POST['fornecedor']);
         $produto_preco_custo = addslashes($_POST['precoCusto']);
         $produto_preco_venda = addslashes($_POST['precoVenda']);
         $produto_codigo_barras = addslashes($_POST['codigoDeBarras']);
+        $produto_fornecedor = addslashes($_POST['fornecedor']);
+
 
         
         if (!empty($produto_nome) && !empty($produto_codigo_barras))  // validar se há ao menos um dado a ser cadastrado
         {
-            if (!$produto->createProduto($produto_nome, $produto_fornecedor, $produto_preco_custo, $produto_preco_venda, $produto_codigo_barras)) {
+            if (!$produto->createProduto($produto_nome, $produto_preco_custo, $produto_preco_venda, $produto_codigo_barras, $produto_fornecedor)) {
                 echo "Produto já está cadastrado!";
             }
         } else {
@@ -50,9 +49,7 @@
             <p><a href="Vendas.php">VENDAS</a></p>
             <p><a href="Caixa.php">CAIXA</a></p>
             <p><a href="CadastrarProdutos.php">PRODUTOS</a></p>
-            <p><a href="CadastrarFornecedores.php">FORNECEDOR</a></p>
-            <p><a href="CadastrarClientes.php">CLIENTES</a></p>
-            <p><a href="CadastrarUsuarios.php">USUÁRIOS</a></p>
+            <p><a href="Cadastros.php">CADASTROS</a></p>
             <p><a href="NotaFiscal.php">NOTA FISCAL</a></p>
             <p><a href="Relatorios.php">RELATÓRIO</a></p>
         </section>

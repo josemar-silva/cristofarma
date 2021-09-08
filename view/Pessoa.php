@@ -3,7 +3,7 @@
 require_once 'Conexao.php';
 require_once 'Endereco.php';
 
-class Pessoa
+class Pessoa 
 
 {
     // declaração de propriedade
@@ -42,7 +42,7 @@ class Pessoa
             return false;
         } else {
             $dados = $conexao->pdo->prepare("INSERT INTO pessoa (nome, cpf_cnpj, 
-            tipo_pessoa, email, telefoneFixo, telefoneCelular, matricula, senha)
+            tipo_pessoa, email, telefone_fixo, telefone_celular, matricula, senha, funcao)
             VALUES (:n, :c, :tp, :e, :tf, :tc, :m, :s, :f)");
             $dados->bindValue(":n", $nome);
             $dados->bindValue(":c", $cpf_cnpj);
@@ -53,15 +53,40 @@ class Pessoa
             $dados->bindValue(":m", $matricula);
             $dados->bindValue(":s", $senha);
             $dados->bindValue(":f", $funcao);
-
-
             $dados->execute();
 
             return true;
         }
     }
 
-    public function selectPessoa($id_up)
+    public function selectPessoaCliente($id_up)
+    {
+        $dadosSelecionados = array(); // cria-se uma variavel ARRAY que armanenará a busca que o PDO retorna como ARRAY
+
+        $conexao = new Conexao("projeto_cristofarma", "localhost", "root", ""); // instancia nova conexão com o BD
+ 
+        $dados  = $conexao->pdo->prepare("SELECT * FROM pessoa WHERE id_pessoa = :id" ); // dados retornam como ARRAY
+        $dados->bindValue("id", $id_up); // substituíção dos valores com o método BINDVALUE
+        $dados->execute(); // comando que executa a busca no BD
+        $dadosSelecionados = $dados->fetchAll(PDO::FETCH_ASSOC); // método fatch retorana um ARRAY, fatchAll retorna uma matriz
+        
+        return $dadosSelecionados; //varialvel de retorno da funcao
+    }
+
+    public function selectPessoaFornecedor($id_up)
+    {
+        $dadosSelecionados = array(); // cria-se uma variavel ARRAY que armanenará a busca que o PDO retorna como ARRAY
+
+        $conexao = new Conexao("projeto_cristofarma", "localhost", "root", ""); // instancia nova conexão com o BD
+
+        $dados  = $conexao->pdo->prepare("SELECT * FROM pessoa WHERE id_pessoa = :id"); // dados retornam como ARRAY
+        $dados->bindValue("id", $id_up); // substituíção dos valores com o método BINDVALUE
+        $dados->execute(); // comando que executa a busca no BD
+        $dadosSelecionados = $dados->fetchAll(PDO::FETCH_ASSOC); // método fatch retorana um ARRAY, fatchAll retorna uma matriz
+        return $dadosSelecionados; //varialvel de retorno da funcao
+    }
+
+    public function selectPessoaFuncionario($id_up)
     {
         $dadosSelecionados = array(); // cria-se uma variavel ARRAY que armanenará a busca que o PDO retorna como ARRAY
 
@@ -89,16 +114,32 @@ class Pessoa
     {
         $conexao = new Conexao("projeto_cristofarma", "localhost", "root", "");
 
-        $dados = $conexao->pdo->prepare("DELETE FROM pessoa_fisica WHERE pessoa_id_pessoa = :id");
-        $dados->bindValue("id", $id_up);
-        $dados->execute();
-
         $dados = $conexao->pdo->prepare("DELETE FROM pessoa WHERE id_pessoa = :id");
         $dados->bindValue("id", $id_up);
         $dados->execute();
     }
 
-    public function selectAllPessoa()
+    public function selectAllPessoaCliente()
+    {
+        $conexao = new Conexao("projeto_cristofarma", "localhost", "root", "");
+
+        $dadosSelecionados = array();
+        $dados  = $conexao->pdo->query("SELECT * FROM pessoa ORDER BY id_pessoa");
+        $dadosSelecionados = $dados->fetchAll(PDO::FETCH_ASSOC);
+        return $dadosSelecionados;
+    }
+
+    public function selectAllPessoaFornecedor()
+    {
+        $conexao = new Conexao("projeto_cristofarma", "localhost", "root", "");
+
+        $dadosSelecionados = array();
+        $dados  = $conexao->pdo->query("SELECT * FROM pessoa ORDER BY id_pessoa");
+        $dadosSelecionados = $dados->fetchAll(PDO::FETCH_ASSOC);
+        return $dadosSelecionados;
+    }
+
+    public function selectAllPessoaFuncionario()
     {
         $conexao = new Conexao("projeto_cristofarma", "localhost", "root", "");
 

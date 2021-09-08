@@ -1,7 +1,7 @@
 <?php
 class Endereco
 {
-    protected string $id_endereço;
+    protected string $id_endereco;
     protected string $logradouro;
     protected string $quadra;
     protected string $lote;
