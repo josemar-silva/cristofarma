@@ -26,10 +26,12 @@
     <section id="principal">
         <legend>PESQUISAR CADASTROS</legend><br>
         <div id="consultas">
-            <a href="ConsultaClientes.php">Clientes</a><br><br>
-            <a href="ConsultaProdutos.php">Produtos</a><br><br>
-            <a href="ConsultaFornecedor.php">Fornecedor</a><br><br>
-            <a href="ConsultaFuncionarios.php">Funcionários</a><br><br>
+            <ul>
+            <a href="ConsultaClientes.php" class="btn btn-outline-danger">Clientes</a>
+            <a href="ConsultaProdutos.php" class="btn btn-outline-danger">Produtos</a>
+            <a href="ConsultaFornecedor.php" class="btn btn-outline-danger">Fornecedor</a>
+            <a href="ConsultaFuncionarios.php" class="btn btn-outline-danger">Funcionários</a>
+            </ul>
         </div>
     </section>
 </body>
