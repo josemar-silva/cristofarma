@@ -3,29 +3,53 @@
 
 <head>
     <meta charset="UTF-8" />
-    <link rel="stylesheet" href="../css/estilo.css">
+    <link rel="stylesheet" href="../css/estilo.css" > 
+    <link rel="stylesheet" href="../css/bootstrap/nav/navegador.css">
     <title>Pesquisar</title>
 </head>
 
 <body>
     <header>
+    <ul class="nav nav-tabs"> 
+        <li class="nav-item">
+            <a class="nav-link" href="home.php">HOME</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="Pesquisar.php">PESQUISAR</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="Vendas.php">VENDAS</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="Caixa.php">CAIXA</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="CadastrarProdutos.php">PRODUTOS</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="CadastrarFornecedores.php">FORNECEDOR</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="CadastrarClientes.php">CLIENTES</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="CadastrarUsuarios.php">USUÁRIOS</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="NotaFiscal.php">NOTA FISCAL</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="Relatorios.php">RELATÓRIOS</a>
+        </li>
+    </ul>
 
     </header>
-    <section id="menu">
-            <p><a href="home.php">HOME</a></p>
-            <p><a href="Pesquisar.php">CONSULTAS</a></p>
-            <p><a href="Vendas.php">VENDAS</a></p>
-            <p><a href="Caixa.php">CAIXA</a></p>
-            <p><a href="CadastrarProdutos.php">PRODUTOS</a></p>
-            <p><a href="Cadastros.php">CADASTROS</a></p>
-            <p><a href="NotaFiscal.php">NOTA FISCAL</a></p>
-            <p><a href="Relatorios.php">RELATÓRIO</a></p>
-    </section>
-    <section id="principal">
-        <legend>PESQUISAR CADASTROS</legend><br>
-        <div id="consultas">
+  
+    <section >
+        <legend class="legend">PESQUISAR CADASTROS</legend><br>
+        <div >
             <ul>
-            <a href="ConsultaClientes.php" class="btn btn-outline-danger">Clientes</a>
+            <a href="ConsultaClientes.php" class="btn btn-outline-danger" >Clientes</a>
             <a href="ConsultaProdutos.php" class="btn btn-outline-danger">Produtos</a>
             <a href="ConsultaFornecedor.php" class="btn btn-outline-danger">Fornecedor</a>
             <a href="ConsultaFuncionarios.php" class="btn btn-outline-danger">Funcionários</a>
