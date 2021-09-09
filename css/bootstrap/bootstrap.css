@@ -60,14 +60,14 @@ article, aside, figcaption, figure, footer, header, hgroup, main, nav, section {
 
 .body {
   margin: 0;
-  font-family:Arial, Helvetica, sans-serif;
+  font-family:sans-serif;
   font-size: 0px;
   font-weight: 200;
-  color: #dc3545;
+  color: #e6e3e4;
   text-align: center;
   background-image: url("/cristofarma/img/logo.png");  
-  margin-top: 15%;
-  
+  margin-top: 15%; 
+  font: bold;
 }
 
 [tabindex="-1"]:focus {
@@ -2777,16 +2777,17 @@ fieldset:disabled a.btn {
 }
 
 .btn-outline-danger {
-  color: #dc3545;
+  color: #ff0000;
   background-color: transparent;
   background-image: none;
-  border-color: #dc3545;
+  border-color: #f1eeef;
+  font: bold;
 }
 
 .btn-outline-danger:hover {
   color: #fff;
-  background-color: #dc3545;
-  border-color: #dc3545;
+  background-color: #8b0210;
+  border-color: #f7f7f7;
 }
 
 .btn-outline-danger:focus, .btn-outline-danger.focus {
