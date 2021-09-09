@@ -20,6 +20,8 @@
     require_once 'Estoque.php';
 
     $produto = new Produto();
+    $estoque = new Estoque();
+
 
     if (isset($_POST['descricaoProduto'])) {
         $produto_nome = addslashes($_POST['descricaoProduto']);
@@ -28,18 +30,17 @@
         $produto_codigo_barras = addslashes($_POST['codigoDeBarras']);
         $produto_fornecedor = addslashes($_POST['fornecedor']);
 
+        $quantidade_estoque = addslashes($_POST['quantidade']);
 
-        
         if (!empty($produto_nome) && !empty($produto_codigo_barras))  // validar se há ao menos um dado a ser cadastrado
         {
-            if (!$produto->createProduto($produto_nome, $produto_preco_custo, $produto_preco_venda, $produto_codigo_barras, $produto_fornecedor)) {
+            if (!$produto->createProduto($produto_nome, $produto_preco_custo, $produto_preco_venda, $produto_codigo_barras, $produto_fornecedor, $quantidade_estoque)) {
                 echo "Produto já está cadastrado!";
             }
         } else {
             echo "Preencha todos os campos!";
         }
     }
-    
     ?>
 
     <section>

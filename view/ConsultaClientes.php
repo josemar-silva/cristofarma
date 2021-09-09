@@ -22,7 +22,7 @@
         if (isset($_GET['id_get_up'])) 
         {
             $id_up = addslashes($_GET['id_get_up']); 
-            $retornoConsulta = $pessoa->selectPessoaCliente($id_up); #retorno da consulta armazenado na variavel $retornoConsulta
+            $retornoConsulta = $pessoa->selectPessoa($id_up); #retorno da consulta armazenado na variavel $retornoConsulta
         
         }
     ?>
@@ -55,7 +55,7 @@
         </tr>
         <?php
 
-            $dados = $pessoa->selectAllPessoaCliente();
+            $dados = $pessoa->selectAllPessoa();
 
             //echo"<pre>"; // organizar o array (matriz de array)
             //var_dump($dados); // imprimir na tela o resultado do array
@@ -75,7 +75,7 @@
                     }
                     ?>
                         <td> 
-                            <a href="Cadastrar  Clientes.php?id_get_up<?php echo $dados[$i]['id_pessoa'];?>">Editar</a>
+                            <a href="CadastrarClientes.php?id_get_up<?php echo $dados[$i]['id_pessoa'];?>">Editar</a>
                             <a href="ConsultaClientes.php?id_get_del=<?php echo $dados[$i]['id_pessoa'];?>">Excluir</a> 
                             <!-- usar "echo $dados[$i]['id_pessoa']; "pegar ID desejado no array e passar como 'string' para o metodo $_GET-->
                         </td>
@@ -95,7 +95,7 @@
 
 </html>
 
-<?php //
+<?php
 
     if (isset($_GET['id_get_del'])) # verificando se existe dados selecionado para exclusão
     {

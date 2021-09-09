@@ -14,8 +14,9 @@
     <?php
     
     require_once 'Pessoa.php';
+    require_once 'Endereco.php';
 
-    $pessoa = new Pessoa();
+    $endereco = new Endereco();
 
     $tipo = filter_input(INPUT_POST, 'tipoPessoa');
 
