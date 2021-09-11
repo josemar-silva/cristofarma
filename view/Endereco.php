@@ -1,4 +1,7 @@
 <?php
+
+require_once 'Pessoa.php';
+require_once 'Conexao.php';
 class Endereco
 {
     protected string $id_endereco;
@@ -12,6 +15,35 @@ class Endereco
 
     public function __construct() {
    
+    }
+
+    public function createEndereco($logradouro, $quadra, $lote, $bairro, 
+        $cidade, $cep, $complemento)
+    {
+        $conexao = new Conexao("projeto_cristofarma", "localhost", "root", "");
+        
+            global $res;
+            $dados = $conexao->pdo->prepare("SELECT id_pessoa FROM pessoa WHERE cpf_cnpj  = :fk");
+            $dados->bindValue(":fk", $cpf_cnpj);
+            $dados->execute();
+            $res2 = $dados->fetch(PDO::FETCH_ASSOC);
+            $res = $res2['id_pessoa'];
+
+            $dados = $conexao->pdo->prepare("INSERT INTO endereco (logradouro, 
+            quadra, lote, bairro, cidade, cep, complemento, pessoa_id_pessoa)
+            VALUES (:lg, :qd, :lt, :b, :cd, :cp, :com, fk)");
+            $dados->bindValue(":lg", $logradouro);
+            $dados->bindValue(":qd", $quadra);
+            $dados->bindValue(":lt", $lote); 
+            $dados->bindValue(":b", $bairro);
+            $dados->bindValue(":cd", $cidade);
+            $dados->bindValue(":cp", $cep);
+            $dados->bindValue(":com", $complemento);
+            $dados->bindValue(":fk", $res);
+            $dados->execute();
+
+            return true;
+        
     }
 
     //metodos de acesso 

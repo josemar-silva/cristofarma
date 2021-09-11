@@ -5,20 +5,20 @@ require_once 'Produto.php';
 require_once 'Estoque.php';
 require_once 'Conexao.php';
 require_once 'Pessoa.php';
-require_once 'Funcionario.php';
+
 
 class Venda
 {
     // declaração de propriedade
-    protected string $id_venda;
-    protected string $valor_venda_sem_desconto;
-    protected string $desconto;
-    protected string $valor_venda_com_desconto;
-    protected string $tipo_pagamento;
-    protected string $data_venda;
-    protected Funcionario $vendedor;
-    protected Pessoa $cliente;
-    protected string $total_item_venda;
+    public string $id_venda;
+    public string $valor_venda_sem_desconto;
+    public string $desconto;
+    public string $valor_venda_com_desconto;
+    public string $tipo_pagamento;
+    public string $data_venda;
+    public Pessoa $vendedor;
+    public Pessoa $cliente;
+    public string $total_item_venda;
 
     function __construct()
     {

@@ -16,10 +16,8 @@
 
     require_once 'Pessoa.php';
     require_once 'Conexao.php';
-    require_once 'Endereco.php';
 
     $pessoa =  new Pessoa();
-    $endereco = new Endereco();
 
     $tipo = filter_input(INPUT_POST, 'tipoPessoa'); #filtrar valor que um inpult recebeu
     if ($tipo = 'cliente' || $tipo = 'fornecedor'){
@@ -104,8 +102,8 @@
             </select><br/><br>
 
             <label for="endereco" id="endereco">Endereço:</label><br>
-            <input id="endereco" type="text" name="endereco" size="40" value="">
-            <a href="CadastrarEndereco.php">+</a><br>
+            <input id="endereco" type="text" name="endereco" size="40" value="" disabled>
+            <a href="CadastrarEndereco.php">Editar</a><br>
 
             <input id="btnCadastrar" type="submit" id="btnCadastrar" name="btnGravarClientes" 
                 value="<?php echo "Cadastrar"; ?>">

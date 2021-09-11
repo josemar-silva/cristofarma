@@ -18,14 +18,11 @@ class Pessoa
     public string $senha;
     public string $funcao;
 
-
-
-    
     // método contrutor
     function __construct_pessoa(string $nome, string $cpf_cnpj)
     {
         $this->nome = $nome;
-        $this->cpf = $cpf_cnpj;
+        $this->cpf_cnpj = $cpf_cnpj;
     }
 
     // declaração de métodos especiais
@@ -59,7 +56,7 @@ class Pessoa
         }
     }
 
-    public function selectPessoaCliente($id_up)
+    public function selectPessoa($id_up)
     {
         $dadosSelecionados = array(); // cria-se uma variavel ARRAY que armanenará a busca que o PDO retorna como ARRAY
 
@@ -70,32 +67,6 @@ class Pessoa
         $dados->execute(); // comando que executa a busca no BD
         $dadosSelecionados = $dados->fetchAll(PDO::FETCH_ASSOC); // método fatch retorana um ARRAY, fatchAll retorna uma matriz
         
-        return $dadosSelecionados; //varialvel de retorno da funcao
-    }
-
-    public function selectPessoaFornecedor($id_up)
-    {
-        $dadosSelecionados = array(); // cria-se uma variavel ARRAY que armanenará a busca que o PDO retorna como ARRAY
-
-        $conexao = new Conexao("projeto_cristofarma", "localhost", "root", ""); // instancia nova conexão com o BD
-
-        $dados  = $conexao->pdo->prepare("SELECT * FROM pessoa WHERE id_pessoa = :id"); // dados retornam como ARRAY
-        $dados->bindValue("id", $id_up); // substituíção dos valores com o método BINDVALUE
-        $dados->execute(); // comando que executa a busca no BD
-        $dadosSelecionados = $dados->fetchAll(PDO::FETCH_ASSOC); // método fatch retorana um ARRAY, fatchAll retorna uma matriz
-        return $dadosSelecionados; //varialvel de retorno da funcao
-    }
-
-    public function selectPessoaFuncionario($id_up)
-    {
-        $dadosSelecionados = array(); // cria-se uma variavel ARRAY que armanenará a busca que o PDO retorna como ARRAY
-
-        $conexao = new Conexao("projeto_cristofarma", "localhost", "root", ""); // instancia nova conexão com o BD
-
-        $dados  = $conexao->pdo->prepare("SELECT * FROM pessoa WHERE id_pessoa = :id"); // dados retornam como ARRAY
-        $dados->bindValue("id", $id_up); // substituíção dos valores com o método BINDVALUE
-        $dados->execute(); // comando que executa a busca no BD
-        $dadosSelecionados = $dados->fetchAll(PDO::FETCH_ASSOC); // método fatch retorana um ARRAY, fatchAll retorna uma matriz
         return $dadosSelecionados; //varialvel de retorno da funcao
     }
 
@@ -119,27 +90,7 @@ class Pessoa
         $dados->execute();
     }
 
-    public function selectAllPessoaCliente()
-    {
-        $conexao = new Conexao("projeto_cristofarma", "localhost", "root", "");
-
-        $dadosSelecionados = array();
-        $dados  = $conexao->pdo->query("SELECT * FROM pessoa ORDER BY id_pessoa");
-        $dadosSelecionados = $dados->fetchAll(PDO::FETCH_ASSOC);
-        return $dadosSelecionados;
-    }
-
-    public function selectAllPessoaFornecedor()
-    {
-        $conexao = new Conexao("projeto_cristofarma", "localhost", "root", "");
-
-        $dadosSelecionados = array();
-        $dados  = $conexao->pdo->query("SELECT * FROM pessoa ORDER BY id_pessoa");
-        $dadosSelecionados = $dados->fetchAll(PDO::FETCH_ASSOC);
-        return $dadosSelecionados;
-    }
-
-    public function selectAllPessoaFuncionario()
+    public function selectAllPessoa()
     {
         $conexao = new Conexao("projeto_cristofarma", "localhost", "root", "");
 

@@ -2,30 +2,35 @@
 
 require_once 'Produto.php';
 require_once 'Conexao.php';
+require_once 'Venda.php';
 
 class Estoque
 {
-    // declaração de propriedade
-    protected string $id_produto;
-    protected string $quantidade;
+    public string $produto_id_produto;
+    public string $quantidade;
 }
 
-    function incluir() 
+function __construct_pessoa()
     {
-        
-    }
 
-    function editar() 
-    {
-        
-    }
+    }   
 
-    function excluir() 
-    {
-       
-    }
+function createEstoque($produto_id_produto,$quantidade)
+{
+}
 
-    function pesquisar() 
-    {
-        
-    }
+function updateEstoque()
+{
+}
+
+function deleteEstoque()
+{
+}
+
+function selectInEstoque()
+{
+}
+
+function selectAllEstoque()
+{
+}

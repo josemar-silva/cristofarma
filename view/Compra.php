@@ -9,10 +9,12 @@ require_once 'Pessoa.php';
 
 
 class Compra{
-    public int $id;
-    public  $dtCompra;
+    public int $id_compra;
+    public string $data_compra;
+    public string $valor_compra;
+    public string $numero_nota;
     public Pessoa $fornecedor;
-    public $valor_compra;
+    public string $valor_compra;
  
 
     function __construct_compra()
