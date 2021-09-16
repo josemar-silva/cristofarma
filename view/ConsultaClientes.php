@@ -9,6 +9,7 @@
 <head>
     <meta charset="UTF-8" />
     <link rel="stylesheet" href="../css/estilo.css">
+    <link rel="stylesheet" href="../css/bootstrap/nav/navegador.css">
     <title>Pesquisar Clientes</title>
 </head>
 
@@ -27,19 +28,10 @@
         }
     ?>
     
-    <section id="menu">
-            <p><a href="home.php">HOME</a></p>
-            <p><a href="Pesquisar.php">CONSULTAS</a></p>
-            <p><a href="Vendas.php">VENDAS</a></p>
-            <p><a href="Caixa.php">CAIXA</a></p>
-            <p><a href="CadastrarProdutos.php">PRODUTOS</a></p>
-            <p><a href="Cadastros.php">CADASTROS</a></p>
-            <p><a href="NotaFiscal.php">NOTA FISCAL</a></p>
-            <p><a href="Relatorios.php">RELATÓRIO</a></p>
-    </section>
-    <section id="principal">
+
+    <section >
             
-    <table>
+    <table class="table table-hover">
         <tr>
             <th> ID </th>
             <th> NOME DO CLIENTE</th>
@@ -85,7 +77,7 @@
             }
         ?>
     </table>
-            <p><a href="Pesquisar.php"><<< voltar</a>
+            <p><a href="Pesquisar.php" class=" btn-primary"><<< Voltar</a>
     </section>
 
     

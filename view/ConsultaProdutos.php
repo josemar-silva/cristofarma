@@ -9,6 +9,7 @@
 <head>
     <meta charset="UTF-8" />
     <link rel="stylesheet" href="../css/estilo.css">
+    <link rel="stylesheet" href="../css/bootstrap/nav/navegador.css">
     <title>Pesquisar Produtos</title>
 </head>
 

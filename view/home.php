@@ -37,6 +37,7 @@
             </li>
     </ul>
     </header>
+<<<<<<< HEAD
     
         <section id="principal">
             <p id="nomeEmpresa">DROGARIA CRISTOFARMA</p>
@@ -63,5 +64,12 @@
             </div>
         </section>
 </body>
+=======
+
+</body>
+=======
+ </body>
+
+>>>>>>> 30bb648f8ff60edf16213616d166027b64058ece
 
 </html>
