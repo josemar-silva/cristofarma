@@ -90,15 +90,35 @@ class Pessoa
         $dados->execute();
     }
 
-    public function selectAllPessoa()
+    public function selectAllPessoaCiente()
     {
         $conexao = new Conexao("projeto_cristofarma", "localhost", "root", "");
 
         $dadosSelecionados = array();
-        $dados  = $conexao->pdo->query("SELECT * FROM pessoa ORDER BY id_pessoa");
+        $dados  = $conexao->pdo->query("SELECT * FROM pessoa WHERE tipo_pessoa = 'cliente' ORDER BY id_pessoa");
         $dadosSelecionados = $dados->fetchAll(PDO::FETCH_ASSOC);
         return $dadosSelecionados;
     }
+
+    public function selectAllPessoaFornecedor()
+    {
+        $conexao = new Conexao("projeto_cristofarma", "localhost", "root", "");
+
+        $dadosSelecionados = array();
+        $dados  = $conexao->pdo->query("SELECT * FROM pessoa WHERE tipo_pessoa = 'fornecedor' ORDER BY id_pessoa");
+        $dadosSelecionados = $dados->fetchAll(PDO::FETCH_ASSOC);
+        return $dadosSelecionados;
+    }public function selectAllPessoaFuncionario()
+    {
+        $conexao = new Conexao("projeto_cristofarma", "localhost", "root", "");
+
+        $dadosSelecionados = array();
+        $dados  = $conexao->pdo->query("SELECT * FROM pessoa WHERE tipo_pessoa = 'funcionario' ORDER BY id_pessoa");
+        $dadosSelecionados = $dados->fetchAll(PDO::FETCH_ASSOC);
+        return $dadosSelecionados;
+    }
+
+
 
     //metodos de acesso 
     function __getId() 

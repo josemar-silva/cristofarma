@@ -25,17 +25,44 @@ class Venda
     
     }
 
-    public function selectVenda($id)
+    public function createVenda($valor_venda_sem_desconto, $desconto, $valor_venda_com_desconto, $tipo_pagamento,
+    $data_venda, $vendedor, $cliente, $total_item_venda)
     {
-        $vendaSelecionada = array(); // cria-se uma variavel ARRAY que armanenará a busca que o PDO retorna como ARRAY
+        $clienteSelecionado = array(); 
+        $vendedorSelecionado = array();
 
-        $conexao = new Conexao("projeto_cristofarma", "localhost", "root", ""); // instancia nova conexão com o BD
+        $conexao = new Conexao("projeto_cristofarma", "localhost", "root", "");
 
-        $dados  = $conexao->pdo->prepare("SELECT id_venda FROM venda WHERE pessoa_id_pessoa = :id"); // dados retornam como ARRAY
-        $dados->bindValue("id", $id); // substituíção dos valores com o método BINDVALUE
-        $dados->execute(); // comando que executa a busca no BD
-        $vendaSelecionada = $dados->fetch(PDO::FETCH_ASSOC); // método fatch retorana um ARRAY, fatchAll retorna uma matriz
-        return $vendaSelecionada; //varialvel de retorno da funcao
+        $dados  = $conexao->pdo->prepare("SELECT id_pessoa FROM pessoa WHERE nome = :cn"); // dados retornam como ARRAY
+        $dados->bindValue("cn", $cliente); 
+        $dados->execute(); 
+        $clienteSelecionado = $dados->fetch(PDO::FETCH_ASSOC); 
+
+        $dados  = $conexao->pdo->prepare("SELECT id_pessoa FROM pessoa WHERE nome = :vn"); 
+        $dados->bindValue("vn", $vendedor); 
+        $vendedorSelecionado = $dados->fetch(PDO::FETCH_ASSOC); 
+
+        $dados = $conexao->pdo->prepare("SELECT id_venda FROM venda WHERE data_venda = :dtv");
+        //$cadastrar = $this->pdo->query("SELECT * id FROM pessoa WHERE email = ".$email);
+        $dados->bindValue(":dtv", $data_venda);
+        $dados->execute();
+        if ($dados->rowCount() > 0) {
+            return false;
+        } else {
+            $dados = $conexao->pdo->prepare("INSERT INTO venda (valor_venda_sem_desconto, desconto, 
+            valor_venda_com_desconto, tipo_pagamento, data_venda, vendedor, cliente, total_item_venda)
+            VALUES (:vsd, :dsc, :vcd, :tp, :dtv, :v, :c, :tiv)");
+            $dados->bindValue(":vsd", $valor_venda_sem_desconto);
+            $dados->bindValue(":dsc", $desconto);
+            $dados->bindValue(":vcd", $valor_venda_com_desconto);
+            $dados->bindValue(":tp", $tipo_pagamento);
+            $dados->bindValue(":dtv", $data_venda);
+            $dados->bindValue(":v", $vendedor);
+            $dados->bindValue(":c", $cliente);
+            $dados->bindValue(":tiv", $total_item_venda);
+            $dados->execute();
+
+            return true;
     }
 
     //metodos de acesso 
@@ -99,7 +126,9 @@ class Venda
         
     }
 
+}
 
 }
+
 
 ?>

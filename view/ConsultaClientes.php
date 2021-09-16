@@ -8,7 +8,6 @@
 
 <head>
     <meta charset="UTF-8" />
-    <link rel="stylesheet" href="../css/estilo.css">
     <link rel="stylesheet" href="../css/bootstrap/nav/navegador.css">
     <title>Pesquisar Clientes</title>
 </head>
@@ -47,7 +46,7 @@
         </tr>
         <?php
 
-            $dados = $pessoa->selectAllPessoa();
+            $dados = $pessoa->selectAllPessoaCiente();
 
             //echo"<pre>"; // organizar o array (matriz de array)
             //var_dump($dados); // imprimir na tela o resultado do array

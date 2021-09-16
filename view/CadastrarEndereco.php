@@ -15,32 +15,28 @@
 
     $endereco = new Endereco();
 
-    $tipo = filter_input(INPUT_POST, 'tipoPessoa');
+       if (isset($_POST['logradouro'])) {
+        $logradouro = addslashes($_POST['logradouro']);
+        $quadra = addslashes($_POST['quadra']);
+        $lote = addslashes($_POST['lote']);
+        $bairro = addslashes($_POST['bairro']);
+        $cidade = addslashes($_POST['cidade']);
+        $cep = addslashes($_POST['cep']);
+        $complemento = addslashes($_POST['complemento']);
 
-    if (isset($_POST['nome'])) {
-        $nome = addslashes($_POST['nome']);
-        $email = addslashes($_POST['email']);
-        $telefoneFixo = addslashes($_POST['telefoneFixo']);
-        $telefoneCelular = addslashes($_POST['telefoneCelular']);
-        $endereco = addslashes($_POST['endereco']);
-        $cpf = addslashes($_POST['cpf']);
-        $cnpj = addslashes($_POST['cnpj']);
-
-        if (!empty($nome) && !empty($email))  // validar se há ao menos um dado a ser cadastrado
+        if (!empty($logradouro) && !empty($bairro))  // validar se há ao menos um dado a ser cadastrado
         {
-            if ($tipo == 'pf') {
-                if (!$pessoaFisica->createPessoaFisica($nome, $email, $telefoneFixo, $telefoneCelular, $endereco, $cpf)) {
-                    echo "Email já está cadastrado!";
-                }
-            } else {
-                if (!$pessoaJuridica->createPessoaJuridica($nome, $email, $telefoneFixo, $telefoneCelular, $endereco, $cnpj)) {
-                    echo "Email já está cadastrado!";
-                }
-            }
-        } else {
-            echo "Preencha todos os campos!";
-        }
+            if (!$endereco->createEndereco($logradouro, $quadra, $lote, $bairro, 
+            $cidade, $cep, $complemento)) {
+                echo "Endereço Inválido!";
+
     }
+}  else {
+    echo "Preencha todos os campos!";
+
+}
+       }
+    
     ?>
     <header>
     <ul class="nav nav-tabs">

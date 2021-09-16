@@ -8,7 +8,6 @@
 
 <head>
     <meta charset="UTF-8" />
-    <link rel="stylesheet" href="../css/estilo.css">
     <link rel="stylesheet" href="../css/bootstrap/nav/navegador.css">
     <title>Pesquisar Produtos</title>
 </head>
@@ -28,16 +27,35 @@
         }
     ?>
 
-    <section id="menu">
-            <p><a href="home.php">HOME</a></p>
-            <p><a href="Pesquisar.php">CONSULTAS</a></p>
-            <p><a href="Vendas.php">VENDAS</a></p>
-            <p><a href="Caixa.php">CAIXA</a></p>
-            <p><a href="CadastrarProdutos.php">PRODUTOS</a></p>
-            <p><a href="Cadastros.php">CADASTROS</a></p>
-            <p><a href="NotaFiscal.php">NOTA FISCAL</a></p>
-            <p><a href="Relatorios.php">RELATÓRIO</a></p>
-    </section>
+<header>
+    <ul class="nav nav-tabs">
+ 
+            <li class="nav-item">
+                <a class="nav-link" href="home.php">HOME</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="Pesquisar.php">PESQUISAR</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="Vendas.php">VENDAS</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="Caixa.php">CAIXA</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="CadastrarProdutos.php">PRODUTOS</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="Cadastros.php">CADASTROS</a>
+            </li>   
+            <li class="nav-item">
+                <a class="nav-link" href="NotaFiscal.php">NOTA FISCAL</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="Relatorios.php">RELATÓRIOS</a>
+            </li>
+    </ul>
+    </header>
     <section id="principal">
         <table>
             <tr>
@@ -50,6 +68,18 @@
                 <th> CÓDIGO FORNECEDOR </th>
 
             </tr>
+
+            <table class="table table-hover">
+        <tr>
+            <th> ID </th>
+                <th> NOME DO PRODUTO </th>
+                <th> PREÇO CUSTO </th>
+                <th> PREÇO VENDA </th>
+                <th> CÓDIGO DE BARRAS </th>
+                <th> FORNECEDOR </th>
+                <th> CÓDIGO FORNECEDOR </th>
+            <th>  </th>
+        </tr>
                 <?php
 
                 $dados = $produto->selectAllProduto();

@@ -38,7 +38,7 @@
     </ul>
     </header>
     <section id="principal">
-        <legend>PESQUISAR CADASTROS</legend><br>
+        <legend>PESQUISAR :</legend><br>
         <div id="consultas">
             <ul>
             <a href="ConsultaClientes.php" class="btn btn-outline-danger" >Clientes</a>
