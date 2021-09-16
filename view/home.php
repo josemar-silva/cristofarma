@@ -27,14 +27,8 @@
                 <a class="nav-link" href="CadastrarProdutos.php">PRODUTOS</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="CadastrarFornecedores.php">FORNECEDOR</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="CadastrarClientes.php">CLIENTES</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="CadastrarUsuarios.php">USUÁRIOS</a>
-            </li>
+                <a class="nav-link" href="Cadastros.php">CADASTROS</a>
+            </li>   
             <li class="nav-item">
                 <a class="nav-link" href="NotaFiscal.php">NOTA FISCAL</a>
             </li>
@@ -43,18 +37,7 @@
             </li>
     </ul>
     </header>
-<<<<<<< HEAD
-    <section>
-        <section id="menu">
-            <p><a href="home.php">HOME</a></p>
-            <p><a href="Pesquisar.php">CONSULTAS</a></p>
-            <p><a href="Vendas.php">VENDAS</a></p>
-            <p><a href="Caixa.php">CAIXA</a></p>
-            <p><a href="CadastrarProdutos.php">PRODUTOS</a></p>
-            <p><a href="Cadastros.php">CADASTROS</a></p>
-            <p><a href="NotaFiscal.php">NOTA FISCAL</a></p>
-            <p><a href="Relatorios.php">RELATÓRIO</a></p>
-        </section>
+    
         <section id="principal">
             <p id="nomeEmpresa">DROGARIA CRISTOFARMA</p>
             <fieldset id="missao">
@@ -80,8 +63,5 @@
             </div>
         </section>
 </body>
-=======
- </body>
->>>>>>> ad6cbc66ff0d909eaae26909581d7afb2bc22e2b
 
 </html>
