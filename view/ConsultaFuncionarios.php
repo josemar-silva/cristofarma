@@ -42,6 +42,7 @@
             <th> MATRICULA </th>
             <th> SENHA </th>
             <th> FUNCAO </th>
+            <th> ENDEREÇO </th>
             <th>  </th>
         </tr>
         <?php
@@ -66,7 +67,7 @@
                     }
                     ?>
                         <td> 
-                            <a href="CadastrarClientes.php?id_get_up<?php echo $dados[$i]['id_pessoa'];?>">Editar</a>
+                            <a href="Cadastros.php?id_get_up<?php echo $dados[$i]['id_pessoa'];?>">Editar</a>
                             <a href="ConsultaClientes.php?id_get_del=<?php echo $dados[$i]['id_pessoa'];?>">Excluir</a> 
                             <!-- usar "echo $dados[$i]['id_pessoa']; "pegar ID desejado no array e passar como 'string' para o metodo $_GET-->
                         </td>

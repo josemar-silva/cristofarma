@@ -57,17 +57,6 @@
     </ul>
     </header>
     <section id="principal">
-        <table>
-            <tr>
-                <th> ID </th>
-                <th> NOME DO PRODUTO </th>
-                <th> PREÇO CUSTO </th>
-                <th> PREÇO VENDA </th>
-                <th> CÓDIGO DE BARRAS </th>
-                <th> FORNECEDOR </th>
-                <th> CÓDIGO FORNECEDOR </th>
-
-            </tr>
 
             <table class="table table-hover">
         <tr>
@@ -77,7 +66,6 @@
                 <th> PREÇO VENDA </th>
                 <th> CÓDIGO DE BARRAS </th>
                 <th> FORNECEDOR </th>
-                <th> CÓDIGO FORNECEDOR </th>
             <th>  </th>
         </tr>
                 <?php
@@ -95,7 +83,7 @@
                         echo "<tr>"; // abre a linha dos dados selecionados
                         foreach ($dados[$i] as $key => $value) 
                         {
-                            //if ($key != "id_pessoa" ) // ignorar coluna ID
+                            if ($key != "pessoa_id_pessoa" ) // ignorar coluna ID
                             {
                                 echo "<td>" .$value. "</td>";
                             }

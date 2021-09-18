@@ -27,7 +27,7 @@
 
 label{
     display: block  ;   
-    font-size: 10pt;
+    font-size: 10px;
     margin-bottom: 5px; 
     font: bolder;
     
@@ -36,7 +36,6 @@ input {
     background-color: white;
     border: solid 1px #d6d6d6;
     color: rgb(74 72 72);
-    padding: 5px 20px;
     width: 100%;
     align-items: center;
     
@@ -74,8 +73,6 @@ form input {
     margin-right: 15px;
 }
 
-
-
 #tabelaVendasCaixa {
     width: 800px;
     margin: 30px auto;
@@ -91,9 +88,10 @@ table#produto {
 }
 
 #cadastro {
-    float: right;
-    width: 800px;
-    margin-right: 10px;
+    float: left;
+    width: 100%;
+    margin-right: 1px;
+    margin-left: 0px;
     margin-top: 10px;
 }
 
@@ -128,15 +126,19 @@ p a {
 }
 
 section#principal {
-    border: palevioletred 1px solid;
-    width: 89%;
+    border:rgba(0, 0, 0, .1) 1px solid;
+    width: 50%;
     height: 600px;
-    float: right;
+    display: block;
+    margin: auto;
+    padding: 10px;
+    
 }
 
 section#btn {
     border: royalblue 1px solid;
-    width: 89%;    background-color: white;
+    width: 89%;    
+    background-color: white;
     border: solid 1px #d6d6d6;
     color: rgb(74 72 72);
     padding: 5px 32px;
@@ -149,9 +151,9 @@ section#btn {
 form input#btnCadastrar {
     margin-top: 20px;
     cursor: pointer;
-    line-height: 15px;
-    width: 60%;
-    margin-left: 60px;
+    line-height: 10px;
+    width: 20%; 
+    margin-left: 40%;
     height: 25px;
 }
 
@@ -249,8 +251,6 @@ body {
     vertical-align: text-bottom;
   }
   
-
-
 p a {
     display: flex;
     justify-content: center;
@@ -294,14 +294,14 @@ p a {
     font-size: 16px;
     box-shadow: 2px 3px 5px rgb(10 74 67 / 42%);
     width: 100%;
-
-   
 }
+
 .barrabotoes{
     display: flex;
     justify-content: space-between;
     margin: 15px;
 }
+
 .index{
 width: 100vw;
 height: 100vh;
@@ -313,7 +313,6 @@ align-items: center;
 text-align: center;
 font-style: oblique;
 color: lightseagreen;
-
 
 }
 
@@ -330,9 +329,9 @@ text-align: center;
 font-style: oblique;
 color: rgb(81, 21, 83);
 border: none;
-   
 
 }
+
 #cadatroFormecedor{
     background-color: #bebebe3a;
     flex-direction: row;
@@ -343,8 +342,6 @@ border: none;
     color: rgb(81, 21, 83);
     border: none;
     margin: top 100% ;
-    
-    
 }
 
 
@@ -354,7 +351,6 @@ border: none;
     background-image: none;
     border-color: #f1eeef;
     font: bold;
-    
   }
   
 .btn-outline-danger:hover {
@@ -365,8 +361,6 @@ border: none;
 
   .legend {
       color: brown;
-      
-     
 
   }
   

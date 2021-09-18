@@ -39,9 +39,7 @@
             <th> EMAIL </th>
             <th> TELEFONE FIXO </th>
             <th> TELEFONE CELULAR </th>
-            <th> MATRICULA </th>
-            <th> SENHA </th>
-            <th> FUNCAO </th>
+            <th> ENDEREÇO </th>
             <th>  </th>
         </tr>
         <?php
@@ -66,8 +64,8 @@
                     }
                     ?>
                         <td> 
-                            <a href="CadastrarClientes.php?id_get_up<?php echo $dados[$i]['id_pessoa'];?>">Editar</a>
-                            <a href="ConsultaClientes.php?id_get_del=<?php echo $dados[$i]['id_pessoa'];?>">Excluir</a> 
+                            <a href="Cadastros.php?id_get_up<?php echo $dados[$i]['id_pessoa'];?>">Editar</a>
+                            <a href="ConsultaFornecedor.php?id_get_del=<?php echo $dados[$i]['id_pessoa'];?>">Excluir</a> 
                             <!-- usar "echo $dados[$i]['id_pessoa']; "pegar ID desejado no array e passar como 'string' para o metodo $_GET-->
                         </td>
                     <?php
@@ -92,6 +90,6 @@
     {
         $id_up = addslashes($_GET['id_get_del']); # pegar ID desejado no array
         $pessoa->deletePessoa($id_up); 
-        header("location: ConsultaClientes.php"); #atualizar a pagina ao executar a exclusão
+        header("location: ConsultaFornecedor.php"); #atualizar a pagina ao executar a exclusão
     }
 ?>

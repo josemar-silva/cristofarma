@@ -4,6 +4,9 @@
 <head>
     <meta charset="UTF-8" />
     <link rel="stylesheet" href="../css/bootstrap/nav/navegador.css">
+    <link rel="stylesheet" href="../css/estilo.css">
+
+
     <title>Gerenciar Cadastros</title>
 </head>
 
@@ -31,12 +34,13 @@
         $matricula = addslashes($_POST['matricula']);
         $senha = addslashes($_POST['senha']);
         $funcao = addslashes($_POST['listaFuncao']);
+        $endereco = addslashes($_POST['endereco']);
 
         if (!empty($nome) && !empty($email) && !empty($tipo))  // validar se há ao menos um dado a ser cadastrado
         
         {
             if (!$pessoa->createPessoa($nome, $cpf_cnpj, $tipo_pessoa, $email, $telefoneFixo, 
-            $telefoneCelular, $matricula, $senha, $funcao)) {
+            $telefoneCelular, $matricula, $senha, $funcao, $endereco)) {
                 echo "Este cadastro já existe!";
             }
         } else {
@@ -77,7 +81,7 @@
     <section id="principal">
         <form id="cadastro" method="POST">
 
-            <legend>CADASTROS</legend><br>
+            <legend>CADASTROS</legend>
 
             <label id="txtTipoCadastro">Tipo de cadastro:</label>
             <select id="tipoCadastro" name="tipoCadastro">
@@ -85,28 +89,28 @@
                 <option value="cliente">Cliente</option>
                 <option value="fornecedor">Fornecedor</option>
                 <option value="funcionario">Funcionário</option>
-            </select><br/><br>
+            </select><br/>
 
             <label for="nome" id="nome">Nome:</label><br>
-            <input id="nome" type="text" name="nome" size="40" value=""><br>
+            <input id="nome" type="text" name="nome" size="60" value=""><br>
 
             <label for="cpfAndCnpj" id="cpf">CPF/CNPJ:</label><br>
-            <input id="cpfAndCnpj" type="text" name="cpf_cnpj" size="20" value=""><br>
+            <input id="cpfAndCnpj" type="text" name="cpf_cnpj" size="60" value=""><br>
 
             <label for="email" id="email">E-mail:</label><br>
-            <input id="email" type="email" name="email" size="30" value=""><br>
+            <input id="email" type="email" name="email" size="60" value=""><br>
 
             <label for="telefoneFixo" id="telefoneFixo">Telefone Fixo:</label><br>
-            <input id="telefoneFixo" type="text" name="telefoneFixo" size="15" value=""><br>
+            <input id="telefoneFixo" type="text" name="telefoneFixo" size="60" value=""><br>
 
             <label for="telefoneFixo" id="telefoneFixo">Telefone Celular:</label><br>
-            <input id="telefoneCelular" type="text" name="telefoneCelular" size="15" value=""><br>
+            <input id="telefoneCelular" type="text" name="telefoneCelular" size="60" value=""><br>
 
             <label id="matricula">Matrícula:</label><br>
-            <input id="matricula" type="text" name="matricula" size="10" value=""><br>
+            <input id="matricula" type="text" name="matricula" size="60" value=""><br>
 
             <label for="senha">Senha:</label><br>
-            <input id="senha" type="password" name="senha" size="10" value=""><br><br>
+            <input id="senha" type="password" name="senha" size="60" value=""><br><br>
 
             <label id="funcao">Função:</label>
             <select id="listaFuncao" name="listaFuncao">
@@ -114,16 +118,14 @@
                 <option value="gerente">Gerente</option>
                 <option value="vendedor">Vendedor</option>
                 <option value="operador de caixa">Operador de Caixa</option>
-            </select><br/><br>
+            </select><br/>
 
             <label for="endereco" id="endereco">Endereço:</label><br>
-            <input id="endereco" type="text" name="endereco" size="40" value="" disabled>
-            <a href="CadastrarEndereco.php">Editar</a><br>
+            <input id="endereco" type="text" name="endereco" size="60" value="" >
 
             <input id="btnCadastrar" type="submit" id="btnCadastrar" name="btnGravarClientes" 
                 value="<?php echo "Cadastrar"; ?>">
         </form>
-    </section>
     </section>
 </body>
 

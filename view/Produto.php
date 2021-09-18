@@ -18,7 +18,7 @@ class Produto
     {
 
     }
-        public function createProduto($produto_nome, $produto_preco_custo, $produto_preco_venda, $produto_codigo_barras, $produto_fornecedor, $quantidade_estoque)
+        public function createProduto($produto_nome, $produto_preco_custo, $produto_preco_venda, $produto_codigo_barras, $produto_fornecedor)
     {
         $conexao = new Conexao("projeto_cristofarma", "localhost", "root", "");
 
@@ -44,19 +44,6 @@ class Produto
             $dados->bindValue(":cb", $produto_codigo_barras);
             $dados->bindValue(":pf", $produto_fornecedor);
             $dados->bindValue(":pfk", $res2);
-            $dados->execute();
-
-            global $res3;
-            $dados = $conexao->pdo->prepare("SELECT id_produto FROM produto WHERE codigo_barras  = :cb");
-            $dados->bindValue(":cb", $produto_codigo_barras);
-            $dados->execute();
-            $res = $dados->fetch(PDO::FETCH_ASSOC);
-            $res3 = $res['id_produto'];
-            
-            $dados = $conexao->pdo->prepare("INSERT INTO estoque (produto_id_produto, quantidade)
-            VALUES (:fk, :qtd)");
-            $dados->bindValue(":fk", $res3);
-            $dados->bindValue(":qtd", $quantidade_estoque);
             $dados->execute();
                 
             return true;

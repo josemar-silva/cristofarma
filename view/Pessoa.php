@@ -17,6 +17,7 @@ class Pessoa
     public string $matricula;
     public string $senha;
     public string $funcao;
+    public string $endereco;
 
     // método contrutor
     function __construct_pessoa(string $nome, string $cpf_cnpj)
@@ -27,7 +28,7 @@ class Pessoa
 
     // declaração de métodos especiais
     public function createPessoa($nome, $cpf_cnpj, $tipo_pessoa, $email, $telefoneFixo, 
-        $telefoneCelular, $matricula, $senha, $funcao)
+        $telefoneCelular, $matricula, $senha, $funcao, $endereco)
     {
         $conexao = new Conexao("projeto_cristofarma", "localhost", "root", "");
         

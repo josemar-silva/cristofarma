@@ -4,6 +4,8 @@
 <head>
     <meta charset="UTF-8" />
     <link rel="stylesheet" href="../css/bootstrap/nav/navegador.css">
+    <link rel="stylesheet" href="../css/estilo.css">
+
     <title>Gerencia Produtos</title>
 </head>
 
@@ -26,11 +28,9 @@
         $produto_codigo_barras = addslashes($_POST['codigoDeBarras']);
         $produto_fornecedor = addslashes($_POST['fornecedor']);
 
-        $quantidade_estoque = addslashes($_POST['quantidade']);
-
         if (!empty($produto_nome) && !empty($produto_codigo_barras))  // validar se há ao menos um dado a ser cadastrado
         {
-            if (!$produto->createProduto($produto_nome, $produto_preco_custo, $produto_preco_venda, $produto_codigo_barras, $produto_fornecedor, $quantidade_estoque)) {
+            if (!$produto->createProduto($produto_nome, $produto_preco_custo, $produto_preco_venda, $produto_codigo_barras, $produto_fornecedor)) {
                 echo "Produto já está cadastrado!";
             }
         } else {
@@ -73,28 +73,25 @@
                 <legend>CADASTRO DE PRODUTOS</legend><br>
 
                 <label id="descricaoProduto">Descrição:</label><br>
-                <input id="descricaoProduto" type="text" name="descricaoProduto" size="40"> <br>
+                <input id="descricaoProduto" type="text" name="descricaoProduto" size="60"> <br>
 
                 <label id="codigoDeBarras">Código de Barras:</label><br>
-                <input id="codigoDeBarras" type="text" name="codigoDeBarras" size="25"><br>
+                <input id="codigoDeBarras" type="text" name="codigoDeBarras" size="60"><br>
 
                 <label id="fornecedor">Fornecedor:</label><br>
-                <input id="fornecedor" type="text" name="fornecedor" size="25">
-                <a href="ConsultaFornecedor.php">+</a><br>
-
-                <label id="quantidade">Quantidade:</label><br>
-                <input id="quantidade" type="text" name="quantidade" size="10"><br>
+                <input id="fornecedor" type="text" name="fornecedor" size="60"><br>
 
                 <label id="precoVenda">Preço de Venda:</label><br>
-                <input id="precoVenda" type="text" name="precoVenda" size="10"> <br>
+                <input id="precoVenda" type="text" name="precoVenda" size="60"> <br>
 
                 <label id="precoCusto">Preço de Custo:</label><br>
-                <input id="precoCusto" type="text" name="precoCusto" size="10"> <br>
+                <input id="precoCusto" type="text" name="precoCusto" size="60"> <br><br>
 
                 <input id="btnCadastrar" type="submit" id="btnCadastrar" name="btnGravarClientes"
                     value="<?php echo "Cadastrar"; ?>">
             </form>
         </section>
+
 </body>
 
 </html>
