@@ -49,7 +49,7 @@ CREATE TABLE IF NOT EXISTS `projeto_cristofarma`.`endereco` (
   `complemento` VARCHAR(45) NULL,
   `pessoa_id_pessoa` INT NOT NULL,
   PRIMARY KEY (`id_endereco`),
-  INDEX `fk_endereco_pessoa_idx` (`pessoa_id_pessoa` ASC) VISIBLE,
+  INDEX `fk_endereco_pessoa_idx` (`pessoa_id_pessoa` ASC) ,
   CONSTRAINT `fk_endereco_pessoa`
     FOREIGN KEY (`pessoa_id_pessoa`)
     REFERENCES `projeto_cristofarma`.`pessoa` (`id_pessoa`)
@@ -70,7 +70,7 @@ CREATE TABLE IF NOT EXISTS `projeto_cristofarma`.`produto` (
   `produto_fornecedor` VARCHAR(45) NULL,
   `pessoa_id_pessoa` INT NOT NULL,
   PRIMARY KEY (`id_produto`),
-  INDEX `fk_produto_pessoa1_idx` (`pessoa_id_pessoa` ASC) VISIBLE,
+  INDEX `fk_produto_pessoa1_idx` (`pessoa_id_pessoa` ASC) ,
   CONSTRAINT `fk_produto_pessoa1`
     FOREIGN KEY (`pessoa_id_pessoa`)
     REFERENCES `projeto_cristofarma`.`pessoa` (`id_pessoa`)
@@ -109,7 +109,7 @@ CREATE TABLE IF NOT EXISTS `projeto_cristofarma`.`venda` (
   `total_item_venda` VARCHAR(45) NULL,
   `pessoa_id_pessoa` INT NOT NULL,
   PRIMARY KEY (`id_venda`),
-  INDEX `fk_venda_pessoa1_idx` (`pessoa_id_pessoa` ASC) VISIBLE,
+  INDEX `fk_venda_pessoa1_idx` (`pessoa_id_pessoa` ASC) ,
   CONSTRAINT `fk_venda_pessoa1`
     FOREIGN KEY (`pessoa_id_pessoa`)
     REFERENCES `projeto_cristofarma`.`pessoa` (`id_pessoa`)
@@ -125,7 +125,7 @@ CREATE TABLE IF NOT EXISTS `projeto_cristofarma`.`cupom_fiscal` (
   `id_cupom` INT NOT NULL AUTO_INCREMENT,
   `venda_id_venda` INT NOT NULL,
   PRIMARY KEY (`id_cupom`),
-  INDEX `fk_cupom_venda1_idx` (`venda_id_venda` ASC) VISIBLE,
+  INDEX `fk_cupom_venda1_idx` (`venda_id_venda` ASC) ,
   CONSTRAINT `fk_cupom_venda1`
     FOREIGN KEY (`venda_id_venda`)
     REFERENCES `projeto_cristofarma`.`venda` (`id_venda`)
@@ -141,8 +141,8 @@ CREATE TABLE IF NOT EXISTS `projeto_cristofarma`.`produto_venda` (
   `produto_id_produto` INT NOT NULL,
   `venda_id_venda` INT NOT NULL,
   PRIMARY KEY (`produto_id_produto`, `venda_id_venda`),
-  INDEX `fk_produto_has_venda_venda1_idx` (`venda_id_venda` ASC) VISIBLE,
-  INDEX `fk_produto_has_venda_produto1_idx` (`produto_id_produto` ASC) VISIBLE,
+  INDEX `fk_produto_has_venda_venda1_idx` (`venda_id_venda` ASC) ,
+  INDEX `fk_produto_has_venda_produto1_idx` (`produto_id_produto` ASC) ,
   CONSTRAINT `fk_produto_has_venda_produto1`
     FOREIGN KEY (`produto_id_produto`)
     REFERENCES `projeto_cristofarma`.`produto` (`id_produto`)
