@@ -37,6 +37,32 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
+<<<<<<< HEAD
+=======
+-- Table `projeto_cristofarma`.`endereco`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `projeto_cristofarma`.`endereco` (
+  `id_endereco` INT NOT NULL AUTO_INCREMENT,
+  `logradouro` VARCHAR(45) NULL,
+  `quadra` VARCHAR(45) NULL,
+  `lote` VARCHAR(45) NULL,
+  `bairro` VARCHAR(45) NULL,
+  `cidade` VARCHAR(45) NULL,
+  `cep` VARCHAR(45) NULL,
+  `complemento` VARCHAR(45) NULL,
+  `pessoa_id_pessoa` INT NOT NULL,
+  PRIMARY KEY (`id_endereco`),
+  INDEX `fk_endereco_pessoa_idx` (`pessoa_id_pessoa` ASC) ,
+  CONSTRAINT `fk_endereco_pessoa`
+    FOREIGN KEY (`pessoa_id_pessoa`)
+    REFERENCES `projeto_cristofarma`.`pessoa` (`id_pessoa`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+>>>>>>> 5b68b3ed303bd118ee0b61eac775306fb0b3fbdf
 -- Table `projeto_cristofarma`.`produto`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `projeto_cristofarma`.`produto` (
