@@ -13,8 +13,34 @@
 </head>
 
 <body>
-    <header>
-
+<header>
+    <ul class="nav nav-tabs">
+ 
+            <li class="nav-item">
+                <a class="nav-link" href="home.php">HOME</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="Pesquisar.php">PESQUISAR</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="Vendas.php">VENDAS</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="Caixa.php">CAIXA</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="CadastrarProdutos.php">PRODUTOS</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="Cadastros.php">CADASTROS</a>
+            </li>   
+            <li class="nav-item">
+                <a class="nav-link" href="NotaFiscal.php">NOTA FISCAL</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="Relatorios.php">RELATÓRIOS</a>
+            </li>
+    </ul>
     </header>
 
     <?php
@@ -26,20 +52,20 @@
         
         }
     ?>
-    
-
     <section >
-            
+    
+    <label>Buscar:</label>
+    <input type="search" id="pesquisaFornecedor" name="pesquisaFornecedor" value="" size=" 60"><br><br>
+
     <table class="table table-hover">
         <tr>
-            <th> ID </th>
-            <th> NOME DO CLIENTE</th>
+            <th> CÓDIGO FORNECEDOR </th>
+            <th> NOME DO FORNECEDOR</th>
             <th> CPF/CNPJ</th>
-            <th> TIPO PESSOA </th>
             <th> EMAIL </th>
             <th> TELEFONE FIXO </th>
             <th> TELEFONE CELULAR </th>
-            <th> ENDEREÇO </th>
+            <th> ENDEREÇO DO FORNECEDOR</th>
             <th>  </th>
         </tr>
         <?php
@@ -57,7 +83,7 @@
                     echo "<tr>"; // abre a linha dos dados selecionados
                     foreach ($dados[$i] as $key => $value) 
                     {
-                        //if ($key != "id_pessoa" ) // ignorar coluna ID
+                        if ($key != "tipo_pessoa" ) // ignorar coluna 
                         {
                             echo "<td>" .$value. "</td>";
                         }
@@ -76,10 +102,6 @@
     </table>
             <p><a href="Pesquisar.php" class=" btn-primary"><<< Voltar</a>
     </section>
-
-    
-    
-    
 </body>
 
 </html>

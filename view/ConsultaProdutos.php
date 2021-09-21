@@ -58,16 +58,19 @@
     </header>
     <section id="principal">
 
+    <label>Buscar:</label>
+    <input type="search" id="pesquisaProduto" name="pesquisaProduto" value="" size=" 60"><br><br>
+
             <table class="table table-hover">
-        <tr>
-            <th> ID </th>
+             <tr>
+                <th> CÓDIGO PRODUTO </th>
                 <th> NOME DO PRODUTO </th>
                 <th> PREÇO CUSTO </th>
                 <th> PREÇO VENDA </th>
                 <th> CÓDIGO DE BARRAS </th>
                 <th> FORNECEDOR </th>
-            <th>  </th>
-        </tr>
+                <th>  </th>
+            </tr>
                 <?php
 
                 $dados = $produto->selectAllProduto();

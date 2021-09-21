@@ -35,7 +35,8 @@
             }
         } else {
             echo "Preencha todos os campos!";
-        }
+        } 
+        echo '<script> alert("Produto cadastrado com sucesso!")</script>';
     }
     ?>
 

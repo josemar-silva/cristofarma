@@ -1,7 +1,6 @@
 <?php
 
 require_once 'Conexao.php';
-require_once 'Endereco.php';
 
 class Pessoa 
 
@@ -28,6 +27,34 @@ class Pessoa
 
     // declaração de métodos especiais
     public function createPessoa($nome, $cpf_cnpj, $tipo_pessoa, $email, $telefoneFixo, 
+        $telefoneCelular, $endereco)
+    {
+        $conexao = new Conexao("projeto_cristofarma", "localhost", "root", "");
+        
+        $dados = $conexao->pdo->prepare("SELECT id_pessoa FROM pessoa WHERE email = :e");
+        //$cadastrar = $this->pdo->query("SELECT * id FROM pessoa WHERE email = ".$email);
+        $dados->bindValue(":e", $email);
+        $dados->execute();
+        if ($dados->rowCount() > 0) {
+            return false;
+        } else {
+            $dados = $conexao->pdo->prepare("INSERT INTO pessoa (nome, cpf_cnpj, 
+            tipo_pessoa, email, telefone_fixo, telefone_celular, endereco)
+            VALUES (:n, :c, :tp, :e, :tf, :tc,:ed)");
+            $dados->bindValue(":n", $nome);
+            $dados->bindValue(":c", $cpf_cnpj);
+            $dados->bindValue(":tp", $tipo_pessoa);
+            $dados->bindValue(":e", $email);
+            $dados->bindValue(":tf", $telefoneFixo);
+            $dados->bindValue(":tc", $telefoneCelular);
+            $dados->bindValue(":ed", $endereco);
+            $dados->execute();
+
+            return true;
+        }
+    }
+    
+    public function createPessoaFuncionario($nome, $cpf_cnpj, $tipo_pessoa, $email, $telefoneFixo, 
         $telefoneCelular, $matricula, $senha, $funcao, $endereco)
     {
         $conexao = new Conexao("projeto_cristofarma", "localhost", "root", "");
@@ -40,8 +67,8 @@ class Pessoa
             return false;
         } else {
             $dados = $conexao->pdo->prepare("INSERT INTO pessoa (nome, cpf_cnpj, 
-            tipo_pessoa, email, telefone_fixo, telefone_celular, matricula, senha, funcao)
-            VALUES (:n, :c, :tp, :e, :tf, :tc, :m, :s, :f)");
+            tipo_pessoa, email, telefone_fixo, telefone_celular, matricula, senha, funcao, endereco)
+            VALUES (:n, :c, :tp, :e, :tf, :tc, :m, :s, :f,:ed)");
             $dados->bindValue(":n", $nome);
             $dados->bindValue(":c", $cpf_cnpj);
             $dados->bindValue(":tp", $tipo_pessoa);
@@ -51,35 +78,34 @@ class Pessoa
             $dados->bindValue(":m", $matricula);
             $dados->bindValue(":s", $senha);
             $dados->bindValue(":f", $funcao);
+            $dados->bindValue(":ed", $endereco);
             $dados->execute();
 
             return true;
         }
     }
 
-    public function selectPessoa($id_up)
-    {
-        $dadosSelecionados = array(); // cria-se uma variavel ARRAY que armanenará a busca que o PDO retorna como ARRAY
-
-        $conexao = new Conexao("projeto_cristofarma", "localhost", "root", ""); // instancia nova conexão com o BD
- 
-        $dados  = $conexao->pdo->prepare("SELECT * FROM pessoa WHERE id_pessoa = :id" ); // dados retornam como ARRAY
-        $dados->bindValue("id", $id_up); // substituíção dos valores com o método BINDVALUE
-        $dados->execute(); // comando que executa a busca no BD
-        $dadosSelecionados = $dados->fetchAll(PDO::FETCH_ASSOC); // método fatch retorana um ARRAY, fatchAll retorna uma matriz
-        
-        return $dadosSelecionados; //varialvel de retorno da funcao
-    }
-
-    public function updatePessoa($id_up, $email)
+    public function updatePessoaClienteFornecedor($id_upd, $nome, $cpf_cnpj, $tipo_pessoa, $email, $telefoneFixo, 
+    $telefoneCelular, $endereco)
     {
         $conexao = new Conexao("projeto_cristofarma", "localhost", "root", "");
 
-        $dados = $conexao->pdo->prepare("UPDATE pessoa_fisica SET email = :e WHERE id_pessoa = :id");
-        $dados->bindValue("id", $id_up);
-        $dados->bindValue("e", $email);
-
+        $dados = $conexao->pdo->prepare("UPDATE pessoa SET nome = :n, cpf_cnpj = :c, tipo_pessoa = :tp, 
+        email = :e, telefone_fixo = :tf, telefone_celular = :tc endereco = : ed WHERE id_pessoa = :id");
+        $dados->bindValue(":n", $nome);
+        $dados->bindValue(":c", $cpf_cnpj);
+        $dados->bindValue(":tp", $tipo_pessoa);
+        $dados->bindValue(":e", $email);
+        $dados->bindValue(":tf", $telefoneFixo);
+        $dados->bindValue(":tc", $telefoneCelular);
+        $dados->bindValue(":ed", $endereco);
+        $dados->bindValue(":id", $id_upd); 
         $dados->execute();
+    }
+
+    public function updatePessoaFuncionario($id_up, $email)
+    {
+        
     }
 
     public function deletePessoa($id_up)
@@ -91,12 +117,35 @@ class Pessoa
         $dados->execute();
     }
 
-    public function selectAllPessoaCiente()
+    public function selectPessoaCliente($id_up)
+    {
+        $dadosSelecionados = array(); // cria-se uma variavel ARRAY que armanenará a busca que o PDO retorna como ARRAY
+
+        $conexao = new Conexao("projeto_cristofarma", "localhost", "root", ""); // instancia nova conexão com o BD
+ 
+        $dados  = $conexao->pdo->prepare("SELECT pessoa.id_pessoa, pessoa.nome, pessoa.cpf_cnpj, 
+        pessoa.email, pessoa.telefone_fixo, pessoa.telefone_celular, pessoa.endereco 
+        FROM pessoa WHERE tipo_pessoa = 'cliente' AND id_pessoa = :id; " ); // dados retornam como ARRAY
+        $dados->bindValue("id", $id_up); // substituíção dos valores com o método BINDVALUE
+        $dados->execute(); // comando que executa a busca no BD
+        $dadosSelecionados = $dados->fetchAll(PDO::FETCH_ASSOC); // método fatch retorana um ARRAY, fatchAll retorna uma matriz
+        
+        return $dadosSelecionados; //varialvel de retorno da funcao
+    }
+
+    public function selectPessoaFuncionario($id_up)
+    {
+        
+    }
+
+    public function selectAllPessoaCliente()
     {
         $conexao = new Conexao("projeto_cristofarma", "localhost", "root", "");
 
         $dadosSelecionados = array();
-        $dados  = $conexao->pdo->query("SELECT * FROM pessoa WHERE tipo_pessoa = 'cliente' ORDER BY id_pessoa");
+        $dados  = $conexao->pdo->query("SELECT pessoa.id_pessoa, pessoa.nome, pessoa.cpf_cnpj, 
+        pessoa.email, pessoa.telefone_fixo, pessoa.telefone_celular, pessoa.endereco 
+        FROM pessoa WHERE tipo_pessoa = 'cliente' ORDER BY nome;");
         $dadosSelecionados = $dados->fetchAll(PDO::FETCH_ASSOC);
         return $dadosSelecionados;
     }
@@ -106,20 +155,22 @@ class Pessoa
         $conexao = new Conexao("projeto_cristofarma", "localhost", "root", "");
 
         $dadosSelecionados = array();
-        $dados  = $conexao->pdo->query("SELECT * FROM pessoa WHERE tipo_pessoa = 'fornecedor' ORDER BY id_pessoa");
+        $dados  = $conexao->pdo->query("SELECT pessoa.id_pessoa, pessoa.nome, pessoa.cpf_cnpj, 
+        pessoa.email, pessoa.telefone_fixo, pessoa.telefone_celular, pessoa.endereco 
+        FROM pessoa WHERE tipo_pessoa = 'fornecedor' ORDER BY nome;");
         $dadosSelecionados = $dados->fetchAll(PDO::FETCH_ASSOC);
         return $dadosSelecionados;
-    }public function selectAllPessoaFuncionario()
+    }
+    
+    public function selectAllPessoaFuncionario()
     {
         $conexao = new Conexao("projeto_cristofarma", "localhost", "root", "");
 
         $dadosSelecionados = array();
-        $dados  = $conexao->pdo->query("SELECT * FROM pessoa WHERE tipo_pessoa = 'funcionario' ORDER BY id_pessoa");
+        $dados  = $conexao->pdo->query("SELECT * FROM pessoa WHERE tipo_pessoa = 'funcionario' ORDER BY nome");
         $dadosSelecionados = $dados->fetchAll(PDO::FETCH_ASSOC);
         return $dadosSelecionados;
     }
-
-
 
     //metodos de acesso 
     function __getId() 
