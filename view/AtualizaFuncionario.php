@@ -82,7 +82,7 @@
         $tipo_pessoa = addslashes($_POST['tipoCadastro']);
         $email = addslashes($_POST['email']); 
         $telefoneFixo = addslashes($_POST['telefoneFixo']);
-        $telefoneCelular = addslashes($_POST['telefoneCelular']);
+        $telefoneCelular = addslashes($_POST['telefoneCelular']);   
         $matricula = addslashes($_POST['matricula']);
         $senha = addslashes($_POST['senha']);
         $funcao = addslashes($_POST['listaFuncao']);
@@ -92,9 +92,9 @@
         
         {
             $pessoa->updatePessoaFuncionario($id_upd, $nome, $cpf_cnpj, $tipo_pessoa, $email, $telefoneFixo, 
-            $telefoneCelular, $matricula, $senha, $endereco, $endereco);
+            $telefoneCelular, $matricula, $senha, $funcao, $endereco);
 
-            //header("location: Cadastros.php");
+            header("location: Cadastros.php");
 
         } else {
             echo "Preencha todos os campos!";
@@ -166,7 +166,7 @@
         if (isset($_GET['id_get_up'])) // VERIFICA SE CLICOU EM EDITAR
         {
             $id_up = addslashes($_GET['id_get_up']); 
-            $retornoConsulta = $pessoa->selectPessoaCliente($id_up); #retorno da consulta armazenado na variavel $retornoConsulta
+            $retornoConsulta = $pessoa->selectPessoaFuncionario($id_up); #retorno da consulta armazenado na variavel $retornoConsulta
             
         }
         

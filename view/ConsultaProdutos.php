@@ -93,7 +93,7 @@
                         }
                         ?>
                             <td> 
-                                <a href="CadastrarProdutos.php?id_get_up<?php echo $dados[$i]['id_produto'];?>">Editar</a>
+                                <a href="AtualizaProduto.php?id_get_up=<?php echo $dados[$i]['id_produto'];?>">Editar</a>
                                 <a href="ConsultaProdutos.php?id_get_del=<?php echo $dados[$i]['id_produto'];?>">Excluir</a> 
                                 <!-- usar "echo $dados[$i]['id_pessoa']; "pegar ID desejado no array e passar como 'string' para o metodo $_GET-->
                             </td>

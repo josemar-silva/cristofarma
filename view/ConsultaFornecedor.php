@@ -48,7 +48,7 @@
         if (isset($_GET['id_get_up'])) 
         {
             $id_up = addslashes($_GET['id_get_up']); 
-            $retornoConsulta = $pessoa->selectPessoa($id_up); #retorno da consulta armazenado na variavel $retornoConsulta
+            $retornoConsulta = $pessoa->selectPessoaFornecedor($id_up); #retorno da consulta armazenado na variavel $retornoConsulta
         
         }
     ?>
@@ -90,7 +90,7 @@
                     }
                     ?>
                         <td> 
-                            <a href="Cadastros.php?id_get_up<?php echo $dados[$i]['id_pessoa'];?>">Editar</a>
+                            <a href="AtualizaFornecedor.php?id_get_up=<?php echo $dados[$i]['id_pessoa'];?>">Editar</a>
                             <a href="ConsultaFornecedor.php?id_get_del=<?php echo $dados[$i]['id_pessoa'];?>">Excluir</a> 
                             <!-- usar "echo $dados[$i]['id_pessoa']; "pegar ID desejado no array e passar como 'string' para o metodo $_GET-->
                         </td>

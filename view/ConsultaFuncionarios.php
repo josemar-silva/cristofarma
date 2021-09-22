@@ -48,7 +48,7 @@
         if (isset($_GET['id_get_up'])) 
         {
             $id_up = addslashes($_GET['id_get_up']); 
-            $retornoConsulta = $pessoa->selectPessoa($id_up); #retorno da consulta armazenado na variavel $retornoConsulta
+            $retornoConsulta = $pessoa->selectPessoaFuncionario($id_up); #retorno da consulta armazenado na variavel $retornoConsulta
         
         }
     ?>
@@ -93,8 +93,8 @@
                     }
                     ?>
                         <td> 
-                            <a href="Cadastros.php?id_get_up<?php echo $dados[$i]['id_pessoa'];?>">Editar</a>
-                            <a href="ConsultaClientes.php?id_get_del=<?php echo $dados[$i]['id_pessoa'];?>">Excluir</a> 
+                            <a href="AtualizaFuncionario.php?id_get_up=<?php echo $dados[$i]['id_pessoa'];?>">Editar</a>
+                            <a href="ConsultaFuncionarios.php?id_get_del=<?php echo $dados[$i]['id_pessoa'];?>">Excluir</a> 
                             <!-- usar "echo $dados[$i]['id_pessoa']; "pegar ID desejado no array e passar como 'string' para o metodo $_GET-->
                         </td>
                     <?php
@@ -115,6 +115,6 @@
     {
         $id_up = addslashes($_GET['id_get_del']); # pegar ID desejado no array
         $pessoa->deletePessoa($id_up); 
-        header("location: ConsultaClientes.php"); #atualizar a pagina ao executar a exclusão
+        header("location: ConsultaFuncionarios.php"); #atualizar a pagina ao executar a exclusão
     }
 ?>
