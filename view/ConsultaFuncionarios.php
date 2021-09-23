@@ -48,7 +48,7 @@
         if (isset($_GET['id_get_up'])) 
         {
             $id_up = addslashes($_GET['id_get_up']); 
-            $retornoConsulta = $pessoa->selectPessoaFuncionario($id_up); #retorno da consulta armazenado na variavel $retornoConsulta
+            $retornoConsulta = $pessoa->selectAllPessoaFuncionario($id_up); #retorno da consulta armazenado na variavel $retornoConsulta
         
         }
     ?>

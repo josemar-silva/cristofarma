@@ -82,7 +82,7 @@
         $tipo_pessoa = addslashes($_POST['tipoCadastro']);
         $email = addslashes($_POST['email']); 
         $telefoneFixo = addslashes($_POST['telefoneFixo']);
-        $telefoneCelular = addslashes($_POST['telefoneCelular']);   
+        $telefoneCelular = addslashes($_POST['telefoneCelular']);
         $matricula = addslashes($_POST['matricula']);
         $senha = addslashes($_POST['senha']);
         $funcao = addslashes($_POST['listaFuncao']);
@@ -92,14 +92,14 @@
         
         {
             $pessoa->updatePessoaFuncionario($id_upd, $nome, $cpf_cnpj, $tipo_pessoa, $email, $telefoneFixo, 
-            $telefoneCelular, $matricula, $senha, $funcao, $endereco);
+            $telefoneCelular, $matricula, $senha, $endereco, $endereco);
 
             header("location: Cadastros.php");
 
         } else {
             echo "Preencha todos os campos!";
         }
-        #echo '<script> alert("Cadastro realizado com sucesso!")</script>';
+            #echo '<script> alert("Cadastro realizado com sucesso!")</script>';
         } else 
         //--------------------------CADASTRAR-----------------------------
         {
@@ -201,17 +201,17 @@
             <input id="telefoneCelular" type="text" name="telefoneCelular" size="60" value="<?php if(isset($retornoConsulta)){echo $retornoConsulta[0]['telefone_celular'];}?>"><br>
 
             <label for="matricula">Matrícula:</label><br>
-            <input id="matricula" type="text" name="matricula" size="60" value="<?php if(isset($retornoConsulta)){if (isset($retornoConsulta[0]['matricula'])){ echo $retornoConsulta[0]['matricula'];} else { echo '';}}?>"><br>
+            <input id="matricula" type="text" name="matricula" size="60" value="<?php if(isset($retornoConsulta)){if (isset($retornoConsulta[0]['matricula'])){ echo $retornoConsulta[0]['matricula'];} else { echo '';}}?>" disabled><br>
 
             <label for="senha">Senha:</label><br>
-            <input id="senha" type="password" name="senha" size="60" value="<?php if(isset($retornoConsulta)){if (isset($retornoConsulta[0]['senha'])){ echo $retornoConsulta[0]['senha'];} else { echo '';}}?>"><br><br>
+            <input id="senha" type="password" name="senha" size="60" value="<?php if(isset($retornoConsulta)){if (isset($retornoConsulta[0]['senha'])){ echo $retornoConsulta[0]['senha'];} else { echo '';}}?>" disabled><br><br>
 
             <label id="funcao">Função:</label>
-            <select id="listaFuncao" name="listaFuncao" >
+            <select id="listaFuncao" name="listaFuncao" disabled>
                 <option value="" selected> </option>
-                <option value="gerente">Gerente</option>
-                <option value="vendedor">Vendedor</option>
-                <option value="operador de caixa">Operador de Caixa</option>
+                <option value="gerente" >Gerente</option>
+                <option value="vendedor" >Vendedor</option>
+                <option value="operador de caixa" >Operador de Caixa</option>
             </select><br/>
 
     <script>

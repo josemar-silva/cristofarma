@@ -109,7 +109,7 @@ class Pessoa
         $conexao = new Conexao("projeto_cristofarma", "localhost", "root", "");
 
         $dados = $conexao->pdo->prepare("UPDATE pessoa SET nome = :n, cpf_cnpj = :c, tipo_pessoa = :tp, 
-        email = :e, telefone_fixo = :tf, telefone_celular = :tc, matricula = :m,  senha = s:,  funcao = f, endereco = :ed WHERE id_pessoa = :id");
+        email = :e, telefone_fixo = :tf, telefone_celular = :tc, matricula = :m,  senha = :s,  funcao = :f, endereco = :ed WHERE id_pessoa = :id");
         $dados->bindValue(":n", $nome);
         $dados->bindValue(":c", $cpf_cnpj);
         $dados->bindValue(":tp", $tipo_pessoa);
