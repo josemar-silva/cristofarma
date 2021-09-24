@@ -92,7 +92,7 @@
         
         {
             $pessoa->updatePessoaFuncionario($id_upd, $nome, $cpf_cnpj, $tipo_pessoa, $email, $telefoneFixo, 
-            $telefoneCelular, $matricula, $senha, $endereco, $endereco);
+            $telefoneCelular, $matricula, $senha, $funcao, $endereco);
 
             //header("location: Cadastros.php");
 
@@ -177,12 +177,13 @@
 
             <input type="hidden" id="id_get" name="id_get" value="">
 
-            <label id="txtTipoCadastro">Tipo de cadastro:</label>
+            <label id="txtTipoCadastro">Tipo de cadastro:</label> <span> <?php if(isset($retornoConsulta)){
+                $retornoTipoPessoa = $retornoConsulta[0]['tipo_pessoa'];} ?></span>
             <select id="tipoCadastro" name="tipoCadastro" onchange="verifica(this.value)">
-                <option value="" selected> </option>
-                <option value="cliente" >Cliente</option>
-                <option value="fornecedor">Fornecedor</option>
-                <option value="funcionario">Funcionário</option>
+                <option value=""> </option>
+                <option value="cliente" <?php if ($retornoTipoPessoa == 'cliente'){echo 'selected';}?>>Cliente</option>
+                <option value="fornecedor" <?php if ($retornoTipoPessoa == 'fornecedor'){echo 'selected';}?>>Fornecedor</option>
+                <option value="funcionario" <?php if ($retornoTipoPessoa == 'funcionario'){echo 'selected';}?>>Funcionário</option>
             </select><br/>
 
             <label for="nome" id="nome">Nome:</label><br>
@@ -208,7 +209,7 @@
 
             <label id="funcao">Função:</label>
             <select id="listaFuncao" name="listaFuncao" disabled>
-                <option value="" selected> </option>
+                <option value=""> </option>
                 <option value="gerente" >Gerente</option>
                 <option value="vendedor" >Vendedor</option>
                 <option value="operador de caixa" >Operador de Caixa</option>
@@ -232,7 +233,9 @@
     };
     </script>
             <label for="endereco" id="endereco">Endereço:</label><br>
-            <input id="endereco" type="text" name="endereco" size="60" value="<?php if(isset($retornoConsulta)){echo $retornoConsulta[0]['endereco'];}?>" >
+            <input id="endereco" type="text" name="endereco" size="60" value="<?php if(isset($retornoConsulta)){
+                echo $retornoConsulta[0]['endereco'];}?>" >
+
             <input id="btnCadastrar" type="submit" id="btnCadastrar" name="btnGravarClientes" 
                 value="<?php if (isset($_GET['id_get_up'])){echo 'Atualizar';} else {echo 'Cadastrar';}?>">
         </form>

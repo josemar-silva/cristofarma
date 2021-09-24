@@ -179,3 +179,7 @@ ENGINE = InnoDB;
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
+UPDATE produto SET nome_produto = 'metronidazol 500mg', preco_custo = '4,99', 
+            preco_venda = '7,50', codigo_barras = '123245678909876543', produto_fornecedor = 'cifarma med' 
+            WHERE id_produto = '7';
+select id_pessoa from pessoa where nome = 'cifarma med';

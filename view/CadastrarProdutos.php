@@ -82,11 +82,11 @@
                 <label id="fornecedor">Fornecedor:</label><br>
                 <input id="fornecedor" type="text" name="fornecedor" size="60"><br>
 
-                <label id="precoVenda">Preço de Venda:</label><br>
-                <input id="precoVenda" type="text" name="precoVenda" size="60"> <br>
-
                 <label id="precoCusto">Preço de Custo:</label><br>
                 <input id="precoCusto" type="text" name="precoCusto" size="60"> <br><br>
+
+                <label id="precoVenda">Preço de Venda:</label><br>
+                <input id="precoVenda" type="text" name="precoVenda" size="60"> <br>
 
                 <input id="btnCadastrar" type="submit" id="btnCadastrar" name="btnGravarClientes"
                     value="<?php echo "Cadastrar"; ?>">

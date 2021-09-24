@@ -18,8 +18,8 @@
             <input id="matricula" type="text" name="matricula" size="20" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"><br><br>
             <label for="senha">Senha:</label>
             <input id="get-senha" type="password" name="senha" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"><br><br>
-            <button type="submit" id="btnGravarLoginUsuario" name="gravarLoginUsuario" class="btn btn-outline-danger">Entrar</button>
-            <button type="submit" id="btnSairLoginUsuario" name="sairLoginUsuario" class="btn btn-outline-danger" >Sair</button>
+            <button type="submit"  href="home.php" id="btnGravarLoginUsuario" name="gravarLoginUsuario" class="btn btn-outline-danger" onclick="">Entrar</button>
+            <button type="submit" href="home.php" id="btnSairLoginUsuario" name="sairLoginUsuario" class="btn btn-outline-danger" onclick="">Sair</button>
         </form>
     </section>
 </body>

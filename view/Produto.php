@@ -82,6 +82,23 @@ class Produto
         $dadosSelecionados = $dados->fetchAll(PDO::FETCH_ASSOC);
         return $dadosSelecionados;
     }
+
+    public function updateProduto($id_up, $produto_nome, $produto_preco_custo, $produto_preco_venda, $produto_codigo_barras, $produto_fornecedor)
+    {
+        $conexao = new Conexao("projeto_cristofarma", "localhost", "root", "");
+
+        
+            $dados = $conexao->pdo->prepare("UPDATE produto SET produto.nome_produto = :pn, produto.preco_custo = :pc, 
+            produto.preco_venda = :pv, produto.codigo_barras = :cb, produto.produto_fornecedor = :pf 
+            WHERE produto.id_produto = :idf");
+            $dados->bindValue(":pn", $produto_nome);
+            $dados->bindValue(":pc", $produto_preco_custo);
+            $dados->bindValue(":pv", $produto_preco_venda);
+            $dados->bindValue(":cb", $produto_codigo_barras);
+            $dados->bindValue(":pf", $produto_fornecedor);
+            $dados->bindValue(":idf", $id_up);
+            $dados->execute();
+}
 }
  
 ?>

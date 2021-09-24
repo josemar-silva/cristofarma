@@ -61,6 +61,7 @@
             <th> CÓDIGO CLIENTE </th>
             <th> NOME DO CLIENTE</th>
             <th> CPF/CNPJ</th>
+            <th> TIPO PESSOA</th>
             <th> EMAIL </th>
             <th> TELEFONE FIXO </th>
             <th> TELEFONE CELULAR </th>

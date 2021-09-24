@@ -92,7 +92,7 @@
         
         {
             $pessoa->updatePessoaFuncionario($id_upd, $nome, $cpf_cnpj, $tipo_pessoa, $email, $telefoneFixo, 
-            $telefoneCelular, $matricula, $senha, $endereco, $endereco);
+            $telefoneCelular, $matricula, $senha, $funcao, $endereco);
 
             header("location: Cadastros.php");
 
@@ -119,7 +119,7 @@
         
         {
             if (!$pessoa->createPessoaFuncionario($nome, $cpf_cnpj, $tipo_pessoa, $email, $telefoneFixo, 
-            $telefoneCelular, $matricula, $senha, $endereco, $endereco)) {
+            $telefoneCelular, $matricula, $senha, $funcao, $endereco)) {
                 echo "Este cadastro já existe!";
             }
         } else {
@@ -177,12 +177,14 @@
 
             <input type="hidden" id="id_get" name="id_get" value="">
 
-            <label id="txtTipoCadastro">Tipo de cadastro:</label>
+            <label id="txtTipoCadastro">Tipo de cadastro:</label> <span> <?php if(isset($retornoConsulta)){
+                $retornoTipoPessoa = $retornoConsulta[0]['tipo_pessoa']; 
+                $retornoFuncao = $retornoConsulta[0]['funcao'];}?></span>
             <select id="tipoCadastro" name="tipoCadastro" onchange="verifica(this.value)">
-                <option value="" selected> </option>
-                <option value="cliente" >Cliente</option>
-                <option value="fornecedor">Fornecedor</option>
-                <option value="funcionario">Funcionário</option>
+                <option value=""> </option>
+                <option value="cliente" <?php if ($retornoTipoPessoa == 'cliente'){echo 'selected';}?>>Cliente</option>
+                <option value="fornecedor" <?php if ($retornoTipoPessoa == 'fornecedor'){echo 'selected';}?>>Fornecedor</option>
+                <option value="funcionario" <?php if ($retornoTipoPessoa == 'funcionario'){echo 'selected';}?>>Funcionário</option>
             </select><br/>
 
             <label for="nome" id="nome">Nome:</label><br>
@@ -207,11 +209,11 @@
             <input id="senha" type="password" name="senha" size="60" value="<?php if(isset($retornoConsulta)){if (isset($retornoConsulta[0]['senha'])){ echo $retornoConsulta[0]['senha'];} else { echo '';}}?>" disabled><br><br>
 
             <label id="funcao">Função:</label>
-            <select id="listaFuncao" name="listaFuncao" disabled>
+            <select id="listaFuncao" name="listaFuncao" >
                 <option value="" selected> </option>
-                <option value="gerente" >Gerente</option>
-                <option value="vendedor" >Vendedor</option>
-                <option value="operador de caixa" >Operador de Caixa</option>
+                <option value="gerente" <?php if ($retornoFuncao == 'gerente'){echo 'selected';}?>>Gerente</option>
+                <option value="vendedor" <?php if ($retornoFuncao == 'vendedor'){echo 'selected';}?>>Vendedor</option>
+                <option value="operador de caixa" <?php if ($retornoFuncao == 'operador de caixa'){echo 'selected';}?>>Operador de Caixa</option>
             </select><br/>
 
     <script>

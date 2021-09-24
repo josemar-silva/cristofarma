@@ -62,6 +62,7 @@
             <th> CÓDIGO FUNCIONÁRIO </th>
             <th> NOME DO FUNCIONÁRIO</th>
             <th> CPF/CNPJ</th>
+            <th> TIPO PESSOA</th>
             <th> EMAIL </th>
             <th> TELEFONE FIXO </th>
             <th> TELEFONE CELULAR </th>
@@ -86,7 +87,7 @@
                     echo "<tr>"; // abre a linha dos dados selecionados
                     foreach ($dados[$i] as $key => $value) 
                     {
-                        if ($key != "tipo_pessoa" ) // ignorar coluna 
+                        #if ($key != "matricula" && "senha" && "funcao" && "tipo_pessoa") // ignorar coluna
                         {
                             echo "<td>" .$value. "</td>";
                         }

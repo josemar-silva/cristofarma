@@ -139,7 +139,7 @@ class Pessoa
 
         $conexao = new Conexao("projeto_cristofarma", "localhost", "root", ""); // instancia nova conexão com o BD
  
-        $dados  = $conexao->pdo->prepare("SELECT pessoa.id_pessoa, pessoa.nome, pessoa.cpf_cnpj, 
+        $dados  = $conexao->pdo->prepare("SELECT pessoa.id_pessoa, pessoa.nome, pessoa.cpf_cnpj, pessoa.tipo_pessoa,
         pessoa.email, pessoa.telefone_fixo, pessoa.telefone_celular, pessoa.endereco 
         FROM pessoa WHERE tipo_pessoa = 'cliente' AND id_pessoa = :id; " ); // dados retornam como ARRAY
         $dados->bindValue("id", $id_up); // substituíção dos valores com o método BINDVALUE
@@ -155,7 +155,7 @@ class Pessoa
 
         $conexao = new Conexao("projeto_cristofarma", "localhost", "root", ""); // instancia nova conexão com o BD
  
-        $dados  = $conexao->pdo->prepare("SELECT pessoa.id_pessoa, pessoa.nome, pessoa.tipo_pessoa, pessoa.cpf_cnpj, 
+        $dados  = $conexao->pdo->prepare("SELECT pessoa.id_pessoa, pessoa.nome, pessoa.cpf_cnpj, pessoa.tipo_pessoa,
         pessoa.email, pessoa.telefone_fixo, pessoa.telefone_celular, pessoa.endereco 
         FROM pessoa WHERE tipo_pessoa = 'fornecedor' AND id_pessoa = :id; " ); // dados retornam como ARRAY
         $dados->bindValue("id", $id_up); // substituíção dos valores com o método BINDVALUE
@@ -171,8 +171,8 @@ class Pessoa
 
         $conexao = new Conexao("projeto_cristofarma", "localhost", "root", ""); // instancia nova conexão com o BD
  
-        $dados  = $conexao->pdo->prepare("SELECT pessoa.id_pessoa, pessoa.nome, pessoa.tipo_pessoa, pessoa.cpf_cnpj, 
-        pessoa.email, pessoa.telefone_fixo, pessoa.telefone_celular, pessoa.matricula, pessoa.senha, pessoa.endereco 
+        $dados  = $conexao->pdo->prepare("SELECT pessoa.id_pessoa, pessoa.nome, pessoa.cpf_cnpj, pessoa.tipo_pessoa, 
+        pessoa.email, pessoa.telefone_fixo, pessoa.telefone_celular, pessoa.matricula, pessoa.senha, pessoa.funcao, pessoa.endereco 
         FROM pessoa WHERE tipo_pessoa = 'funcionario' AND id_pessoa = :id; " ); // dados retornam como ARRAY
         $dados->bindValue("id", $id_up); // substituíção dos valores com o método BINDVALUE
         $dados->execute(); // comando que executa a busca no BD
@@ -198,7 +198,7 @@ class Pessoa
         $conexao = new Conexao("projeto_cristofarma", "localhost", "root", "");
 
         $dadosSelecionados = array();
-        $dados  = $conexao->pdo->query("SELECT pessoa.id_pessoa, pessoa.nome, pessoa.cpf_cnpj, 
+        $dados  = $conexao->pdo->query("SELECT pessoa.id_pessoa, pessoa.nome, pessoa.cpf_cnpj, pessoa.tipo_pessoa,
         pessoa.email, pessoa.telefone_fixo, pessoa.telefone_celular, pessoa.endereco 
         FROM pessoa WHERE tipo_pessoa = 'cliente' ORDER BY nome;");
         $dadosSelecionados = $dados->fetchAll(PDO::FETCH_ASSOC);
@@ -210,7 +210,7 @@ class Pessoa
         $conexao = new Conexao("projeto_cristofarma", "localhost", "root", "");
 
         $dadosSelecionados = array();
-        $dados  = $conexao->pdo->query("SELECT pessoa.id_pessoa, pessoa.nome, pessoa.cpf_cnpj, 
+        $dados  = $conexao->pdo->query("SELECT pessoa.id_pessoa, pessoa.nome, pessoa.cpf_cnpj, pessoa.tipo_pessoa,
         pessoa.email, pessoa.telefone_fixo, pessoa.telefone_celular, pessoa.endereco 
         FROM pessoa WHERE tipo_pessoa = 'fornecedor' ORDER BY nome;");
         $dadosSelecionados = $dados->fetchAll(PDO::FETCH_ASSOC);
