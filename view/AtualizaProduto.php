@@ -6,7 +6,8 @@
     <link rel="stylesheet" href="../css/bootstrap/nav/navegador.css">
     <link rel="stylesheet" href="../css/estilo.css">
 
-    <title>Gerencia Produtos</title>
+    <title>Atualizar Produtos</title>
+
 </head>
 
 <body>
@@ -31,13 +32,15 @@
     
             if (!empty($produto_nome) && !empty($produto_codigo_barras))  // validar se há ao menos um dado a ser cadastrado
             {
-                if ($produto->updateProduto($id_up, $produto_nome, $produto_preco_custo, $produto_preco_venda, $produto_codigo_barras, $produto_fornecedor)) {
-                    header('location: CadastrarProdutos.php');
-                }
+                if ($produto->updateProduto($id_up, $produto_nome, $produto_preco_custo, $produto_preco_venda, 
+                $produto_codigo_barras, $produto_fornecedor));
+
+                    header('location: AtualizaProduto.php');
+                
             } else {
                 echo "Preencha todos os campos!";
             } 
-            //echo '<script> alert("Produto cadastrado com sucesso!")</script>';
+                echo '<script> alert("Cadastro atualizado com sucesso!")</script>';
         }
     } else {
         if (isset($_POST['descricaoProduto'])) {
@@ -49,14 +52,14 @@
     
             if (!empty($produto_nome) && !empty($produto_codigo_barras))  // validar se há ao menos um dado a ser cadastrado
             {
-                if (!$produto->createProduto($produto_nome, $produto_preco_custo, $produto_preco_venda, $produto_codigo_barras, $produto_fornecedor)) {
+                if (!$produto->createProduto($produto_nome, $produto_preco_custo, $produto_preco_venda, 
+                $produto_codigo_barras, $produto_fornecedor)) {
                     echo "Produto já está cadastrado!";
-
                 }
             } else {
                 echo "Preencha todos os campos!";
             } 
-            //echo '<script> alert("Produto cadastrado com sucesso!")</script>';
+                echo '<script> alert("Produto cadastrado com sucesso!")</script>';
         }
     }
 
@@ -106,27 +109,29 @@
                 <legend>CADASTRO DE PRODUTOS</legend><br>
 
                 <label id="descricaoProduto">Descrição:</label><br>
-                <input id="descricaoProduto" type="text" name="descricaoProduto" size="60" value="<?php if(isset($retornoConsulta)){echo $retornoConsulta[0]['nome_produto'];}?>"> <br>
+                <input id="descricaoProduto" type="text" name="descricaoProduto" size="60" 
+                    value="<?php if(isset($retornoConsulta)){echo $retornoConsulta[0]['nome_produto'];}?>"> <br>
 
                 <label id="codigoDeBarras">Código de Barras:</label><br>
-                <input id="codigoDeBarras" type="text" name="codigoDeBarras" size="60" value="<?php if(isset($retornoConsulta)){echo $retornoConsulta[0]['codigo_barras'];}?>"><br>
+                <input id="codigoDeBarras" type="text" name="codigoDeBarras" size="60" 
+                    value="<?php if(isset($retornoConsulta)){echo $retornoConsulta[0]['codigo_barras'];}?>"><br>
 
                 <label id="fornecedor">Fornecedor:</label><br> 
-                <input id="fornecedor" type="text" name="fornecedor" size="60" value="<?php if(isset($retornoConsulta)){echo $retornoConsulta[0]['produto_fornecedor'];}?>"><br>
+                <input id="fornecedor" type="text" name="fornecedor" size="60" 
+                    value="<?php if(isset($retornoConsulta)){echo $retornoConsulta[0]['produto_fornecedor'];}?>"><br>
 
                 <label id="precoCusto">Preço de Custo:</label><br>
-                <input id="precoCusto" type="text" name="precoCusto" size="60" value="<?php if(isset($retornoConsulta)){echo $retornoConsulta[0]['preco_custo'];}?>"> <br><br>
-                
-                <label id="precoVenda">Preço de Venda:</label><br>
-                <input id="precoVenda" type="text" name="precoVenda" size="60" value="<?php if(isset($retornoConsulta)){echo $retornoConsulta[0]['preco_venda'];}?>"> <br>
+                <input id="precoCusto" type="text" name="precoCusto" size="60" 
+                    value="<?php if(isset($retornoConsulta)){echo $retornoConsulta[0]['preco_custo'];}?>"> <br><br>
 
-                
+                <label id="precoVenda">Preço de Venda:</label><br>
+                <input id="precoVenda" type="text" name="precoVenda" size="60"
+                     value="<?php if(isset($retornoConsulta)){echo $retornoConsulta[0]['preco_venda'];}?>"> <br>
 
                 <input id="btnCadastrar" type="submit" id="btnCadastrar" name="btnGravarClientes"
                     value="<?php if (isset($_GET['id_get_up'])){echo 'Atualizar';} else {echo 'Cadastrar';}?>">
             </form>
         </section>
-
 </body>
 
 </html>

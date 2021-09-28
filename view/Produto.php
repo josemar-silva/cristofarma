@@ -83,7 +83,8 @@ class Produto
         return $dadosSelecionados;
     }
 
-    public function updateProduto($id_up, $produto_nome, $produto_preco_custo, $produto_preco_venda, $produto_codigo_barras, $produto_fornecedor)
+    public function updateProduto($id_up, $produto_nome, $produto_preco_custo, $produto_preco_venda, 
+        $produto_codigo_barras, $produto_fornecedor)
     {
         $conexao = new Conexao("projeto_cristofarma", "localhost", "root", "");
 

@@ -45,7 +45,7 @@
         } else {
             echo "Preencha todos os campos!";
         }
-        #echo '<script> alert("Cadastro realizado com sucesso!")</script>';
+            echo '<script> alert("Cadastro realizado com sucesso!")</script>';
         } else 
         //--------------------------CADASTRAR-----------------------------
         {
@@ -99,7 +99,7 @@
         } else {
             echo "Preencha todos os campos!";
         }
-        #echo '<script> alert("Cadastro realizado com sucesso!")</script>';
+            echo '<script> alert("Cadastro realizado com sucesso!")</script>';
         } else 
         //--------------------------CADASTRAR-----------------------------
         {
@@ -125,7 +125,7 @@
         } else {
             echo "Preencha todos os campos!";
         }
-        #echo '<script> alert("Cadastro realizado com sucesso!")</script>';
+            echo '<script> alert("Cadastro realizado com sucesso!")</script>';
         }
     }
 

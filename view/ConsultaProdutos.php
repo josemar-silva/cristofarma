@@ -2,7 +2,6 @@
     require_once 'Produto.php';
     $produto = new Produto();
 ?>
-
 <!doctype html>
 <html lang="pt">
 
@@ -11,22 +10,17 @@
     <link rel="stylesheet" href="../css/bootstrap/nav/navegador.css">
     <title>Pesquisar Produtos</title>
 </head>
-
 <body>
     <header>
 
     </header>
-
     <?php
-        # select produto pela id enviada no metodo _GET
-        if (isset($_GET['id_get_up'])) 
+        if (isset($_GET['id_get_up']))   # select produto pela id enviada no metodo _GET
         {
             $id_up = addslashes($_GET['id_get_up']); 
             $retornoConsulta = $produto->selectProduto($id_up); #retorno da consulta armazenado na variavel $retornoConsulta
-
         }
     ?>
-
 <header>
     <ul class="nav nav-tabs">
  
@@ -79,7 +73,7 @@
                 //var_dump($dados); // imprimir na tela o resultado do array
                 //echo"</pre>"; // organizar o array (matriz de array)
 
-                if(count($dados) > 0) 
+                if(count($dados) > 0)  // LERO OS DADOS E ESCREVER NO FORM
                 {
                     for ($i=0; $i < count($dados) ; $i++) 
                     { 
@@ -103,13 +97,12 @@
                 }
             ?>
         </table>;
-
         <p><a href="Pesquisar.php"><<< voltar</a>
     </section>
 </body>
 
 </html>
-    <?php
+    <?php // FUNÇAO PARA DELETER PRODUTO PELA ID
 
         if (isset($_GET['id_get_del'])) # verificando se existe dados selecionado para exclusão
         {
