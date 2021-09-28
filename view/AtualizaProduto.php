@@ -97,13 +97,11 @@
         <section id="principal">
 
         <?php
-        
-        if (isset($_GET['id_get_up'])) // VERIFICA SE CLICOU EM EDITAR
-        {
-            $id_up = addslashes($_GET['id_get_up']); 
-            $retornoConsulta = $produto->selectProduto($id_up); #retorno da consulta armazenado na variavel $retornoConsulta
-        }
-        
+            if (isset($_GET['id_get_up'])) // VERIFICA SE CLICOU EM EDITAR
+            {
+                $id_up = addslashes($_GET['id_get_up']); 
+                $retornoConsulta = $produto->selectProduto($id_up); #retorno da consulta armazenado na variavel $retornoConsulta
+            }
         ?>
             <form id="cadastro" method="POST">
                 <legend>CADASTRO DE PRODUTOS</legend><br>

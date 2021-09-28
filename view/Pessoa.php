@@ -227,6 +227,13 @@ class Pessoa
         return $dadosSelecionados;
     }
 
+    public function consultaPessoaPorNome(){
+
+        $conexao = new Conexao("projeto_cristofarma", "localhost", "root", "");
+        
+
+    }
+
     //metodos de acesso 
     function __getId() 
     {

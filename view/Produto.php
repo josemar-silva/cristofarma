@@ -100,6 +100,13 @@ class Produto
             $dados->bindValue(":idf", $id_up);
             $dados->execute();
 }
+    public function consultaProdutoPorNome(){
+
+        $conexao = new Conexao("projeto_cristofarma", "localhost", "root", "");
+
+
+    }
+
 }
  
 ?>

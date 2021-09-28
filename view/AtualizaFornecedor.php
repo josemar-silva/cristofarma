@@ -45,7 +45,7 @@
         } else {
             echo "Preencha todos os campos!";
         }
-        #echo '<script> alert("Cadastro realizado com sucesso!")</script>';
+            echo '<script> alert("Cadastro atualizado com sucesso!")</script>';
         } else 
         //--------------------------CADASTRAR-----------------------------
         {
@@ -68,7 +68,7 @@
         } else {
             echo "Preencha todos os campos!";
         }
-        #echo '<script> alert("Cadastro realizado com sucesso!")</script>';
+            echo '<script> alert("Cadastro realizado com sucesso!")</script>';
         }
     }
     } else {
@@ -99,7 +99,7 @@
         } else {
             echo "Preencha todos os campos!";
         }
-        #echo '<script> alert("Cadastro realizado com sucesso!")</script>';
+            echo '<script> alert("Cadastro realizado com sucesso!")</script>';
         } else 
         //--------------------------CADASTRAR-----------------------------
         {
@@ -125,7 +125,7 @@
         } else {
             echo "Preencha todos os campos!";
         }
-        #echo '<script> alert("Cadastro realizado com sucesso!")</script>';
+            echo '<script> alert("Cadastro realizado com sucesso!")</script>';
         }
     }
 
@@ -167,7 +167,6 @@
         {
             $id_up = addslashes($_GET['id_get_up']); 
             $retornoConsulta = $pessoa->selectPessoaFornecedor($id_up); #retorno da consulta armazenado na variavel $retornoConsulta
-            
         }
         
         ?>
@@ -223,14 +222,13 @@
             document.getElementById("matricula").disabled = false;
             document.getElementById("senha").disabled = false;
             document.getElementById("listaFuncao").disabled = false;
-
                         
         } else {
             document.getElementById("matricula").disabled = true;
             document.getElementById("senha").disabled = true;
             document.getElementById("listaFuncao").disabled = true;
         }
-    };
+    }
     </script>
             <label for="endereco" id="endereco">Endereço:</label><br>
             <input id="endereco" type="text" name="endereco" size="60" value="<?php if(isset($retornoConsulta)){
@@ -241,7 +239,6 @@
         </form>
     </section>
     <div id="retorno">
-
     </div>
 </body>
 
