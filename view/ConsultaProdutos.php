@@ -52,51 +52,55 @@
     </header>
     <section id="principal">
 
-    <label>Buscar:</label>
-    <input type="search" id="pesquisaProduto" name="pesquisaProduto" value="" size=" 60"><br><br>
+    <!---------------------- BUSCA %like% = 'quem contem'... ----------------------->
 
-            <table class="table table-hover">
-             <tr>
-                <th> CÓDIGO PRODUTO </th>
-                <th> NOME DO PRODUTO </th>
-                <th> PREÇO CUSTO </th>
-                <th> PREÇO VENDA </th>
-                <th> CÓDIGO DE BARRAS </th>
-                <th> FORNECEDOR </th>
-                <th>  </th>
-            </tr>
-                <?php
+        <table>            
+            <?php
 
-                $dados = $produto->selectAllProduto();
+                if (isset($_GET['pesquisaProduto']))
+                { 
+                    echo '<table class="table table-hover">';
+                    echo '<tr>';
+                    echo '<th> CÓDIGO PRODUTO </th>';
+                    echo '<th> NOME DO PRODUTO </th>';
+                    echo '<th> PREÇO CUSTO </th>';
+                    echo '<th> PREÇO VENDA </th>';
+                    echo '<th> CÓDIGO DE BARRAS </th>';
+                    echo '<th> FORNECEDOR </th>';
+                    echo '<th>  </th>';
+                    echo '</tr>';
 
-                //echo"<pre>"; // organizar o array (matriz de array)
-                //var_dump($dados); // imprimir na tela o resultado do array
-                //echo"</pre>"; // organizar o array (matriz de array)
+                    $dados = $produto->consultaProdutoLike($consultaLike = "%".trim($_GET['pesquisaProduto'])."%");
 
-                if(count($dados) > 0)  // LERO OS DADOS E ESCREVER NO FORM
-                {
-                    for ($i=0; $i < count($dados) ; $i++) 
-                    { 
-                        echo "<tr>"; // abre a linha dos dados selecionados
-                        foreach ($dados[$i] as $key => $value) 
-                        {
-                            if ($key != "pessoa_id_pessoa" ) // ignorar coluna ID
+                    //echo"<pre>"; // organizar o array (matriz de array)
+                    //var_dump($dados); // imprimir na tela o resultado do array
+                    //echo"</pre>"; // organizar o array (matriz de array)
+    
+                    if(count($dados) > 0)  // LERO OS DADOS E ESCREVER NO FORM
+                    {
+                        for ($i=0; $i < count($dados) ; $i++) 
+                        { 
+                            echo "<tr>"; // abre a linha dos dados selecionados
+                            foreach ($dados[$i] as $key => $value) 
                             {
-                                echo "<td>" .$value. "</td>";
+                                if ($key != "pessoa_id_pessoa" ) // ignorar coluna ID
+                                {
+                                    echo "<td>" .$value. "</td>";
+                                }
                             }
+                            ?>
+                                <td> 
+                                    <a href="AtualizaProduto.php?id_get_up=<?php echo $dados[$i]['id_produto'];?>">Editar</a>
+                                    <a href="ConsultaProdutos.php?id_get_del=<?php echo $dados[$i]['id_produto'];?>">Excluir</a> 
+                                    <!-- usar "echo $dados[$i]['id_pessoa']; "pegar ID desejado no array e passar como 'string' para o metodo $_GET-->
+                                </td>
+                            <?php
+                                echo "</tr>"; // fecha linha dos dados selecionados
                         }
-                        ?>
-                            <td> 
-                                <a href="AtualizaProduto.php?id_get_up=<?php echo $dados[$i]['id_produto'];?>">Editar</a>
-                                <a href="ConsultaProdutos.php?id_get_del=<?php echo $dados[$i]['id_produto'];?>">Excluir</a> 
-                                <!-- usar "echo $dados[$i]['id_pessoa']; "pegar ID desejado no array e passar como 'string' para o metodo $_GET-->
-                            </td>
-                        <?php
-                            echo "</tr>"; // fecha linha dos dados selecionados
-                    }
+                    } 
                 }
             ?>
-        </table>;
+        </table>
         <p><a href="Pesquisar.php"><<< voltar</a>
     </section>
 </body>
