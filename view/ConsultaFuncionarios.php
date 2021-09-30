@@ -81,26 +81,26 @@
             //var_dump($dados); // imprimir na tela o resultado do array
             //echo"</pre>"; // organizar o array (matriz de array)
 
-            if(count($dados) > 0) 
-            {
-                for ($i=0; $i < count($dados) ; $i++) 
-                { 
-                    echo "<tr>"; // abre a linha dos dados selecionados
-                    foreach ($dados[$i] as $key => $value) 
-                    {
-                        #if ($key != "matricula" && "senha" && "funcao" && "tipo_pessoa") // ignorar coluna
+                if(count($dados) > 0) 
+                {
+                    for ($i=0; $i < count($dados) ; $i++) 
+                    { 
+                        echo "<tr>"; // abre a linha dos dados selecionados
+                        foreach ($dados[$i] as $key => $value) 
                         {
-                            echo "<td>" .$value. "</td>";
+                            #if ($key != "matricula" && "senha" && "funcao" && "tipo_pessoa") // ignorar coluna
+                            {
+                                echo "<td>" .$value. "</td>";
+                            }
                         }
-                    }
-                    ?>
-                        <td> 
-                            <a href="AtualizaFuncionario.php?id_get_up=<?php echo $dados[$i]['id_pessoa'];?>">Editar</a>
-                            <a href="ConsultaFuncionarios.php?id_get_del=<?php echo $dados[$i]['id_pessoa'];?>">Excluir</a> 
-                            <!-- usar "echo $dados[$i]['id_pessoa']; "pegar ID desejado no array e passar como 'string' para o metodo $_GET-->
-                        </td>
-                    <?php
-                        echo "</tr>"; // fecha linha dos dados selecionados
+                        ?>
+                            <td> 
+                                <a href="AtualizaFuncionario.php?id_get_up=<?php echo $dados[$i]['id_pessoa'];?>">Editar</a>
+                                <a href="ConsultaFuncionarios.php?id_get_del=<?php echo $dados[$i]['id_pessoa'];?>">Excluir</a> 
+                                <!-- usar "echo $dados[$i]['id_pessoa']; "pegar ID desejado no array e passar como 'string' para o metodo $_GET-->
+                            </td>
+                        <?php
+                            echo "</tr>"; // fecha linha dos dados selecionados
                 }
             }
         ?>

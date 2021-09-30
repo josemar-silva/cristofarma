@@ -227,10 +227,19 @@ class Pessoa
         return $dadosSelecionados;
     }
 
-    public function consultaPessoaPorNome(){
+    public function consultaClienteFornecedorLike($consultaLike, $tipoConsulta){
 
         $conexao = new Conexao("projeto_cristofarma", "localhost", "root", "");
-        
+
+        $dadosSelecionados = array();
+
+        $dados = $conexao->pdo->prepare("SELECT * FROM pessoa WHERE nome LIKE :lk AND tipo_pessoa = :tp");
+        $dados->bindValue(":lk", $consultaLike);
+        $dados->bindValue(":tp", $tipoConsulta);
+        $dados->execute();
+        $dadosSelecionados = $dados->fetchAll(PDO::FETCH_ASSOC);
+
+        return $dadosSelecionados;
 
     }
 
