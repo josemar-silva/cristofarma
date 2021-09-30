@@ -17,6 +17,9 @@ function __construct_pessoa()
 
 function createEstoque($produto_id_produto,$quantidade)
 {
+    $conexao = new Conexao("projeto_cristofarma", "localhost", "root", "");
+    
+    
 }
 
 function updateEstoque()

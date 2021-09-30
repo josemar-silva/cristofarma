@@ -53,7 +53,7 @@
         }
     ?>
     <label>Buscar:</label>
-    <input type="search" id="pesquisaCliente" name="pesquisaCliente" value="" size=" 60"><br><br>
+    <input type="search" id="pesquisaCliente" name="pesquisaCliente" value="" size=" 60" placeholder="Buscar Cliente"><br><br>
 
     <section >
     <table class="table table-hover">

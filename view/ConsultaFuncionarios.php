@@ -55,7 +55,8 @@
     <section >
             
     <label>Buscar:</label>
-    <input type="search" id="pesquisaFuncionario" name="pesquisaFuncionario" value="" size=" 60"><br><br>
+    <input type="search" id="pesquisaFuncionario" name="pesquisaFuncionario" value="" size=" 60" 
+        placeholder="Buscar Funcionário"><br><br>
 
     <table class="table table-hover">
         <tr>

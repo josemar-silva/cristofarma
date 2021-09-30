@@ -40,12 +40,90 @@
     <section id="principal">
         <legend>PESQUISAR :</legend><br>
         <div id="consultas">
-            <ul>
-            <a href="ConsultaClientes.php" class="btn btn-outline-danger" >Clientes</a>
-            <a href="ConsultaProdutos.php" class="btn btn-outline-danger">Produtos</a>
-            <a href="ConsultaFornecedor.php" class="btn btn-outline-danger">Fornecedor</a>
-            <a href="ConsultaFuncionarios.php" class="btn btn-outline-danger">Funcionários</a>
-            </ul>
+
+    <form action="Pesquisar.php" method="GET">
+        <div id="selecionaTipoConsulta" style="margin-left: 31%;">
+            <input type="radio" id="consultaClienteRadio" name="tipoConsulta" value="clientes" style="margin-right: 10px;" style="margin-right: 10px;" checked>
+            <label for="consultaClienteRadio" style="margin-right: 40px;">Clientes</label>
+
+            <input type="radio" id="consultaFornecedorRadio" name="tipoConsulta" value="fornecedores" style="margin-right: 10px;">
+            <label for="consultaFornecedorRadio" style="margin-right: 40px;">Fornecedores</label>
+
+            <input type="radio" id="consultaFuncionarioRadio" name="tipoConsulta" value="funcionarios" style="margin-right: 10px;">
+            <label for="consultaFuncionarioRadio" style="margin-right: 40px;">Funcionários</label>
+
+            <input type="radio" id="consultaProdutoRadio" name="tipoConsulta" value="produtos" style="margin-right: 10px;">
+            <label for="consultaProdutoRadio" style="margin-right: 40px">Produtos</label> <b><br>
+        </div>
+
+        <label style="margin-left: 25%;">Pesquisa:</label>
+        <input type="search" id="pesquisa" name="pesquisa" value="" size=" 70" placeholder="Buscar Produto" >
+
+        <button class="btn btn-outline-danger" >Buscar</button><br><br>
+    </form>
+
+    <?php
+
+    require_once 'Produto.php';
+    $produto = new Produto();
+    
+            $tipoConsulta = filter_input(INPUT_GET, 'tipoConsulta'); #filtrar valor que um inpult recebeu
+            if ($tipoConsulta == 'produtos'){
+    ?>      
+        <table>  
+        
+            <?php
+
+                if (isset($_GET['pesquisa']))
+                { 
+                    echo '<table class="table table-hover">';
+                    echo '<tr>';
+                    echo '<th> CÓDIGO PRODUTO </th>';
+                    echo '<th> NOME DO PRODUTO </th>';
+                    echo '<th> PREÇO CUSTO </th>';
+                    echo '<th> PREÇO VENDA </th>';
+                    echo '<th> CÓDIGO DE BARRAS </th>';
+                    echo '<th> FORNECEDOR </th>';
+                    echo '<th>  </th>';
+                    echo '</tr>';
+
+                    $dados = $produto->consultaProdutoLike($consultaLike = "%".trim($_GET['pesquisa'])."%");
+
+                    //echo"<pre>"; // organizar o array (matriz de array)
+                    //var_dump($dados); // imprimir na tela o resultado do array
+                    //echo"</pre>"; // organizar o array (matriz de array)
+    
+                    if(count($dados) > 0)  // LERO OS DADOS E ESCREVER NO FORM
+                    {
+                        for ($i=0; $i < count($dados) ; $i++) 
+                        { 
+                            echo "<tr>"; // abre a linha dos dados selecionados
+                            foreach ($dados[$i] as $key => $value) 
+                            {
+                                if ($key != "pessoa_id_pessoa" ) // ignorar coluna ID
+                                {
+                                    echo "<td>" .$value. "</td>";
+                                }
+                            }
+                            ?>
+                            <?php
+                                echo "</tr>"; // fecha linha dos dados selecionados
+                        }
+                    } 
+                }
+            ?>
+        </table>
+
+    <?php
+    } elseif ($tipoConsulta == 'clientes') {
+        # code...
+    } elseif ($tipoConsulta == 'fornecedor') {
+        # code...
+    } else {
+        
+    }
+
+    ?>
         </div>
     </section>
 </body>

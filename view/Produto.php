@@ -36,7 +36,8 @@ class Produto
         if ($dados->rowCount() > 0) {
             return false;
         } else {
-            $dados = $conexao->pdo->prepare("INSERT INTO produto (nome_produto, preco_custo, preco_venda, codigo_barras, produto_fornecedor, pessoa_id_pessoa)
+            $dados = $conexao->pdo->prepare("INSERT INTO produto (nome_produto, preco_custo, preco_venda, 
+            codigo_barras, produto_fornecedor, pessoa_id_pessoa)
             VALUES (:pn, :pc, :pv, :cb, :pf, :pfk)");
             $dados->bindValue(":pn", $produto_nome);
             $dados->bindValue(":pc", $produto_preco_custo);
@@ -100,10 +101,18 @@ class Produto
             $dados->bindValue(":idf", $id_up);
             $dados->execute();
 }
-    public function consultaProdutoPorNome(){
+    public function consultaProdutoLike($consultaLike){
 
         $conexao = new Conexao("projeto_cristofarma", "localhost", "root", "");
 
+        $dadosSelecionados = array();
+
+        $dados = $conexao->pdo->prepare("SELECT * FROM produto WHERE nome_produto LIKE :lk");
+        $dados->bindValue(":lk", $consultaLike);
+        $dados->execute();
+        $dadosSelecionados = $dados->fetchAll(PDO::FETCH_ASSOC);
+
+        return $dadosSelecionados;
 
     }
 
