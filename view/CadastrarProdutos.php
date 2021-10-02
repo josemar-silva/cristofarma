@@ -36,7 +36,7 @@
         } else {
             echo "Preencha todos os campos!";
         } 
-        echo '<script> alert("Produto cadastrado com sucesso!")</script>';
+        //echo '<script> alert("Produto cadastrado com sucesso!")</script>';
     }
     ?>
 
@@ -68,27 +68,29 @@
                 <a class="nav-link" href="Relatorios.php">RELATÓRIOS</a>
             </li>
     </ul>
+    <a href="index.php" style="float: right; margin-right: 20px;">Sair</a>
+
     </header>
         <section id="principal">
             <form id="cadastro" method="POST">
                 <legend>CADASTRO DE PRODUTOS</legend><br>
 
-                <label id="descricaoProduto">Descrição:</label><br>
+                <label id="descricaoProduto">Descrição:</label>
                 <input id="descricaoProduto" type="text" name="descricaoProduto" size="60"> <br>
 
-                <label id="codigoDeBarras">Código de Barras:</label><br>
-                <input id="codigoDeBarras" type="text" name="codigoDeBarras" size="60"><br>
+                <label id="codigoDeBarras">Código de Barras:</label>
+                <input id="codigoDeBarras" type="text" name="codigoDeBarras" size="40"><br>
 
-                <label id="fornecedor">Fornecedor:</label><br>
+                <label id="fornecedor">Fornecedor:</label>
                 <input id="fornecedor" type="text" name="fornecedor" size="60"><br>
 
-                <label id="precoCusto">Preço de Custo:</label><br>
-                <input id="precoCusto" type="text" name="precoCusto" size="60"> <br><br>
+                <label id="precoCusto">Preço de Custo:</label>
+                <input id="precoCusto" type="text" name="precoCusto" size="20"> <br>
 
-                <label id="precoVenda">Preço de Venda:</label><br>
-                <input id="precoVenda" type="text" name="precoVenda" size="60"> <br>
+                <label id="precoVenda">Preço de Venda:</label>
+                <input id="precoVenda" type="text" name="precoVenda" size="20"> <br>
 
-                <input id="btnCadastrar" type="submit" id="btnCadastrar" name="btnGravarClientes"
+                <input class="btn btn-outline-danger" type="submit" id="btnCadastrar" name="btnGravarClientes"
                     value="<?php echo "Cadastrar"; ?>">
             </form>
         </section>

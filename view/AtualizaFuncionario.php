@@ -84,7 +84,6 @@
         $telefoneFixo = addslashes($_POST['telefoneFixo']);
         $telefoneCelular = addslashes($_POST['telefoneCelular']);
         $matricula = addslashes($_POST['matricula']);
-        $senha = addslashes($_POST['senha']);
         $funcao = addslashes($_POST['listaFuncao']);
         $endereco = addslashes($_POST['endereco']);
 
@@ -92,7 +91,7 @@
         
         {
             $pessoa->updatePessoaFuncionario($id_upd, $nome, $cpf_cnpj, $tipo_pessoa, $email, $telefoneFixo, 
-            $telefoneCelular, $matricula, $senha, $funcao, $endereco);
+            $telefoneCelular, $matricula, $funcao, $endereco);
 
             header("location: Cadastros.php");
 
@@ -158,6 +157,8 @@
                 <a class="nav-link" href="Relatorios.php">RELATÓRIOS</a>
             </li>
     </ul>
+    <a href="index.php" style="float: right; margin-right: 20px;">Sair</a>
+
     </header>
     <section id="principal">
 
@@ -204,7 +205,7 @@
             <input id="matricula" type="text" name="matricula" size="60" value="<?php if(isset($retornoConsulta)){if (isset($retornoConsulta[0]['matricula'])){ echo $retornoConsulta[0]['matricula'];} else { echo '';}}?>" ><br>
 
             <label for="senha">Senha:</label><br>
-            <input id="senha" type="password" name="senha" size="60" value="<?php if(isset($retornoConsulta)){if (isset($retornoConsulta[0]['senha'])){ echo $retornoConsulta[0]['senha'];} else { echo '';}}?>" ><br><br>
+            <input id="senha" type="password" name="senha" size="60" value="" disabled><br><br>
 
             <label id="funcao">Função:</label>
             <select id="listaFuncao" name="listaFuncao" >
@@ -220,7 +221,7 @@
 
         if(value == "funcionario"){
             document.getElementById("matricula").disabled = false;
-            document.getElementById("senha").disabled = false;
+            document.getElementById("senha").disabled = true;
             document.getElementById("listaFuncao").disabled = false;
                         
         } else {
@@ -232,7 +233,7 @@
     </script>
             <label for="endereco" id="endereco">Endereço:</label><br>
             <input id="endereco" type="text" name="endereco" size="60" value="<?php if(isset($retornoConsulta)){echo $retornoConsulta[0]['endereco'];}?>" >
-            <input id="btnCadastrar" type="submit" id="btnCadastrar" name="btnGravarClientes" 
+            <input class="btn btn-outline-danger"id="btnCadastrar" type="submit" id="btnCadastrar" name="btnGravarClientes" 
                 value="<?php if (isset($_GET['id_get_up'])){echo 'Atualizar';} else {echo 'Cadastrar';}?>">
         </form>
     </section>

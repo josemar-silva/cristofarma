@@ -52,8 +52,13 @@
         
         }
     ?>
-    <label>Buscar:</label>
-    <input type="search" id="pesquisaCliente" name="pesquisaCliente" value="" size=" 60" placeholder="Buscar Cliente"><br><br>
+    <form action="ConsultaClientes.php" method="GET">
+        
+        <label style="margin-left: 25%;">Pesquisa:</label>
+        <input type="search" id="pesquisa" name="pesquisa" value="" size=" 70" placeholder="Digte aqui para buscar" >
+
+        <button class="btn btn-outline-danger" id="btnBuscar" onclick="" style="width: 10%; padding: 2px;">Buscar</button><br><br>
+    </form>
 
     <section >
     <table class="table table-hover">

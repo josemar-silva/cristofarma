@@ -4,6 +4,8 @@
 <head>
     <meta charset="UTF-8" />
     <link rel="stylesheet" href="../css/bootstrap/nav/navegador.css">
+    <link rel="stylesheet" href="../css/estilo.css">
+
     <title>Caixa</title>
 </head>
 
@@ -36,33 +38,35 @@
                 <a class="nav-link" href="Relatorios.php">RELATÓRIOS</a>
             </li>
     </ul>
+    <a href="index.php" style="float: right; margin-right: 20px;">Sair</a>
+
     </header>
-    <section id="principal">
-        <legend>VENDAS A RECEBER</legend><br>
-        <fieldset id="fecharVenda" name="fecharVenda">
+    <section id="principal" style="margin-left: 5%;">
+
+        <for id="fecharVenda" name="fecharVenda">
             <legend>FINALIZAR VENDA</legend>
 
             <p>Total da Venda: </p>
 
-            <output id="valorVenda" name="valorDaVenda"></output>
+            <input id="valorVenda" name="valorDaVenda" size="10"></input>
 
             <p>Desconto: </p>
 
-            <output id="valorDesconto" name="ValorDoDesconto"></output>
+            <input id="valorDesconto" name="ValorDoDesconto" size="10"></input>
 
             <p>Total a Pagar:</p>
 
-            <output id="valorPagar"></output>
+            <input id="valorPagar" size="10"></input>
 
             <p>Valor Recebido:</p>
 
-            <input id="valorRecebido" name="valorRecebido" type="text" size="6" placeholder="R$"><br>
+            <input id="valorRecebido" name="valorRecebido" type="text" size="10" placeholder="R$"><br>
 
             <h4>Troco: R$</h4><br>
 
-            <button id="btnCancelar" name="cancelar" onclick="window.location.href='Caixa.html'">Cancelar</button>
-            <button id="btnFinalizar" name="finalizar">Finalizar</button>
-        </fieldset>
+            <button class="btn btn-outline-danger" id="btnCancelar" name="cancelar" >Cancelar</button>
+            <button class="btn btn-outline-danger" id="btnFinalizar" name="finalizar">Finalizar</button>
+        </form>
     </section>
 </body>
 

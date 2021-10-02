@@ -158,6 +158,8 @@
                 <a class="nav-link" href="Relatorios.php">RELATÓRIOS</a>
             </li>
     </ul>
+    <a href="index.php" style="float: right; margin-right: 20px;">Sair</a>
+
     </header>
     <section id="principal">
 
@@ -236,7 +238,7 @@
             <input id="endereco" type="text" name="endereco" size="60" value="<?php if(isset($retornoConsulta)){
                 echo $retornoConsulta[0]['endereco'];}?>" >
 
-            <input id="btnCadastrar" type="submit" id="btnCadastrar" name="btnGravarClientes" 
+            <input class="btn btn-outline-danger" id="btnCadastrar" type="submit" id="btnCadastrar" name="btnGravarClientes" 
                 value="<?php if (isset($_GET['id_get_up'])){echo 'Atualizar';} else {echo 'Cadastrar';}?>">
         </form>
     </section>

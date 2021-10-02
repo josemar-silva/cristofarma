@@ -36,22 +36,22 @@
                 <a class="nav-link" href="Relatorios.php">RELATÓRIOS</a>
             </li>
     </ul>
+    <a href="index.php" style="float: right; margin-right: 20px;">Sair</a>
+
     </header>
     <section id="principal">
-        <div id="notaFiscal">
-            </fieldset>
+        <form id="notaFiscal" style="margin-left: 5%;">
             <Legend>NOTA FISCAL</Legend><br>
             <input type="radio" id="numVenda" name="tipoRelatorio" value="numeroVenda" checked>
             <label for="numVenda">Nº Venda</label>
             <input type="radio" id="numeroCpf" name="tipoRelatorio" value="numeroCpf">
-            <label for="numCpf">Nº CPF</label>
-            <input type="text" size="60" placeholder="Digite aqui para pesquisar">
-            <button type="submit" id="btnGerarNotaFiscal" name="gerarNotaFiscal">Buscar</button>
+            <label for="numCpf">Nº CPF</label><br><br>
+            <input type="text" size="60" id="" placeholder="Digite aqui para pesquisar">
 
-            <button type="submit" id="btnGerarNotaFiscal" name="gerarNotaFiscal">Emitir NotaFiscal</button>
+            <button class="btn btn-outline-danger" type="submit" id="btnGerarNotaFiscal" name="gerarNotaFiscal">Buscar</button>
+            <button class="btn btn-outline-danger"type="submit" id="btnGerarNotaFiscal" name="gerarNotaFiscal">Emitir NotaFiscal</button>
 
-        </div><br>
-    </section>
+        </fom><br>
     </section>
 </body>
 

@@ -36,9 +36,11 @@
                 <a class="nav-link" href="Relatorios.php">RELATÓRIOS</a>
             </li>
     </ul>
+    <a href="index.php" style="float: right; margin-right: 20px;">Sair</a>
+
     </header>
     <section id="principal">
-        <div id="relatorioGerencialVendas">
+        <div id="relatorioGerencialVendas" style="margin-left: 5%;">
             <legend>
                 <legend>RELATÓRIO DE VENDAS</legend><br>
             </legend>
@@ -51,19 +53,20 @@
             <input type="text" id="nomeDoVendedor" size="40" placeholder="Nome do vendedor"><br>
             <input type="radio" id="cliente" name="tipoRelatorio" value="cliente">
             <label for="cliente">Cliente</label>
-            <input type="search" id="nomeDoCliente" size="40" placeholder="CPF/CNPJ do cliente"><br>
+            <input type="search" id="nomeDoCliente" size="40" placeholder="Nome/CPF/CNPJ do cliente"><br>
             <input type="radio" id="produto" name="tipoRelatorio" value="produto">
             <label for="produto">Produto:</label>
             <input type="search" id="nomeDoProduto" size="40" placeholder="Nome do produto"><br>
-            <input type="radio" id="relatorioVendaAVvista" name="tipoRelatorio" value="Venda a Vista">
+            <input type="radio" id="relatorioVendaAVvista" name="tipoRelatorioPagamento" value="Venda a Vista">
             <label for="relatorioVendaAVvista">Venda à Vista</label><br>
-            <input type="radio" id="relatorioVendaDebito" name="tipoRelatorio" value="Cartao de Debito">
+            <input type="radio" id="relatorioVendaDebito" name="tipoRelatorioPagamento" value="Cartao de Debito">
             <label for="relatorioVendaDebito">Venda a Débito</label><br>
-            <input type="radio" id="relatorioVendaCredito" name="tipoRelatorio" value="Cartao de Credito">
+            <input type="radio" id="relatorioVendaCredito" name="tipoRelatorioPagamento" value="Cartao de Credito">
             <label for="relatorioVendaCredito">Venda a Crédito</label><br>
-            <input type="radio" id="estoque" name="tipoRelatorio" value="Eestoque">
+            <input type="radio" id="estoque" name="tipoRelatorioEstoque" value="Eestoque">
             <label for="estoque">Relatório de Estoque</label><br>
-            <button id="btnGerarRelatorioGerencial">Gerar Relatório</button>
+
+            <button class="btn btn-outline-danger" id="btnGerarRelatorioGerencial">Gerar Relatório</button>
         </div>
     </section>
 </body>

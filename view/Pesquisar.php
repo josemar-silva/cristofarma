@@ -37,6 +37,8 @@
             </li>
     </ul>
     </header>
+    <a href="index.php" style="float: right; margin-right: 20px;">Sair</a>
+
     <section id="principal">
         <legend> </legend><br>
         <div id="consultas">
@@ -59,7 +61,7 @@
         <label style="margin-left: 25%;">Pesquisa:</label>
         <input type="search" id="pesquisa" name="pesquisa" value="" size=" 70" placeholder="Digte aqui para buscar" >
 
-        <button class="btn btn-outline-danger" id="btnBuscar" onclick="">Buscar</button><br><br>
+        <button class="btn btn-outline-danger" id="btnBuscar" onclick="" style="width: 10%; padding: 2px;">Buscar</button><br><br>
     </form>
 
     <?php
@@ -70,7 +72,7 @@
     $pessoa = new Pessoa();
     
             $tipoConsulta = filter_input(INPUT_GET, 'tipoConsulta'); #filtrar valor que um inpult recebeu
-            if ($tipoConsulta == 'produto'){
+            if (isset($_GET['tipoConsulta']) && $tipoConsulta == 'produto'){
     ?>      
         <table>  
         
@@ -91,7 +93,7 @@
 
                     $dados = $produto->consultaProdutoLike($consultaLike = "%".trim($_GET['pesquisa'])."%");
 
-                    //echo"<pre>"; // organizar o array (matriz de array)
+                    //echo"<pre>"; // organizar o array (matriz de arra)
                     //var_dump($dados); // imprimir na tela o resultado do array
                     //echo"</pre>"; // organizar o array (matriz de array)
     
@@ -112,7 +114,7 @@
                                 echo "</tr>"; // fecha linha dos dados selecionados
                         }
                     } 
-                }
+                } 
             ?>
         </table>
     <?php
@@ -199,7 +201,7 @@
             ?>
         </table>
     <?php
-    } else {
+    } elseif ($tipoConsulta == 'funcionario'){
         if (isset($_GET['pesquisa']))
                 { 
                     echo '<table class="table table-hover">';
@@ -239,8 +241,12 @@
         ?>
         </table>
     <?php   
+    } else {
+        ?> 
+        <div style="margin-left: 35%;"><h2>Selecione o tipo de pesquisa!<h2></div>;
+<?php
     }
-    ?>          
+?>          
     </section>
 </body>
 

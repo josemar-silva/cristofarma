@@ -158,6 +158,8 @@
                 <a class="nav-link" href="Relatorios.php">RELATÓRIOS</a>
             </li>
     </ul>
+    <a href="index.php" style="float: right; margin-right: 20px;">Sair</a>
+
     </header>
     <section id="principal">
 
@@ -185,26 +187,26 @@
                 <option value="funcionario">Funcionário</option>
             </select><br/>
 
-            <label for="nome" id="nome">Nome:</label><br>
+            <label for="nome" id="nome">Nome:</label>
             <input id="nome" type="text" name="nome" size="60" value="<?php if(isset($retornoConsulta)){echo $retornoConsulta[0]['nome'];}?>"><br>
 
-            <label for="cpfAndCnpj" id="cpf">CPF/CNPJ:</label><br>
-            <input id="cpfAndCnpj" type="text" name="cpf_cnpj" size="60" value="<?php if(isset($retornoConsulta)){echo $retornoConsulta[0]['cpf_cnpj'];}?>"><br>
+            <label for="cpfAndCnpj" id="cpf">CPF/CNPJ:</label>
+            <input id="cpfAndCnpj" type="text" name="cpf_cnpj" size="40" value="<?php if(isset($retornoConsulta)){echo $retornoConsulta[0]['cpf_cnpj'];}?>"> <br>
 
-            <label for="email" id="email">E-mail:</label><br>
-            <input id="email" type="email" name="email" size="60" value="<?php if(isset($retornoConsulta)){echo $retornoConsulta[0]['email'];}?>"><br>
+            <label for="email" id="email">E-mail:</label>
+            <input id="email" type="email" name="email" size="40" value="<?php if(isset($retornoConsulta)){echo $retornoConsulta[0]['email'];}?>"><br>
 
-            <label for="telefoneFixo" id="telefoneFixo">Telefone Fixo:</label><br>
-            <input id="telefoneFixo" type="text" name="telefoneFixo" size="60" value="<?php if(isset($retornoConsulta)){echo $retornoConsulta[0]['telefone_fixo'];}?>"><br>
+            <label for="telefoneFixo" id="telefoneFixo">Telefone Fixo:</label>
+            <input id="telefoneFixo" type="text" name="telefoneFixo" size="25" value="<?php if(isset($retornoConsulta)){echo $retornoConsulta[0]['telefone_fixo'];}?>"><br>
 
-            <label for="telefoneFixo" id="telefoneFixo">Telefone Celular:</label><br>
-            <input id="telefoneCelular" type="text" name="telefoneCelular" size="60" value="<?php if(isset($retornoConsulta)){echo $retornoConsulta[0]['telefone_celular'];}?>"><br>
+            <label for="telefoneFixo" id="telefoneFixo">Telefone Celular:</label>
+            <input id="telefoneCelular" type="text" name="telefoneCelular" size="25" value="<?php if(isset($retornoConsulta)){echo $retornoConsulta[0]['telefone_celular'];}?>"><br>
 
-            <label for="matricula">Matrícula:</label><br>
-            <input id="matricula" type="text" name="matricula" size="60" value="<?php if(isset($retornoConsulta)){if (isset($retornoConsulta[0]['matricula'])){ echo $retornoConsulta[0]['matricula'];} else { echo '';}}?>"><br>
+            <label for="matricula">Matrícula:</label>
+            <input id="matricula" type="text" name="matricula" size="20" value="<?php if(isset($retornoConsulta)){if (isset($retornoConsulta[0]['matricula'])){ echo $retornoConsulta[0]['matricula'];} else { echo '';}}?>"><br>
 
-            <label for="senha">Senha:</label><br>
-            <input id="senha" type="password" name="senha" size="60" value="<?php if(isset($retornoConsulta)){if (isset($retornoConsulta[0]['senha'])){ echo $retornoConsulta[0]['senha'];} else { echo '';}}?>"><br><br>
+            <label for="senha">Senha:</label>
+            <input id="senha" type="password" name="senha" size="20" value="<?php if(isset($retornoConsulta)){if (isset($retornoConsulta[0]['senha'])){ echo $retornoConsulta[0]['senha'];} else { echo '';}}?>"><br>
 
             <label id="funcao">Função:</label>
             <select id="listaFuncao" name="listaFuncao" >
@@ -212,7 +214,7 @@
                 <option value="gerente">Gerente</option>
                 <option value="vendedor">Vendedor</option>
                 <option value="operador de caixa">Operador de Caixa</option>
-            </select><br/>
+            </select><br/> 
 
     <script>
 	        function verifica(value){
@@ -231,11 +233,11 @@
         }
     };
     </script>
-            <label for="endereco" id="endereco">Endereço:</label><br>
-            <input id="endereco" type="text" name="endereco" size="60" value="<?php if(isset($retornoConsulta)){echo $retornoConsulta[0]['endereco'];}?>" >
-            <input id="btnCadastrar" type="submit" id="btnCadastrar" name="btnGravarClientes" 
+            <label for="endereco" id="endereco">Endereço:</label>
+            <input id="endereco" type="text" name="endereco" size="65" value="<?php if(isset($retornoConsulta)){echo $retornoConsulta[0]['endereco'];}?>" > <br>
+            <input  class="btn btn-outline-danger" id="btnCadastrar" type="submit" name="btnGravarClientes" 
                 value="<?php if (isset($_GET['id_get_up'])){echo 'Atualizar';} else {echo 'Cadastrar';}?>">
-        </form>
+        </form> 
     </section>
     <div id="retorno">
 

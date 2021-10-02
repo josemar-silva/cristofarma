@@ -104,12 +104,12 @@ class Pessoa
     }
 
     public function updatePessoaFuncionario($id_upd, $nome, $cpf_cnpj, $tipo_pessoa, $email, $telefoneFixo, 
-    $telefoneCelular, $matricula, $senha, $funcao, $endereco)
+    $telefoneCelular, $matricula, $funcao, $endereco)
     {
         $conexao = new Conexao("projeto_cristofarma", "localhost", "root", "");
 
         $dados = $conexao->pdo->prepare("UPDATE pessoa SET nome = :n, cpf_cnpj = :c, tipo_pessoa = :tp, 
-        email = :e, telefone_fixo = :tf, telefone_celular = :tc, matricula = :m,  senha = :s,  funcao = :f, endereco = :ed WHERE id_pessoa = :id");
+        email = :e, telefone_fixo = :tf, telefone_celular = :tc, matricula = :m,  funcao = :f, endereco = :ed WHERE id_pessoa = :id");
         $dados->bindValue(":n", $nome);
         $dados->bindValue(":c", $cpf_cnpj);
         $dados->bindValue(":tp", $tipo_pessoa);
@@ -117,7 +117,6 @@ class Pessoa
         $dados->bindValue(":tf", $telefoneFixo);
         $dados->bindValue(":tc", $telefoneCelular);
         $dados->bindValue(":m", $matricula); 
-        $dados->bindValue(":s", $senha); 
         $dados->bindValue(":f", $funcao);
         $dados->bindValue(":ed", $endereco);
         $dados->bindValue(":id", $id_upd); 
@@ -241,6 +240,28 @@ class Pessoa
 
         return $dadosSelecionados;
 
+    }
+
+    public function funcionarioLogin($emailLogin, $senhaLogin){
+
+        $conexao = new Conexao("projeto_cristofarma", "localhost", "root", "");
+
+        $dadosSelecionados = array();
+
+        $dados = $conexao->pdo->prepare("SELECT email, senha FROM pessoa WHERE email = :e AND senha = :s");
+        $dados->bindValue(":e", $emailLogin);
+        $dados->bindValue(":s", $senhaLogin);
+        $dados->execute();
+        $dadosSelecionados = $dados->fetchAll(PDO::FETCH_ASSOC);
+
+        if ($dadosSelecionados[0]['email'] == $emailLogin && $dadosSelecionados[0]['senha'] == $senhaLogin)
+        {
+            $loginFuncionario = true;
+        } else {
+            $loginFuncionario = false;
+        }
+
+        return $loginFuncionario;
     }
 
     //metodos de acesso 

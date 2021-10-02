@@ -50,6 +50,8 @@
             </li>
     </ul>
     </header>
+    <a href="index.php" style="float: right; margin-right: 20px;">Sair</a>
+
     <section id="principal">
 
     <!---------------------- BUSCA %like% = 'quem contem'... ----------------------->
