@@ -41,32 +41,34 @@
     <a href="index.php" style="float: right; margin-right: 20px;">Sair</a>
 
     </header>
-    <section id="principal" style="margin-left: 5%;">
+    <section id="principalCaaixa">
 
-        <for id="fecharVenda" name="fecharVenda">
-            <legend>FINALIZAR VENDA</legend>
+    <div id="listaVendas">
 
-            <p>Total da Venda: </p>
+    </div>  
 
-            <input id="valorVenda" name="valorDaVenda" size="10"></input>
+        <form id="fecharVenda" name="fecharVenda">
+            <legend>FINALIZAR VENDA</legend><br><br>
 
-            <p>Desconto: </p>
+            <label>Total da Venda R$    : </label>
+            <input id="valorVenda" name="valorDaVenda" size="6"></input><br>
 
-            <input id="valorDesconto" name="ValorDoDesconto" size="10"></input>
+            <label>Desconto R$: </label>
+            <input id="valorDesconto" name="ValorDoDesconto" size="6"><br>
 
-            <p>Total a Pagar:</p>
+            <label>Total a Pagar R$:</label>
+            <input id="valorPagar" size="6  "></input><br>
 
-            <input id="valorPagar" size="10"></input>
+            <label>Valor Recebido R$:</label>
+            <input id="valorRecebido" name="valorRecebido" type="text" size="6" placeholder="R$"><br><br><br>
 
-            <p>Valor Recebido:</p>
-
-            <input id="valorRecebido" name="valorRecebido" type="text" size="10" placeholder="R$"><br>
-
-            <h4>Troco: R$</h4><br>
+            <label>Troco R$:</label>
+            <input id="troco" size="6"><br>
 
             <button class="btn btn-outline-danger" id="btnCancelar" name="cancelar" >Cancelar</button>
             <button class="btn btn-outline-danger" id="btnFinalizar" name="finalizar">Finalizar</button>
         </form>
+       
     </section>
 </body>
 

@@ -100,6 +100,7 @@ class Produto
             $dados->bindValue(":pf", $produto_fornecedor);
             $dados->bindValue(":idf", $id_up);
             $dados->execute();
+                    
 }
     public function consultaProdutoLike($consultaLike){
 
