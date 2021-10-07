@@ -229,7 +229,8 @@ caption {
 
 th {
   text-align: inherit;
-  background: #007bff;
+  background: #6e757c;
+  text-align: center;
 }
 
 label {
@@ -1528,6 +1529,7 @@ pre code {
   vertical-align: top;
   font-size: 10px;
   font-style: var(--gray);
+  text-align: center;
   
  
 }
