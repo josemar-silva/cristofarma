@@ -229,6 +229,7 @@ caption {
 
 th {
   text-align: inherit;
+  background: #007bff;
 }
 
 label {
