@@ -181,20 +181,15 @@
                     </script>
         <?php
                 { 
-                    echo '<table class="table table-hover">';
-                    echo '<tr>';
+                    echo '<table class="table table-bordered">';
                     echo '<th> CÓDIGO FORNECEDOR </th>';
                     echo '<th> NOME DO FORNECEDOR </th>';
                     echo '<th> CPF/CNPJ </th>';
                     echo '<th> TIPO PESSOA </th>';
                     echo '<th> E-MAIL </th>';
-                    echo '<th> TELEFONE FIXO </th>';
-                    echo '<th> TELEFONE CELULAR </th>';
-                    echo '<th>  </th>';
-                    echo '<th>  </th>';
-                    echo '<th> ENDEREÇO DO FORNECEDOR </th>';
-                    echo '</tr>';
-
+                    echo '<th>  FIXO </th>';
+                    echo '<th> CELULAR </th>';
+                    echo '<th> ENDEREÇO FORNECEDOR </th>';                    
                     $dados = $pessoa->consultaClienteFornecedorLike($consultaLike = "%".trim($_GET['pesquisa'])."%", $tipoConsulta);
 
                     if(count($dados) > 0) 
