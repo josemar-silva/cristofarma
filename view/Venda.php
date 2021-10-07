@@ -19,6 +19,8 @@ class Venda
     public Pessoa $vendedor;
     public Pessoa $cliente;
     public string $total_item_venda;
+    public string $status;
+
 
     function __construct()
     {

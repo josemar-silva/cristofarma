@@ -55,11 +55,11 @@
             <label for="consultaFuncionarioRadio" style="margin-right: 40px;">Funcionários</label>
 
             <input type="radio" id="consultaProdutoRadio" name="tipoConsulta" value="produto" style="margin-right: 10px;">
-            <label for="consultaProdutoRadio" style="margin-right: 40px">Produtos</label> <b><br>
+            <label for="consultaProdutoRadio" style="margin-right: 40px">Produtos</label> <br><br>
         </div>
 
         <label style="margin-left: 25%;">Pesquisa:</label>
-        <input type="search" id="pesquisa" name="pesquisa" value="" size=" 70" placeholder="Digte aqui para buscar" >
+        <input type="search" id="pesquisa" name="pesquisa" value="" size=" 50" placeholder="Digte aqui para buscar" >
 
         <button class="btn btn-outline-danger" id="btnBuscar" onclick="" style="width: 10%; padding: 2px;">Buscar</button><br><br>
     </form>
@@ -73,9 +73,14 @@
     
             $tipoConsulta = filter_input(INPUT_GET, 'tipoConsulta'); #filtrar valor que um inpult recebeu
             if (isset($_GET['tipoConsulta']) && $tipoConsulta == 'produto'){
-    ?>      
-        <table>  
-        
+
+            ?>       <!-- ============ MANTER INPUT RADIO SELECIONADO ==================== -->
+
+                <script>
+                        var tipo = document.getElementById("consultaProdutoRadio");
+                        tipo.checked = true;
+                </script>
+
             <?php
 
                 if (isset($_GET['pesquisa']))
@@ -116,10 +121,16 @@
                     } 
                 } 
             ?>
-        </table>
     <?php
     } elseif ($tipoConsulta == 'cliente') {
         if (isset($_GET['pesquisa']))
+
+        ?>       <!-- ============ MANTER INPUT RADIO SELECIONADO ==================== -->
+                    <script>
+                            var tipo = document.getElementById("consultaClienteRadio");
+                            tipo.checked = true;
+                    </script>
+        <?php
                 { 
                     echo '<table class="table table-hover">';
                     echo '<tr>';
@@ -162,6 +173,13 @@
 <?php 
     } elseif ($tipoConsulta == 'fornecedor') {
         if (isset($_GET['pesquisa']))
+        ?>       <!-- ============ MANTER INPUT RADIO SELECIONADO ==================== -->
+
+                    <script>
+                            var tipo = document.getElementById("consultaFornecedorRadio");
+                            tipo.checked = true;
+                    </script>
+        <?php
                 { 
                     echo '<table class="table table-hover">';
                     echo '<tr>';
@@ -203,6 +221,14 @@
     <?php
     } elseif ($tipoConsulta == 'funcionario'){
         if (isset($_GET['pesquisa']))
+
+        ?>       <!-- ============ MANTER INPUT RADIO SELECIONADO ==================== -->
+
+                    <script>
+                            var tipo = document.getElementById("consultaFuncionarioRadio");
+                            tipo.checked = true;
+                    </script>
+        <?php
                 { 
                     echo '<table class="table table-hover">';
                     echo '<tr>';

@@ -169,7 +169,6 @@
         {
             $id_up = addslashes($_GET['id_get_up']); 
             $retornoConsulta = $pessoa->selectPessoaCliente($id_up); #retorno da consulta armazenado na variavel $retornoConsulta
-            
         }
         
         ?>

@@ -36,9 +36,9 @@
                 <a class="nav-link" href="Relatorios.php">RELATÓRIOS</a>
             </li>
     </ul>
+    </header>
     <a href="index.php" style="float: right; margin-right: 20px;">Sair</a>
 
-    </header>
     <section id="principal">
         <form id="notaFiscal" style="margin-left: 5%;">
             <Legend>NOTA FISCAL</Legend><br>
