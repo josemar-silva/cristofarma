@@ -66,7 +66,6 @@
             <th> CÓDIGO CLIENTE </th>
             <th> NOME DO CLIENTE</th>
             <th> CPF/CNPJ</th>
-            <th> TIPO PESSOA</th>
             <th> EMAIL </th>
             <th> TELEFONE FIXO </th>
             <th> TELEFONE CELULAR </th>
@@ -90,7 +89,7 @@
 
                     foreach ($dados[$i] as $key => $value) 
                     {
-                        if ($key != "matricula" && "senha" && "funcao" && "tipo_pessoa") // ignorar coluna
+                        if ($key != "matricula" && $key != "senha" && $key != "funcao" && $key != "tipo_pessoa") // ignorar coluna
                         {
                             echo "<td>" .$value. "</td>";
                         }

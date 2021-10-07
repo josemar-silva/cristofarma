@@ -57,10 +57,7 @@
     <!---------------------- BUSCA %like% = 'quem contem'... ----------------------->
 
         <table>            
-            <?php
-
-                if (isset($_GET['pesquisaProduto']))
-                { 
+            <?php 
                     echo '<table class="table table-hover">';
                     echo '<tr>';
                     echo '<th> CÓDIGO PRODUTO </th>';
@@ -69,10 +66,9 @@
                     echo '<th> PREÇO VENDA </th>';
                     echo '<th> CÓDIGO DE BARRAS </th>';
                     echo '<th> FORNECEDOR </th>';
-                    echo '<th>  </th>';
                     echo '</tr>';
 
-                    $dados = $produto->consultaProdutoLike($consultaLike = "%".trim($_GET['pesquisaProduto'])."%");
+                    $dados = $produto->selectAllProduto();
 
                     //echo"<pre>"; // organizar o array (matriz de array)
                     //var_dump($dados); // imprimir na tela o resultado do array
@@ -100,10 +96,8 @@
                                 echo "</tr>"; // fecha linha dos dados selecionados
                         }
                     } 
-                }
             ?>
         </table>
-        <p><a href="Pesquisar.php"><<< voltar</a>
     </section>
 </body>
 
