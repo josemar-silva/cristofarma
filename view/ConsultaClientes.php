@@ -107,7 +107,6 @@
             }
         ?>
     </table>
-            <p><a href="Pesquisar.php" class=" btn-primary"><<< Voltar</a>
     </section>
 
     <?php

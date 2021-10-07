@@ -89,11 +89,9 @@
                     echo '<tr>';
                     echo '<th> CÓDIGO PRODUTO </th>';
                     echo '<th> NOME DO PRODUTO </th>';
-                    echo '<th> PREÇO CUSTO </th>';
-                    echo '<th> PREÇO VENDA </th>';
+                    echo '<th> PREÇO DO PRODUTO</th>';
                     echo '<th> CÓDIGO DE BARRAS </th>';
                     echo '<th> FORNECEDOR </th>';
-                    echo '<th>  </th>';
                     echo '</tr>';
 
                     $dados = $produto->consultaProdutoLike($consultaLike = "%".trim($_GET['pesquisa'])."%");
@@ -109,7 +107,7 @@
                             echo "<tr>"; // abre a linha dos dados selecionados
                             foreach ($dados[$i] as $key => $value) 
                             {
-                                if ($key != "pessoa_id_pessoa" ) // ignorar coluna ID
+                                if ($key != "pessoa_id_pessoa" && $key != "preco_custo" ) // ignorar coluna ID
                                 {
                                     echo "<td>" .$value. "</td>";
                                 }
@@ -137,12 +135,9 @@
                     echo '<th> CÓDIGO CLIENTE </th>';
                     echo '<th> NOME DO CLIENTE </th>';
                     echo '<th> CPF/CNPJ </th>';
-                    echo '<th> TIPO PESSOA </th>';
                     echo '<th> E-MAIL </th>';
                     echo '<th> TELEFONE FIXO </th>';
                     echo '<th> TELEFONE CELULAR </th>';
-                    echo '<th>  </th>';
-                    echo '<th>  </th>';
                     echo '<th> ENDEREÇO DO CLIENTE </th>';
                     echo '</tr>';
 
@@ -156,7 +151,7 @@
 
                     foreach ($dados[$i] as $key => $value) 
                     {
-                        if ($key != "matricula" && "senha" && "funcao") // ignorar coluna
+                        if ($key != "tipo_pessoa" && $key != "matricula" && $key != "senha" && $key != "funcao") // ignorar coluna
 
                         {
                             echo "<td>" .$value. "</td>";
@@ -186,12 +181,9 @@
                     echo '<th> CÓDIGO FORNECEDOR </th>';
                     echo '<th> NOME DO FORNECEDOR </th>';
                     echo '<th> CPF/CNPJ </th>';
-                    echo '<th> TIPO PESSOA </th>';
                     echo '<th> E-MAIL </th>';
                     echo '<th> TELEFONE FIXO </th>';
                     echo '<th> TELEFONE CELULAR </th>';
-                    echo '<th>  </th>';
-                    echo '<th>  </th>';
                     echo '<th> ENDEREÇO DO FORNECEDOR </th>';
                     echo '</tr>';
 
@@ -205,7 +197,7 @@
 
                     foreach ($dados[$i] as $key => $value) 
                     {
-                        if ($key != "matricula" && "senha" && "funcao") // ignorar coluna
+                        if ($key != "matricula" && $key != "senha" && $key != "funcao" && $key != "tipo_pessoa") // ignorar coluna
                         {
                             echo "<td>" .$value. "</td>";
                         }
@@ -235,7 +227,6 @@
                     echo '<th> CÓDIGO FUNCIONARIO </th>';
                     echo '<th> NOME DO FUNCIONARIO </th>';
                     echo '<th> CPF/CNPJ </th>';
-                    echo '<th> TIPO PESSOA </th>';
                     echo '<th> E-MAIL </th>';
                     echo '<th> TELEFONE FIXO </th>';
                     echo '<th> TELEFONE CELULAR </th>';
@@ -253,7 +244,7 @@
                             echo "<tr>"; // abre a linha dos dados selecionados
                             foreach ($dados[$i] as $key => $value) 
                             {
-                                if ($key != "senha" )// ignorar coluna
+                                if ($key != "tipo_pessoa" && $key != "senha" )// ignorar coluna
                                 {
                                     echo "<td>" .$value. "</td>";
                                 }

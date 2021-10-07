@@ -183,7 +183,7 @@ color: lightseagreen;
 }
 
 
-#login{
+#login {
 width: 100vw;
 height: 100vh;
 background-color: #bebebe3a;
@@ -218,40 +218,33 @@ border: none;
 
   }
 
- #itensSelecionados {
+#dadosClienteVenda {
+    float:  right; 
+    border: solid green 1px; width: 49%;
+    margin-top: 50px;
+    height: 250px;
 
-      border: solid green 1px ;
-      width: 40%;
-      font-size: 13pt;
-      height: 370px;
-
-  }
-  
-#saidaDados {
-    width: 40%;
-    border: royalblue 1px solid;
-    font-size: 13pt;
-    float: left;
-    margin-top: 5px;
-    height: 180px;
-
-
-}
-
-#clienteVenda {
-    border: solid 1px orange;
-    float: right;
-    width: 49%;
-    margin-top: 5px;
-    height: 180px;
 }
 
 #itensAdicionados {
 
     border: 1px solid blueviolet;
-    float: right;
-    width: 59%;
-    height: 370px;
+    float: left;
+    width: 50%;
+    height: 550px;
+    display: block;
+
+}
+
+#saidaValorVenda {
+
+    float: right; 
+    border: royalblue 1px solid; 
+    width: 49%;
+    margin-top: 10px;
+    display: block;
+    height: 200px;
+
 }
 
 #fecharVenda{
@@ -270,8 +263,7 @@ border: none;
         text-align: right;
         margin-top: 10px;
         font-weight: bolder;
-        float: right;
-        
+        float: right;  
     }
 
     #fecharVenda label{
@@ -281,13 +273,6 @@ border: none;
         margin-top: 10px;
         font-weight: bolder;
         text-align: right;
-        
-
-    }
-
-    #troco {
-
-        text-decoration-color: red;
     }
 
     #listaVendas{

@@ -65,12 +65,12 @@
             <th> CÓDIGO FUNCIONÁRIO </th>
             <th> NOME DO FUNCIONÁRIO</th>
             <th> CPF/CNPJ</th>
-            <th> TIPO PESSOA</th>
+       
             <th> EMAIL </th>
             <th> TELEFONE FIXO </th>
             <th> TELEFONE CELULAR </th>
             <th> MATRICULA </th>
-            <th> SENHA </th>
+           
             <th> FUNCAO </th>
             <th> ENDEREÇO DO FUNCIONÁRIO</th>
             <th>  </th>
@@ -90,7 +90,7 @@
                         echo "<tr>"; // abre a linha dos dados selecionados
                         foreach ($dados[$i] as $key => $value) 
                         {
-                            #if ($key != "matricula" && "senha" && "funcao" && "tipo_pessoa") // ignorar coluna
+                            if ($key != "matricula" && $key != "senha" && $key != "funcao" && $key !=   "tipo_pessoa") // ignorar coluna
                             {
                                 echo "<td>" .$value. "</td>";
                             }
@@ -107,7 +107,6 @@
             }
         ?>
     </table>
-            <p><a href="Pesquisar.php" class=" btn-primary"><<< Voltar</a>
     </section>
 </body>
 
