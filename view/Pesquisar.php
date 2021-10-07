@@ -85,7 +85,7 @@
 
                 if (isset($_GET['pesquisa']))
                 { 
-                    echo '<table class="table table-hover">';
+                    echo '<table class="table table-bordered">';
                     echo '<tr>';
                     echo '<th> CÓDIGO PRODUTO </th>';
                     echo '<th> NOME DO PRODUTO </th>';
@@ -130,7 +130,7 @@
                     </script>
         <?php
                 { 
-                    echo '<table class="table table-hover">';
+                    echo '<table class="table table-bordered">';
                     echo '<tr>';
                     echo '<th> CÓDIGO CLIENTE </th>';
                     echo '<th> NOME DO CLIENTE </th>';
@@ -219,7 +219,7 @@
                     </script>
         <?php
                 { 
-                    echo '<table class="table table-hover">';
+                    echo '<table class="table table-bordered">';
                     echo '<tr>';
                     echo '<th> CÓDIGO FUNCIONARIO </th>';
                     echo '<th> NOME DO FUNCIONARIO </th>';
