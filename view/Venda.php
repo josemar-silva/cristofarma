@@ -19,7 +19,7 @@ class Venda
     public Pessoa $vendedor;
     public Pessoa $cliente;
     public string $total_item_venda;
-    public string $status;
+    public string $status_venda;
 
 
     function __construct()
@@ -28,7 +28,7 @@ class Venda
     }
 
     public function createVenda($valor_venda_sem_desconto, $desconto, $valor_venda_com_desconto, $tipo_pagamento,
-    $data_venda, $vendedor, $cliente, $total_item_venda)
+    $data_venda, $vendedor, $cliente, $total_item_venda,$status_venda)
     {
         $clienteSelecionado = array(); 
         $vendedorSelecionado = array();
@@ -45,15 +45,14 @@ class Venda
         $vendedorSelecionado = $dados->fetch(PDO::FETCH_ASSOC); 
 
         $dados = $conexao->pdo->prepare("SELECT id_venda FROM venda WHERE data_venda = :dtv");
-        //$cadastrar = $this->pdo->query("SELECT * id FROM pessoa WHERE email = ".$email);
         $dados->bindValue(":dtv", $data_venda);
         $dados->execute();
         if ($dados->rowCount() > 0) {
             return false;
         } else {
             $dados = $conexao->pdo->prepare("INSERT INTO venda (valor_venda_sem_desconto, desconto, 
-            valor_venda_com_desconto, tipo_pagamento, data_venda, vendedor, cliente, total_item_venda)
-            VALUES (:vsd, :dsc, :vcd, :tp, :dtv, :v, :c, :tiv)");
+            valor_venda_com_desconto, tipo_pagamento, data_venda, vendedor, cliente, total_item_venda, status_venda)
+            VALUES (:vsd, :dsc, :vcd, :tp, :dtv, :v, :c, :tiv, :stv)");
             $dados->bindValue(":vsd", $valor_venda_sem_desconto);
             $dados->bindValue(":dsc", $desconto);
             $dados->bindValue(":vcd", $valor_venda_com_desconto);
@@ -62,10 +61,23 @@ class Venda
             $dados->bindValue(":v", $vendedor);
             $dados->bindValue(":c", $cliente);
             $dados->bindValue(":tiv", $total_item_venda);
+            $dados->bindValue(":stv", $status_venda);
+
             $dados->execute();
 
             return true;
     }
+}
+
+    public function deleteVenda($id_up)
+{
+    $conexao = new Conexao("projeto_cristofarma", "localhost", "root", "");
+
+    $dados = $conexao->pdo->prepare("DELETE FROM venda WHERE id_venda = :id");
+    $dados->bindValue("id", $id_up);
+    $dados->execute();
+}
+
 
     //metodos de acesso 
     function __getCodigoVenda()
@@ -127,9 +139,6 @@ class Venda
     {
         
     }
-
-}
-
 }
 
 

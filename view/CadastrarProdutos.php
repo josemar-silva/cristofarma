@@ -82,7 +82,8 @@
                 <input id="codigoDeBarras" type="text" name="codigoDeBarras" size="40"><br>
 
                 <label id="fornecedor">Fornecedor:</label>
-                <input id="fornecedor" type="text" name="fornecedor" size="60"><br>
+                <input id="fornecedor" type="text" name="fornecedor" size="30">
+                <a href="ConsultaFornecedor.php">+</a><br>
 
                 <label id="precoCusto">Preço de Custo:</label>
                 <input id="precoCusto" type="text" name="precoCusto" size="20"> <br>

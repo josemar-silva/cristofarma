@@ -50,7 +50,7 @@
         if (isset($_GET['id_get_up'])) 
         {
             $id_up = addslashes($_GET['id_get_up']); 
-            $retornoConsulta = $pessoa->selectPessoaFornecedor($id_up); #retorno da consulta armazenado na variavel $retornoConsulta
+            $retornoConsulta = $pessoa->selectAllPessoaFornecedor(); #retorno da consulta armazenado na variavel $retornoConsulta
         
         }
     ?>
@@ -64,7 +64,6 @@
             <th> CÓDIGO FORNECEDOR </th>
             <th> NOME DO FORNECEDOR</th>
             <th> CPF/CNPJ</th>
-            <th> TIPO PESSOA</th>
             <th> EMAIL </th>
             <th> TELEFONE FIXO </th>
             <th> TELEFONE CELULAR </th>
@@ -86,7 +85,7 @@
                     echo "<tr>"; // abre a linha dos dados selecionados
                     foreach ($dados[$i] as $key => $value) 
                     {
-                        if ($key != "matricula" && "senha" && "funcao" && "tipo_pessoa") // ignorar coluna
+                        if ($key != "matricula" && $key != "senha" && $key != "funcao" && $key != "tipo_pessoa") // ignorar coluna
                         {
                             echo "<td>" .$value. "</td>";
                         }
@@ -103,7 +102,6 @@
             }
         ?>
     </table>
-            <p><a href="Pesquisar.php" class=" btn-primary"><<< Voltar</a>
     </section>
 </body>
 
