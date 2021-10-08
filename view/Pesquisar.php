@@ -44,8 +44,8 @@
         <div id="consultas">
 
     <form action="Pesquisar.php" method="GET">
-        <div id="selecionaTipoConsulta" style="margin-left: 31%;">
-            <input type="radio" id="consultaClienteRadio" name="tipoConsulta" value="cliente" style="margin-right: 10px;" style="margin-right: 10px;">
+        <div id="selecionaTipoConsulta" style="margin-left: 31%;" class="form-group">
+            <input type="radio" id="consultaClienteRadio"  name="tipoConsulta" value="cliente" style="margin-right: 10px;" style="margin-right: 10px;">
             <label for="consultaClienteRadio" style="margin-right: 40px;">Clientes</label>
 
             <input type="radio" id="consultaFornecedorRadio" name="tipoConsulta" value="fornecedor" style="margin-right: 10px;">
@@ -58,8 +58,8 @@
             <label for="consultaProdutoRadio" style="margin-right: 40px">Produtos</label> <br><br>
         </div>
 
-        <label style="margin-left: 25%;">Pesquisa:</label>
-        <input type="search" id="pesquisa" name="pesquisa" value="" size=" 50" placeholder="Digte aqui para buscar" >
+        <label style="margin-left: 25%;"></label>
+        <input  type="search" id="pesquisa" name="pesquisa" value="" size=" 50" class="form-control-busca" placeholder="Digte aqui para buscar" >
 
         <button class="btn btn-outline-danger" id="btnBuscar" onclick="" style="width: 10%; padding: 2px;">Buscar</button><br><br>
     </form>

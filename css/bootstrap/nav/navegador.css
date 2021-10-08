@@ -231,7 +231,7 @@ th {
   text-align: inherit;
   background:#a51c09 ;
   text-align: center;
-  color: white;
+  color: white;  
 }
 
 label {
@@ -1521,6 +1521,7 @@ pre code {
   width: 100%;
   margin-bottom: 1rem;
   background-color: transparent;
+  align-items: center;
 }
 
 .table th,
@@ -1830,6 +1831,19 @@ pre code {
   border-radius: 0.25rem;
   transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
+.form-control-busca{  
+  width: 40%;
+  height: 10%;
+  padding: 0.400rem ;
+  font-size: 1rem;
+  line-height: 1.5;
+  color: #ad1313;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 1px solid #ced4da;
+  border-radius: 0.25rem;
+ 
+}
 
 @media screen and (prefers-reduced-motion: reduce) {
   .form-control {
@@ -1843,7 +1857,7 @@ pre code {
 }
 
 .form-control:focus {
-  color: #495057;
+  color: #4190df;
   background-color: #fff;
   border-color: #80bdff;
   outline: 0;
@@ -1957,6 +1971,8 @@ textarea.form-control {
 
 .form-group {
   margin-bottom: 1rem;
+  background-color: brown;
+  margin-right: 27%;
 }
 
 .form-text {
@@ -9041,6 +9057,9 @@ a.text-dark:hover, a.text-dark:focus {
     color: inherit;
     border-color: #dee2e6;
   }
+}
+.radio{
+  
 }
 
 /*# sourceMappingURL=bootstrap.css.map */
