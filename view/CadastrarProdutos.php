@@ -71,21 +71,16 @@
             <form id="cadastro" method="POST">
                 <legend>CADASTRO DE PRODUTOS</legend><br>
 
-                <label id="descricaoProduto">Descrição:</label>
-                <input id="descricaoProduto" type="text" name="descricaoProduto" size="60"> <br>
-
-                <label id="codigoDeBarras">Código de Barras:</label>
-                <input id="codigoDeBarras" type="text" name="codigoDeBarras" size="40"><br>
-
-                <label id="fornecedor">Fornecedor:</label>
-                <input id="fornecedor" type="text" name="fornecedor" size="30">
+                <input id="descricaoProduto" class="form-control"  placeholder="Descricao Produto" type="text" name="descricaoProduto" size="60"> <br>
+                
+                <input id="codigoDeBarras" class="form-control"  placeholder="Código de Barras" type="text" type="text" name="codigoDeBarras" size="40"><br>
+                
+                <input id="fornecedor" class="form-control"  placeholder="Fornecedor" type="text" type="text" name="fornecedor" size="30">
                 <a href="ConsultaFornecedor.php">+</a><br>
-
-                <label id="precoCusto">Preço de Custo:</label>
-                <input id="precoCusto" type="text" name="precoCusto" size="20"> <br>
-
-                <label id="precoVenda">Preço de Venda:</label>
-                <input id="precoVenda" type="text" name="precoVenda" size="20"> <br>
+                
+                <input id="precoCusto" class="form-control"  placeholder="Preço custo" type="text" type="text" name="precoCusto" size="20"> <br>
+                
+                <input id="precoVenda" class="form-control"  placeholder="Preço venda" type="text" type="text" name="precoVenda" size="20"> <br>
 
                 <input class="btn btn-outline-danger" type="submit" id="btnCadastrar" name="btnGravarClientes"
                     value="<?php echo "Cadastrar"; ?>">
