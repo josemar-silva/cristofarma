@@ -76,7 +76,7 @@
                 <input id="codigoDeBarras" class="form-control"  placeholder="Código de Barras" type="text" type="text" name="codigoDeBarras" size="40"><br>
                 
                 <input id="fornecedor" class="form-control"  placeholder="Fornecedor" type="text" type="text" name="fornecedor" size="30">
-                <a href="ConsultaFornecedor.php">+</a><br>
+                <a href="ConsultaFornecedor.php" id="alinhamento" class=" btn btn-light " >+</a><br>
                 
                 <input id="precoCusto" class="form-control"  placeholder="Preço custo" type="text" type="text" name="precoCusto" size="20"> <br>
                 

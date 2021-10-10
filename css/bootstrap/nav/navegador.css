@@ -2456,6 +2456,7 @@ fieldset:disabled a.btn {
   color: #fff;
   background-color: #17a2b8;
   border-color: #17a2b8;
+  
 }
 
 .btn-info:hover {
@@ -2592,6 +2593,7 @@ fieldset:disabled a.btn {
   color: #fff;
   background-color: #343a40;
   border-color: #343a40;
+
 }
 
 .btn-dark:hover {
@@ -2797,6 +2799,7 @@ fieldset:disabled a.btn {
   background-color: transparent;
   background-image: none;
   border-color: #dc3545;
+  display: table-cell;
 }
 
 .btn-outline-danger:hover {
@@ -9110,5 +9113,8 @@ a.text-dark:hover, a.text-dark:focus {
 .dp-menu ul ul li a {
   display: block; 
 }
-
+#alinhamento{
+ display: inline;
+ margin: auto;
+}
 /*# sourceMappingURL=bootstrap.css.map */
