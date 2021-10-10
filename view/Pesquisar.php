@@ -23,9 +23,10 @@
             </li>
             <li><a href="Vendas.php">VENDAS</a></li>
             <li><a href="Caixa.php">CAIXA</a></li>
-            <li><a href="CadastrarProdutos.php">PRODUTOS</a>
+            <li><a href="#">PRODUTOS</a>
                  <ul>
-                    <li><a href="#">Estoque</a></li>                                        
+                    <li><a href="CadastrarProdutos.php">Cadastro de Produtos</a></li>
+                    <li><a href="#">Estoque de Produtos</a></li>                                        
                 </ul>
             </li>
             <li><a href="Cadastros.php">CADASTROS</a></li>
