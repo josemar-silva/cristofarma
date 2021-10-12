@@ -14,7 +14,7 @@
     <nav class="dp-menu">
         <ul>
             <li><a href="home.php">HOME</a></li>
-            <li><a href="Pesquisar.php">PESQUISAR</a>
+            <li><a href="#">PESQUISAR</a>
                 <ul>
                     <li><a href="ConsultaClientes.php">Clientes</a></li>
                     <li><a href="ConsultaFornecedor.php">Fornecedores</a></li>
@@ -42,10 +42,10 @@
     <legend>REALIZAR VENDA/ORÇAMENTO</legend><br>
 
         <div id="itensAdicionados">
-            <div id="divNumeroVenda" style="display: block; margin-left: 30%;">
+            <div id="divNumeroVenda" style="display: binlock; margin-left: 35%;">
                 <label>Nº da Venda:</label>
                 <input id="numeroVenda" name="numeroVenda" value="<?php echo '000000123456789'?>" 
-                style="color: blue; text-align: center; font-size: 15pt; border: none;" size="15" ></input>
+                style="color: blue; text-align: center; font-size: 15pt; border: none; display: inline;" size="15" ></input>
             </div>
         <table>            
             <?php
@@ -67,7 +67,7 @@
         <div id="adicionaPrudutoVenda">
                 <a href="ConsultaProdutos.php" style="font-size: 12px; margin-left: 10px;">  Adcionar Produto</a>
         </div>
-        <div id="rmoveProdutoVenda">
+        <div id="removeProdutoVenda">
                 <a href="" style="font-size: 12px; margin-left: 10px;"> Remover Produto</a>
         </div>
 
@@ -80,20 +80,20 @@
             </div>
 
             <label id="Nome">Nome:</label>
-            <input id="nome" type="search" name="nome" size="50">
+            <input id="nome" type="search" class="form-control" name="nome" size="50">
             <label id="Cpf">CPF:</label>
-            <input id="Cpf" type="text" name="cpf" size="25">
+            <input id="Cpf" type="text" name="cpf" class="form-control" size="25">
             <label for="endereco" id="endereco">Endereço:</label>
-            <input id="endereco" type="text" name="endereco" size="60">  
+            <input id="endereco" type="text" name="endereco" class="form-control" size="60">  
         </div>
 
         <div id="saidaValorVenda">            
             <label id="total" for="totalSemDesconto"> Total: R$</label>
-            <input id="totalSemDesconto" name="totalSemDesconto"  size="10">
+            <input id="totalSemDesconto" name="totalSemDesconto" class="form-control" size="10">
             <label id="desconto" for="desconto"> Desconto: R$</label>
-            <input id="desconto" type="text" name="desconto" size="10" placeholder="%">
+            <input id="desconto" type="text" name="desconto" class="form-control" size="10" placeholder="%">
             <label for="TotalComDesconto" id="TotalComDesconto">Total com Desconto: R$</label>
-            <input id="TotalComDesconto" name="totalComDesconto" size="10">
+            <input id="TotalComDesconto" name="totalComDesconto" class="form-control" size="10">
         </div>  
     </section>
 </body>

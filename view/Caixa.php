@@ -14,7 +14,7 @@
     <nav class="dp-menu">
         <ul>
             <li><a href="home.php">HOME</a></li>
-            <li><a href="Pesquisar.php">PESQUISAR</a>
+            <li><a href="#">PESQUISAR</a>
                 <ul>
                     <li><a href="ConsultaClientes.php">Clientes</a></li>
                     <li><a href="ConsultaFornecedor.php">Fornecedores</a></li>
@@ -35,7 +35,7 @@
             <li><a href="Relatorios.php">RELATÓRIOS</a></li>
         </ul>
     </nav>
-    <div id="divSair" style="width: 100%; border: blueviolet 1px solid; height:3    0px;">
+    <div id="divSair" style="width: 100%; border: none; height:30px;">
         <a href="index.php" style="float: right; margin-right: 20px;">Sair</a>
     </div>
 
@@ -43,11 +43,12 @@
     <section id="principalCaaixa">
 
     <div id="listaVendas">
+        <legend>VENDAS REALIZADAS</legend>
 
     </div>  
 
         <form id="fecharVenda" name="fecharVenda">
-            <legend>FINALIZAR VENDA</legend><br><br>
+            <legend>FINALIZAR VENDA</legend>
 
             <label>Total da Venda R$: </label>
             <input id="valorVenda" class="form-control" name="valorDaVenda" size="6">

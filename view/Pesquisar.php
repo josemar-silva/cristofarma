@@ -13,7 +13,7 @@
 <nav class="dp-menu">
         <ul>
             <li><a href="home.php">HOME</a></li>
-            <li><a href="Pesquisar.php">PESQUISAR</a>
+            <li><a href="#">PESQUISAR</a>
                 <ul>
                     <li><a href="ConsultaClientes.php">Clientes</a></li>
                     <li><a href="ConsultaFornecedor.php">Fornecedores</a></li>
