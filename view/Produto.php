@@ -13,6 +13,8 @@ class Produto
     public string $preco_venda;
     public string $codigo_barras;
     public Pessoa $produto_fornecedor;
+    public string $pessoa_id_pessoa;
+
 
     function __construct()
     {
@@ -100,7 +102,6 @@ class Produto
             $dados->bindValue(":pf", $produto_fornecedor);
             $dados->bindValue(":idf", $id_up);
             $dados->execute();
-                    
 }
     public function consultaProdutoLike($consultaLike){
 
@@ -108,7 +109,7 @@ class Produto
 
         $dadosSelecionados = array();
 
-        $dados = $conexao->pdo->prepare("SELECT * FROM produto WHERE nome_produto LIKE :lk");
+        $dados = $conexao->pdo->prepare("SELECT * FROM produto WHERE nome_produto LIKE :lk ORDER BY nome_produto ASC");
         $dados->bindValue(":lk", $consultaLike);
         $dados->execute();
         $dadosSelecionados = $dados->fetchAll(PDO::FETCH_ASSOC);

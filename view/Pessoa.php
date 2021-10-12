@@ -232,7 +232,9 @@ class Pessoa
 
         $dadosSelecionados = array();
 
-        $dados = $conexao->pdo->prepare("SELECT * FROM pessoa WHERE nome LIKE :lk AND tipo_pessoa = :tp");
+        $dados = $conexao->pdo->prepare("SELECT * FROM pessoa WHERE nome LIKE :lk AND tipo_pessoa = :tp 
+            ORDER BY nome ASC");
+            
         $dados->bindValue(":lk", $consultaLike);
         $dados->bindValue(":tp", $tipoConsulta);
         $dados->execute();

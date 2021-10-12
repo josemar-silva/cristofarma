@@ -70,8 +70,6 @@
             <th> TELEFONE FIXO </th>
             <th> TELEFONE CELULAR </th>
             <th> ENDEREÇO DO CLIENTE</th>
-
-            <th>  </th>
         </tr>
         <?php
 
