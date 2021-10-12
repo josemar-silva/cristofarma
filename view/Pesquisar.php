@@ -15,18 +15,18 @@
             <li><a href="home.php">HOME</a></li>
             <li><a href="Pesquisar.php">PESQUISAR</a>
                 <ul>
-                    <li><a href="#">Clientes</a></li>
-                    <li><a href="#">Fornecedores</a></li>
-                    <li><a href="#">Funcionários</a></li>
-                    <li><a href="#">Produtos</a></li>                    
+                    <li><a href="ConsultaClientes.php">Clientes</a></li>
+                    <li><a href="ConsultaFornecedor.php">Fornecedores</a></li>
+                    <li><a href="ConsultaFuncionarios.php">Funcionários</a></li>
+                    <li><a href="ConsultaProdutos.php">Produtos</a></li>                    
                 </ul>
             </li>
             <li><a href="Vendas.php">VENDAS</a></li>
             <li><a href="Caixa.php">CAIXA</a></li>
-            <li><a href="#">PRODUTOS</a>
+            <li><a href="AlimentarEstoque.php">PRODUTOS</a>
                  <ul>
                     <li><a href="CadastrarProdutos.php">Cadastro de Produtos</a></li>
-                    <li><a href="#">Estoque de Produtos</a></li>                                        
+                    <li><a href="AlimentarEstoque.php">Estoque de Produtos</a></li>                                        
                 </ul>
             </li>
             <li><a href="Cadastros.php">CADASTROS</a></li>
@@ -57,7 +57,7 @@
         </div>
 
         <label style="margin-left: 25%;"></label>
-        <input  type="search" id="pesquisa" name="pesquisa" value="" size=" 50" class="form-control-busca" placeholder="Digte aqui para buscar" >
+        <input  type="search" id="pesquisa" class="form-control" name="pesquisa" value="" size=" 50" class="form-control-busca" placeholder="Digte aqui para buscar" >
 
         <button class="btn btn-outline-danger" id="btnBuscar" onclick="" style="width: 10%; padding: 2px;">Buscar</button><br><br>
     </form>
@@ -78,6 +78,7 @@
                         var tipo = document.getElementById("consultaProdutoRadio");
                         tipo.checked = true;
                 </script>
+                    <!-- ============ MANTER INPUT RADIO SELECIONADO ==================== -->
 
             <?php
 

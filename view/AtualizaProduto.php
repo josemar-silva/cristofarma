@@ -71,10 +71,10 @@
             <li><a href="home.php">HOME</a></li>
             <li><a href="Pesquisar.php">PESQUISAR</a>
                 <ul>
-                    <li><a href="#">Clientes</a></li>
-                    <li><a href="#">Fornecedores</a></li>
-                    <li><a href="#">Funcionários</a></li>
-                    <li><a href="#">Produtos</a></li>                    
+                    <li><a href="ConsultaClientes.php">Clientes</a></li>
+                    <li><a href="ConsultaFornecedor.php">Fornecedores</a></li>
+                    <li><a href="ConsultaFuncionarios.php">Funcionários</a></li>
+                    <li><a href="ConsultaProdutos.php">Produtos</a></li>                    
                 </ul>
             </li>
             <li><a href="Vendas.php">VENDAS</a></li>
@@ -82,7 +82,7 @@
             <li><a href="#">PRODUTOS</a>
                  <ul>
                     <li><a href="CadastrarProdutos.php">Cadastro de Produtos</a></li>
-                    <li><a href="#">Estoque de Produtos</a></li>                                        
+                    <li><a href="AlimentarEstoque.php">Estoque de Produtos</a></li>                                        
                 </ul>
             </li>
             <li><a href="Cadastros.php">CADASTROS</a></li>
@@ -105,25 +105,25 @@
             <form id="cadastro" method="POST">
                 <legend>CADASTRO DE PRODUTOS</legend><br>
 
-                <label id="descricaoProduto">Descrição:</label><br>
-                <input id="descricaoProduto" type="text" name="descricaoProduto" size="60" 
-                    value="<?php if(isset($retornoConsulta)){echo $retornoConsulta[0]['nome_produto'];}?>"> <br>
+                <label id="descricaoProduto">Descrição:</label>
+                <input id="descricaoProduto" class="form-control" type="text" name="descricaoProduto" size="60" 
+                    value="<?php if(isset($retornoConsulta)){echo $retornoConsulta[0]['nome_produto'];}?>">
 
-                <label id="codigoDeBarras">Código de Barras:</label><br>
-                <input id="codigoDeBarras" type="text" name="codigoDeBarras" size="60" 
-                    value="<?php if(isset($retornoConsulta)){echo $retornoConsulta[0]['codigo_barras'];}?>"><br>
+                <label id="codigoDeBarras">Código de Barras:</label>
+                <input id="codigoDeBarras" class="form-control" type="text" name="codigoDeBarras" size="60" 
+                    value="<?php if(isset($retornoConsulta)){echo $retornoConsulta[0]['codigo_barras'];}?>">
 
-                <label id="fornecedor">Fornecedor:</label><br> 
-                <input id="fornecedor" type="text" name="fornecedor" size="60" 
-                    value="<?php if(isset($retornoConsulta)){echo $retornoConsulta[0]['produto_fornecedor'];}?>"><br>
+                <label id="fornecedor">Fornecedor:</label>
+                <input id="fornecedor" class="form-control" type="text" name="fornecedor" size="60" 
+                    value="<?php if(isset($retornoConsulta)){echo $retornoConsulta[0]['produto_fornecedor'];}?>">
 
-                <label id="precoCusto">Preço de Custo:</label><br>
-                <input id="precoCusto" type="text" name="precoCusto" size="60" 
-                    value="<?php if(isset($retornoConsulta)){echo $retornoConsulta[0]['preco_custo'];}?>"> <br><br>
+                <label id="precoCusto">Preço de Custo:</label>
+                <input id="precoCusto" class="form-control" type="text" name="precoCusto" size="60" 
+                    value="<?php if(isset($retornoConsulta)){echo $retornoConsulta[0]['preco_custo'];}?>">
 
-                <label id="precoVenda">Preço de Venda:</label><br>
-                <input id="precoVenda" type="text" name="precoVenda" size="60"
-                     value="<?php if(isset($retornoConsulta)){echo $retornoConsulta[0]['preco_venda'];}?>"> <br>
+                <label id="precoVenda">Preço de Venda:</label>
+                <input id="precoVenda" class="form-control" type="text" name="precoVenda" size="60"
+                     value="<?php if(isset($retornoConsulta)){echo $retornoConsulta[0]['preco_venda'];}?>">
 
                 <input class="btn btn-outline-danger" id="btnCadastrar" type="submit" id="btnCadastrar" name="btnGravarClientes"
                     value="<?php if (isset($_GET['id_get_up'])){echo 'Atualizar';} else {echo 'Cadastrar';}?>">

@@ -25,20 +25,6 @@
     margin-top: 80px;
 }
 
-
-
- .inp {
-    background-color: #f2f7f2;
-    border: none;
-    color: rgb(102, 6, 6);
-    padding: 5px 32px;
-    text-decoration: #3c075f;
-    margin: 4px 2px;
-    cursor: auto;
-    width: 80%;
-}
-
-
 #tabelaNotaFiscal {
     width: 1100px;
 }
@@ -76,18 +62,22 @@ p a {
 
 section#principal {
     border:rgba(0, 0, 0, .1) 1px solid;
-    width: 40%;
-    height: 500px;
+    width: 50%;
+    height: 650px;
     display: block;
     margin: auto;
     padding: 10px;
     border-radius: 5%;
 }
 
+#principal, label, input {
+    display: block;
+}
+
 
 #relatorioGerencialVendas input, label {
     display: inline-block;
-    font-size: 13pt;
+
 }
 
 legend {
@@ -97,8 +87,6 @@ legend {
 }
 
 #notaFiscal input, label {
-  
-    font-size: 13pt;
 
 }
 
@@ -142,9 +130,6 @@ p, a {
     margin: 5px 0;
 }
 
-.campo label{
-    width: 100px;
-}
 
 .btn{
     border: none;
@@ -260,10 +245,7 @@ border: none;
 
     #fecharVenda input{
 
-        text-align: right;
-        margin-top: 10px;
-        font-weight: bolder;
-        float: right;  
+
     }
 
     #fecharVenda label{

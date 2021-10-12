@@ -46,10 +46,10 @@
             <li><a href="home.php">HOME</a></li>
             <li><a href="Pesquisar.php">PESQUISAR</a>
                 <ul>
-                    <li><a href="#">Clientes</a></li>
-                    <li><a href="#">Fornecedores</a></li>
-                    <li><a href="#">Funcionários</a></li>
-                    <li><a href="#">Produtos</a></li>                    
+                    <li><a href="ConsultaClientes.php">Clientes</a></li>
+                    <li><a href="ConsultaFornecedor.php">Fornecedores</a></li>
+                    <li><a href="ConsultaFuncionarios.php">Funcionários</a></li>
+                    <li><a href="ConsultaProdutos.php">Produtos</a></li>                    
                 </ul>
             </li>
             <li><a href="Vendas.php">VENDAS</a></li>
@@ -57,7 +57,7 @@
             <li><a href="#">PRODUTOS</a>
                  <ul>
                     <li><a href="CadastrarProdutos.php">Cadastro de Produtos</a></li>
-                    <li><a href="#">Estoque de Produtos</a></li>                                        
+                    <li><a href="AlimentarEstoque.php">Estoque de Produtos</a></li>                                        
                 </ul>
             </li>
             <li><a href="Cadastros.php">CADASTROS</a></li>
@@ -71,16 +71,20 @@
         <section id="principal">
             <form id="cadastro" method="POST">
                 <legend>CADASTRO DE PRODUTOS</legend><br>
-
+                <label for="descricaoProduto"> Descrição do Produto:</label>
                 <input id="descricaoProduto" class="form-control"  placeholder="Descricao Produto" type="text" name="descricaoProduto" size="60"> <br>
                 
+                <label for="codigoDeBarras"> Código de Barras:</label>
                 <input id="codigoDeBarras" class="form-control"  placeholder="Código de Barras" type="text" type="text" name="codigoDeBarras" size="40"><br>
                 
+                <label for="fornecedor">Fornecedor:</label>
                 <input id="fornecedor" class="form-control"  placeholder="Fornecedor" type="text" type="text" name="fornecedor" size="30">
                 <a href="ConsultaFornecedor.php" id="alinhamento" class=" btn btn-light " >+</a><br>
                 
+                <label for="precoCusto">Preço de Custo:</label>
                 <input id="precoCusto" class="form-control"  placeholder="Preço custo" type="text" type="text" name="precoCusto" size="20"> <br>
                 
+                <label for="precoVenda">Preço de Venda:</label>
                 <input id="precoVenda" class="form-control"  placeholder="Preço venda" type="text" type="text" name="precoVenda" size="20"> <br>
 
                 <input class="btn btn-outline-danger" type="submit" id="btnCadastrar" name="btnGravarClientes"

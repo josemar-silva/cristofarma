@@ -19,10 +19,10 @@
             <li><a href="home.php">HOME</a></li>
             <li><a href="Pesquisar.php">PESQUISAR</a>
                 <ul>
-                    <li><a href="#">Clientes</a></li>
-                    <li><a href="#">Fornecedores</a></li>
-                    <li><a href="#">Funcionários</a></li>
-                    <li><a href="#">Produtos</a></li>                    
+                    <li><a href="ConsultaClientes.php">Clientes</a></li>
+                    <li><a href="ConsultaFornecedor.php">Fornecedores</a></li>
+                    <li><a href="ConsultaFuncionarios.php">Funcionários</a></li>
+                    <li><a href="ConsultaProdutos.php">Produtos</a></li>                    
                 </ul>
             </li>
             <li><a href="Vendas.php">VENDAS</a></li>
@@ -30,7 +30,7 @@
             <li><a href="#">PRODUTOS</a>
                  <ul>
                     <li><a href="CadastrarProdutos.php">Cadastro de Produtos</a></li>
-                    <li><a href="#">Estoque de Produtos</a></li>                                        
+                    <li><a href="AlimentarEstoque.php">Estoque de Produtos</a></li>                                        
                 </ul>
             </li>
             <li><a href="Cadastros.php">CADASTROS</a></li>
@@ -44,18 +44,22 @@
 
     <?php
 
-        if (isset($_GET['id_get_up'])) 
+        if (isset($_GET['pesquisa'])) 
         {
-            $id_up = addslashes($_GET['id_get_up']); 
+            $id_up = addslashes($_GET['pesquisa']); 
             $retornoConsulta = $pessoa->selectAllPessoaFuncionario($id_up); #retorno da consulta armazenado na variavel $retornoConsulta
         
         }
     ?>
     <section >
             
-    <label>Buscar:</label>
-    <input type="search" id="pesquisaFuncionario" name="pesquisaFuncionario" value="" size=" 60" 
-        placeholder="Buscar Funcionário"><br><br>
+    <form action="ConsultaClientes.php" method="GET">
+        
+        <label>Pesquisa:</label>
+        <input type="search" class="form-control" id="pesquisa" name="pesquisa" value="" size=" 70" placeholder="Digte aqui para buscar" >
+
+        <button class="btn btn-outline-danger" id="btnBuscar" onclick="" style="width: 10%; padding: 2px;">Buscar</button><br><br>
+    </form>
 
     <table class="table table-hover">
         <tr>

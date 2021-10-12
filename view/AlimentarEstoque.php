@@ -4,10 +4,10 @@
 <head>
     <meta charset="UTF-8" />
     <link rel="stylesheet" href="../css/bootstrap/nav/navegador.css">
-    <title>Nota Fiscal</title>
+    <title>Estoque</title>
 </head>
 
-<body>
+<body>    
     <header>
     <nav class="dp-menu">
         <ul>
@@ -33,22 +33,16 @@
             <li><a href="Relatorios.php">RELATÓRIOS</a></li>
         </ul>
     </nav>
-    </header>
     <a href="index.php" style="float: right; margin-right: 20px;">Sair</a>
 
+    </header>
     <section id="principal">
-        <form id="notaFiscal" style="margin-left: 5%;">
-            <Legend>NOTA FISCAL</Legend><br>
-            <input type="radio" id="numVenda" name="tipoRelatorio" value="numeroVenda" checked> &nbsp; &nbsp;
-            <label for="numVenda">Nº Venda</label> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-            <input type="radio" id="numeroCpf" name="tipoRelatorio" value="numeroCpf"> &nbsp; &nbsp;
-            <label for="numCpf">Nº CPF</label><br><br>
-            <input type="text" class="form-control" size="60" id="" placeholder="Digite aqui para pesquisar">
-
-            <button class="btn btn-outline-danger" type="submit" id="btnGerarNotaFiscal" name="gerarNotaFiscal">Buscar</button>
-            <button class="btn btn-outline-danger"type="submit" id="btnGerarNotaFiscal" name="gerarNotaFiscal">Emitir NotaFiscal</button>
-
-        </fom><br>
+        <div id="alimentaEstoque" style="margin-left: 5%;">
+            <legend>
+                <legend>GERENCIAR ESTOQUE</legend><br>
+            </legend>
+           
+        </div>
     </section>
 </body>
 

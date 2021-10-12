@@ -16,10 +16,10 @@
             <li><a href="home.php">HOME</a></li>
             <li><a href="Pesquisar.php">PESQUISAR</a>
                 <ul>
-                    <li><a href="#">Clientes</a></li>
-                    <li><a href="#">Fornecedores</a></li>
-                    <li><a href="#">Funcionários</a></li>
-                    <li><a href="#">Produtos</a></li>                    
+                    <li><a href="ConsultaClientes.php">Clientes</a></li>
+                    <li><a href="ConsultaFornecedor.php">Fornecedores</a></li>
+                    <li><a href="ConsultaFuncionarios.php">Funcionários</a></li>
+                    <li><a href="ConsultaProdutos.php">Produtos</a></li>                    
                 </ul>
             </li>
             <li><a href="Vendas.php">VENDAS</a></li>
@@ -27,13 +27,13 @@
             <li><a href="#">PRODUTOS</a>
                  <ul>
                     <li><a href="CadastrarProdutos.php">Cadastro de Produtos</a></li>
-                    <li><a href="#">Estoque de Produtos</a></li>                                        
+                    <li><a href="AlimentarEstoque.php">Estoque de Produtos</a></li>                                        
                 </ul>
             </li>
             <li><a href="Cadastros.php">CADASTROS</a></li>
             <li><a href="NotaFiscal.php">NOTA FISCAL</a></li>
             <li><a href="Relatorios.php">RELATÓRIOS</a></li>
-        </ul>
+    
     </nav>
     </header>
     <a href="index.php" style="float: right; margin-right: 20px;">Sair</a>
@@ -80,20 +80,20 @@
             </div>
 
             <label id="Nome">Nome:</label>
-            <input id="nome" type="search" name="nome" size="50"><br>
+            <input id="nome" type="search" name="nome" size="50">
             <label id="Cpf">CPF:</label>
-            <input id="Cpf" type="text" name="cpf" size="25"><br>
+            <input id="Cpf" type="text" name="cpf" size="25">
             <label for="endereco" id="endereco">Endereço:</label>
             <input id="endereco" type="text" name="endereco" size="60">  
         </div>
 
         <div id="saidaValorVenda">            
             <label id="total" for="totalSemDesconto"> Total: R$</label>
-            <input id="totalSemDesconto" name="totalSemDesconto"  size="10"><br>
+            <input id="totalSemDesconto" name="totalSemDesconto"  size="10">
             <label id="desconto" for="desconto"> Desconto: R$</label>
-            <input id="desconto" type="text" name="desconto" size="10" placeholder="%"><br>
+            <input id="desconto" type="text" name="desconto" size="10" placeholder="%">
             <label for="TotalComDesconto" id="TotalComDesconto">Total com Desconto: R$</label>
-            <input id="TotalComDesconto" name="totalComDesconto" size="10"><br>
+            <input id="TotalComDesconto" name="totalComDesconto" size="10">
         </div>  
     </section>
 </body>

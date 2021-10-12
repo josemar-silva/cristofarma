@@ -136,10 +136,10 @@
             <li><a href="home.php">HOME</a></li>
             <li><a href="Pesquisar.php">PESQUISAR</a>
                 <ul>
-                    <li><a href="#">Clientes</a></li>
-                    <li><a href="#">Fornecedores</a></li>
-                    <li><a href="#">Funcionários</a></li>
-                    <li><a href="#">Produtos</a></li>                    
+                    <li><a href="ConsultaClientes.php">Clientes</a></li>
+                    <li><a href="ConsultaFornecedor.php">Fornecedores</a></li>
+                    <li><a href="ConsultaFuncionarios.php">Funcionários</a></li>
+                    <li><a href="ConsultaProdutos.php">Produtos</a></li>                    
                 </ul>
             </li>
             <li><a href="Vendas.php">VENDAS</a></li>
@@ -147,7 +147,7 @@
             <li><a href="#">PRODUTOS</a>
                  <ul>
                     <li><a href="CadastrarProdutos.php">Cadastro de Produtos</a></li>
-                    <li><a href="#">Estoque de Produtos</a></li>                                        
+                    <li><a href="AlimentarEstoque.php">Estoque de Produtos</a></li>                                        
                 </ul>
             </li>
             <li><a href="Cadastros.php">CADASTROS</a></li>
@@ -176,7 +176,7 @@
             <input type="hidden" id="id_get" name="id_get" value="">
 
             <label id="txtTipoCadastro">Tipo de cadastro:</label>
-            <select id="tipoCadastro" name="tipoCadastro" onchange="verifica(this.value)">
+            <select id="tipoCadastro" name="tipoCadastro" class="form-control" onchange="verifica(this.value)">
                 <option value="" selected> </option>
                 <option value="cliente" >Cliente</option>
                 <option value="fornecedor">Fornecedor</option>
@@ -184,34 +184,33 @@
             </select><br/>
 
             <label for="nome" id="nome">Nome:</label>
-            <input id="nome" type="text" name="nome" size="60" value="<?php if(isset($retornoConsulta)){echo $retornoConsulta[0]['nome'];}?>"><br>
+            <input id="nome" type="text" class="form-control" name="nome" size="60" value="<?php if(isset($retornoConsulta)){echo $retornoConsulta[0]['nome'];}?>">
 
             <label for="cpfAndCnpj" id="cpf">CPF/CNPJ:</label>
-            <input id="cpfAndCnpj" type="text" name="cpf_cnpj" size="40" value="<?php if(isset($retornoConsulta)){echo $retornoConsulta[0]['cpf_cnpj'];}?>"> <br>
+            <input id="cpfAndCnpj" class="form-control" type="text" name="cpf_cnpj" size="40" value="<?php if(isset($retornoConsulta)){echo $retornoConsulta[0]['cpf_cnpj'];}?>">
 
             <label for="email" id="email">E-mail:</label>
-            <input id="email" type="email" name="email" size="40" value="<?php if(isset($retornoConsulta)){echo $retornoConsulta[0]['email'];}?>"><br>
+            <input id="email" class="form-control" type="email" name="email" size="40" value="<?php if(isset($retornoConsulta)){echo $retornoConsulta[0]['email'];}?>">
 
             <label for="telefoneFixo" id="telefoneFixo">Telefone Fixo:</label>
-            <input id="telefoneFixo" type="text" name="telefoneFixo" size="25" value="<?php if(isset($retornoConsulta)){echo $retornoConsulta[0]['telefone_fixo'];}?>"><br>
+            <input id="telefoneFixo" class="form-control" type="text" name="telefoneFixo" size="25" value="<?php if(isset($retornoConsulta)){echo $retornoConsulta[0]['telefone_fixo'];}?>">
 
             <label for="telefoneFixo" id="telefoneFixo">Telefone Celular:</label>
-            <input id="telefoneCelular" type="text" name="telefoneCelular" size="25" value="<?php if(isset($retornoConsulta)){echo $retornoConsulta[0]['telefone_celular'];}?>"><br>
+            <input id="telefoneCelular" class="form-control" type="text" name="telefoneCelular" size="25" value="<?php if(isset($retornoConsulta)){echo $retornoConsulta[0]['telefone_celular'];}?>">
 
             <label for="matricula">Matrícula:</label>
-            <input id="matricula" type="text" name="matricula" size="20" value="<?php if(isset($retornoConsulta)){if (isset($retornoConsulta[0]['matricula'])){ echo $retornoConsulta[0]['matricula'];} else { echo '';}}?>"><br>
+            <input id="matricula"  class="form-control"type="text" name="matricula" size="20" value="<?php if(isset($retornoConsulta)){if (isset($retornoConsulta[0]['matricula'])){ echo $retornoConsulta[0]['matricula'];} else { echo '';}}?>">
 
             <label for="senha">Senha:</label>
-            <input id="senha" type="password" name="senha" size="20" value="<?php if(isset($retornoConsulta)){if (isset($retornoConsulta[0]['senha'])){ echo $retornoConsulta[0]['senha'];} else { echo '';}}?>"><br>
+            <input id="senha"  class="form-control"type="password" name="senha" size="20" value="<?php if(isset($retornoConsulta)){if (isset($retornoConsulta[0]['senha'])){ echo $retornoConsulta[0]['senha'];} else { echo '';}}?>">
 
             <label id="funcao">Função:</label>
-            <select id="listaFuncao" name="listaFuncao" >
+            <select id="listaFuncao" name="listaFuncao" class="form-control">
                 <option value="" selected> </option>
                 <option value="gerente">Gerente</option>
                 <option value="vendedor">Vendedor</option>
                 <option value="operador de caixa">Operador de Caixa</option>
             </select><br/> 
-
     <script>
 	        function verifica(value){
 	        var i = document.getElementById("tipoCadastro");
@@ -229,8 +228,8 @@
         }
     };
     </script>
-            <label for="endereco" id="endereco">Endereço:</label>
-            <input id="endereco" type="text" name="endereco" size="65" value="<?php if(isset($retornoConsulta)){echo $retornoConsulta[0]['endereco'];}?>" > <br>
+            <label for="endereco" id="endereco">Endereço:</label><br>
+            <input id="endereco" class="form-control"type="text" name="endereco" size="65" value="<?php if(isset($retornoConsulta)){echo $retornoConsulta[0]['endereco'];}?>" > <br>
             <input  class="btn btn-outline-danger" id="btnCadastrar" type="submit" name="btnGravarClientes" 
                 value="<?php if (isset($_GET['id_get_up'])){echo 'Atualizar';} else {echo 'Cadastrar';}?>">
         </form> 
