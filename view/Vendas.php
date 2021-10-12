@@ -45,7 +45,11 @@
     <legend>REALIZAR VENDA/ORÇAMENTO</legend><br>
 
         <div id="itensAdicionados">
-
+            <div id="divNumeroVenda" style="display: block; margin-left: 30%;">
+                <label>Nº da Venda:</label>
+                <input id="numeroVenda" name="numeroVenda" value="<?php echo '000000123456789'?>" 
+                style="color: blue; text-align: center; font-size: 15pt; border: none;" size="15" ></input>
+            </div>
         <table>            
             <?php
                     require_once 'Produto.php';
@@ -59,9 +63,7 @@
                     echo '<th> CÓDIGO DE BARRAS </th>';
                     echo '<th> FORNECEDOR </th>';
                     echo '</tr>';
-
-                   
-            ?>
+                ?>
         </table>
         </div>
 
