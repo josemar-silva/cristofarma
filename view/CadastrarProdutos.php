@@ -41,33 +41,30 @@
     ?>
 
 <header>
-    <ul class="nav nav-tabs">
- 
-            <li class="nav-item">
-                <a class="nav-link" href="home.php">HOME</a>
+<nav class="dp-menu">
+        <ul>
+            <li><a href="home.php">HOME</a></li>
+            <li><a href="Pesquisar.php">PESQUISAR</a>
+                <ul>
+                    <li><a href="#">Clientes</a></li>
+                    <li><a href="#">Fornecedores</a></li>
+                    <li><a href="#">Funcionários</a></li>
+                    <li><a href="#">Produtos</a></li>                    
+                </ul>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" href="Pesquisar.php">PESQUISAR</a>
+            <li><a href="Vendas.php">VENDAS</a></li>
+            <li><a href="Caixa.php">CAIXA</a></li>
+            <li><a href="#">PRODUTOS</a>
+                 <ul>
+                    <li><a href="CadastrarProdutos.php">Cadastro de Produtos</a></li>
+                    <li><a href="#">Estoque de Produtos</a></li>                                        
+                </ul>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" href="Vendas.php">VENDAS</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="Caixa.php">CAIXA</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="CadastrarProdutos.php">PRODUTOS</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="Cadastros.php">CADASTROS</a>
-            </li>   
-            <li class="nav-item">
-                <a class="nav-link" href="NotaFiscal.php">NOTA FISCAL</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="Relatorios.php">RELATÓRIOS</a>
-            </li>
-    </ul>
+            <li><a href="Cadastros.php">CADASTROS</a></li>
+            <li><a href="NotaFiscal.php">NOTA FISCAL</a></li>
+            <li><a href="Relatorios.php">RELATÓRIOS</a></li>
+        </ul>
+    </nav>
     <a href="index.php" style="float: right; margin-right: 20px;">Sair</a>
 
     </header>
@@ -75,21 +72,16 @@
             <form id="cadastro" method="POST">
                 <legend>CADASTRO DE PRODUTOS</legend><br>
 
-                <label id="descricaoProduto">Descrição:</label>
-                <input id="descricaoProduto" type="text" name="descricaoProduto" size="60"> <br>
-
-                <label id="codigoDeBarras">Código de Barras:</label>
-                <input id="codigoDeBarras" type="text" name="codigoDeBarras" size="40"><br>
-
-                <label id="fornecedor">Fornecedor:</label>
-                <input id="fornecedor" type="text" name="fornecedor" size="30">
-                <a href="ConsultaFornecedor.php">+</a><br>
-
-                <label id="precoCusto">Preço de Custo:</label>
-                <input id="precoCusto" type="text" name="precoCusto" size="20"> <br>
-
-                <label id="precoVenda">Preço de Venda:</label>
-                <input id="precoVenda" type="text" name="precoVenda" size="20"> <br>
+                <input id="descricaoProduto" class="form-control"  placeholder="Descricao Produto" type="text" name="descricaoProduto" size="60"> <br>
+                
+                <input id="codigoDeBarras" class="form-control"  placeholder="Código de Barras" type="text" type="text" name="codigoDeBarras" size="40"><br>
+                
+                <input id="fornecedor" class="form-control"  placeholder="Fornecedor" type="text" type="text" name="fornecedor" size="30">
+                <a href="ConsultaFornecedor.php" id="alinhamento" class=" btn btn-light " >+</a><br>
+                
+                <input id="precoCusto" class="form-control"  placeholder="Preço custo" type="text" type="text" name="precoCusto" size="20"> <br>
+                
+                <input id="precoVenda" class="form-control"  placeholder="Preço venda" type="text" type="text" name="precoVenda" size="20"> <br>
 
                 <input class="btn btn-outline-danger" type="submit" id="btnCadastrar" name="btnGravarClientes"
                     value="<?php echo "Cadastrar"; ?>">

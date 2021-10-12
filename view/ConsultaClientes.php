@@ -14,33 +14,30 @@
 
 <body>
 <header>
-    <ul class="nav nav-tabs">
- 
-            <li class="nav-item">
-                <a class="nav-link" href="home.php">HOME</a>
+<nav class="dp-menu">
+        <ul>
+            <li><a href="home.php">HOME</a></li>
+            <li><a href="Pesquisar.php">PESQUISAR</a>
+                <ul>
+                    <li><a href="#">Clientes</a></li>
+                    <li><a href="#">Fornecedores</a></li>
+                    <li><a href="#">Funcionários</a></li>
+                    <li><a href="#">Produtos</a></li>                    
+                </ul>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" href="Pesquisar.php">PESQUISAR</a>
+            <li><a href="Vendas.php">VENDAS</a></li>
+            <li><a href="Caixa.php">CAIXA</a></li>
+            <li><a href="#">PRODUTOS</a>
+                 <ul>
+                    <li><a href="CadastrarProdutos.php">Cadastro de Produtos</a></li>
+                    <li><a href="#">Estoque de Produtos</a></li>                                        
+                </ul>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" href="Vendas.php">VENDAS</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="Caixa.php">CAIXA</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="CadastrarProdutos.php">PRODUTOS</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="Cadastros.php">CADASTROS</a>
-            </li>   
-            <li class="nav-item">
-                <a class="nav-link" href="NotaFiscal.php">NOTA FISCAL</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="Relatorios.php">RELATÓRIOS</a>
-            </li>
-    </ul>
+            <li><a href="Cadastros.php">CADASTROS</a></li>
+            <li><a href="NotaFiscal.php">NOTA FISCAL</a></li>
+            <li><a href="Relatorios.php">RELATÓRIOS</a></li>
+        </ul>
+    </nav>
     </header>
 
     <?php
