@@ -69,8 +69,8 @@
             <label>Troco R$:</label>
             <input id="troco" class="form-control" name="troco" size="6">
 
-            <button class="btn btn-outline-danger" id="btnCancelar" name="cancelar" >Cancelar</button>
-            <button class="btn btn-outline-danger" id="btnFinalizar" name="finalizar">Finalizar</button>
+            <button class="btn btn-outline-danger" id="btnCancelar" name="cancelar" onclick="">Cancelar</button>
+            <button class="btn btn-outline-danger" id="btnFinalizar" name="finalizar" onclick="">Finalizar</button>
         </form>
        
     </section>

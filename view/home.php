@@ -63,7 +63,7 @@
             </fieldset>
             <div id="contatos" style="color: #8b0211; text-align: center; margin-top: 5%;">
                 <h1>Tele Entregas: (62) 3242-7373</h1>
-                <h1>WhatsApp: (62) 9 9999-9999</h1>
+                <h1>WhatsApp: (62) 98437-1551 / (62) 99279-1340</h1>
             </div>
         </section>
 </body>
