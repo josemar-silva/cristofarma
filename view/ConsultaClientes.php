@@ -9,6 +9,7 @@
 <head>
     <meta charset="UTF-8" />
     <link rel="stylesheet" href="../css/bootstrap/nav/navegador.css">
+    <link rel="stylesheet" href="../css/estilo.css">
     <title>Pesquisar Clientes</title>
 </head>
 
@@ -35,32 +36,34 @@
             </li>
             <li><a href="Cadastros.php">CADASTROS</a></li>
             <li><a href="NotaFiscal.php">NOTA FISCAL</a></li>
-            <li><a href="Relatorios.php">RELATÓRIOS</a></li>
+            <li><a href="#">RELATÓRIOS</a>
+                <ul>
+                    <li><a href="RelatorioVendas.php">Relatório de Vendas</a></li>
+                    <li><a href="RelatorioEstoque.php">Relatório Geral de Estoque</a></li>                                        
+                </ul>
         </ul>
     </nav>
     </header>
 
     <a href="index.php" style="float: right; margin-right: 20px;">Sair</a>
 
-    <?php
-
-        if (isset($_GET['pesquisa'])) // VERIFICA SE CLICOU EM EDITAR
-        {
-            $id_up = addslashes($_GET['pesquisa']); 
-            $retornoConsulta = $pessoa->selectAllPessoaCliente($id_up); #retorno da consulta armazenado na variavel $retornoConsulta
-        
-        }
-    ?>
+   
     <form action="ConsultaClientes.php" method="GET">
+        <legend>CONSULTA CLIENTES</legend>
         
-        <label>Pesquisa:</label>
-        <input type="search" id="pesquisa" class="form-control" name="pesquisa" value="" size=" 70" placeholder="Digte aqui para buscar" >
+        <label style="margin-left: 25%;"></label>
+        <input  type="search" id="buscaCliente" class="form-control" name="buscaCliente" value="<?php if (isset($_GET['buscaCliente']) && !empty($_GET['buscaCliente'])) 
+                echo $_GET['buscaCliente'];?>" size=" 50" class="form-control-busca" placeholder="Digte aqui para buscar" >
 
         <button class="btn btn-outline-danger" id="btnBuscar" onclick="" style="width: 10%; padding: 2px;">Buscar</button><br><br>
     </form>
 
-    <section >
-    <table class="table table-hover">
+    <section>
+    <?php
+        if (isset($_GET['buscaCliente'])) {
+            $tipoConsulta = "cliente";
+        ?>
+            <table class="table table-hover">
         <tr>
             <th> CÓDIGO CLIENTE </th>
             <th> NOME DO CLIENTE</th>
@@ -73,7 +76,7 @@
         </tr>
         <?php
 
-            $dados = $pessoa->selectAllPessoaCliente();
+            $dados = $pessoa->consultaClienteFornecedorLike($consultaLike = "%".trim($_GET['buscaCliente'])."%", $tipoConsulta);
         
             #echo"<pre>"; // organizar o array (matriz de array)
             #var_dump($dados); // imprimir na tela o resultado do array
@@ -104,6 +107,10 @@
             }
         ?>
     </table>
+        <?php
+        
+            }
+        ?>
     </section>
 
     <?php

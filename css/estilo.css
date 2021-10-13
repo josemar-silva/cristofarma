@@ -4,6 +4,10 @@
     font-family: sans-serif;
 }
 
+#principalHome {
+
+}
+
 #nomeEmpresa {
     font-size: 65pt;
     text-align: center;
@@ -12,17 +16,8 @@
 }
 
 #missao {
-    padding: 25px;
-    width: 85%;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-#contatos {
-    text-align: center;
-    font-size: 35pt;
-    border: 1px solid yellowgreen;
-    margin-top: 80px;
+    border:  #8b0211 2px solid; 
+    padding: 10px;
 }
 
 #tabelaNotaFiscal {
@@ -70,15 +65,6 @@ section#principal {
     padding: 10px;
 }
 
-#principal, label, input {
-    display: block;
-}
-
-
-#relatorioGerencialVendas input, label {
-    display: inline-block;
-
-}
 
 legend {
     text-align: center;
@@ -88,11 +74,14 @@ legend {
 
 #notaFiscal input, label {
 
+    display: inline-block;
+
 }
 
 
 body {
     font-size: .875rem;
+
   }
   
   .feather {
@@ -203,11 +192,30 @@ border: none;
 
   }
 
+  #adicionaPrudutoVenda {
+
+    display: inline-block;
+    border: black dotted 1px;
+    width: 60px;
+    height: 60px;
+    margin-left: 20px;
+}
+
+#removeProdutoVenda {
+
+    display: inline-block;
+    border: black dotted 1px;
+    width: 60px;
+    height: 60px;
+    margin-left: 20px;
+
+}
+
 #dadosClienteVenda {
     float:  right; 
     border: none;
     width: 35%;
-    margin-top:20px;
+    margin-top:2%;
     height: 280px;
     margin-right: 3px;
 }
@@ -217,10 +225,9 @@ border: none;
     border:rgba(0, 0, 0, .2) 2px solid;
     margin-left: 3px;
     border-radius: 2%;
-
     float: left;
     width: 63%;
-    height: 600px;
+    height: 620px;
     display: block;
 
 }
@@ -231,7 +238,7 @@ border: none;
     border: none;
     border-radius: 5%;
     width: 35%;
-    margin-top: 10px;
+    margin-top: 1.5%;
     margin-right: 3px;
     display: block;
     height: 230px;
@@ -276,5 +283,5 @@ border: none;
     }
 
     #principalCaixa {
-        border: solid 1px green;
+    
     }

@@ -32,17 +32,21 @@
             </li>
             <li><a href="Cadastros.php">CADASTROS</a></li>
             <li><a href="NotaFiscal.php">NOTA FISCAL</a></li>
-            <li><a href="Relatorios.php">RELATÓRIOS</a></li>
-    
+            <li><a href="#">RELATÓRIOS</a>
+                <ul>
+                    <li><a href="RelatorioVendas.php">Relatório de Vendas</a></li>
+                    <li><a href="RelatorioEstoque.php">Relatório Geral de Estoque</a></li>                                        
+                </ul>
+        </ul>
     </nav>
     </header>
     <a href="index.php" style="float: right; margin-right: 20px;">Sair</a>
 
-    <section id="principalVendas" style="border: solid 1px red; height: 650px;">
-    <legend>REALIZAR VENDA/ORÇAMENTO</legend><br>
+    <section id="principalVendas">
+    <legend>REALIZAR VENDA/ORÇAMENTO</legend>
 
         <div id="itensAdicionados">
-            <div id="divNumeroVenda" style="display: binlock; margin-left: 35%;">
+            <div id="divNumeroVenda" style="display: block; margin-left: 35%;">
                 <label>Nº da Venda:</label>
                 <input id="numeroVenda" name="numeroVenda" value="<?php echo '000000123456789'?>" 
                 style="color: blue; text-align: center; font-size: 15pt; border: none; display: inline;" size="15" ></input>
@@ -65,19 +69,24 @@
         </div>
 
         <div id="adicionaPrudutoVenda">
-                <a href="ConsultaProdutos.php" style="font-size: 12px; margin-left: 10px;">  Adcionar Produto</a>
+                <a href="ConsultaProdutos.php"> Adcionar Produto</a>
         </div>
         <div id="removeProdutoVenda">
-                <a href="" style="font-size: 12px; margin-left: 10px;"> Remover Produto</a>
+                <a href="#"> Remover Produto</a>
         </div>
 
         <div id="dadosClienteVenda">
-        <legend>Dados da Venda:</legend>
-            <div id="adicionaClienteVenda">
+        <legend style="border: solid 1px #8b0210; background-color:  #8b0211; color: white; padding: 2px;">DADOS DA VENDA</legend><br>
+            <div id="adicionaClienteVendaNome">
                     <a href="ConsultaClientes.php" style="font-size: 12px; margin-left: 10px;
-                    border: solid red 1px; width: 85px; height: 30px; float: right; 
-                    margin-right: 170px;">Buscar Cliente</a>
+                    border: dotted 1px; width: 50px; height: 30px; float: right; 
+                    margin-right: 170px;">Procurar</a>
             </div>
+                <div id="adicionaClienteVendaCpf">
+                        <a href="ConsultaClientes.php" style="font-size: 12px; margin-left: 10px;
+                        border: dotted 1px; width: 50px; height: 30px; float: right; 
+                        margin-right: 170px;">Procurar</a>
+                </div>
 
             <label id="Nome">Nome:</label>
             <input id="nome" type="search" class="form-control" name="nome" size="50">

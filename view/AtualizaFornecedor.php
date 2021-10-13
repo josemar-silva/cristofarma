@@ -152,7 +152,11 @@
             </li>
             <li><a href="Cadastros.php">CADASTROS</a></li>
             <li><a href="NotaFiscal.php">NOTA FISCAL</a></li>
-            <li><a href="Relatorios.php">RELATÓRIOS</a></li>
+            <li><a href="#">RELATÓRIOS</a>
+                <ul>
+                    <li><a href="RelatorioVendas.php">Relatório de Vendas</a></li>
+                    <li><a href="RelatorioEstoque.php">Relatório Geral de Estoque</a></li>                                        
+                </ul>
         </ul>
     </nav>
     <a href="index.php" style="float: right; margin-right: 20px;">Sair</a>

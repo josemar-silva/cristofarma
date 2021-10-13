@@ -8,6 +8,7 @@
 <head>
     <meta charset="UTF-8" />
     <link rel="stylesheet" href="../css/bootstrap/nav/navegador.css">
+    <link rel="stylesheet" href="../css/estilo.css">
     <title>Pesquisar Produtos</title>
 </head>
 <body>
@@ -23,7 +24,7 @@
     ?>
 <header>
 <nav class="dp-menu">
-<ul>
+        <ul>
             <li><a href="home.php">HOME</a></li>
             <li><a href="#">PESQUISAR</a>
                 <ul>
@@ -43,26 +44,35 @@
             </li>
             <li><a href="Cadastros.php">CADASTROS</a></li>
             <li><a href="NotaFiscal.php">NOTA FISCAL</a></li>
-            <li><a href="Relatorios.php">RELATÓRIOS</a></li>
+            <li><a href="#">RELATÓRIOS</a>
+                <ul>
+                    <li><a href="RelatorioVendas.php">Relatório de Vendas</a></li>
+                    <li><a href="RelatorioEstoque.php">Relatório Geral de Estoque</a></li>                                        
+                </ul>
         </ul>
     </nav>
     </header>
+
+    <section id="principalConsultaProdutos">
+
     <a href="index.php" style="float: right; margin-right: 20px;">Sair</a>
 
-    <section id="principal">
+   
+<form action="ConsultaProdutos.php" method="GET">
+    <legend>CONSULTA PRDUTOS</legend>
+    
+    <label style="margin-left: 25%;"></label>
+    <input  type="search" id="buscaProdutos" class="form-control" name="buscaProdutos" value="<?php if (isset($_GET['buscaProdutos']) && !empty($_GET['buscaProdutos'])) 
+            echo $_GET['buscaProdutos'];?>" size=" 50" class="form-control-busca" placeholder="Digte aqui para buscar" >
 
-    <form action="ConsultaClientes.php" method="GET">
-        
-        <label>Pesquisa:</label>
-        <input type="search" id="pesquisa" class="form-control" name="pesquisa" value="" size=" 70" placeholder="Digte aqui para buscar" >
-
-        <button class="btn btn-outline-danger" id="btnBuscar" onclick="" style="width: 10%; padding: 2px;">Buscar</button><br><br>
-    </form>
+    <button class="btn btn-outline-danger" id="btnBuscar" onclick="" style="width: 10%; padding: 2px;">Buscar</button><br><br>
+</form>
 
     <!---------------------- BUSCA %like% = 'quem contem'... ----------------------->
 
         <table>            
-            <?php 
+             <?php
+                if (isset($_GET['buscaProdutos'])) { 
                     echo '<table class="table table-hover">';
                     echo '<tr>';
                     echo '<th> CÓDIGO PRODUTO </th>';
@@ -74,7 +84,7 @@
                     echo '<th>  </th>';
                     echo '</tr>';
 
-                    $dados = $produto->selectAllProduto();
+                    $dados = $produto->consultaProdutoLike($consultaLike = "%".trim($_GET['buscaProdutos'])."%");
 
                     //echo"<pre>"; // organizar o array (matriz de array)
                     //var_dump($dados); // imprimir na tela o resultado do array
@@ -102,6 +112,7 @@
                                 echo "</tr>"; // fecha linha dos dados selecionados
                         }
                     } 
+                }
             ?>
         </table>
     </section>

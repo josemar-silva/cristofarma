@@ -23,7 +23,7 @@
             </li>
             <li><a href="Vendas.php">VENDAS</a></li>
             <li><a href="Caixa.php">CAIXA</a></li>
-            <li><a href="AlimentarEstoque.php">PRODUTOS</a>
+            <li><a href="#">PRODUTOS</a>
                  <ul>
                     <li><a href="CadastrarProdutos.php">Cadastro de Produtos</a></li>
                     <li><a href="AlimentarEstoque.php">Estoque de Produtos</a></li>                                        
@@ -31,7 +31,11 @@
             </li>
             <li><a href="Cadastros.php">CADASTROS</a></li>
             <li><a href="NotaFiscal.php">NOTA FISCAL</a></li>
-            <li><a href="Relatorios.php">RELATÓRIOS</a></li>
+            <li><a href="#">RELATÓRIOS</a>
+                <ul>
+                    <li><a href="RelatorioVendas.php">Relatório de Vendas</a></li>
+                    <li><a href="RelatorioEstoque.php">Relatório Geral de Estoque</a></li>                                        
+                </ul>
         </ul>
     </nav>
     </header>
@@ -43,8 +47,8 @@
 
     <form action="Pesquisar.php" method="GET">
         <div id="selecionaTipoConsulta" style="margin-left: 31%;" >
-            <input type="radio" id="consultaClienteRadio"  name="tipoConsulta" value="cliente" style="margin-right: 10px;" style="margin-right: 10px;">
-            <label for="consultaClienteRadio" style="margin-right: 40px;">Clientes</label>
+            <input  type="radio" id="consultaClienteRadio"  name="tipoConsulta" value="cliente" style="margin-right: 10px;" style="margin-right: 10px;">
+            <label  for="consultaClienteRadio" style="margin-right: 40px;">Clientes</label>
 
             <input type="radio" id="consultaFornecedorRadio" name="tipoConsulta" value="fornecedor" style="margin-right: 10px;">
             <label for="consultaFornecedorRadio" style="margin-right: 40px;">Fornecedores</label>

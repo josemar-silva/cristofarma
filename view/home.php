@@ -4,13 +4,15 @@
 <head>
     <meta charset="UTF-8" />
     <link rel="stylesheet" href="../css/bootstrap/nav/navegador.css">
+    <link rel="stylesheet" href="../css/estilo.css">
+
     <title>Home</title>
 </head>
 
 <body>
     <header>
     <nav class="dp-menu">
-    <ul>
+        <ul>
             <li><a href="home.php">HOME</a></li>
             <li><a href="#">PESQUISAR</a>
                 <ul>
@@ -30,25 +32,23 @@
             </li>
             <li><a href="Cadastros.php">CADASTROS</a></li>
             <li><a href="NotaFiscal.php">NOTA FISCAL</a></li>
-            <li><a href="Relatorios.php">RELATÓRIOS</a></li>
-        </ul>
-            </li>
-            <li><a href="Cadastros.php">CADASTROS</a></li>
-            <li><a href="NotaFiscal.php">NOTA FISCAL</a></li>
-            <li><a href="Relatorios.php">RELATÓRIOS</a></li>
+            <li><a href="#">RELATÓRIOS</a>
+                <ul>
+                    <li><a href="RelatorioVendas.php">Relatório de Vendas</a></li>
+                    <li><a href="RelatorioEstoque.php">Relatório Geral de Estoque</a></li>                                        
+                </ul>
         </ul>
     </nav>
     <a href="index.php" style="float: right; margin-right: 20px;">Sair</a>
-
     </header>
     
-        <section id="principal" style="padding: 50px;">
-            <p id="nomeEmpresa">DROGARIA CRISTOFARMA</p>
+        <section id="principalHome" style="padding: 50px;">
+            <p><h1 id="nomeEmpresa" style="font-size: 64pt; color: #8b0211; text-align: center;" > DROGARIA CRISTOFARMA PLUS </h1></p>
             <fieldset id="missao">
                 <legend>
-                    <h2>Missão:</h1>
+                    <h1>Missão:</h1>
                 </legend>
-                <p>
+                <p style="color: #8b0211;">
                     "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
                     labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
                     nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
@@ -61,8 +61,8 @@
                     sunt in culpa qui officia deserunt mollit anim id est laborum."
                 </p>
             </fieldset>
-            <div id="contatos">
-                <h1>Tele Entregas: (62) 3233-3333</h1>
+            <div id="contatos" style="color: #8b0211; text-align: center; margin-top: 5%;">
+                <h1>Tele Entregas: (62) 3242-7373</h1>
                 <h1>WhatsApp: (62) 9 9999-9999</h1>
             </div>
         </section>

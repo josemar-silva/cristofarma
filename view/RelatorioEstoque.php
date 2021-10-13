@@ -4,7 +4,8 @@
 <head>
     <meta charset="UTF-8" />
     <link rel="stylesheet" href="../css/bootstrap/nav/navegador.css">
-    <title>Estoque</title>
+    <link rel="stylesheet" href="../css/estilo.css">
+    <title>Relatórios</title>
 </head>
 
 <body>    
@@ -30,18 +31,24 @@
             </li>
             <li><a href="Cadastros.php">CADASTROS</a></li>
             <li><a href="NotaFiscal.php">NOTA FISCAL</a></li>
-            <li><a href="Relatorios.php">RELATÓRIOS</a></li>
+            <li><a href="#">RELATÓRIOS</a>
+                <ul>
+                    <li><a href="RelatorioVendas.php">Relatório de Vendas</a></li>
+                    <li><a href="RelatorioEstoque.php">Relatório Geral de Estoque</a></li>                                        
+                </ul>
         </ul>
     </nav>
     <a href="index.php" style="float: right; margin-right: 20px;">Sair</a>
 
     </header>
-    <section id="principal">
-        <div id="alimentaEstoque" style="margin-left: 5%;">
-            <legend>
-                <legend>GERENCIAR ESTOQUE</legend><br>
-            </legend>
-           
+    <section id="principalEstoque">
+        <div id="relatorioGerencialVendas" style="margin-left: 5%;">
+                <legend style="text-align: left;">RELATÓRIO GERAL DE ESTOQUE</legend><br>
+            
+            <input type="radio" id="estoque" name="tipoRelatorioEstoque" value="estoque" checked>&nbsp; &nbsp;
+            <label for="estoque" style="font-size: 13pt;">Relatório de Estoque</label><br><br>
+
+            <button class="btn btn-outline-danger" id="btnGerarRelatorioGerencial">Gerar Relatório</button>
         </div>
     </section>
 </body>

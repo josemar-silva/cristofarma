@@ -9,6 +9,7 @@
 <head>
     <meta charset="UTF-8" />
     <link rel="stylesheet" href="../css/bootstrap/nav/navegador.css">
+    <link rel="stylesheet" href="../css/estilo.css">
     <title>Pesquisar Clientes</title>
 </head>
 
@@ -35,33 +36,32 @@
             </li>
             <li><a href="Cadastros.php">CADASTROS</a></li>
             <li><a href="NotaFiscal.php">NOTA FISCAL</a></li>
-            <li><a href="Relatorios.php">RELATÓRIOS</a></li>
+            <li><a href="#">RELATÓRIOS</a>
+                <ul>
+                    <li><a href="RelatorioVendas.php">Relatório de Vendas</a></li>
+                    <li><a href="RelatorioEstoque.php">Relatório Geral de Estoque</a></li>                                        
+                </ul>
         </ul>
     </nav>
     <a href="index.php" style="float: right; margin-right: 20px;">Sair</a>
-        
-    </header>
 
-    <?php
+   
+<form action="ConsultaFuncionarios.php" method="GET">
+    <legend>CONSULTA FUNCIONÁRIOS</legend>
+    
+    <label style="margin-left: 25%;"></label>
+    <input  type="search" id="buscaFuncionario" class="form-control" name="buscaFuncionario" value="<?php if (isset($_GET['buscaFuncionario']) && !empty($_GET['buscaFuncionario'])) 
+            echo $_GET['buscaFuncionario'];?>" size=" 50" class="form-control-busca" placeholder="Digte aqui para buscar" >
 
-        if (isset($_GET['pesquisa'])) 
-        {
-            $id_up = addslashes($_GET['pesquisa']); 
-            $retornoConsulta = $pessoa->selectAllPessoaFuncionario($id_up); #retorno da consulta armazenado na variavel $retornoConsulta
-        
-        }
+    <button class="btn btn-outline-danger" id="btnBuscar" onclick="" style="width: 10%; padding: 2px;">Buscar</button><br><br>
+</form>
+    <?php 
+    
+        if (isset($_GET['buscaFuncionario'])) {
+            $tipoConsulta = "funcionario";
+
     ?>
-    <section >
-            
-    <form action="ConsultaClientes.php" method="GET">
-        
-        <label>Pesquisa:</label>
-        <input type="search" class="form-control" id="pesquisa" name="pesquisa" value="" size=" 70" placeholder="Digte aqui para buscar" >
-
-        <button class="btn btn-outline-danger" id="btnBuscar" onclick="" style="width: 10%; padding: 2px;">Buscar</button><br><br>
-    </form>
-
-    <table class="table table-hover">
+            <table class="table table-hover">
         <tr>
             <th> CÓDIGO FUNCIONÁRIO </th>
             <th> NOME DO FUNCIONÁRIO</th>
@@ -76,7 +76,9 @@
         </tr>
         <?php
 
-            $dados = $pessoa->selectAllPessoaFuncionario();
+            
+            $dados = $pessoa->consultaClienteFornecedorLike($consultaLike = "%".trim($_GET['buscaFuncionario'])."%", $tipoConsulta);
+
 
             //echo"<pre>"; // organizar o array (matriz de array)
             //var_dump($dados); // imprimir na tela o resultado do array
@@ -106,6 +108,9 @@
             }
         ?>
     </table>
+    <?php
+        }
+    ?>
     </section>
 </body>
 

@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8" />
     <link rel="stylesheet" href="../css/bootstrap/nav/navegador.css">
+    <link rel="stylesheet" href="../css/estilo.css">
     <title>Nota Fiscal</title>
 </head>
 
@@ -30,13 +31,17 @@
             </li>
             <li><a href="Cadastros.php">CADASTROS</a></li>
             <li><a href="NotaFiscal.php">NOTA FISCAL</a></li>
-            <li><a href="Relatorios.php">RELATÓRIOS</a></li>
+            <li><a href="#">RELATÓRIOS</a>
+                <ul>
+                    <li><a href="RelatorioVendas.php">Relatório de Vendas</a></li>
+                    <li><a href="RelatorioEstoque.php">Relatório Geral de Estoque</a></li>                                        
+                </ul>
         </ul>
     </nav>
     </header>
     <a href="index.php" style="float: right; margin-right: 20px;">Sair</a>
 
-    <section id="principal">
+    <section id="principalNotaFiscal">
         <form id="notaFiscal" style="margin-left: 5%;">
             <Legend>NOTA FISCAL</Legend><br>
             <input type="radio" id="numVenda" name="tipoRelatorio" value="numeroVenda" checked> &nbsp; &nbsp;
@@ -45,7 +50,7 @@
             <label for="numCpf">Nº CPF</label><br><br>
             <input type="text" class="form-control" size="60" id="" placeholder="Digite aqui para pesquisar">
 
-            <button class="btn btn-outline-danger" type="submit" id="btnGerarNotaFiscal" name="gerarNotaFiscal">Buscar</button>
+            <button class="btn btn-outline-danger" type="submit" id="btnGerarNotaFiscal" name="gerarNotaFiscal">Buscar</button><br>
             <button class="btn btn-outline-danger"type="submit" id="btnGerarNotaFiscal" name="gerarNotaFiscal">Emitir NotaFiscal</button>
 
         </fom><br>
