@@ -93,13 +93,13 @@
                         echo "<td>" .$value. "</td>";
                     }
                 }
-    ?>
-                     <td>
-                        <a href="AtualizaFornecedor.php?id_get_up=<?php echo $dados[$i]['id_pessoa'];?>">Editar</a>
-                        <a href="ConsultaFornecedor.php?id_get_del=<?php echo $dados[$i]['id_pessoa'];?>">Excluir</a> 
-                        <!-- usar "echo $dados[$i]['id_pessoa']; "pegar ID desejado no array e passar como 'string' para o metodo $_GET-->
-                    </td>
-    <?php
+        ?>
+                        <td>
+                            <a id="acaoEditar" href="AtualizaFornecedor.php?id_get_up=<?php echo $dados[$i]['id_pessoa'];?>">Editar</a>
+                            <a id="acaoExcluir" href="ConsultaFornecedor.php?id_get_del=<?php echo $dados[$i]['id_pessoa'];?>">Excluir</a> 
+                            <!-- usar "echo $dados[$i]['id_pessoa']; "pegar ID desejado no array e passar como 'string' para o metodo $_GET-->
+                        </td>
+        <?php
                     echo "</tr>"; // fecha linha dos dados selecionados
             }
         }
