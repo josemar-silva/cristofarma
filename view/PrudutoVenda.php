@@ -61,7 +61,7 @@ class ProdutoVenda
 
         $conexao = new Conexao("projeto_cristofarma", "localhost", "root", "");
 
-        $dados = $conexao->pdo->prepare("SELECT produto.nome_produto, produto.produto_fornecedor, produto.preco_venda");
+        $dados = $conexao->pdo->prepare("SELECT produto.nome_produto, produto.produto_fornecedor");
     }
 
     public function selectallProdutoVenda($id_produto, $id_venda){

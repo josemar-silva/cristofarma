@@ -66,11 +66,12 @@
 
                     echo '<table class="table table-hover">';
                         echo '<tr>';
-                            echo '<th> DATA VENDA </th>';
+                            echo '<th> DATA </th>';
                             echo '<th> CÓDIGO VENDA </th>';
                             echo '<th> NOME DO CLIENTE </th>';
-                            echo '<th> NOME DO VENDEDOR </th>';
+                            echo '<th> VENDEDOR </th>';
                             echo '<th> VALOR VENDA </th>';
+                            echo '<th> PAGAMENTO </th>';
                             echo '<th> SITUAÇÃO </th>';
                         echo '</tr>';
                 ?>

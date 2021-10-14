@@ -171,14 +171,14 @@ border: none;
     border: black dotted 1px;
     width: 60px;
     height: 60px;
-    margin-left: 20px;
+    margin-left: 10px;
 
 }
 
 #dadosClienteVenda {
     float:  right; 
     border: none;
-    width: 35%;
+    width: 30%;
     margin-top:2%;
     height: 280px;
     margin-right: 3px;
@@ -190,7 +190,7 @@ border: none;
     margin-left: 3px;
     border-radius: 2%;
     float: left;
-    width: 63%;
+    width: 69%;
     height: 620px;
     display: block;
 
@@ -201,7 +201,7 @@ border: none;
     float: right; 
     border: none;
     border-radius: 5%;
-    width: 35%;
+    width: 30%;
     margin-top: 1.5%;
     margin-right: 3px;
     display: block;
@@ -213,7 +213,7 @@ border: none;
 
         text-transform: capitalize;
         font-size: 18pt ;
-        width: 35%;
+        width: 28%;
         border:rgba(0, 0, 0, .2) 2px solid;
         border-radius: 3%;
         height: 630px;  
@@ -241,7 +241,7 @@ border: none;
         border:rgba(0, 0, 0, .2) 2px solid;
         border-radius: 3%;
         height: 630px;  
-        width: 63%;
+        width: 70%;
         float: left;
         margin-left: 10px;
     }

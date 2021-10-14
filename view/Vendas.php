@@ -71,6 +71,8 @@
                             echo '<th> DESCRIÇÃO DO PRODUTO </th>';
                             echo '<th> FORNECEDOR </th>';
                             echo '<th> PREÇO </th>';
+                            echo '<th> % </th>';
+                            echo '<th> PREÇO FINAL </th>';                            
                         echo '</tr>';
                 ?>
         </table>
@@ -83,15 +85,23 @@
                 <a href="#"> Remover Produto</a>
         </div>
 
+        <label id="labelTipoPagamento" style="font-size: 13pt"> &nbsp; &nbsp; &nbsp; Tipo de Pagamento:</label>
+            <select id="tipoPagamento" name="tipoPagamento" style="font-size: 13pt; padding: 3px;">
+                <option value="" selected> </option>
+                <option value="a vista" >À Vista</option>
+                <option value="debito">Débito</option>
+                <option value="credito">Crédito</option>
+            </select><br/>
+
         <div id="dadosClienteVenda">
         <legend style="border: solid 1px #8b0210; background-color:  #8b0211; color: white; padding: 2px;">DADOS DA VENDA</legend><br>
             <div id="adicionaClienteVendaNome">
-                    <a href="ConsultaClientes.php" style="font-size: 12px; margin-left: 10px;
+                    <a href="ConsultaClientes.php" style="font-size: 12px; margin-left: 5px;
                     border: dotted 1px; width: 50px; height: 30px; float: right; 
                     margin-right: 170px;">Procurar</a>
             </div>
                 <div id="adicionaClienteVendaCpf">
-                        <a href="ConsultaClientes.php" style="font-size: 12px; margin-left: 10px;
+                        <a href="ConsultaClientes.php" style="font-size: 12px; margin-left: 5px;
                         border: dotted 1px; width: 50px; height: 30px; float: right; 
                         margin-right: 170px;">Procurar</a>
                 </div>
@@ -111,7 +121,9 @@
             <input id="desconto" type="text" name="desconto" class="form-control" size="10" placeholder="%">
             <label for="TotalComDesconto" id="TotalComDesconto">Total com Desconto: R$</label>
             <input id="TotalComDesconto" name="totalComDesconto" class="form-control" size="10">
+        <button class="btn btn-outline-danger" id="btnFecharVenda" name="fecharVenda" onclick="" style="display: inline;">Fechar Venda</button>
         </div>  
+
     </section>
 </body>
 
