@@ -81,7 +81,7 @@
                     echo '<th> PREÇO VENDA </th>';
                     echo '<th> CÓDIGO DE BARRAS </th>';
                     echo '<th> FORNECEDOR </th>';
-                    echo '<th>  </th>';
+                    echo '<th> AÇÃO </th>';
                     echo '</tr>';
 
                     $dados = $produto->consultaProdutoLike($consultaLike = "%".trim($_GET['buscaProdutos'])."%");
@@ -104,8 +104,8 @@
                             }
                             ?>
                                 <td> 
-                                    <a href="AtualizaProduto.php?id_get_up=<?php echo $dados[$i]['id_produto'];?>">Editar</a>
-                                    <a href="ConsultaProdutos.php?id_get_del=<?php echo $dados[$i]['id_produto'];?>">Excluir</a> 
+                                    <a id="acaoEditar" href="AtualizaProduto.php?id_get_up=<?php echo $dados[$i]['id_produto'];?>">Editar</a>
+                                    <a id="acaoExcluir" href="ConsultaProdutos.php?id_get_del=<?php echo $dados[$i]['id_produto'];?>">Excluir</a> 
                                     <!-- usar "echo $dados[$i]['id_pessoa']; "pegar ID desejado no array e passar como 'string' para o metodo $_GET-->
                                 </td>
                             <?php

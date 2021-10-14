@@ -1,6 +1,7 @@
 <?php
 
 require_once 'Conexao.php';
+require_once 'Produto.php';
 
 class Pessoa 
 
@@ -101,6 +102,14 @@ class Pessoa
         $dados->bindValue(":ed", $endereco);
         $dados->bindValue(":id", $id_upd); 
         $dados->execute();
+
+        if ($tipo_pessoa == 'fornecedor') {
+
+        $dados = $conexao->pdo->prepare("UPDATE produto SET produto_fornecedor = :n WHERE pessoa_id_pessoa = :id");
+        $dados->bindValue(":n", $nome);
+        $dados->bindValue(":id", $id_upd);
+        $dados->execute();
+        }
     }
 
     public function updatePessoaFuncionario($id_upd, $nome, $cpf_cnpj, $tipo_pessoa, $email, $telefoneFixo, 

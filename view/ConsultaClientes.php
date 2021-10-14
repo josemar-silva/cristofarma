@@ -97,8 +97,9 @@
                     }
         ?>
                          <td>
-                            <a href="AtualizaCliente.php?id_get_up=<?php echo $dados[$i]['id_pessoa'];?>">Editar</a>
-                            <a href="ConsultaClientes.php?id_get_del=<?php echo $dados[$i]['id_pessoa'];?>">Excluir</a> 
+                            <a id="acaoEditar" href="AtualizaCliente.php?id_get_up=<?php echo $dados[$i]['id_pessoa'];?>" 
+                                style="border: solid green 1px; width: 40px; height: 40px; background-color: green;">Editar</a>
+                            <a id="acaoExcluir" href="ConsultaClientes.php?id_get_del=<?php echo $dados[$i]['id_pessoa'];?>" style="border: solid red 1px; width: 40px; height: 40px;">Excluir</a> 
                             <!-- usar "echo $dados[$i]['id_pessoa']; "pegar ID desejado no array e passar como 'string' para o metodo $_GET-->
                         </td>
         <?php

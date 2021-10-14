@@ -49,6 +49,33 @@
     <div id="listaVendas">
         <legend>VENDAS REALIZADAS</legend>
 
+        <table>            
+            <?php
+                    require_once 'Produto.php';
+                    require_once 'PrudutoVenda.php';
+                    require_once 'Pessoa.php';
+                    require_once 'Venda.php';
+                    require_once 'Estoque.php';
+
+                    $produto = new Produto();
+                    $produtoVenda = new ProdutoVenda();
+                    $pessoa = new Pessoa();
+                    $venda = new Venda();
+                    $estoque = new Estoque();
+
+
+                    echo '<table class="table table-hover">';
+                        echo '<tr>';
+                            echo '<th> DATA VENDA </th>';
+                            echo '<th> CÓDIGO VENDA </th>';
+                            echo '<th> NOME DO CLIENTE </th>';
+                            echo '<th> NOME DO VENDEDOR </th>';
+                            echo '<th> VALOR VENDA </th>';
+                            echo '<th> SITUAÇÃO </th>';
+                        echo '</tr>';
+                ?>
+        </table>
+
     </div>  
 
         <form id="fecharVenda" name="fecharVenda">
@@ -69,8 +96,8 @@
             <label>Troco R$:</label>
             <input id="troco" class="form-control" name="troco" size="6">
 
-            <button class="btn btn-outline-danger" id="btnCancelar" name="cancelar" onclick="">Cancelar</button>
-            <button class="btn btn-outline-danger" id="btnFinalizar" name="finalizar" onclick="">Finalizar</button>
+            <button class="btn btn-outline-danger" id="btnCancelar" name="cancelar" onclick="" style="display: inline;">Cancelar</button>
+            <button class="btn btn-outline-danger" id="btnFinalizar" name="finalizar" onclick="" style="display: inline;">Finalizar</button>
         </form>
        
     </section>

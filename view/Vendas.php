@@ -54,16 +54,24 @@
         <table>            
             <?php
                     require_once 'Produto.php';
-                    $p =new Produto();
+                    require_once 'PrudutoVenda.php';
+                    require_once 'Pessoa.php';
+                    require_once 'Venda.php';
+                    require_once 'Estoque.php';
+
+                    $produto = new Produto();
+                    $produtoVenda = new ProdutoVenda();
+                    $pessoa = new Pessoa();
+                    $venda = new Venda();
+                    $estoque = new Estoque();
 
                     echo '<table class="table table-hover">';
-                    echo '<tr>';
-                    echo '<th> PRODUTO </th>';
-                    echo '<th> QTD </th>';
-                    echo '<th> PREÇO </th>';
-                    echo '<th> CÓDIGO DE BARRAS </th>';
-                    echo '<th> FORNECEDOR </th>';
-                    echo '</tr>';
+                        echo '<tr>';
+                            echo '<th> QTD </th>';
+                            echo '<th> DESCRIÇÃO DO PRODUTO </th>';
+                            echo '<th> FORNECEDOR </th>';
+                            echo '<th> PREÇO </th>';
+                        echo '</tr>';
                 ?>
         </table>
         </div>
