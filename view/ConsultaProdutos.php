@@ -69,7 +69,7 @@
 </form>
 
     <!---------------------- BUSCA %like% = 'quem contem'... ----------------------->
-
+    <div class="scroll">
         <table>            
              <?php
                 if (isset($_GET['buscaProdutos'])) { 
@@ -104,6 +104,7 @@
                             }
                             ?>
                                 <td> 
+                                    <a id="acaoSelecionar" href="Vendas.php?id_get_up=<?php echo $dados[$i]['id_produto'];?>">Selecionar</a> 
                                     <a id="acaoEditar" href="AtualizaProduto.php?id_get_up=<?php echo $dados[$i]['id_produto'];?>">Editar</a>
                                     <a id="acaoExcluir" href="ConsultaProdutos.php?id_get_del=<?php echo $dados[$i]['id_produto'];?>">Excluir</a> 
                                     <!-- usar "echo $dados[$i]['id_pessoa']; "pegar ID desejado no array e passar como 'string' para o metodo $_GET-->
@@ -115,6 +116,7 @@
                 }
             ?>
         </table>
+    </div>
     </section>
 </body>
 

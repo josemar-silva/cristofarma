@@ -42,15 +42,40 @@
     <a href="index.php" style="float: right; margin-right: 20px;">Sair</a>
 
     <section id="principalNotaFiscal">
-        <form id="notaFiscal" style="margin-left: 5%;">
+        <form id="notaFiscal" style="margin-left: 1%;">
             <Legend>NOTA FISCAL</Legend><br>
             <input type="radio" id="numVenda" name="tipoRelatorio" value="numeroVenda" checked> &nbsp; &nbsp;
-            <label for="numVenda">Nº Venda</label> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+            <label for="numVenda">Nº Venda</label> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
             <input type="radio" id="numeroCpf" name="tipoRelatorio" value="numeroCpf"> &nbsp; &nbsp;
-            <label for="numCpf">Nº CPF</label><br><br>
+            <label for="numCpf">Nº CPF</label>&nbsp; &nbsp;
             <input type="text" class="form-control" size="60" id="" placeholder="Digite aqui para pesquisar">
 
-            <button class="btn btn-outline-danger" type="submit" id="btnGerarNotaFiscal" name="gerarNotaFiscal">Buscar</button><br>
+            <button class="btn btn-outline-danger" type="submit" id="btnGerarNotaFiscal" name="gerarNotaFiscal">Buscar</button><br><br>
+
+            <?php
+                    require_once 'Produto.php';
+                    require_once 'PrudutoVenda.php';
+                    require_once 'Pessoa.php';
+                    require_once 'Venda.php';
+                    require_once 'Estoque.php';
+
+                    $produto = new Produto();
+                    $produtoVenda = new ProdutoVenda();
+                    $pessoa = new Pessoa();
+                    $venda = new Venda();
+                    $estoque = new Estoque();
+
+                    echo '<table class="table table-hover">';
+                        echo '<tr>';
+                            echo '<th> CODIGO </th>';
+                            echo '<th> DESCRIÇÃO DO PRODUTO </th>';
+                            echo '<th> QTD </th>';
+                            echo '<th> LABORATÓRIO </th>';
+                            echo '<th> PREÇO </th>';                            
+                        echo '</tr>';
+                ?>
+        </table>
+
             <button class="btn btn-outline-danger"type="submit" id="btnGerarNotaFiscal" name="gerarNotaFiscal">Emitir NotaFiscal</button>
 
         </fom><br>

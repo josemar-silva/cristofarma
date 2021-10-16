@@ -61,6 +61,7 @@
     if (isset($_GET['buscaFornecedor'])) {
         $tipoConsulta = "fornecedor";
     ?>
+    <div class="scroll">
         <table class="table table-hover">
     <tr>
         <th> CÓDIGO FORNECEDOR </th>
@@ -95,6 +96,7 @@
                 }
         ?>
                         <td>
+                            <a id="acaoSelecionar" href="CadastrarProdutos.php?id_fornecedor_produto_get_up=<?php echo $dados[$i]['id_pessoa'];?>">Selecionar</a> 
                             <a id="acaoEditar" href="AtualizaFornecedor.php?id_get_up=<?php echo $dados[$i]['id_pessoa'];?>">Editar</a>
                             <a id="acaoExcluir" href="ConsultaFornecedor.php?id_get_del=<?php echo $dados[$i]['id_pessoa'];?>">Excluir</a> 
                             <!-- usar "echo $dados[$i]['id_pessoa']; "pegar ID desejado no array e passar como 'string' para o metodo $_GET-->
@@ -105,6 +107,7 @@
         }
     ?>
 </table>
+    </div>
     <?php
     
         }

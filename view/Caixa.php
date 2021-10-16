@@ -49,6 +49,7 @@
     <div id="listaVendas">
         <legend>VENDAS REALIZADAS</legend>
 
+     <div class="scroll">
         <table>            
             <?php
                     require_once 'Produto.php';
@@ -76,7 +77,7 @@
                         echo '</tr>';
                 ?>
         </table>
-
+     </div>
     </div>  
 
         <form id="fecharVenda" name="fecharVenda">

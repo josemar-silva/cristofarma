@@ -61,6 +61,7 @@
             $tipoConsulta = "funcionario";
 
     ?>
+    <div class="scroll">
             <table class="table table-hover">
         <tr>
             <th> CÓDIGO FUNCIONÁRIO </th>
@@ -108,6 +109,7 @@
             }
         ?>
     </table>
+    </div>
     <?php
         }
     ?>

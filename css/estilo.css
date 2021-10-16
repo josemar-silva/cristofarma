@@ -5,6 +5,10 @@
     font-size: 13px;
 }
 
+input {
+    text-transform: uppercase;
+}
+
 #nomeEmpresa {
     font-size: 65pt;
     text-align: center;
@@ -29,7 +33,7 @@
     display: block;
 }
 
-#menu p {
+#menu ca {
     display: block;
     height: 70px;
     border: rgb(228, 225, 225) solid 1px;
@@ -47,6 +51,12 @@ section#principal {
     display: block;
     margin: auto;
     padding: 10px;
+}
+
+#cadastro input, label {
+
+    display: inline-block;
+  
 }
 
 
@@ -160,19 +170,10 @@ border: none;
 
     display: inline-block;
     border: black dotted 1px;
-    width: 60px;
-    height: 60px;
+    width: 70px;
+    height: 70px;
     margin-left: 20px;
-}
-
-#removeProdutoVenda {
-
-    display: inline-block;
-    border: black dotted 1px;
-    width: 60px;
-    height: 60px;
-    margin-left: 10px;
-
+    padding: 10px;
 }
 
 #dadosClienteVenda {
@@ -180,8 +181,12 @@ border: none;
     border: none;
     width: 30%;
     margin-top:2%;
-    height: 280px;
+    height: 250px;
     margin-right: 3px;
+    border-bottom: rgba(0, 0, 0, .2) 3px solid;
+    padding: 10px;
+
+
 }
 
 #itensAdicionados {
@@ -199,13 +204,12 @@ border: none;
 #saidaValorVenda {
 
     float: right; 
-    border: none;
     border-radius: 5%;
     width: 30%;
-    margin-top: 1.5%;
     margin-right: 3px;
     display: block;
-    height: 230px;
+    height: 250px;
+    padding: 10px;
 
 }
 
@@ -213,7 +217,7 @@ border: none;
 
         text-transform: capitalize;
         font-size: 18pt ;
-        width: 28%;
+        width: 33%;
         border:rgba(0, 0, 0, .2) 2px solid;
         border-radius: 3%;
         height: 630px;  
@@ -241,9 +245,9 @@ border: none;
         border:rgba(0, 0, 0, .2) 2px solid;
         border-radius: 3%;
         height: 630px;  
-        width: 70%;
+        width: 65%;
         float: left;
-        margin-left: 10px;
+        margin-left: 5px;
     }
 
     #principalCaixa {
@@ -252,6 +256,7 @@ border: none;
 
     #acaoEditar {
         border: solid green 1px;
+        border-radius: 5px;
         background-color: green;
         color: white;
         text-decoration: none;
@@ -262,6 +267,7 @@ border: none;
 
     #acaoExcluir {
         border: solid red 1px;
+        border-radius: 5px;
         background-color: red;
         color: white;
         text-decoration: none;
@@ -269,4 +275,22 @@ border: none;
         padding: 7px;
         margin-top: 2px;
         margin-left: 5px;
+    }
+
+    #acaoSelecionar {
+
+        border: solid royalblue 1px;
+        border-radius: 5px;
+        background-color: royalblue;
+        color: white;
+        text-decoration: none;
+        font-size: 12px;
+        padding: 7px;
+        margin-top: 2px;
+        margin-left: 5px;
+    }
+
+    .scroll {
+        overflow-x: auto;
+        overflow-y: auto;
     }

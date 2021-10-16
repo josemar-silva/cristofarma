@@ -17,8 +17,10 @@ class Venda
     public string $data_venda;
     public Pessoa $vendedor;
     public Pessoa $cliente;
-    public string $total_item_venda;
     public string $status_venda;
+    public string $pessoa_id_pessoa_vendedor;
+    public string $pessoa_id_pessoa_Cliente;
+    
 
     function __construct()
     {
@@ -26,7 +28,7 @@ class Venda
     }
 
     public function createVenda($valor_venda_sem_desconto, $desconto, $valor_venda_com_desconto, $tipo_pagamento,
-    $data_venda, $vendedor, $cliente, $total_item_venda,$status_venda)
+    $data_venda, $vendedor, $cliente, $status_venda)
     {
         global $res; 
         global $res2;
@@ -61,7 +63,6 @@ class Venda
             $dados->bindValue(":dtv", $data_venda);
             $dados->bindValue(":v", $vendedor);
             $dados->bindValue(":c", $cliente);
-            $dados->bindValue(":tiv", $total_item_venda);
             $dados->bindValue(":stv", $status_venda);
             $dados->bindValue(":fkv", $vendedorSelecionado);
             $dados->bindValue(":fkc", $clienteSelecionado);           
@@ -71,17 +72,17 @@ class Venda
     }
 }
 
-    public function deleteVenda($id_up)
+    public function deleteVenda($id_up_venda)
 {
     $conexao = new Conexao("projeto_cristofarma", "localhost", "root", "");
 
     $dados = $conexao->pdo->prepare("DELETE FROM venda WHERE id_venda = :id");
-    $dados->bindValue("id", $id_up);
+    $dados->bindValue("id", $id_up_venda);
     $dados->execute();
 }
 
 public function updateVenda($valor_venda_sem_desconto, $desconto, $valor_venda_com_desconto, $tipo_pagamento,
-$data_venda, $vendedor, $cliente, $total_item_venda,$status_venda, $id_up)
+$data_venda, $vendedor, $cliente, $total_item_venda,$status_venda, $id_up_venda)
 {
     $conexao = new Conexao("projeto_cristofarma", "localhost", "root", "");
 
@@ -111,11 +112,11 @@ $data_venda, $vendedor, $cliente, $total_item_venda,$status_venda, $id_up)
             $dados->bindValue(":stv", $status_venda);
             $dados->bindValue(":fkv", $vendedorSelecionado);
             $dados->bindValue(":fkc", $clienteSelecionado);
-            $dados->bindValue(":id", $id_up);           
+            $dados->bindValue(":id", $id_up_venda);           
             $dados->execute();
 }
 
-public function selectVenda($id_up)
+public function selectVenda($id_up_venda)
     {
         $dadosSelecionados = array(); // cria-se uma variavel ARRAY que armanenará a busca que o PDO retorna como ARRAY
 
@@ -123,7 +124,7 @@ public function selectVenda($id_up)
  
         $dados  = $conexao->pdo->prepare("SELECT id_venda,  valor_venda_sem_desconto, desconto, valor_venda_com_desconto,
         tipo_pagamento, data_venda, vendedor, cliente, total_item_venda FROM venda WHERE id_venda = :id");
-        $dados->bindValue("id", $id_up); // substituíção dos valores com o método BINDVALUE
+        $dados->bindValue("id", $id_up_venda); // substituíção dos valores com o método BINDVALUE
         $dados->execute(); // comando que executa a busca no BD
         $dadosSelecionados = $dados->fetchAll(PDO::FETCH_ASSOC); // método fatch retorana um ARRAY, fatchAll retorna uma matriz
         

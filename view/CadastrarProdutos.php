@@ -19,6 +19,7 @@
 
     $produto = new Produto();
     $estoque = new Estoque();
+    $pessoa = new Pessoa();
 
 
     if (isset($_POST['descricaoProduto'])) {
@@ -34,9 +35,8 @@
                 echo "Produto já está cadastrado!";
             }
         } else {
-            echo "Preencha todos os campos!";
+            echo '<script> alert("Preencha todos os campos!")</script>';
         } 
-        //echo '<script> alert("Produto cadastrado com sucesso!")</script>';
     }
     ?>
 
@@ -75,21 +75,32 @@
         <section id="principal">
             <form id="cadastro" method="POST">
                 <legend>CADASTRO DE PRODUTOS</legend><br>
-                <label for="descricaoProduto"> Descrição do Produto:</label>
-                <input id="descricaoProduto" class="form-control"  placeholder="Descricao Produto" type="text" name="descricaoProduto" size="60"> <br>
+
+                <label for="fornecedor">Fornecedor:</label><br>
+                <input id="fornecedor" class="form-control" type="text" type="text" 
+                name="fornecedor" size="25" value="<?php if (isset($_GET['id_fornecedor_produto_get_up'])) 
+                                                    {
+                                                            $id_fornecedor_produto_get_up = addslashes($_GET['id_fornecedor_produto_get_up']); 
+                                                                $retornoConsulta = $pessoa->selectPessoaFornecedor($id_fornecedor_produto_get_up); 
+                                                                    if(isset($retornoConsulta)){echo $retornoConsulta[0]['nome'];
+                                                        }
+                                                    } 
+                                                    ?>"><br><br>
+                <div id="selecionarFornecedor" style="font-size: 12px; margin-left: 5px; border: dotted 1px; width: 50px; height: 30px; float: left; 
+                    margin-left: 260px;">
+                <a href="ConsultaFornecedor.php?buscaFornecedor=+" id="alinhamento" >Buscar</a>
+                </div><br><br>
+                <label for="descricaoProduto"> Descrição do Produto:</label><br>
+                <input id="descricaoProduto" class="form-control"  type="text" name="descricaoProduto" size="60"> <br><br>
                 
-                <label for="codigoDeBarras"> Código de Barras:</label>
-                <input id="codigoDeBarras" class="form-control"  placeholder="Código de Barras" type="text" type="text" name="codigoDeBarras" size="40"><br>
+                <label for="codigoDeBarras"> Código de Barras:</label><br>
+                <input id="codigoDeBarras" class="form-control"  type="text" type="text" name="codigoDeBarras" size="40"><br><br>              
+
+                <label for="precoCusto">Preço de Custo:</label><br>
+                <input id="precoCusto" class="form-control"  placeholder="R$" type="text" type="text" name="precoCusto" size="20"><br><br>
                 
-                <label for="fornecedor">Fornecedor:</label>
-                <input id="fornecedor" class="form-control"  placeholder="Fornecedor" type="text" type="text" name="fornecedor" size="30">
-                <a href="ConsultaFornecedor.php" id="alinhamento" class=" btn btn-light " >+</a><br>
-                
-                <label for="precoCusto">Preço de Custo:</label>
-                <input id="precoCusto" class="form-control"  placeholder="Preço custo" type="text" type="text" name="precoCusto" size="20"> <br>
-                
-                <label for="precoVenda">Preço de Venda:</label>
-                <input id="precoVenda" class="form-control"  placeholder="Preço venda" type="text" type="text" name="precoVenda" size="20"> <br>
+                <label for="precoVenda">Preço de Venda:</label><br>
+                <input id="precoVenda" class="form-control"  placeholder="R$" type="text" type="text" name="precoVenda" size="20"><br> <br>
 
                 <input class="btn btn-outline-danger" type="submit" id="btnCadastrar" name="btnGravarClientes"
                     value="<?php echo "Cadastrar"; ?>">

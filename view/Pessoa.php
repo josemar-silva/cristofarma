@@ -235,6 +235,17 @@ class Pessoa
         return $dadosSelecionados;
     }
 
+    public function selectAllPessoaFuncionarioVendedor()
+    {
+
+        $conexao = new Conexao("projeto_cristofarma", "localhost", "root", "");
+
+        $dadosSelecionados = array();
+        $dados  = $conexao->pdo->query("SELECT * FROM pessoa WHERE funcao = 'vendedor' ORDER BY nome");
+        $dadosSelecionados = $dados->fetchAll(PDO::FETCH_ASSOC);
+        return $dadosSelecionados;
+    }
+
     public function consultaClienteFornecedorLike($consultaLike, $tipoConsulta){
 
         $conexao = new Conexao("projeto_cristofarma", "localhost", "root", "");

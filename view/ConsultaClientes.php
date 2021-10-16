@@ -63,6 +63,7 @@
         if (isset($_GET['buscaCliente'])) {
             $tipoConsulta = "cliente";
         ?>
+<div class="scroll">
             <table class="table table-hover">
         <tr>
             <th> CÓDIGO CLIENTE </th>
@@ -74,6 +75,7 @@
             <th> ENDEREÇO DO CLIENTE</th>
             <th>  </th>
         </tr>
+        
         <?php
 
             $dados = $pessoa->consultaClienteFornecedorLike($consultaLike = "%".trim($_GET['buscaCliente'])."%", $tipoConsulta);
@@ -97,6 +99,7 @@
                     }
         ?>
                          <td>
+                            <a id="acaoSelecionar" href="Vendas.php?id_pessoa_get_up=<?php echo $dados[$i]['id_pessoa'];?>">Selecionar</a> 
                             <a id="acaoEditar" href="AtualizaCliente.php?id_get_up=<?php echo $dados[$i]['id_pessoa'];?>" 
                                 style="border: solid green 1px; width: 40px; height: 40px; background-color: green;">Editar</a>
                             <a id="acaoExcluir" href="ConsultaClientes.php?id_get_del=<?php echo $dados[$i]['id_pessoa'];?>" style="border: solid red 1px; width: 40px; height: 40px;">Excluir</a> 
@@ -108,6 +111,7 @@
             }
         ?>
     </table>
+</div>
         <?php
         
             }
