@@ -59,9 +59,11 @@
                             header("location: home.php");
 
                         } else {
+                            
                             echo "<script> alert('e-mail ou senha incorretos! Tente novamente!')</script>";
                 }             
             } else { 
+                
                 echo "<script> alert('Preencha todos os campos!')</script>";
         }
     } 

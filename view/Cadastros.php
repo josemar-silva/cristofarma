@@ -68,7 +68,6 @@
         } else {
             echo '<script> alert("Preencha todos os campos!")</script>';
         }
-        #echo '<script> alert("Cadastro realizado com sucesso!")</script>';
         }
     }
     } else {
@@ -119,7 +118,7 @@
         
         {
             if (!$pessoa->createPessoaFuncionario($nome, $cpf_cnpj, $tipo_pessoa, $email, $telefoneFixo, 
-            $telefoneCelular, $matricula, $senha, $endereco, $endereco)) {
+            $telefoneCelular, $matricula, $senha, $funcao, $endereco)) {
                 echo "Este cadastro já existe!";
             }
         } else {
@@ -151,7 +150,7 @@
                 </ul>
             </li>
             <li><a href="Cadastros.php">CADASTROS</a></li>
-            <li><a href="NotaFiscal.php">NOTA FISCAL</a></li>
+            <li><a href="CupomFiscal.php">CUPOM FISCAL</a></li>
             <li><a href="#">RELATÓRIOS</a>
                 <ul>
                     <li><a href="RelatorioVendas.php">Relatório de Vendas</a></li>
@@ -176,15 +175,13 @@
         <form id="cadastro" method="POST">
 
             <legend>CADASTROS</legend>
-
-
-            <label id="txtTipoCadastro">Tipo de cadastro:</label>
-            <select id="tipoCadastro" name="tipoCadastro" class="form-control" onchange="verifica(this.value)">
-                <option value="" selected> </option>
-                <option value="cliente" >Cliente</option>
-                <option value="fornecedor">Fornecedor</option>
-                <option value="funcionario">Funcionário</option>
-            </select><br/>
+                <label id="txtTipoCadastro">Tipo de cadastro:</label>
+                <select id="tipoCadastro" name="tipoCadastro" class="form-control" onchange="verifica(this.value)">
+                    <option value="" selected> </option>
+                    <option value="cliente" >Cliente</option>
+                    <option value="fornecedor">Fornecedor</option>
+                    <option value="funcionario">Funcionário</option>
+                </select><br/>
 
             <label for="nome" id="nome">Nome:</label><br/>
             <input id="nome" type="text" class="form-control" name="nome" size="70" value="<?php if(isset($retornoConsulta)){echo $retornoConsulta[0]['nome'];}?>"><br/><br/>
@@ -207,24 +204,20 @@
             <label for="matricula" style="margin-left: 25%;">Matrícula:</label>
             <label for="senha" style="margin-left: 27%;">Senha:</label><br/>
 
-            <select id="listaFuncao" name="listaFuncao" class="form-control" style="display: inline;" onchange="verifica(this.value)">
+            <select id="listaFuncao" name="listaFuncao" class="form-control" style="display: inline;" >
                 <option value="" selected> </option>
                 <option value="gerente">Gerente</option>
                 <option value="vendedor">Vendedor</option>
                 <option value="operador de caixa">Operador de Caixa</option>
             </select>
 
-            <input id="matricula"  class="form-control"type="text" name="matricula" size="20" style="margin-left: 10%;"
-                value="<?php if(isset($retornoConsulta)){if (isset($retornoConsulta[0]['matricula'])){ 
-                    echo $retornoConsulta[0]['matricula'];} else { echo '';}}?>">&nbsp; 
+            <input id="matricula"  class="form-control"type="text" name="matricula" size="20" style="margin-left: 10%;" value="">&nbsp; 
 
-            <input id="senha"  class="form-control"type="password" name="senha" size="20" style="margin-left: 10%;" 
-                value="<?php if(isset($retornoConsulta)){if (isset($retornoConsulta[0]['senha'])){ 
-                    echo $retornoConsulta[0]['senha'];} else { echo '';}}?>"> <br/><br/>
+            <input id="senha"  class="form-control"type="password" name="senha" size="20" style="margin-left: 10%;" value=""> <br/><br/>
 
             <label for="endereco" id="endereco">Endereço:</label><br>
-            <input id="endereco" class="form-control"type="text" name="endereco" size="90" 
-                value="<?php if(isset($retornoConsulta)){echo $retornoConsulta[0]['endereco'];}?>" > <br><br/>
+            <input id="endereco" class="form-control"type="text" name="endereco" size="90" value="" > <br><br/>
+
             <input  class="btn btn-outline-danger" id="btnCadastrar" type="submit" name="btnGravarClientes" 
                 value="<?php if (isset($_GET['id_get_up'])){echo 'Atualizar';} else {echo 'Cadastrar';}?>">
         </form>

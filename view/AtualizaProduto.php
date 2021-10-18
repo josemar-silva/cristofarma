@@ -35,7 +35,8 @@
                 if ($produto->updateProduto($id_up, $produto_nome, $produto_preco_custo, $produto_preco_venda, 
                 $produto_codigo_barras, $produto_fornecedor));
 
-                    header('location: AtualizaProduto.php');
+                    header("location: ConsultaProdutos.php?buscaProdutos=$produto_nome");
+                   
                 
             } else {
                 echo "Preencha todos os campos!";
@@ -55,11 +56,12 @@
                 if (!$produto->createProduto($produto_nome, $produto_preco_custo, $produto_preco_venda, 
                 $produto_codigo_barras, $produto_fornecedor)) {
                     echo "Produto já está cadastrado!";
+                } else {
+                    header("location: ConsultaProdutos.php?buscaProdutos=$produto_nome");
                 }
             } else {
                 echo "Preencha todos os campos!";
             } 
-                echo '<script> alert("Produto cadastrado com sucesso!")</script>';
         }
     }
 
@@ -86,7 +88,7 @@
                 </ul>
             </li>
             <li><a href="Cadastros.php">CADASTROS</a></li>
-            <li><a href="NotaFiscal.php">NOTA FISCAL</a></li>
+            <li><a href="CupomFiscal.php">CUPOM FISCAL</a></li>
             <li><a href="#">RELATÓRIOS</a>
                 <ul>
                     <li><a href="RelatorioVendas.php">Relatório de Vendas</a></li>

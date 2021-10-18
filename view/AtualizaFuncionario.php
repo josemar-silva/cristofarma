@@ -18,7 +18,8 @@
     $pessoa =  new Pessoa();
 
     $tipo = filter_input(INPUT_POST, 'tipoCadastro'); #filtrar valor que um inpult recebeu
-    if ($tipo != 'funcionario'){
+    if ($tipo != 'funcionario')
+    {
         if (isset($_POST['nome'])) // CLICOU NO BOTAO CADASTRAR OU EDITAR
     {   
         //--------------------------EDITAR-------------------------------
@@ -38,7 +39,7 @@
         
         {
             $pessoa->updatePessoaClienteFornecedor($id_upd, $nome, $cpf_cnpj, $tipo_pessoa, $email, $telefoneFixo, 
-            $telefoneCelular, $endereco);
+            $telefoneCelular, $matricula, $senha, $funcao, $endereco);
 
             header('location: Cadastros.php');
             
@@ -46,10 +47,9 @@
             echo "Preencha todos os campos!";
         }
             echo '<script> alert("Cadastro realizado com sucesso!")</script>';
-        } else 
+        } else {
         //--------------------------CADASTRAR-----------------------------
-        {
-        
+
         $nome = addslashes($_POST['nome']); # verificando se existe dados dentro do parametro/variavel
         $cpf_cnpj = addslashes($_POST['cpf_cnpj']);
         $tipo_pessoa = addslashes($_POST['tipoCadastro']);
@@ -93,7 +93,7 @@
             $pessoa->updatePessoaFuncionario($id_upd, $nome, $cpf_cnpj, $tipo_pessoa, $email, $telefoneFixo, 
             $telefoneCelular, $matricula, $funcao, $endereco);
 
-            header("location: Cadastros.php");
+            header("location: ConsultaFuncionarios.php?buscaFuncionario=$nome");
 
         } else {
             echo "Preencha todos os campos!";
@@ -125,6 +125,7 @@
             echo "Preencha todos os campos!";
         }
             echo '<script> alert("Cadastro realizado com sucesso!")</script>';
+            header("location: ConsultaFuncionarios.php?buscaFuncionario=+");
         }
     }
 
@@ -151,7 +152,7 @@
                 </ul>
             </li>
             <li><a href="Cadastros.php">CADASTROS</a></li>
-            <li><a href="NotaFiscal.php">NOTA FISCAL</a></li>
+            <li><a href="CupomFiscal.php">CUPOM FISCAL</a></li>
             <li><a href="#">RELATÓRIOS</a>
                 <ul>
                     <li><a href="RelatorioVendas.php">Relatório de Vendas</a></li>
@@ -181,15 +182,17 @@
 
             <label id="txtTipoCadastro">Tipo de cadastro:</label>  
             
-            <?php if(isset($retornoConsulta)){
+            <?php if(isset($retornoConsulta))
+            {
                 $retornoTipoPessoa = $retornoConsulta[0]['tipo_pessoa']; 
-                $retornoFuncao = $retornoConsulta[0]['funcao'];}
+                $retornoFuncao = $retornoConsulta[0]['funcao'];
+            }
             ?>
 
-            <select id="tipoCadastro" class="form-control" name="tipoCadastro" onchange="verifica(this.value)">
+            <select id="tipoCadastro" class="form-control" name="tipoCadastro" onchange="verifica(this.value)" <?php if(isset($retornoConsulta ) && $retornoTipoPessoa != 'funcionario'){ echo 'disable';}?>>
                 <option value=""> </option>
-                <option value="cliente" <?php if ($retornoTipoPessoa == 'cliente'){echo 'selected';}?>>Cliente</option>
-                <option value="fornecedor" <?php if ($retornoTipoPessoa == 'fornecedor'){echo 'selected';}?>>Fornecedor</option>
+                <option value="funcionario" <?php if ($retornoTipoPessoa == 'cliente'){echo 'selected';}?>>Cliente</option>
+                <option value="funcionario" <?php if ($retornoTipoPessoa == 'fornecedor'){echo 'selected';}?>>Fornecedor</option>
                 <option value="funcionario" <?php if ($retornoTipoPessoa == 'funcionario'){echo 'selected';}?>>Funcionário</option>
             </select><br/>
 
@@ -214,7 +217,7 @@
             <label for="matricula" style="margin-left: 25%;">Matrícula:</label>
             <label for="senha" style="margin-left: 27%;">Senha:</label><br/>
 
-            <select id="listaFuncao" name="listaFuncao" class="form-control" style="display: inline;" onchange="verifica(this.value)">
+            <select id="listaFuncao" name="listaFuncao" class="form-control" style="display: inline;">
                 <option value="" selected> </option>
                 <option value="gerente" <?php if ($retornoFuncao == 'gerente'){echo 'selected';}?>>Gerente</option>
                 <option value="vendedor" <?php if ($retornoFuncao == 'vendedor'){echo 'selected';}?>>Vendedor</option>
@@ -232,6 +235,7 @@
             <label for="endereco" id="endereco">Endereço:</label><br>
             <input id="endereco" class="form-control"type="text" name="endereco" size="90" 
                 value="<?php if(isset($retornoConsulta)){echo $retornoConsulta[0]['endereco'];}?>" > <br><br/>
+
             <input  class="btn btn-outline-danger" id="btnCadastrar" type="submit" name="btnGravarClientes" 
                 value="<?php if (isset($_GET['id_get_up'])){echo 'Atualizar';} else {echo 'Cadastrar';}?>">
         </form>

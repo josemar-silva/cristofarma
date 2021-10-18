@@ -8,7 +8,7 @@ require_once 'Estoque.php';
 require_once 'Pessoa.php';
 
 
-class Compra{
+class ProdutoCompra{
     public int $id_compra;
     public string $data_compra;
     public string $numero_nota;

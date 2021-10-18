@@ -18,6 +18,15 @@
         $pessoa = new Pessoa();
         $venda = new Venda();
         $estoque = new Estoque();
+
+        if (isset($_POST['nome'])) // CLICOU NO BOTAO CADASTRAR OU EDITAR
+    {   
+        if (isset($_GET['id_get_up']) && !empty($_GET['id_get_up'])) 
+        {
+
+        }
+    }
+
     ?>
 
     <title>Vendas</title>
@@ -45,7 +54,7 @@
                 </ul>
             </li>
             <li><a href="Cadastros.php">CADASTROS</a></li>
-            <li><a href="NotaFiscal.php">NOTA FISCAL</a></li>
+            <li><a href="CupomFiscal.php">CUPOM FISCAL</a></li>
             <li><a href="#">RELATÓRIOS</a>
                 <ul>
                     <li><a href="RelatorioVendas.php">Relatório de Vendas</a></li>
@@ -59,7 +68,7 @@
     <section id="principalVendas">
     <legend>REALIZAR VENDA/ORÇAMENTO</legend>
 
-        <div id="itensAdicionados">
+<div id="itensAdicionados">
             <div id="dateTimeVenda" style="display: block; margin-left: 35%;">
                 <label>Data/Hora:</label>
                 <input id="dataVenda" name="dataVenda" value="<?php date_default_timezone_set('America/Sao_Paulo');
@@ -67,7 +76,7 @@
                 style="color: blue; text-align: center; font-size: 15pt; border: none; display: inline;" size="15" ></input>
             </div>
             
-        <div class="scroll">
+<div class="scroll">
     <table>
         <?php
 
@@ -104,7 +113,7 @@
                     } 
     ?>
         <td>
-            <input id="quantidadeItemVenda" style="border: none; text-align: center;" size="2" value="<?php echo'1';?>">
+            <input id="quantidadeItemVenda" style="border: none; text-align: center; " size="2" value="<?php echo'1';?>">
         </td>               
                     
      <?php                              
@@ -123,9 +132,7 @@
                     }
     ?>
             <td>
-                <a id="removeProdutoVenda" href="#" style="display: inline-block; background-color: red; Border: solid red 1px; 
-                    width: 20px; height: 20px; text-decoration: none; text-align: center; color: white; font-size: 10pt; 
-                        font-weight: bolder; border-radius: 3px;"> X </a>
+                <a id="removeProdutoVenda" href="#"> X </a>
             </td>
                  <?php
                     echo "</tr>"; // fecha linha dos dados selecionados
@@ -135,86 +142,125 @@
     ?>
                     
     </table>
-        </div>
-    </div>
-        <div id="adicionaPrudutoVenda" style="padding: 10px;">
-                <a href="ConsultaProdutos.php?buscaProdutos=+"> Adcionar Produto</a>
-        </div>
+ </div>
 
-        <div id="selectPagamentoVendedor" style="float: right; padding: 10px;">  
-        <label id="labelTipoPagamento" style="font-size: 13pt"> Tipo de Pagamento:</label> 
-            <select id="tipoPagamento" name="tipoPagamento" style="font-size: 13pt; padding: 3px;"> 
-                <option value="" selected> </option>
-                <option value="a vista" >À Vista</option>
-                <option value="debito">Débito</option>
-                <option value="credito">Crédito</option>
-        </select><br/><br/>
-                    <!-- ==================== BUSCAR VENDEDOR =====================-->
-                    
-        <label id="labelVendedorSelecionado" style="font-size: 13pt;">   &nbsp; Vendedor:</label>
-            <select id="vendedor" name="vendedor" style="font-size: 13pt; padding: 3px; margin-right: 10px;">
-                <option value="" selected> </option>
-                    <?php $dados = $pessoa->selectAllPessoaFuncionarioVendedor();
-                        if(count($dados) > 0) 
-                        {
-                            for ($i=0; $i < count($dados) ; $i++) 
-                            { 
-                                echo "<option>"; 
-                                foreach ($dados[$i] as $key => $value) 
-                                {
-                                    if ($key == "nome" ) // IMPRIMIR VALOR SOMENTE SE...
+    </div>
+        <div id="adicionaPrudutoVenda" style="padding: 10px;" >
+                <a href="ConsultaProdutos.php?buscaProdutos=+"><img src="/img/search.png">Adcionar Produto</a>
+        </div><br><br>
+        
+        <div id="divPagamentoTipoVendedor">
+            <form id="pagamentoTipoVendedor" action="Vendas.php" method="POST">
+                <label id="labelTipoPagamento"> Tipo de Pagamento:</label>    
+                    <select id="tipoPagamento" name="tipoPagamento" class="form-control"> 
+                        <option value="" selected> </option>
+                        <option value="a vista" >À Vista</option>
+                        <option value="debito">Débito</option>
+                        <option value="credito">Crédito</option>
+                    </select><br><br>
+
+                        <!-- ==================== BUSCAR VENDEDOR =====================-->
+    
+            <label id="labelVendedorSelecionado">   &nbsp; Vendedor:</label>
+                <select id="vendedor" name="vendedor" class="form-control">
+                    <option value="Não Informado" selected> Não Informado </option>
+                        <?php $dados = $pessoa->selectAllPessoaFuncionarioVendedor();
+                            if(count($dados) > 0) 
+                            {
+                                for ($i=0; $i < count($dados) ; $i++) 
+                                { 
+                                    
+                                    foreach ($dados[$i] as $key => $value) 
                                     {
-                                        echo  $value. "</option>";
+                                        if ($key == "nome" ) // IMPRIMIR VALOR SOMENTE SE...
+                                        {
+                                            ?> 
+                                                <option value="<?php echo  $value ?>"> 
+                                                    <?php echo  $value; ?> </option> 
+                                            <?php
+                                        }
                                     }
                                 }
-                            }
-                        } 
-                    ?> 
-        </select><br/>
-
+                            } 
+                        ?> 
+            </select><br/>
+        </form>
         </div>
-        <div id="dadosClienteVenda">
-        <legend style="border: solid 1px #8b0210; background-color:  #8b0211; color: white; padding: 2px; ">DADOS DA VENDA</legend><br>
+    </div>
+
+            <form id="dadosClienteVenda" action="Vendas.php" method="POST">
+                <legend style="border: solid 1px #8b0210; background-color:  #8b0211; color: white; padding: 2px; ">DADOS DA VENDA</legend><br>
+
+                
+
+                <label id="labelCpf">CPF:</label>
+                <input id="cpfCliente" type="text" name="cpfCliente" class="form-control" size="16" 
+                    value="<?php if (isset($_GET['id_pessoa_get_up'])) 
+                    {
+                            $id_pessoa_get_up = addslashes($_GET['id_pessoa_get_up']); 
+                                $retornoConsulta = $pessoa->selectPessoaCliente($id_pessoa_get_up); 
+                                    if(isset($retornoConsulta)){echo $retornoConsulta[0]['cpf_cnpj'];
+                        }
+                    } 
+                        ?>"><br><br>
+
+                <label id="labelNomeCliente">Nome:</label>
+                <input id="nomeCliente" type="search" class="form-control" name="nomeCliente" size="40" 
+                    value="<?php if (isset($_GET['id_pessoa_get_up'])) 
+                    {
+                            $id_pessoa_get_up = addslashes($_GET['id_pessoa_get_up']); 
+                                $retornoConsulta = $pessoa->selectPessoaCliente($id_pessoa_get_up); 
+                                    if(isset($retornoConsulta)){echo $retornoConsulta[0]['nome'];
+                        }
+                    } 
+                        ?>">
+
+                    <div id="adicionaClienteVenda">
+                            <a href="ConsultaClientes.php?buscaCliente=+"><img src="/img/search.png">Buscar</a>
+                    </div> <br><br>
+
+                    <label for="idClienteVenda" style="visibility: hidden;">ID Cliente</label>
+                <input id="idClienteVenda" type="text" name="idClienteVenda" class="form-control" size="2" style="visibility: hidden;"
+                    value="<?php if (isset($_GET['id_pessoa_get_up'])) 
+                    {
+                            $id_pessoa_get_up = addslashes($_GET['id_pessoa_get_up']); 
+                                $retornoConsulta = $pessoa->selectPessoaCliente($id_pessoa_get_up); 
+                                    if(isset($retornoConsulta)){echo $retornoConsulta[0]['id_pessoa'];
+                        }
+                    } 
+                        ?>">
+            </form><br><br>
+
+                    <!-- =====================   FUNCAO PARA CRIAR A VENDA ======================-->
+        <script>
+            function realizaVenda() {
+                alert('Venda Finalzada!');
+            }
+        </script>
+
+                    <!-- =====================   FUNCAO PARA CANCELAR A VENDA ======================-->
+
+        <script>
+            function cancelaVenda() {
+                alert('Deseja cancelar a venda?');
+            }
+        </script>
             
-        <label id="labelNomeCliente">Nome:</label>
-        <input id="nomeCliente" type="search" class="form-control" name="nomeCliente" size="50" 
-            value="<?php if (isset($_GET['id_pessoa_get_up'])) 
-            {
-                    $id_pessoa_get_up = addslashes($_GET['id_pessoa_get_up']); 
-                        $retornoConsulta = $pessoa->selectPessoaCliente($id_pessoa_get_up); 
-	                        if(isset($retornoConsulta)){echo $retornoConsulta[0]['nome'];
-                }
-            } 
-                ?>"> <br>
 
-        <label id="labelCpf">CPF:</label><br>
-        <input id="cpfCliente" type="text" name="cpfCliente" class="form-control" size="25" 
-            value="<?php if (isset($_GET['id_pessoa_get_up'])) 
-            {
-                    $id_pessoa_get_up = addslashes($_GET['id_pessoa_get_up']); 
-                        $retornoConsulta = $pessoa->selectPessoaCliente($id_pessoa_get_up); 
-	                        if(isset($retornoConsulta)){echo $retornoConsulta[0]['cpf_cnpj'];
-                }
-            } 
-                ?>">
-
-            <div id="adicionaClienteVenda">
-                    <a href="ConsultaClientes.php?buscaCliente=+" style="font-size: 12px; margin-left: 5px;
-                    border: dotted 1px; width: 50px; height: 30px; float: right; 
-                    margin-right: 170px; display: block;">Buscar</a>
-            </div> 
-        </div>
-
-        <div id="saidaValorVenda">            
+        <form id="saidaValorVenda" action="Vendas.php" method="POST">            
             <label id="total" for="totalSemDesconto"> Total: R$</label>
-            <input id="totalSemDesconto" name="totalSemDesconto" class="form-control" size="10">
+            <input id="totalSemDesconto" name="totalSemDesconto" class="form-control" size="10"> <br><br>
             <label id="desconto" for="desconto"> Desconto: R$</label>
-            <input id="desconto" type="text" name="desconto" class="form-control" size="10" placeholder="%">
+            <input id="desconto" type="text" name="desconto" class="form-control" size="10" placeholder="%"><br><br>
             <label for="totalComDesconto" id="totalComDesconto">Total com Desconto: R$</label>
-            <input id="totalComDesconto" name="totalComDesconto" class="form-control" size="10">
-        <button class="btn btn-outline-danger" id="btnFecharVenda" name="fecharVenda" onclick="" 
-            style="display: inline;">Fechar Venda</button>
-        </div>  
+            <input id="totalComDesconto" name="totalComDesconto" class="form-control" size="10"><br><br><br>
+
+            <button class="btn btn-outline-danger" id="btnFecharVenda" name="fecharVenda" onclick="realizaVenda();" 
+                style="display: inline; margin-left: 10%;">Fechar Venda</button>
+
+            <button class="btn btn-outline-danger" id="btnCncelarVenda" name="cancelarVenda" onclick="cancelaVenda();" 
+                style="display: inline; margin-left: 10%;">Cancelar</button>
+        </form>  
 
     </section>
 </body>

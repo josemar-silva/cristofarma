@@ -61,7 +61,7 @@
                 </ul>
             </li>
             <li><a href="Cadastros.php">CADASTROS</a></li>
-            <li><a href="NotaFiscal.php">NOTA FISCAL</a></li>
+            <li><a href="CupomFiscal.php">CUPOM FISCAL</a></li>
             <li><a href="#">RELATÓRIOS</a>
                 <ul>
                     <li><a href="RelatorioVendas.php">Relatório de Vendas</a></li>
@@ -78,17 +78,12 @@
 
                 <label for="fornecedor">Fornecedor:</label><br>
                 <input id="fornecedor" class="form-control" type="text" type="text" 
-                name="fornecedor" size="25" value="<?php if (isset($_GET['id_fornecedor_produto_get_up'])) 
-                                                    {
-                                                            $id_fornecedor_produto_get_up = addslashes($_GET['id_fornecedor_produto_get_up']); 
-                                                                $retornoConsulta = $pessoa->selectPessoaFornecedor($id_fornecedor_produto_get_up); 
-                                                                    if(isset($retornoConsulta)){echo $retornoConsulta[0]['nome'];
-                                                        }
-                                                    } 
-                                                    ?>"><br><br>
-                <div id="selecionarFornecedor" style="font-size: 12px; margin-left: 5px; border: dotted 1px; width: 50px; height: 30px; float: left; 
-                    margin-left: 260px;">
-                <a href="ConsultaFornecedor.php?buscaFornecedor=+" id="alinhamento" >Buscar</a>
+                    name="fornecedor" size="25" value="<?php if (isset($_GET['id_fornecedor_produto_get_up'])){ $id_fornecedor_produto_get_up = addslashes($_GET['id_fornecedor_produto_get_up']); 
+                        $retornoConsulta = $pessoa->selectPessoaFornecedor($id_fornecedor_produto_get_up); if(isset($retornoConsulta)){echo $retornoConsulta[0]['nome'];}}?>"><br><br>
+
+                <div id="selecionarFornecedor" style="font-size: 12px; margin-left: 5px; border: dotted 1px; width: 50px; height: 50px; float: left; 
+                    margin-left: 240px; margin-top: -8%;">
+                <a href="ConsultaFornecedor.php?buscaFornecedor=+" id="alinhamento"><img src="/img/search.png">Buscar</a>
                 </div><br><br>
                 <label for="descricaoProduto"> Descrição do Produto:</label><br>
                 <input id="descricaoProduto" class="form-control"  type="text" name="descricaoProduto" size="60"> <br><br>
@@ -106,7 +101,6 @@
                     value="<?php echo "Cadastrar"; ?>">
             </form>
         </section>
-
 </body>
 
 </html>
