@@ -176,21 +176,36 @@ border: none;
     background-position: center;
 }
 
-#pagamentoTipoVendedor {
+#pagamentoTipo {
 
     float: right; 
     padding: 10px; 
-    height: 150px;
-    width: 18%;
+    width: 16%;
     position: relative;
-    height: 100px;
+    height: 60px;
     margin-top: -6%;
-    padding: 20px;
     font-size: 13pt;
 
 }
 
-#pagamentoTipoVendedor select {
+#vendedorSelecionado {
+
+    float: right; 
+    height: 80px;
+    width: 30%;
+    margin-left: 10px;
+    padding: 10PX;
+    margin-top: -1%;
+}
+
+#vendedorSelecionado input{
+
+    display: inline-block;
+    float: right;
+}
+
+
+#pagamentoTipo select {
 
     display: inline-block;
     float: right;
@@ -200,12 +215,12 @@ border: none;
 #dadosClienteVenda {
     float:  right; 
     width: 30%;
-    height: 220px;
+    height: 200px;
     margin-right: 3px;
     border-bottom: rgba(0, 0, 0, .2) 3px solid;
     border-radius: 3%;
     padding: 10px;
-    margin-top: 1%;
+ 
 }
 
 #dadosClienteVenda input{
@@ -256,7 +271,7 @@ border: none;
     margin-right: 3px;
     height: 240px;
     padding: 10px;
-    margin-top: 40px;
+    margin-top: 20px;
     border-bottom: rgba(0, 0, 0, .2) 3px solid;
     border-radius: 3%; 
 }

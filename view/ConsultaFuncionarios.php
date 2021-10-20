@@ -97,8 +97,9 @@
                                 echo "<td>" .$value. "</td>";
                             }
                         }
-                        ?>
+                        ?>  
                             <td> 
+                                <a id="acaoSelecionar" href="Vendas.php?id_pessoa_vendedor_get_up=<?php echo $dados[$i]['id_pessoa'];?>">Selecionar</a>
                                 <a id="acaoEditar" href="AtualizaFuncionario.php?id_get_up=<?php echo $dados[$i]['id_pessoa'];?>">Editar</a>
                                 <a id="acaoExcluir" href="ConsultaFuncionarios.php?id_get_del=<?php echo $dados[$i]['id_pessoa'];?>">Excluir</a> 
                                 <!-- usar "echo $dados[$i]['id_pessoa']; "pegar ID desejado no array e passar como 'string' para o metodo $_GET-->

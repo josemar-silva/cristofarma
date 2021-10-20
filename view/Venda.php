@@ -35,10 +35,11 @@ class Venda
         $dados->bindValue("fk", $pessoa_id_pessoa_vendedor);
         $dados->execute(); 
         $res = $dados->fetch(PDO::FETCH_ASSOC);
-        $fk_vendedor = $res['id_cliente'];
+        $fk_vendedor = $res['id_pessoa'];
 
-        $dados  = $conexao->pdo->prepare("SELECT id_pessoa FROM pessoa WHERE nome = :fk"); 
-        $dados->bindValue("vn", $pessoa_id_pessoa_Cliente); 
+        $dados  = $conexao->pdo->prepare("SELECT id_pessoa FROM pessoa WHERE id_pessoa = :fk"); 
+        $dados->bindValue("fk", $pessoa_id_pessoa_Cliente);
+        $dados->execute(); 
         $res2 = $dados->fetch(PDO::FETCH_ASSOC); 
         $fk_cliente = $res2['id_pessoa'];
 

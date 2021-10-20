@@ -19,15 +19,27 @@
         $venda = new Venda();
         $estoque = new Estoque();
 
-        if (isset($_POST['nome'])) // CLICOU NO BOTAO CADASTRAR OU EDITAR
-    {   
-        if (isset($_GET['id_get_up']) && !empty($_GET['id_get_up'])) 
-        {
+        if (isset($_POST['fecharVenda'])) {
 
+            $vendaStatus = 'aberto';
+            echo addslashes($_POST['nomeCliente']);
+
+            $pessoa_id_pessoa_vendedor = addslashes($_POST['idVendedorSelecionado']); 
+            $pessoa_id_pessoa_cliente = addslashes($_POST['idClienteVenda']);
+            $data_venda = addslashes($_POST['dataVenda']);
+            $tipo_pagamento = addslashes($_POST['tipoPagamento']);
+            $status_venda = $vendaStatus; 
+            $valor_venda_sem_desconto = addslashes($_POST['totalSemDesconto']);
+            $desconto = addslashes($_POST['desconto']);
+            $valor_venda_com_desconto  = addslashes($_POST['totalComDesconto']);
+            $total_item_venda = '1';
+
+            $venda->createVenda($pessoa_id_pessoa_vendedor, $pessoa_id_pessoa_cliente, $data_venda, $tipo_pagamento, $status_venda,
+            $valor_venda_sem_desconto, $desconto, $valor_venda_com_desconto,$total_item_venda);
         }
-    }
-
+    
     ?>
+
 
     <title>Vendas</title>
 </head>
@@ -69,12 +81,7 @@
     <legend>REALIZAR VENDA/ORÇAMENTO</legend>
 
 <div id="itensAdicionados">
-            <div id="dateTimeVenda" style="display: block; margin-left: 35%;">
-                <label>Data/Hora:</label>
-                <input id="dataVenda" name="dataVenda" value="<?php date_default_timezone_set('America/Sao_Paulo');
-                    echo date('d/m/Y H:i:s'); ?>" 
-                style="color: blue; text-align: center; font-size: 15pt; border: none; display: inline;" size="15" ></input>
-            </div>
+            
             
 <div class="scroll">
     <table>
@@ -145,53 +152,63 @@
  </div>
 
     </div>
+    <form id="upVendas" action="Vendas.php" method="POST">
+
+    
+                <label>Data/Hora:</label>
+                <input id="dataVenda" name="dataVenda" value="<?php date_default_timezone_set('America/Sao_Paulo');
+                    echo date('d/m/Y H:i:s'); ?>" 
+                style="color: blue; text-align: center; font-size: 15pt; border: none; display: inline;" size="15" ></input>
+           
+
         <div id="adicionaPrudutoVenda" style="padding: 10px;" >
                 <a href="ConsultaProdutos.php?buscaProdutos=+"><img src="/img/search.png">Adcionar Produto</a>
         </div><br><br>
         
         <div id="divPagamentoTipoVendedor">
-            <form id="pagamentoTipoVendedor" action="Vendas.php" method="POST">
+            
                 <label id="labelTipoPagamento"> Tipo de Pagamento:</label>    
                     <select id="tipoPagamento" name="tipoPagamento" class="form-control"> 
                         <option value="" selected> </option>
                         <option value="a vista" >À Vista</option>
                         <option value="debito">Débito</option>
                         <option value="credito">Crédito</option>
-                    </select><br><br>
+                 </select>
+    </div>
 
-                        <!-- ==================== BUSCAR VENDEDOR =====================-->
-    
-            <label id="labelVendedorSelecionado">   &nbsp; Vendedor:</label>
-                <select id="vendedor" name="vendedor" class="form-control">
-                    <option value="Não Informado" selected> Não Informado </option>
-                        <?php $dados = $pessoa->selectAllPessoaFuncionarioVendedor();
-                            if(count($dados) > 0) 
+                           <!-- ==================== BUSCAR VENDEDOR =====================-->
+        <div id="vendedorSelecionado">
+            
+                <label id="labelVendedorSelecionado">Vendedor:</label>
+                    <input type="text" id="vendedor" name="vendedor" class="form-control" size="30" 
+                            value="<?php if (isset($_GET['id_pessoa_vendedor_get_up'])) 
                             {
-                                for ($i=0; $i < count($dados) ; $i++) 
-                                { 
-                                    
-                                    foreach ($dados[$i] as $key => $value) 
-                                    {
-                                        if ($key == "nome" ) // IMPRIMIR VALOR SOMENTE SE...
-                                        {
-                                            ?> 
-                                                <option value="<?php echo  $value ?>"> 
-                                                    <?php echo  $value; ?> </option> 
-                                            <?php
-                                        }
-                                    }
+                                    $id_pessoa_get_up = addslashes($_GET['id_pessoa_vendedor_get_up']); 
+                                        $retornoConsulta = $pessoa->selectPessoaFuncionario($id_pessoa_get_up); 
+                                            if(isset($retornoConsulta)){echo $retornoConsulta[0]['nome'];
                                 }
-                            } 
-                        ?> 
-            </select><br/>
-        </form>
+                            }
+                                ?>">
+        <div id="adicionaVendedorVenda" style="padding: 10px;" >
+            <a href="ConsultaFuncionarios.php?buscaFuncionario=+"><img src="/img/search.png">Adcionar Vendedor</a>
+        </div>
+
+                    <label for="idClienteVenda" style="visibility: hidden;">ID Vendedor</label>
+                    <input type="text" id="idVendedorSelecionado" name="idVendedorSelecionado" class="form-control" style=""
+                        value="<?php if (isset($_GET['id_pessoa_vendedor_get_up'])) 
+                            {
+                                    $id_pessoa_get_up = addslashes($_GET['id_pessoa_vendedor_get_up']); 
+                                        $retornoConsulta = $pessoa->selectPessoaFuncionario($id_pessoa_get_up); 
+                                            if(isset($retornoConsulta)){echo $retornoConsulta[0]['id_pessoa'];
+                                }
+                            }
+                                ?>">
+            
         </div>
     </div>
 
-            <form id="dadosClienteVenda" action="Vendas.php" method="POST">
+            
                 <legend style="border: solid 1px #8b0210; background-color:  #8b0211; color: white; padding: 2px; ">DADOS DA VENDA</legend><br>
-
-                
 
                 <label id="labelCpf">CPF:</label>
                 <input id="cpfCliente" type="text" name="cpfCliente" class="form-control" size="16" 
@@ -201,7 +218,7 @@
                                 $retornoConsulta = $pessoa->selectPessoaCliente($id_pessoa_get_up); 
                                     if(isset($retornoConsulta)){echo $retornoConsulta[0]['cpf_cnpj'];
                         }
-                    } 
+                    }
                         ?>"><br><br>
 
                 <label id="labelNomeCliente">Nome:</label>
@@ -217,10 +234,10 @@
 
                     <div id="adicionaClienteVenda">
                             <a href="ConsultaClientes.php?buscaCliente=+"><img src="/img/search.png">Buscar</a>
-                    </div> <br><br>
+                    </div>
 
-                    <label for="idClienteVenda" style="visibility: hidden;">ID Cliente</label>
-                <input id="idClienteVenda" type="text" name="idClienteVenda" class="form-control" size="2" style="visibility: hidden;"
+                <label for="idClienteVenda" style="visibility: hidden;">ID Cliente</label>
+                <input id="idClienteVenda" type="text" name="idClienteVenda" class="form-control" size="" style=""
                     value="<?php if (isset($_GET['id_pessoa_get_up'])) 
                     {
                             $id_pessoa_get_up = addslashes($_GET['id_pessoa_get_up']); 
@@ -229,25 +246,14 @@
                         }
                     } 
                         ?>">
-            </form><br><br>
+            
 
                     <!-- =====================   FUNCAO PARA CRIAR A VENDA ======================-->
-        <script>
-            function realizaVenda() {
-                alert('Venda Finalzada!');
-            }
-        </script>
+
 
                     <!-- =====================   FUNCAO PARA CANCELAR A VENDA ======================-->
 
-        <script>
-            function cancelaVenda() {
-                alert('Deseja cancelar a venda?');
-            }
-        </script>
-            
-
-        <form id="saidaValorVenda" action="Vendas.php" method="POST">            
+                  
             <label id="total" for="totalSemDesconto"> Total: R$</label>
             <input id="totalSemDesconto" name="totalSemDesconto" class="form-control" size="10"> <br><br>
             <label id="desconto" for="desconto"> Desconto: R$</label>
@@ -255,12 +261,16 @@
             <label for="totalComDesconto" id="totalComDesconto">Total com Desconto: R$</label>
             <input id="totalComDesconto" name="totalComDesconto" class="form-control" size="10"><br><br><br>
 
-            <button class="btn btn-outline-danger" id="btnFecharVenda" name="fecharVenda" onclick="realizaVenda();" 
+            
+       
+
+        <button class="btn btn-outline-danger" id="btnFecharVenda" name="fecharVenda" onclick="realizaVenda();" 
                 style="display: inline; margin-left: 10%;">Fechar Venda</button>
 
             <button class="btn btn-outline-danger" id="btnCncelarVenda" name="cancelarVenda" onclick="cancelaVenda();" 
                 style="display: inline; margin-left: 10%;">Cancelar</button>
-        </form>  
+    </form>
+<?php ?> 
 
     </section>
 </body>
