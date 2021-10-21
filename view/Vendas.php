@@ -22,7 +22,6 @@
         if (isset($_POST['fecharVenda'])) {
 
             $vendaStatus = 'aberto';
-            echo addslashes($_POST['nomeCliente']);
 
             $pessoa_id_pessoa_vendedor = addslashes($_POST['idVendedorSelecionado']); 
             $pessoa_id_pessoa_cliente = addslashes($_POST['idClienteVenda']);
@@ -37,10 +36,16 @@
             $venda->createVenda($pessoa_id_pessoa_vendedor, $pessoa_id_pessoa_cliente, $data_venda, $tipo_pagamento, $status_venda,
             $valor_venda_sem_desconto, $desconto, $valor_venda_com_desconto,$total_item_venda);
         }
-    
+
+        if (isset($_POST['cancelarVenda'])) {
+
+            $data_venda = addslashes($_POST['dataVenda']);
+            $pessoa_id_pessoa_cliente = addslashes($_POST['idClienteVenda']);
+
+            $venda->deleteVenda($data_venda, $pessoa_id_pessoa_cliente);
+        }
+
     ?>
-
-
     <title>Vendas</title>
 </head>
 
@@ -81,8 +86,6 @@
     <legend>REALIZAR VENDA/ORÇAMENTO</legend>
 
 <div id="itensAdicionados">
-            
-            
 <div class="scroll">
     <table>
         <?php
@@ -121,8 +124,7 @@
     ?>
         <td>
             <input id="quantidadeItemVenda" style="border: none; text-align: center; " size="2" value="<?php echo'1';?>">
-        </td>               
-                    
+        </td>                     
      <?php                              
                     foreach ($dados[$i] as $key => $value) 
                     {   
@@ -146,21 +148,17 @@
             } 
         }   
     }
-    ?>
-                    
+    ?>       
     </table>
  </div>
 
     </div>
-    <form id="upVendas" action="Vendas.php" method="POST">
-
-    
+    <form id="upVendas" action="Vendas.php" method="POST">    
                 <label>Data/Hora:</label>
                 <input id="dataVenda" name="dataVenda" value="<?php date_default_timezone_set('America/Sao_Paulo');
                     echo date('d/m/Y H:i:s'); ?>" 
                 style="color: blue; text-align: center; font-size: 15pt; border: none; display: inline;" size="15" ></input>
            
-
         <div id="adicionaPrudutoVenda" style="padding: 10px;" >
                 <a href="ConsultaProdutos.php?buscaProdutos=+"><img src="/img/search.png">Adcionar Produto</a>
         </div><br><br>
@@ -168,15 +166,15 @@
         <div id="divPagamentoTipoVendedor">
             
                 <label id="labelTipoPagamento"> Tipo de Pagamento:</label>    
-                    <select id="tipoPagamento" name="tipoPagamento" class="form-control"> 
-                        <option value="" selected> </option>
-                        <option value="a vista" >À Vista</option>
-                        <option value="debito">Débito</option>
-                        <option value="credito">Crédito</option>
-                 </select>
+                <select id="tipoPagamento" name="tipoPagamento" class="form-control"> 
+                    <option value="" selected> </option>
+                    <option value="a vista" >À Vista</option>
+                    <option value="debito">Débito</option>
+                    <option value="credito">Crédito</option>
+                </select>
     </div>
-
                            <!-- ==================== BUSCAR VENDEDOR =====================-->
+
         <div id="vendedorSelecionado">
             
                 <label id="labelVendedorSelecionado">Vendedor:</label>
@@ -203,10 +201,9 @@
                                 }
                             }
                                 ?>">
-            
         </div>
     </div>
-
+                <!-- =========================== BUSCAR CLIENTE ===============================-->
             
                 <legend style="border: solid 1px #8b0210; background-color:  #8b0211; color: white; padding: 2px; ">DADOS DA VENDA</legend><br>
 
@@ -246,14 +243,7 @@
                         }
                     } 
                         ?>">
-            
-
-                    <!-- =====================   FUNCAO PARA CRIAR A VENDA ======================-->
-
-
-                    <!-- =====================   FUNCAO PARA CANCELAR A VENDA ======================-->
-
-                  
+                            
             <label id="total" for="totalSemDesconto"> Total: R$</label>
             <input id="totalSemDesconto" name="totalSemDesconto" class="form-control" size="10"> <br><br>
             <label id="desconto" for="desconto"> Desconto: R$</label>
@@ -261,17 +251,13 @@
             <label for="totalComDesconto" id="totalComDesconto">Total com Desconto: R$</label>
             <input id="totalComDesconto" name="totalComDesconto" class="form-control" size="10"><br><br><br>
 
-            
-       
-
-        <button class="btn btn-outline-danger" id="btnFecharVenda" name="fecharVenda" onclick="realizaVenda();" 
+            <button class="btn btn-outline-danger" id="btnFecharVenda" name="fecharVenda" onclick="" 
                 style="display: inline; margin-left: 10%;">Fechar Venda</button>
 
-            <button class="btn btn-outline-danger" id="btnCncelarVenda" name="cancelarVenda" onclick="cancelaVenda();" 
+            <button class="btn btn-outline-danger" id="btnCncelarVenda" name="cancelarVenda" onclick="" 
                 style="display: inline; margin-left: 10%;">Cancelar</button>
     </form>
 <?php ?> 
-
     </section>
 </body>
 
