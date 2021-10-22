@@ -59,11 +59,11 @@
 
    
 <form action="ConsultaProdutos.php" method="GET">
-    <legend>CONSULTA PRDUTOS</legend>
+    <legend>CONSULTA PRDUTOS</legend><br><br>
     
     <label style="margin-left: 25%;"></label>
     <input  type="search" id="buscaProdutos" class="form-control" name="buscaProdutos" value="<?php if (isset($_GET['buscaProdutos']) && !empty($_GET['buscaProdutos'])) 
-            echo $_GET['buscaProdutos'];?>" size=" 50" class="form-control-busca" placeholder="Digte aqui para buscar" >
+            echo $_GET['buscaProdutos'];?>" size=" 50" class="form-control-busca" placeholder="Digte aqui para buscar" style="display: inline;">
 
     <button class="btn btn-outline-danger" id="btnBuscar" onclick="" style="width: 10%; padding: 2px;">Buscar</button><br><br>
 </form>

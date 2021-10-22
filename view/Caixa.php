@@ -64,8 +64,11 @@
                     $venda = new Venda();
                     $estoque = new Estoque();
 
+        $dados = $venda->selectAllVenda();
 
-                    echo '<table class="table table-hover">';
+            
+
+                echo '<table class="table table-hover">';
                         echo '<tr>';
                             echo '<th> DATA </th>';
                             echo '<th> CÓDIGO VENDA </th>';
@@ -74,34 +77,74 @@
                             echo '<th> VALOR VENDA </th>';
                             echo '<th> PAGAMENTO </th>';
                             echo '<th> SITUAÇÃO </th>';
+                            echo '<th> AÇÃO </th>';
+
                         echo '</tr>';
+
+            if (count($dados) > 0) {
+
+                for ($i=0; $i < count($dados) ; $i++) 
+                { 
+                    echo "<tr>"; // abre a linha dos dados selecionados
+
+                    foreach ($dados[$i] as $key => $value) 
+                    {
+                        if ($key == "data_venda") // ignorar coluna
+                        {
+                            echo "<td>" .$value. "</td>";
+                        }
+                    } foreach ($dados[$i] as $key => $value) 
+                    {
+                        if ($key == 'id_venda')  // IMPRIMIR VALOR SOMENTE SE...
+                        {
+                            echo "<td>" .$value. "</td>";
+                        }
+                    } foreach ($dados[$i] as $key => $value) 
+                    {
+                        if ($key == 'pessoa_id_pessoa_cliente')  // IMPRIMIR VALOR SOMENTE SE...
+                        {
+                            echo "<td>" .$value. "</td>";
+                        }
+                    } foreach ($dados[$i] as $key => $value) 
+                    {
+                        if ($key == 'pessoa_id_pessoa_vendedor')  // IMPRIMIR VALOR SOMENTE SE...
+                        {
+                            echo "<td>" .$value. "</td>";
+                        }
+                    } foreach ($dados[$i] as $key => $value) 
+                    {
+                        if ($key == 'valor_venda_com_desconto')  // IMPRIMIR VALOR SOMENTE SE...
+                        {
+                            echo "<td>" .$value. "</td>";
+                        }
+                    } foreach ($dados[$i] as $key => $value) 
+                    {
+                        if ($key == 'tipo_pagamento')  // IMPRIMIR VALOR SOMENTE SE...
+                        {
+                            echo "<td>" .$value. "</td>";
+                        }
+                    } foreach ($dados[$i] as $key => $value) 
+                    {
+                        if ($key == 'status_venda')  // IMPRIMIR VALOR SOMENTE SE...
+                        {
+                            echo "<td>" .$value. "</td>";
+                        }
+                    }
+        ?>
+                         <td>
+                         <a id="acaoEditar" href="FecharVendaCaixa.php?id_get_venda_up=<?php echo $dados[$i]['id_venda'];?>"                         
+                                style="border: solid green 1px; width: 40px; height: 40px; background-color: green;">Receber</a>
+                        </td>
+        <?php
+                        echo "</tr>"; // fecha linha dos dados selecionados
+                }
+            }
+        
                 ?>
         </table>
      </div>
     </div>  
 
-        <form id="fecharVenda" name="fecharVenda">
-            <legend>FINALIZAR VENDA</legend>
-
-            <label>Total da Venda R$: </label>
-            <input id="valorVenda" class="form-control" name="valorDaVenda" size="6">
-
-            <label>Desconto R$: </label>
-            <input id="valorDesconto" class="form-control" name="ValorDoDesconto" size="6">
-
-            <label>Total a Pagar R$:</label>
-            <input id="valorPagar" class="form-control" name="totalApagar" size="6">
-
-            <label>Valor Recebido R$:</label>
-            <input id="valorRecebido" class="form-control" name="valorRecebido" type="text" size="6" placeholder="R$">
-
-            <label>Troco R$:</label>
-            <input id="troco" class="form-control" name="troco" size="6">
-
-            <button class="btn btn-outline-danger" id="btnCancelar" name="cancelar" onclick="" style="display: inline;">Cancelar</button>
-            <button class="btn btn-outline-danger" id="btnFinalizar" name="finalizar" onclick="" style="display: inline;">Finalizar</button>
-        </form>
-       
     </section>
 </body>
 

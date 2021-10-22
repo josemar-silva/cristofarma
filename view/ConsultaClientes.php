@@ -49,13 +49,13 @@
 
    
     <form action="ConsultaClientes.php" method="GET">
-        <legend>CONSULTA CLIENTES</legend>
+        <legend>CONSULTA CLIENTES</legend><br><br>
         
         <label style="margin-left: 25%;"></label>
         <input  type="search" id="buscaCliente" class="form-control" name="buscaCliente" value="<?php if (isset($_GET['buscaCliente']) && !empty($_GET['buscaCliente'])) 
-                echo $_GET['buscaCliente'];?>" size=" 50" class="form-control-busca" placeholder="Digte aqui para buscar" >
+                echo $_GET['buscaCliente'];?>" size=" 50" class="form-control-busca" placeholder="Digte aqui para buscar" style="display: inline;">
 
-        <button class="btn btn-outline-danger" id="btnBuscar" onclick="" style="width: 10%; padding: 2px;">Buscar</button><br><br>
+        <button class="btn btn-outline-danger" id="btnBuscar" onclick="" style="width: 10%; padding: 2px;" >Buscar</button><br><br>
     </form>
 
     <section>
@@ -73,7 +73,7 @@
             <th> TELEFONE FIXO </th>
             <th> TELEFONE CELULAR </th>
             <th> ENDEREÇO DO CLIENTE</th>
-            <th>  </th>
+            <th> AÇÃO </th>
         </tr>
         
         <?php

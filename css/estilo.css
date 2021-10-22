@@ -96,14 +96,12 @@ legend {
     border: none;
     background-color: #74032e;
     color: white;
-    padding: 5px 32px;
+    padding: 5px 30px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
     font-size: 19px;
     box-shadow: 2px 3px 5px rgb(10 74 67 / 42%);
-    margin-left: 35%;
-    margin-top: 10pt;
     
 }
 
@@ -176,26 +174,36 @@ border: none;
     background-position: center;
 }
 
-#pagamentoTipo {
+#divDataHoraVenda{
+
+    float: right;
+    margin-top: -5%;
+    margin-right: 60px;
+}
+
+#divPagamentoTipo {
 
     float: right; 
     padding: 10px; 
     width: 16%;
-    position: relative;
     height: 60px;
-    margin-top: -6%;
+    margin-top: -3%;
     font-size: 13pt;
+}
+
+#divPagamentoTipo select {
+
+    display: inline-block;
 
 }
 
 #vendedorSelecionado {
 
     float: right; 
-    height: 80px;
-    width: 30%;
+    height: 130px;
+    width: 90%;
     margin-left: 10px;
-    padding: 10PX;
-    margin-top: -1%;
+    padding: 10px;    
 }
 
 #vendedorSelecionado input{
@@ -204,11 +212,12 @@ border: none;
     float: right;
 }
 
+#adicionaVendedorVenda{
 
-#pagamentoTipo select {
-
-    display: inline-block;
     float: right;
+    margin-top: -25%;
+    margin-right: 10px;
+
 }
 
 
@@ -218,7 +227,6 @@ border: none;
     height: 200px;
     margin-right: 3px;
     border-bottom: rgba(0, 0, 0, .2) 3px solid;
-    border-radius: 3%;
     padding: 10px;
  
 }
@@ -231,20 +239,19 @@ border: none;
 #adicionaClienteVenda{
 
     border: dotted 1px red;
-    width: 50px;
-    height: 50px;
+    width: 120px;
+    height: 20px;
     float: right;
-    margin-top: -5%;
+    margin-top: -10%;
 }
 
 #itensAdicionados {
 
     border:rgba(0, 0, 0, .2) 2px solid;
     margin-left: 3px;
-    border-radius: 2%;
     float: left;
     width: 69%;
-    height: 620px;
+    height: 630px;
     display: block;
 }
 
@@ -253,8 +260,8 @@ border: none;
     display: inline-block;
     background-color: red;
     Border: solid red 1px; 
-    width: 20px;
-    height: 20px;
+    width: 50px;
+    height: 25px;
     text-decoration: none;
     text-align: center;
     color: white;
@@ -266,14 +273,13 @@ border: none;
 #saidaValorVenda {
 
     float: right; 
-    border-radius: 5%;
     width: 30%;
     margin-right: 3px;
     height: 240px;
     padding: 10px;
-    margin-top: 20px;
+    margin-top: 20%;
     border-bottom: rgba(0, 0, 0, .2) 3px solid;
-    border-radius: 3%; 
+    border-radius: 3%;
 }
 
 #saidaValorVenda input {
@@ -282,45 +288,42 @@ border: none;
     float: right;
 }
 
-#fecharVenda{
+#fecharVendaCaixa{
 
         text-transform: capitalize;
         font-size: 18pt ;
-        width: 33%;
+        width: 30%;
         border:rgba(0, 0, 0, .2) 2px solid;
-        border-radius: 3%;
         height: 630px;  
         float: right;
         margin-right: 10px;
         padding: 10px;
 }
 
-    #fecharVenda input{
-
-
-    }
-
-    #fecharVenda label{
+    #fecharVendaCaixa label{
 
         text-transform: uppercase;
-        font-size: 18pt ;
-        margin-top: 10px;
+        font-size: 13pt ;
         font-weight: bolder;
+        float: right;
+    }
+
+    #fecharVendaCaixa input{
+
+        font-size: 25pt;
+        height: auto;
         text-align: right;
+        float: right;
     }
 
     #listaVendas{
 
         border:rgba(0, 0, 0, .2) 2px solid;
-        border-radius: 3%;
-        height: 630px;  
-        width: 65%;
+        height: 650px;  
+        width: 95%;
         float: left;
-        margin-left: 5px;
-    }
-
-    #principalCaixa {
-    
+        margin-left: 2%;
+        margin-top: -2%;
     }
 
     #acaoEditar {

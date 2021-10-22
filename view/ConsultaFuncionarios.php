@@ -47,11 +47,11 @@
 
    
 <form action="ConsultaFuncionarios.php" method="GET">
-    <legend>CONSULTA FUNCIONÁRIOS</legend>
+    <legend>CONSULTA FUNCIONÁRIOS</legend><br><br>
     
     <label style="margin-left: 25%;"></label>
     <input  type="search" id="buscaFuncionario" class="form-control" name="buscaFuncionario" value="<?php if (isset($_GET['buscaFuncionario']) && !empty($_GET['buscaFuncionario'])) 
-            echo $_GET['buscaFuncionario'];?>" size=" 50" class="form-control-busca" placeholder="Digte aqui para buscar" >
+            echo $_GET['buscaFuncionario'];?>" size=" 50" class="form-control-busca" placeholder="Digte aqui para buscar" style="display: inline;">
 
     <button class="btn btn-outline-danger" id="btnBuscar" onclick="" style="width: 10%; padding: 2px;">Buscar</button><br><br>
 </form>
@@ -73,7 +73,7 @@
             <th> MATRICULA </th>
             <th> FUNCAO </th>
             <th> ENDEREÇO DO FUNCIONÁRIO</th>
-            <th>  </th>
+            <th> AÇÃO </th>
         </tr>
         <?php
 

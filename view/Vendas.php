@@ -141,7 +141,7 @@
                     }
     ?>
             <td>
-                <a id="removeProdutoVenda" href="#"> X </a>
+                <a id="removeProdutoVenda" href="#"> Excluir </a>
             </td>
                  <?php
                     echo "</tr>"; // fecha linha dos dados selecionados
@@ -150,21 +150,23 @@
     }
     ?>       
     </table>
- </div>
-
     </div>
-    <form id="upVendas" action="Vendas.php" method="POST">    
-                <label>Data/Hora:</label>
-                <input id="dataVenda" name="dataVenda" value="<?php date_default_timezone_set('America/Sao_Paulo');
-                    echo date('d/m/Y H:i:s'); ?>" 
-                style="color: blue; text-align: center; font-size: 15pt; border: none; display: inline;" size="15" ></input>
-           
-        <div id="adicionaPrudutoVenda" style="padding: 10px;" >
+</div>
+
+    <div id="adicionaPrudutoVenda" style="padding: 10px;" >
                 <a href="ConsultaProdutos.php?buscaProdutos=+"><img src="/img/search.png">Adcionar Produto</a>
-        </div><br><br>
-        
-        <div id="divPagamentoTipoVendedor">
-            
+    </div>
+
+    <form id="upVendas" action="Vendas.php" method="POST">
+
+        <div id="divDataHoraVenda">   
+            <label>Data/Hora:</label>
+            <input id="dataVenda" name="dataVenda" value="<?php date_default_timezone_set('America/Sao_Paulo');
+                echo date('d/m/Y H:i:s'); ?>" 
+                    style="color: blue; text-align: center; font-size: 15pt; border: none; display: inline;" 
+                    size="15" ></input>
+        </div>
+            <div id="divPagamentoTipo">            
                 <label id="labelTipoPagamento"> Tipo de Pagamento:</label>    
                 <select id="tipoPagamento" name="tipoPagamento" class="form-control"> 
                     <option value="" selected> </option>
@@ -172,13 +174,27 @@
                     <option value="debito">Débito</option>
                     <option value="credito">Crédito</option>
                 </select>
-    </div>
+            </div><br>
+    <div id="divDabosVenda" style="width: 30%; float: right;  height: 540px; font-size: 13pt;">
+    <legend style="border: solid 1px #8b0210; background-color: #8b0211; color: white;">DADOS DA VENDA</legend>
+        
                            <!-- ==================== BUSCAR VENDEDOR =====================-->
 
-        <div id="vendedorSelecionado">
-            
-                <label id="labelVendedorSelecionado">Vendedor:</label>
-                    <input type="text" id="vendedor" name="vendedor" class="form-control" size="30" 
+        <div id="vendedorSelecionado">      
+                <label for="idClienteVenda" >ID Vendedor:</label>
+                    <input type="text" id="idVendedorSelecionado" name="idVendedorSelecionado" class="form-control" size="5" style="margin-right: 54%;"
+                        value="<?php if (isset($_GET['id_pessoa_vendedor_get_up']))
+                            {
+                                    $id_pessoa_get_up = addslashes($_GET['id_pessoa_vendedor_get_up']); 
+                                        $retornoConsulta = $pessoa->selectPessoaFuncionario($id_pessoa_get_up); 
+                                            if(isset($retornoConsulta)){echo $retornoConsulta[0]['id_pessoa'];
+                                }
+                            }
+                            
+                                ?>"><br><br>
+
+                <label id="labelVendedorSelecionado" >Nome:</label>
+                    <input type="text" id="vendedor" name="vendedor" class="form-control" size="30" style="margin-right: 11%;"
                             value="<?php if (isset($_GET['id_pessoa_vendedor_get_up'])) 
                             {
                                     $id_pessoa_get_up = addslashes($_GET['id_pessoa_vendedor_get_up']); 
@@ -186,29 +202,38 @@
                                             if(isset($retornoConsulta)){echo $retornoConsulta[0]['nome'];
                                 }
                             }
-                                ?>">
-        <div id="adicionaVendedorVenda" style="padding: 10px;" >
-            <a href="ConsultaFuncionarios.php?buscaFuncionario=+"><img src="/img/search.png">Adcionar Vendedor</a>
-        </div>
+                                ?>"><br><br>
+        
+                    <div id="adicionaVendedorVenda" style="padding: 10px;">
+                        <a href="ConsultaFuncionarios.php?buscaFuncionario=+"><img src="/img/search.png">Adcionar Vendedor</a>
+                    </div><br><br>
 
-                    <label for="idClienteVenda" style="visibility: hidden;">ID Vendedor</label>
-                    <input type="text" id="idVendedorSelecionado" name="idVendedorSelecionado" class="form-control" style=""
-                        value="<?php if (isset($_GET['id_pessoa_vendedor_get_up'])) 
-                            {
-                                    $id_pessoa_get_up = addslashes($_GET['id_pessoa_vendedor_get_up']); 
-                                        $retornoConsulta = $pessoa->selectPessoaFuncionario($id_pessoa_get_up); 
-                                            if(isset($retornoConsulta)){echo $retornoConsulta[0]['id_pessoa'];
-                                }
-                            }
-                                ?>">
-        </div>
-    </div>
-                <!-- =========================== BUSCAR CLIENTE ===============================-->
+             <!-- =========================== BUSCAR CLIENTE ===============================-->
+
+             <label for="idClienteVenda" style="">ID Cliente:</label>
+                <input id="idClienteVenda" type="text" name="idClienteVenda" class="form-control" size="5" style="margin-right: 54%;"
+                    value="<?php if (isset($_GET['id_pessoa_get_up'])) 
+                    {
+                            $id_pessoa_get_up = addslashes($_GET['id_pessoa_get_up']); 
+                                $retornoConsulta = $pessoa->selectPessoaCliente($id_pessoa_get_up); 
+                                    if(isset($retornoConsulta)){echo $retornoConsulta[0]['id_pessoa'];
+                        }
+                    } 
+                        ?>"><br><br>
             
-                <legend style="border: solid 1px #8b0210; background-color:  #8b0211; color: white; padding: 2px; ">DADOS DA VENDA</legend><br>
+                <label id="labelNomeCliente">Nome:</label>
+                <input id="nomeCliente" type="search" class="form-control" name="nomeCliente" size="30" style="margin-right: 11%;"
+                    value="<?php if (isset($_GET['id_pessoa_get_up'])) 
+                    {
+                            $id_pessoa_get_up = addslashes($_GET['id_pessoa_get_up']); 
+                                $retornoConsulta = $pessoa->selectPessoaCliente($id_pessoa_get_up); 
+                                    if(isset($retornoConsulta)){echo $retornoConsulta[0]['nome'];
+                        }
+                    } 
+                        ?>"><br><br>
 
                 <label id="labelCpf">CPF:</label>
-                <input id="cpfCliente" type="text" name="cpfCliente" class="form-control" size="16" 
+                <input id="cpfCliente" type="text" name="cpfCliente" class="form-control" size="16" style="margin-right: 35%;"
                     value="<?php if (isset($_GET['id_pessoa_get_up'])) 
                     {
                             $id_pessoa_get_up = addslashes($_GET['id_pessoa_get_up']); 
@@ -218,31 +243,9 @@
                     }
                         ?>"><br><br>
 
-                <label id="labelNomeCliente">Nome:</label>
-                <input id="nomeCliente" type="search" class="form-control" name="nomeCliente" size="40" 
-                    value="<?php if (isset($_GET['id_pessoa_get_up'])) 
-                    {
-                            $id_pessoa_get_up = addslashes($_GET['id_pessoa_get_up']); 
-                                $retornoConsulta = $pessoa->selectPessoaCliente($id_pessoa_get_up); 
-                                    if(isset($retornoConsulta)){echo $retornoConsulta[0]['nome'];
-                        }
-                    } 
-                        ?>">
-
                     <div id="adicionaClienteVenda">
-                            <a href="ConsultaClientes.php?buscaCliente=+"><img src="/img/search.png">Buscar</a>
-                    </div>
-
-                <label for="idClienteVenda" style="visibility: hidden;">ID Cliente</label>
-                <input id="idClienteVenda" type="text" name="idClienteVenda" class="form-control" size="" style=""
-                    value="<?php if (isset($_GET['id_pessoa_get_up'])) 
-                    {
-                            $id_pessoa_get_up = addslashes($_GET['id_pessoa_get_up']); 
-                                $retornoConsulta = $pessoa->selectPessoaCliente($id_pessoa_get_up); 
-                                    if(isset($retornoConsulta)){echo $retornoConsulta[0]['id_pessoa'];
-                        }
-                    } 
-                        ?>">
+                            <a href="ConsultaClientes.php?buscaCliente=+"><img src="/img/search.png">Buscar Cliente</a>
+                    </div><br><br>
                             
             <label id="total" for="totalSemDesconto"> Total: R$</label>
             <input id="totalSemDesconto" name="totalSemDesconto" class="form-control" size="10"> <br><br>
@@ -250,14 +253,15 @@
             <input id="desconto" type="text" name="desconto" class="form-control" size="10" placeholder="%"><br><br>
             <label for="totalComDesconto" id="totalComDesconto">Total com Desconto: R$</label>
             <input id="totalComDesconto" name="totalComDesconto" class="form-control" size="10"><br><br><br>
-
+            
             <button class="btn btn-outline-danger" id="btnFecharVenda" name="fecharVenda" onclick="" 
-                style="display: inline; margin-left: 10%;">Fechar Venda</button>
-
-            <button class="btn btn-outline-danger" id="btnCncelarVenda" name="cancelarVenda" onclick="" 
-                style="display: inline; margin-left: 10%;">Cancelar</button>
+                style="display: inline;">Fechar Venda</button>
+            <button class="btn btn-outline-danger" id="btnCncelarVenda" name="cancelarVenda" onclick=""
+                style="display: inline; ">Cancelar</button>
+        </div>
+    </div>
+</div>
     </form>
-<?php ?> 
     </section>
 </body>
 

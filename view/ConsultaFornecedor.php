@@ -47,11 +47,11 @@
 
    
 <form action="ConsultaFornecedor.php" method="GET">
-    <legend>CONSULTA FORNECEDORES</legend>
+    <legend>CONSULTA FORNECEDORES</legend><br><br>
     
     <label style="margin-left: 25%;"></label>
     <input  type="search" id="buscaFornecedor" class="form-control" name="buscaFornecedor" value="<?php if (isset($_GET['buscaFornecedor']) && !empty($_GET['buscaFornecedor'])) 
-            echo $_GET['buscaFornecedor'];?>" size=" 50" class="form-control-busca" placeholder="Digte aqui para buscar" >
+            echo $_GET['buscaFornecedor'];?>" size=" 50" class="form-control-busca" placeholder="Digte aqui para buscar" style="display: inline;" >
 
     <button class="btn btn-outline-danger" id="btnBuscar" onclick="" style="width: 10%; padding: 2px;">Buscar</button><br><br>
 </form>
@@ -71,7 +71,7 @@
         <th> TELEFONE FIXO </th>
         <th> TELEFONE CELULAR </th>
         <th> ENDEREÇO DO FORNECEDOR</th>
-        <th>  </th>
+        <th> AÇÃO </th>
     </tr>
     <?php
 

@@ -138,41 +138,158 @@ class Venda
     {
         $conexao = new Conexao("projeto_cristofarma", "localhost", "root", "");
 
-        $dados = $conexao->pdo->prepare("SELECT * FROM venda ORDER BY data_venda DESC");
-    
-        $dados->execute();
-        $dadosSelecionados = $dados->fetch(PDO::FETCH_ASSOC);
+        $dadosSelecionados = array();
+        $dados  = $conexao->pdo->query("SELECT * FROM venda ORDER BY data_venda");
+        $dadosSelecionados = $dados->fetchAll(PDO::FETCH_ASSOC);
+        return $dadosSelecionados;
+
         
+    }
+
+    public function consultaVendaLikeData($consultaLike)
+    {
+        $conexao = new Conexao("projeto_cristofarma", "localhost", "root", "");
+
+        $dadosSelecionados = array();
+
+        $dados = $conexao->pdo->prepare("SELECT * FROM venda WHERE data_venda LIKE :dt ORDER BY data_venda DESC");
+        $dados->bindValue(":dt", $consultaLike);
+        $dados->execute();
+        $dadosSelecionados = $dados->fetchAll(PDO::FETCH_ASSOC);
+
+        return $dadosSelecionados;
+
+    }
+
+    public function consultaVendaLikeCliente($consultaLike)
+    {
+        $conexao = new Conexao("projeto_cristofarma", "localhost", "root", "");
+
+        $dados = $conexao->pdo->prepare("SELECT id_pessoa FROM pessoa WHERE nome = :lk AND tipo_pessoa = 'cliente'");
+        $dados->bindValue(":lk", $consultaLike);
+        $dados->execute();
+        $dadosPessoaSelecionados = $dados->fetchAll(PDO::FETCH_ASSOC);
+        $res = $dadosPessoaSelecionados['id_pessoa'];
+
+        $dadosSelecionados = array();
+
+        $dados = $conexao->pdo->prepare("SELECT * FROM venda WHERE pesso_id_pessoa_cliente = :id ORDER BY data_venda DESC");
+        $dados->bindValue(":id", $res);
+        $dados->execute();
+        $dadosSelecionados = $dados->fetchAll(PDO::FETCH_ASSOC);
+
         return $dadosSelecionados;
     }
 
-    public function consultaVendaLikeData()
+    public function consultaVendaLikeClienteVendaAvista($consultaLike, $tipoPagamento)
     {
+        $conexao = new Conexao("projeto_cristofarma", "localhost", "root", "");
 
+        $dados = $conexao->pdo->prepare("SELECT id_pessoa FROM pessoa WHERE nome = :lk AND tipo_pessoa = 'cliente'");
+        $dados->bindValue(":lk", $consultaLike);
+        $dados->execute();
+        $dadosPessoaSelecionados = $dados->fetchAll(PDO::FETCH_ASSOC);
+        $res = $dadosPessoaSelecionados['id_pessoa'];
+
+        $dadosSelecionados = array();
+
+        $dados = $conexao->pdo->prepare("SELECT * FROM venda WHERE pesso_id_pessoa_cliente = :id AND tipo_pagamento = :tp ORDER BY data_venda DESC");
+        $dados->bindValue(":id", $res);
+        $dados->bindValue(":tp", $tipoPagamento);
+        $dados->execute();
+        $dadosSelecionados = $dados->fetchAll(PDO::FETCH_ASSOC);
+
+        return $dadosSelecionados;
+    }
+
+    public function consultaVendaLikeClienteVendaDebito($consultaLike, $tipoPagamento)
+    {
+        $conexao = new Conexao("projeto_cristofarma", "localhost", "root", "");
+
+        $dados = $conexao->pdo->prepare("SELECT id_pessoa FROM pessoa WHERE nome = :lk AND tipo_pessoa = 'cliente'");
+        $dados->bindValue(":lk", $consultaLike);
+        $dados->execute();
+        $dadosPessoaSelecionados = $dados->fetchAll(PDO::FETCH_ASSOC);
+        $res = $dadosPessoaSelecionados['id_pessoa'];
+
+        $dadosSelecionados = array();
+
+        $dados = $conexao->pdo->prepare("SELECT * FROM venda WHERE pesso_id_pessoa_cliente = :id AND tipo_pagamento = :tp ORDER BY data_venda DESC");
+        $dados->bindValue(":id", $res);
+        $dados->bindValue(":tp", $tipoPagamento);
+        $dados->execute();
+        $dadosSelecionados = $dados->fetchAll(PDO::FETCH_ASSOC);
+
+        return $dadosSelecionados;
+    }
+
+    public function consultaVendaLikeClienteCredito($consultaLike, $tipoPagamento)
+    {
+        $conexao = new Conexao("projeto_cristofarma", "localhost", "root", "");
+
+        $dados = $conexao->pdo->prepare("SELECT id_pessoa FROM pessoa WHERE nome = :lk AND tipo_pessoa = 'cliente'");
+        $dados->bindValue(":lk", $consultaLike);
+        $dados->execute();
+        $dadosPessoaSelecionados = $dados->fetchAll(PDO::FETCH_ASSOC);
+        $res = $dadosPessoaSelecionados['id_pessoa'];
+
+        $dadosSelecionados = array();
+
+        $dados = $conexao->pdo->prepare("SELECT * FROM venda WHERE pesso_id_pessoa_cliente = :id AND tipo_pagamento = :tp ORDER BY data_venda DESC");
+        $dados->bindValue(":id", $res);
+        $dados->bindValue(":tp", $tipoPagamento);
+        $dados->execute();
+        $dadosSelecionados = $dados->fetchAll(PDO::FETCH_ASSOC);
+
+        return $dadosSelecionados;
+    }
+
+    public function consultaVendaLikeVendedor($consultaLike)
+    {
+        $conexao = new Conexao("projeto_cristofarma", "localhost", "root", "");
+
+        $dados = $conexao->pdo->prepare("SELECT id_pessoa FROM pessoa WHERE nome = :lk AND tipo_pessoa = 'vendedor'");
+        $dados->bindValue(":lk", $consultaLike);
+        $dados->execute();
+        $dadosPessoaSelecionados = $dados->fetchAll(PDO::FETCH_ASSOC);
+        $res = $dadosPessoaSelecionados['id_pessoa'];
+
+        $dadosSelecionados = array();
+
+        $dados = $conexao->pdo->prepare("SELECT * FROM venda WHERE pesso_id_pessoa_vendedor = :id ORDER BY data_venda DESC");
+        $dados->bindValue(":id", $res);
+        $dados->execute();
+        $dadosSelecionados = $dados->fetchAll(PDO::FETCH_ASSOC);
+
+        return $dadosSelecionados;
 
     }
 
-    public function consultaVendaLikeCliente()
+    public function consultaVendaPagamento($tipoPagamento)
     {
+        $conexao = new Conexao("projeto_cristofarma", "localhost", "root", "");
 
-        
-    }
+        $dadosSelecionados = array();
+        $dados = $conexao->pdo->prepare("SELECT * FROM venda WHERE tipo_pagamento = :tp  ORDER BY data_venda DESC");
+        $dados->bindValue(":tp", $tipoPagamento);
+        $dados->execute();
+        $dadosSelecionados = $dados->fetchAll(PDO::FETCH_ASSOC);
 
-    public function consultaVendaLikeVendedor()
-    {
-
-
-    }
-
-    public function consultaVendaPagamento()
-    {
-
+        return $dadosSelecionados;
        
     }
 
-    public function consultaVendaStatus()
+    public function consultaVendaStatus($statusVenda)
     {
+        $conexao = new Conexao("projeto_cristofarma", "localhost", "root", "");
 
+        $dadosSelecionados = array();
+        $dados = $conexao->pdo->prepare("SELECT * FROM venda WHERE status_venda = :stv  ORDER BY data_venda DESC");
+        $dados->bindValue(":stv", $statusVenda);
+        $dados->execute();
+        $dadosSelecionados = $dados->fetchAll(PDO::FETCH_ASSOC);
+
+        return $dadosSelecionados;
        
     }
 

@@ -48,7 +48,7 @@
             <input type="radio" id="estoque" name="tipoRelatorioEstoque" value="estoque" checked>&nbsp; &nbsp;
             <label for="estoque" style="font-size: 13pt;">Relatório de Estoque</label><br><br>
 
-            <button class="btn btn-outline-danger" id="btnGerarRelatorioGerencial">Gerar Relatório</button>
+            <button class="btn btn-outline-danger" id="btnGerarRelatorioGerencial" style="margin-left: 40%;">Gerar Relatório</button>
         </div>
     </section>
 </body>

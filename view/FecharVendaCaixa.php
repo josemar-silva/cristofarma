@@ -5,7 +5,8 @@
     <meta charset="UTF-8" />
     <link rel="stylesheet" href="../css/bootstrap/nav/navegador.css">
     <link rel="stylesheet" href="../css/estilo.css">
-    <title>Nota Fiscal</title>
+
+    <title>Caixa</title>
 </head>
 
 <body>
@@ -38,20 +39,19 @@
                 </ul>
         </ul>
     </nav>
+
     </header>
-    <a href="index.php" style="float: right; margin-right: 20px;">Sair</a>
+    <section id="principalCaaixa">
 
-    <section id="principalNotaFiscal">
-        <form id="notaFiscal" style="margin-left: 1%;">
-            <Legend>CUPOM FISCAL</Legend><br>
-            <input type="radio" id="numVenda" name="tipoRelatorio" value="numeroVenda" checked> &nbsp; &nbsp;
-            <label for="numVenda">Nº Venda</label> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
-            <input type="radio" id="numeroCpf" name="tipoRelatorio" value="numeroCpf"> &nbsp; &nbsp;
-            <label for="numCpf">Nº CPF</label>&nbsp; &nbsp;
-            <input type="text" class="form-control" size="60" id="" placeholder="Digite aqui para pesquisar">
+    <div id="vendaDetalhada">
+        <legend style="border: red 1px solid; width: 90%;">VENDA Nº</legend>
 
-            <button class="btn btn-outline-danger" type="submit" id="btnGerarNotaFiscal" name="gerarNotaFiscal">Buscar</button><br><br>
+        <div id="divSair" style="width: 2%; border: red 1px solid; height:30px; float: right; margin-top: -2.5%; margin-right: 2%;" >
+        <a href="index.php" style="">Sair</a>
+    </div>
 
+     <div class="scroll">
+        <table>            
             <?php
                     require_once 'Produto.php';
                     require_once 'PrudutoVenda.php';
@@ -65,20 +65,32 @@
                     $venda = new Venda();
                     $estoque = new Estoque();
 
-                    echo '<table class="table table-hover">';
-                        echo '<tr>';
-                            echo '<th> CODIGO </th>';
-                            echo '<th> DESCRIÇÃO DO PRODUTO </th>';
-                            echo '<th> QTD </th>';
-                            echo '<th> LABORATÓRIO </th>';
-                            echo '<th> PREÇO </th>';                            
-                        echo '</tr>';
+       
+        
                 ?>
         </table>
+     </div>
+    </div>  
 
-            <button class="btn btn-outline-danger"type="submit" id="btnGerarNotaFiscal" name="gerarNotaFiscal" style="margin-left: 40%;">Emitir Cupom Fiscal</button>
+        <form id="fecharVendaCaixa" name="fecharVenda">
+            <legend>FINALIZAR VENDA</legend>
 
-        </fom><br>
+            <label>Total da Venda: </label><br>
+            <input id="valorVenda" class="form-control" name="valorDaVenda" size="6" placeholder="R$"><br><br><br>
+
+            <label>Total a Pagar:</label><br>
+            <input id="valorPagar" class="form-control" name="totalApagar" size="6" placeholder="R$" placeholder="R$"><br><br><br>
+
+            <label>Valor Recebido:</label><br>
+            <input id="valorRecebido" class="form-control" name="valorRecebido" type="text" size="6" placeholder="R$"><br><br><br>
+
+            <label>Troco:</label><br>
+            <input id="troco" class="form-control" name="troco" size="6" placeholder="R$"><br><br>
+
+            <button class="btn btn-outline-danger" id="btnCancelar" name="cancelar" onclick="" style="display: inline; margin-left: 20%;">Cancelar</button>
+            <button class="btn btn-outline-danger" id="btnFinalizar" name="finalizar" onclick="" style="display: inline;">Finalizar</button>
+        </form>
+       
     </section>
 </body>
 
