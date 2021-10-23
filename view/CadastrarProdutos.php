@@ -12,10 +12,10 @@
 <body>
     <?php
 
-    require_once 'Conexao.php';
-    require_once 'Pessoa.php';
-    require_once 'Produto.php';
-    require_once 'Estoque.php';
+    require_once '../model/Conexao.php';
+    require_once '../model/Pessoa.php';
+    require_once '../model/Produto.php';
+    require_once '../model/Estoque.php';
 
     $produto = new Produto();
     $estoque = new Estoque();
@@ -69,7 +69,9 @@
                 </ul>
         </ul>
     </nav>
-    <a href="index.php" style="float: right; margin-right: 20px;">Sair</a>
+    <div id="divSair" >
+        <a href="index.php">Sair</a>
+    </div>
 
     </header>
         <section id="principal">
@@ -85,6 +87,7 @@
                     margin-left: 240px; margin-top: -8%;">
                 <a href="ConsultaFornecedor.php?buscaFornecedor=+" id="alinhamento"><img src="/img/search.png">Buscar</a>
                 </div><br><br>
+                
                 <label for="descricaoProduto"> Descrição do Produto:</label><br>
                 <input id="descricaoProduto" class="form-control"  type="text" name="descricaoProduto" size="60"> <br><br>
                 
@@ -97,7 +100,7 @@
                 <label for="precoVenda">Preço de Venda:</label><br>
                 <input id="precoVenda" class="form-control"  placeholder="R$" type="text" type="text" name="precoVenda" size="20"><br> <br>
 
-                <input class="btn btn-outline-danger" type="submit" id="btnCadastrar" name="btnGravarClientes"
+                <input class="btn btn-outline-danger" type="submit" id="btnCadastrar" name="btnGravarClientes" style="margin-left: 40%; margin-top: 5%;"
                     value="<?php echo "Cadastrar"; ?>">
             </form>
         </section>

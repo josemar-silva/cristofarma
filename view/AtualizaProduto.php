@@ -13,9 +13,9 @@
 <body>
     <?php
 
-    require_once 'Conexao.php';
-    require_once 'Pessoa.php';
-    require_once 'Produto.php';
+    require_once '../model/Conexao.php';
+    require_once '../model/Pessoa.php';
+    require_once '../model/Produto.php';
 
     $produto = new Produto();
 
@@ -96,7 +96,9 @@
                 </ul>
         </ul>
     </nav>
-    <a href="index.php" style="float: right; margin-right: 20px;">Sair</a>
+    <div id="divSair" >
+        <a href="index.php">Sair</a>
+    </div>
 
     </header>
         <section id="principal">
@@ -109,7 +111,7 @@
             }
         ?>
             <form id="cadastro" method="POST">
-                <legend>CADASTRO DE PRODUTOS</legend><br>
+                <legend>CADASTRO DE PRODUTOS</legend><br><br/><br/>
 
                 <label id="descricaoProduto">Descrição:</label><br/>
                 <input id="descricaoProduto" class="form-control" type="text" name="descricaoProduto" size="60" 
@@ -128,10 +130,10 @@
                     value="<?php if(isset($retornoConsulta)){echo $retornoConsulta[0]['preco_custo'];}?>"><br/><br/>
 
                 <label id="precoVenda">Preço de Venda:</label><br/>
-                <input id="precoVenda" class="form-control" type="text" name="precoVenda" size="10"
-                     value="<?php if(isset($retornoConsulta)){echo $retornoConsulta[0]['preco_venda'];}?>"><br/><br/>
+                <input id="precoVenda" class="form-control" type="text" name="precoVenda" size="10" 
+                     value="<?php if(isset($retornoConsulta)){echo $retornoConsulta[0]['preco_venda'];}?>"><br/>
 
-                <input class="btn btn-outline-danger" id="btnCadastrar" type="submit" id="btnCadastrar" name="btnGravarClientes"
+                <input class="btn btn-outline-danger" id="btnCadastrar" type="submit" id="btnCadastrar" name="btnGravarClientes" style="margin-left: 40%; margin-top: 5%;"
                     value="<?php if (isset($_GET['id_get_up'])){echo 'Atualizar';} else {echo 'Cadastrar';}?>">
             </form>
         </section>

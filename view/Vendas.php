@@ -1,5 +1,6 @@
 <!doctype html>
 <html lang="pt">
+<script language=javascript type="text/javascript"></script>
 
 <head>
     <meta charset="UTF-8" />
@@ -7,11 +8,11 @@
     <link rel="stylesheet" href="../css/estilo.css">
 
     <?php
-        require_once 'Produto.php';
-        require_once 'PrudutoVenda.php';
-        require_once 'Pessoa.php';
-        require_once 'Venda.php';
-        require_once 'Estoque.php';
+        require_once '../model/Produto.php';
+        require_once '../model/PrudutoVenda.php';
+        require_once '../model/Pessoa.php';
+        require_once '../model/Venda.php';
+        require_once '../model/Estoque.php';
 
         $produto = new Produto();
         $produtoVenda = new ProdutoVenda();
@@ -20,6 +21,8 @@
         $estoque = new Estoque();
 
         if (isset($_POST['fecharVenda'])) {
+
+            if (!empty($_POST['idClienteVenda']) && !empty($_POST['idVendedorSelecionado'])) {
 
             $vendaStatus = 'aberto';
 
@@ -33,18 +36,23 @@
             $valor_venda_com_desconto  = addslashes($_POST['totalComDesconto']);
             $total_item_venda = '1';
 
-            $venda->createVenda($pessoa_id_pessoa_vendedor, $pessoa_id_pessoa_cliente, $data_venda, $tipo_pagamento, $status_venda,
-            $valor_venda_sem_desconto, $desconto, $valor_venda_com_desconto,$total_item_venda);
-        }
+            if (!$venda->createVenda($pessoa_id_pessoa_vendedor, $pessoa_id_pessoa_cliente, $data_venda, $tipo_pagamento, $status_venda,
+            $valor_venda_sem_desconto, $desconto, $valor_venda_com_desconto,$total_item_venda)) {
+
+                echo '<script> alert("Não foi possível concluir essa venda!")</script>';
+
+            } 
+
+        } echo '<script> alert(" Preencha todos os campos!")</script>';
+    } else {
 
         if (isset($_POST['cancelarVenda'])) {
 
-            $data_venda = addslashes($_POST['dataVenda']);
-            $pessoa_id_pessoa_cliente = addslashes($_POST['idClienteVenda']);
-
-            $venda->deleteVenda($data_venda, $pessoa_id_pessoa_cliente);
-        }
-
+            header('location: Vendas.php');
+            echo '<script> alert(" Venda não finalizada, Deseja cancelar essa venda?")</script>';
+        } 
+    }
+    
     ?>
     <title>Vendas</title>
 </head>
@@ -80,10 +88,12 @@
         </ul>
     </nav>
     </header>
-    <a href="index.php" style="float: right; margin-right: 20px;">Sair</a>
+    <div id="divSair"    >
+        <a href="index.php">Sair</a>
+    </div>
 
     <section id="principalVendas">
-    <legend>REALIZAR VENDA/ORÇAMENTO</legend>
+    <legend style="margin-left: -10%">REALIZAR VENDA/ORÇAMENTO</legend>
 
 <div id="itensAdicionados">
 <div class="scroll">
@@ -147,6 +157,16 @@
                     echo "</tr>"; // fecha linha dos dados selecionados
             } 
         }   
+    } else {
+        echo '<tr>';
+        echo '<table class="table table-hover">';
+            echo '<th> CODIGO </th>';
+            echo '<th> DESCRIÇÃO DO PRODUTO </th>';
+            echo '<th> QTD </th>';
+            echo '<th> LABORATÓRIO </th>';
+            echo '<th> PREÇO </th>';
+            echo '<th> AÇÃO </th>';                           
+        echo '</tr>';
     }
     ?>       
     </table>
@@ -157,7 +177,7 @@
                 <a href="ConsultaProdutos.php?buscaProdutos=+"><img src="/img/search.png">Adcionar Produto</a>
     </div>
 
-    <form id="upVendas" action="Vendas.php" method="POST">
+    <form id="upVendas" action="" method="POST">
 
         <div id="divDataHoraVenda">   
             <label>Data/Hora:</label>
@@ -205,12 +225,12 @@
                                 ?>"><br><br>
         
                     <div id="adicionaVendedorVenda" style="padding: 10px;">
-                        <a href="ConsultaFuncionarios.php?buscaFuncionario=+"><img src="/img/search.png">Adcionar Vendedor</a>
+                        <a href="ConsultaFuncionarios.php?buscaFuncionario=+" target="_blank"><img src="/img/search.png" >Adcionar Vendedor</a>
                     </div><br><br>
 
              <!-- =========================== BUSCAR CLIENTE ===============================-->
 
-             <label for="idClienteVenda" style="">ID Cliente:</label>
+             <label for="idClienteVenda" >ID Cliente:</label>
                 <input id="idClienteVenda" type="text" name="idClienteVenda" class="form-control" size="5" style="margin-right: 54%;"
                     value="<?php if (isset($_GET['id_pessoa_get_up'])) 
                     {
@@ -246,6 +266,8 @@
                     <div id="adicionaClienteVenda">
                             <a href="ConsultaClientes.php?buscaCliente=+"><img src="/img/search.png">Buscar Cliente</a>
                     </div><br><br>
+
+                    
                             
             <label id="total" for="totalSemDesconto"> Total: R$</label>
             <input id="totalSemDesconto" name="totalSemDesconto" class="form-control" size="10"> <br><br>
@@ -254,10 +276,8 @@
             <label for="totalComDesconto" id="totalComDesconto">Total com Desconto: R$</label>
             <input id="totalComDesconto" name="totalComDesconto" class="form-control" size="10"><br><br><br>
             
-            <button class="btn btn-outline-danger" id="btnFecharVenda" name="fecharVenda" onclick="" 
-                style="display: inline;">Fechar Venda</button>
-            <button class="btn btn-outline-danger" id="btnCncelarVenda" name="cancelarVenda" onclick=""
-                style="display: inline; ">Cancelar</button>
+            <button class="btn btn-outline-danger" id="btnFecharVenda" name="fecharVenda" onclick="" style="display: inline;">Fechar Venda</button>
+            <button class="btn btn-outline-danger" id="btnCncelarVenda" name="cancelarVenda" onclick="" style="display: inline; margin-left: 10%;">Cancelar</button>
         </div>
     </div>
 </div>

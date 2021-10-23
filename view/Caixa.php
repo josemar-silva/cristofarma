@@ -39,8 +39,8 @@
                 </ul>
         </ul>
     </nav>
-    <div id="divSair" style="width: 100%; border: none; height:30px;">
-        <a href="index.php" style="float: right; margin-right: 20px;">Sair</a>
+    <div id="divSair"  >
+        <a href="index.php">Sair</a>
     </div>
 
     </header>
@@ -52,11 +52,11 @@
      <div class="scroll">
         <table>            
             <?php
-                    require_once 'Produto.php';
-                    require_once 'PrudutoVenda.php';
-                    require_once 'Pessoa.php';
-                    require_once 'Venda.php';
-                    require_once 'Estoque.php';
+                    require_once '../model/Produto.php';
+                    require_once '../model/PrudutoVenda.php';
+                    require_once '../model/Pessoa.php';
+                    require_once '../model/Venda.php';
+                    require_once '../model/Estoque.php';
 
                     $produto = new Produto();
                     $produtoVenda = new ProdutoVenda();
@@ -65,8 +65,6 @@
                     $estoque = new Estoque();
 
         $dados = $venda->selectAllVenda();
-
-            
 
                 echo '<table class="table table-hover">';
                         echo '<tr>';
@@ -103,13 +101,15 @@
                     {
                         if ($key == 'pessoa_id_pessoa_cliente')  // IMPRIMIR VALOR SOMENTE SE...
                         {
-                            echo "<td>" .$value. "</td>";
+                            $cliente = $pessoa->selectPessoaCliente($value);
+                            echo "<td>".$cliente[0]['nome']."</td>";
                         }
                     } foreach ($dados[$i] as $key => $value) 
                     {
                         if ($key == 'pessoa_id_pessoa_vendedor')  // IMPRIMIR VALOR SOMENTE SE...
                         {
-                            echo "<td>" .$value. "</td>";
+                            $cliente = $pessoa->selectPessoaFuncionario($value);
+                            echo "<td>".$cliente[0]['nome']."</td>";
                         }
                     } foreach ($dados[$i] as $key => $value) 
                     {

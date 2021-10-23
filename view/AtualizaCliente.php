@@ -12,8 +12,8 @@
 <body>
     <?php
 
-    require_once 'Pessoa.php';
-    require_once 'Conexao.php';  
+    require_once '../model/Pessoa.php';
+    require_once '../model/Conexao.php';  
 
     $pessoa =  new Pessoa();
 
@@ -159,7 +159,9 @@
         </ul>
     </nav>
     </nav>
-    <a href="index.php" style="float: right; margin-right: 20px;">Sair</a>
+    <div id="divSair" >
+        <a href="index.php">Sair</a>
+    </div>
 
     </header>
     <section id="principal">
@@ -217,9 +219,9 @@
 
             <label for="endereco" id="endereco">Endereço:</label><br>
             <input id="endereco" class="form-control"type="text" name="endereco" size="90" 
-                value="<?php if(isset($retornoConsulta)){echo $retornoConsulta[0]['endereco'];}?>"> <br><br/>
+                value="<?php if(isset($retornoConsulta)){echo $retornoConsulta[0]['endereco'];}?>"> <br>
 
-            <input  class="btn btn-outline-danger" id="btnCadastrar" type="submit" name="btnGravarClientes" 
+            <input  class="btn btn-outline-danger" id="btnCadastrar" type="submit" name="btnGravarClientes" style="margin-left: 40%; margin-top: 5%;"
                 value="<?php if (isset($_GET['id_get_up'])){echo 'Atualizar';} else {echo 'Cadastrar';}?>">
         </form>
 

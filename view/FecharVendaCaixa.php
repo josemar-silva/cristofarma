@@ -44,20 +44,22 @@
     <section id="principalCaaixa">
 
     <div id="vendaDetalhada">
-        <legend style="border: red 1px solid; width: 90%;">VENDA Nº</legend>
+        
 
-        <div id="divSair" style="width: 2%; border: red 1px solid; height:30px; float: right; margin-top: -2.5%; margin-right: 2%;" >
-        <a href="index.php" style="">Sair</a>
+    <div id="divSair"  >
+        <a href="index.php">Sair</a>
     </div>
 
+    <div id="divDetalharVenda">
+    <legend>VENDA Nº</legend>
      <div class="scroll">
         <table>            
             <?php
-                    require_once 'Produto.php';
-                    require_once 'PrudutoVenda.php';
-                    require_once 'Pessoa.php';
-                    require_once 'Venda.php';
-                    require_once 'Estoque.php';
+                    require_once '../model/Produto.php';
+                    require_once '../model/PrudutoVenda.php';
+                    require_once '../model/Pessoa.php';
+                    require_once '../model/Venda.php';
+                    require_once '../model/Estoque.php';
 
                     $produto = new Produto();
                     $produtoVenda = new ProdutoVenda();
@@ -65,18 +67,19 @@
                     $venda = new Venda();
                     $estoque = new Estoque();
 
-       
-        
                 ?>
         </table>
      </div>
-    </div>  
+    </div>
+    
+        <?php
+            if (isset($_POST['cancelar'])) {
+                header('location: Caixa.php');
+            }
+        ?>
 
-        <form id="fecharVendaCaixa" name="fecharVenda">
-            <legend>FINALIZAR VENDA</legend>
-
-            <label>Total da Venda: </label><br>
-            <input id="valorVenda" class="form-control" name="valorDaVenda" size="6" placeholder="R$"><br><br><br>
+        <form id="fecharVendaCaixa" name="fecharVenda" action="" method="POST"> 
+            <legend style="margin-bottom: 10%; font-size: 25pt; font-weight: bolder; color: blue;">FINALIZAR VENDA</legend>
 
             <label>Total a Pagar:</label><br>
             <input id="valorPagar" class="form-control" name="totalApagar" size="6" placeholder="R$" placeholder="R$"><br><br><br>
@@ -87,8 +90,8 @@
             <label>Troco:</label><br>
             <input id="troco" class="form-control" name="troco" size="6" placeholder="R$"><br><br>
 
-            <button class="btn btn-outline-danger" id="btnCancelar" name="cancelar" onclick="" style="display: inline; margin-left: 20%;">Cancelar</button>
-            <button class="btn btn-outline-danger" id="btnFinalizar" name="finalizar" onclick="" style="display: inline;">Finalizar</button>
+            <button class="btn btn-outline-danger" id="btnFinalizar" name="finalizar" onclick="" style="display: inline; margin-left: 8%; margin-top: 15%;">Finalizar</button>
+            <button class="btn btn-outline-danger" id="btnCancelar" name="cancelar" onclick=""  style="display: inline; margin-left: 18%; margin-top: 15%;">Cancelar</button>
         </form>
        
     </section>

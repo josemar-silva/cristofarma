@@ -1,5 +1,5 @@
 <?php
-    require_once 'Pessoa.php';
+    require_once '../model/Pessoa.php';
     $pessoa = new Pessoa();
 ?>
 
@@ -44,18 +44,18 @@
         </ul>
     </nav>
     </header>
-
-    <a href="index.php" style="float: right; margin-right: 20px;">Sair</a>
-
+    <div id="divSair"  >
+        <a href="index.php">Sair</a>
+    </div>
    
     <form action="ConsultaClientes.php" method="GET">
         <legend>CONSULTA CLIENTES</legend><br><br>
         
         <label style="margin-left: 25%;"></label>
         <input  type="search" id="buscaCliente" class="form-control" name="buscaCliente" value="<?php if (isset($_GET['buscaCliente']) && !empty($_GET['buscaCliente'])) 
-                echo $_GET['buscaCliente'];?>" size=" 50" class="form-control-busca" placeholder="Digte aqui para buscar" style="display: inline;">
+                echo $_GET['buscaCliente'];?>" size=" 60" class="form-control-busca" placeholder="Digte aqui para buscar" style="display: inline;">
 
-        <button class="btn btn-outline-danger" id="btnBuscar" onclick="" style="width: 10%; padding: 2px;" >Buscar</button><br><br>
+        <button class="btn btn-outline-danger" id="btnBuscar" onclick="" style="width: 10%; padding: 2px; margin-left: 3%;" >Buscar</button><br><br>
     </form>
 
     <section>

@@ -39,7 +39,9 @@
         </ul>
     </nav>
     </header>
-    <a href="index.php" style="float: right; margin-right: 20px;">Sair</a>
+    <div id="divSair" >
+        <a href="index.php">Sair</a>
+    </div>
 
     <section id="principal">
         <legend> </legend><br>
@@ -68,8 +70,8 @@
 
     <?php
 
-    require_once 'Produto.php';
-    require_once 'Pessoa.php';
+    require_once '../model/Produto.php';
+    require_once '../model/Pessoa.php';
     $produto = new Produto();
     $pessoa = new Pessoa();
     

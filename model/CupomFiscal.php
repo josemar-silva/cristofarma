@@ -55,11 +55,11 @@
             <button class="btn btn-outline-danger" type="submit" id="btnGerarNotaFiscal" name="gerarNotaFiscal" style="margin-left: 3%;">Buscar</button><br><br>
 
             <?php
-                    require_once '../model/Produto.php';
-                    require_once '../model/PrudutoVenda.php';
-                    require_once '../model/Pessoa.php';
-                    require_once '../model/Venda.php';
-                    require_once '../model/Estoque.php';
+                    require_once 'Produto.php';
+                    require_once 'PrudutoVenda.php';
+                    require_once 'Pessoa.php';
+                    require_once 'Venda.php';
+                    require_once 'Estoque.php';
 
                     $produto = new Produto();
                     $produtoVenda = new ProdutoVenda();

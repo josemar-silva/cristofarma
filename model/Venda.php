@@ -78,7 +78,7 @@ class Venda
     $dados->bindValue("fkp", $idClienteVenda);
     $dados->execute();
     $res = $dados->fetch(PDO::FETCH_ASSOC);
-    $fk_venda = $res['id_venda'];
+    $fk_venda = $res[0]['id_venda'];
 
     $dados = $conexao->pdo->prepare("DELETE FROM venda WHERE id_venda = :id");
     $dados->bindValue("id", $fk_venda);
@@ -139,7 +139,7 @@ class Venda
         $conexao = new Conexao("projeto_cristofarma", "localhost", "root", "");
 
         $dadosSelecionados = array();
-        $dados  = $conexao->pdo->query("SELECT * FROM venda ORDER BY data_venda");
+        $dados  = $conexao->pdo->query("SELECT * FROM venda ORDER BY data_venda DESC");
         $dadosSelecionados = $dados->fetchAll(PDO::FETCH_ASSOC);
         return $dadosSelecionados;
 

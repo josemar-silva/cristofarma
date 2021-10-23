@@ -38,7 +38,9 @@
                 </ul>
         </ul>
     </nav>
-    <a href="index.php" style="float: right; margin-right: 20px;">Sair</a>
+    <div id="divSair">
+        <a href="index.php">Sair</a>
+    </div>
 
     </header>
     <section id="principalEstoque">

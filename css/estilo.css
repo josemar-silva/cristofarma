@@ -29,7 +29,7 @@
     display: block;
 }
 
-#menu ca {
+#menu {
     display: block;
     height: 70px;
     border: rgb(228, 225, 225) solid 1px;
@@ -292,11 +292,11 @@ border: none;
 
         text-transform: capitalize;
         font-size: 18pt ;
-        width: 30%;
+        width: 29%;
         border:rgba(0, 0, 0, .2) 2px solid;
-        height: 630px;  
+        height: 650px;  
         float: right;
-        margin-right: 10px;
+        margin-right: 1%;
         padding: 10px;
 }
 
@@ -316,14 +316,24 @@ border: none;
         float: right;
     }
 
+    #divDetalharVenda {
+
+        border: solid 1px rgba(0, 0, 0, .2);
+        width: 68%;
+        height: 650px;
+        margin-left: 1%;
+        float: left;
+
+    }
+
     #listaVendas{
 
         border:rgba(0, 0, 0, .2) 2px solid;
         height: 650px;  
-        width: 95%;
+        width: 98%;
         float: left;
-        margin-left: 2%;
-        margin-top: -2%;
+        margin-left: 1%;
+        
     }
 
     #acaoEditar {
@@ -365,4 +375,18 @@ border: none;
     .scroll {
         overflow-x: auto;
         overflow-y: auto;
+    }
+
+    #divSair {
+
+        width: 2%;
+        font-size: 12pt;
+        float: right; 
+        margin-right: 1%;
+        margin-left: 80%;
+        margin-top: -3%;
+        font-weight: bolder;
+        color: white;
+        text-decoration-color: white;
+
     }

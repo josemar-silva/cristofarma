@@ -44,7 +44,7 @@
         <?php
         ## =================== VALIDAR LOGIN ========================
 
-        require_once 'Pessoa.php';
+        require_once '../model/Pessoa.php';
         $pessoa = new Pessoa();
 
         if (isset($_POST['email']) && isset($_POST['senha'])) {
