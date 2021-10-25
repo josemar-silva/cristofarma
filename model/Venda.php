@@ -119,18 +119,18 @@ class Venda
             $dados->execute();
     }
 
-    public function selectVenda($id_venda_up)
+    public function selectVendaId($data_venda, $idClienteVenda)
     {
         $conexao = new Conexao("projeto_cristofarma", "localhost", "root", "");
 
-        $dadosSelecionados = array();
-
-        $dados = $conexao->pdo->prepare("SELECT * FROM venda WHERE id_venda = :id ORDER BY data_venda DESC");
-        $dados->bindValue(":id", $id_venda_up);
+        $dados  = $conexao->pdo->prepare("SELECT id_venda FROM venda WHERE data_venda = :dt AND pessoa_id_pessoa_cliente = :fk"); // dados retornam como ARRAY
+        $dados->bindValue("dt", $data_venda);
+        $dados->bindValue("fk", $idClienteVenda);
         $dados->execute();
-        $dadosSelecionados = $dados->fetch(PDO::FETCH_ASSOC);
+        $res = $dados->fetch(PDO::FETCH_ASSOC);
+        $fk_cliente = $res['id_venda'];
         
-        return $dadosSelecionados;
+        return $fk_cliente;
     
     }
 

@@ -22,11 +22,11 @@
 
         if (isset($_POST['fecharVenda'])) {
 
-            if (!empty($_POST['idClienteVenda']) && !empty($_POST['idVendedorSelecionado'])) {
+            if (!empty($_POST['idClienteVenda']) && !empty($_POST['vendedor'])) {
 
             $vendaStatus = 'aberto';
 
-            $pessoa_id_pessoa_vendedor = addslashes($_POST['idVendedorSelecionado']); 
+            $pessoa_id_pessoa_vendedor = addslashes($_POST['vendedor']); 
             $pessoa_id_pessoa_cliente = addslashes($_POST['idClienteVenda']);
             $data_venda = addslashes($_POST['dataVenda']);
             $tipo_pagamento = addslashes($_POST['tipoPagamento']);
@@ -36,14 +36,25 @@
             $valor_venda_com_desconto  = addslashes($_POST['totalComDesconto']);
             $total_item_venda = '1';
 
-            if (!$venda->createVenda($pessoa_id_pessoa_vendedor, $pessoa_id_pessoa_cliente, $data_venda, $tipo_pagamento, $status_venda,
-            $valor_venda_sem_desconto, $desconto, $valor_venda_com_desconto,$total_item_venda)) {
+            if ($venda->createVenda($pessoa_id_pessoa_vendedor, $pessoa_id_pessoa_cliente, $data_venda, $tipo_pagamento, $status_venda,
+            $valor_venda_sem_desconto, $desconto, $valor_venda_com_desconto, $total_item_venda)) {
 
-                echo '<script> alert("Não foi possível concluir essa venda!")</script>';
+    
+                    $idVenda = $venda->selectVendaId($data_venda,  $pessoa_id_pessoa_cliente);
+                    $idProduto = '21';
+                    $produtoVenda->createProdutoVenda($idVenda, $idProduto);
 
-            } 
+                    echo '<script> alert("Venda finalizada Com sucesso!")</script>';
+                } else {
 
-        } echo '<script> alert(" Preencha todos os campos!")</script>';
+                    echo '<script> alert("Não foi possível concluir essa venda!")</script>';
+
+                }
+                
+            } else {
+                echo '<script> alert(" Preencha todos os campos!")</script>';
+            }
+        
     } else {
 
         if (isset($_POST['cancelarVenda'])) {
@@ -100,7 +111,7 @@
     <table>
         <?php
 
-            if (isset($_GET['id_get_up'])) {
+            if (isset($_GET['id_produto_up_venda']) && !empty(['id_produto_up_venda'])) {
 
                 echo '<tr>';
                 echo '<table class="table table-hover">';
@@ -108,23 +119,23 @@
                     echo '<th> DESCRIÇÃO DO PRODUTO </th>';
                     echo '<th> QTD </th>';
                     echo '<th> LABORATÓRIO </th>';
-                    echo '<th> PREÇO </th>';
+                    echo '<th> PREÇO UNID</th>';
                     echo '<th> AÇÃO </th>';                           
                 echo '</tr>';
 
-        $dados = $produto->selectProduto($_GET['id_get_up']);
-        if(count($dados) > 0)  
+        $dadosPoduto = $produto->selectProduto($_GET['id_produto_up_venda']);
+        if(count($dadosPoduto) > 0)  
         {
-           for ($i=0; $i < count($dados) ; $i++) 
+           for ($i=0; $i < count($dadosPoduto) ; $i++) 
             { 
                  echo "<tr>"; // abre a linha dos dados selecionados
-                    foreach ($dados[$i] as $key => $value) 
+                    foreach ($dadosPoduto[$i] as $key => $value) 
                     {
                         if ($key == 'id_produto')  // IMPRIMIR VALOR SOMENTE SE...
                         {
                             echo "<td>" .$value. "</td>";
                         }
-                    } foreach ($dados[$i] as $key => $value) 
+                    } foreach ($dadosPoduto[$i] as $key => $value) 
                     {
                         if ($key == 'nome_produto')  
                         {
@@ -133,18 +144,18 @@
                     } 
     ?>
         <td>
-            <input id="quantidadeItemVenda" style="border: none; text-align: center; " size="2" value="<?php echo'1';?>">
+            <input id="quantidadeItemVenda" name="quantidadeItemVenda" style="border: none; text-align: center; " size="2" value="<?php echo'1';?>">
         </td>                     
      <?php                              
-                    foreach ($dados[$i] as $key => $value) 
+                    foreach ($dadosPoduto[$i] as $key => $value) 
                     {   
                         if ($key == 'produto_fornecedor')  // IMPRIMIR VALOR SOMENTE SE...
                         {
                             echo "<td>" .$value. "</td>";
                         }
-                    } foreach ($dados[$i] as $key => $value) 
+                    } foreach ($dadosPoduto[$i] as $key => $value) 
                     {
-                        if ($key == 'preco_custo')  // IMPRIMIR VALOR SOMENTE SE...
+                        if ($key == 'preco_venda')  // IMPRIMIR VALOR SOMENTE SE...
                         {
                             echo "<td>" .$value. "</td>";
                         }
@@ -198,44 +209,47 @@
     <div id="divDabosVenda" style="width: 30%; float: right;  height: 540px; font-size: 13pt;">
     <legend style="border: solid 1px #8b0210; background-color: #8b0211; color: white;">DADOS DA VENDA</legend>
         
-                           <!-- ==================== BUSCAR VENDEDOR =====================-->
+                                <!-- ==================== BUSCAR VENDEDOR =====================-->
 
         <div id="vendedorSelecionado">      
-                <label for="idClienteVenda" >ID Vendedor:</label>
-                    <input type="text" id="idVendedorSelecionado" name="idVendedorSelecionado" class="form-control" size="5" style="margin-right: 54%;"
-                        value="<?php if (isset($_GET['id_pessoa_vendedor_get_up']))
-                            {
-                                    $id_pessoa_get_up = addslashes($_GET['id_pessoa_vendedor_get_up']); 
-                                        $retornoConsulta = $pessoa->selectPessoaFuncionario($id_pessoa_get_up); 
-                                            if(isset($retornoConsulta)){echo $retornoConsulta[0]['id_pessoa'];
-                                }
-                            }
-                            
-                                ?>"><br><br>
+                <label id="labelVendedorSelecionado">Vendedor:</label>
+                                <select id="vendedor" name="vendedor" class="form-control" style="display: inline; margin-left: 8%;">
+                                    <option value=""  > Não Informado </option>
+                                        <?php $dados = $pessoa->selectAllPessoaFuncionarioVendedor();
+                                            if(count($dados) > 0)
+                                            {
+                                                for ($i=0; $i < count($dados) ; $i++) 
+                                                { 
+                                                    foreach ($dados[$i] as $key => $value) 
+                                                    {
+                                                        if ($key == "id_pessoa" ) // IMPRIMIR VALOR SOMENTE SE...
+                                                        {
+                                                            ?> 
+                                                                <option value="<?php echo  $value; ?>"> 
+                                                                    <?php 
+                                                        }
+                                                    }
+                                                    foreach ($dados[$i] as $key => $value) 
+                                                    {
+                                                        if ($key == "nome" ) // IMPRIMIR VALOR SOMENTE SE...
+                                                        {
+                                                            ?> 
+                                                                    <?php echo  $value; ?> </option> <?php
+                                                        }
+                                                    }
+                                                }
+                                            } 
+                                        ?> 
+                            </select><br/><br/><br/><br/>
 
-                <label id="labelVendedorSelecionado" >Nome:</label>
-                    <input type="text" id="vendedor" name="vendedor" class="form-control" size="30" style="margin-right: 11%;"
-                            value="<?php if (isset($_GET['id_pessoa_vendedor_get_up'])) 
-                            {
-                                    $id_pessoa_get_up = addslashes($_GET['id_pessoa_vendedor_get_up']); 
-                                        $retornoConsulta = $pessoa->selectPessoaFuncionario($id_pessoa_get_up); 
-                                            if(isset($retornoConsulta)){echo $retornoConsulta[0]['nome'];
-                                }
-                            }
-                                ?>"><br><br>
-        
-                    <div id="adicionaVendedorVenda" style="padding: 10px;">
-                        <a href="ConsultaFuncionarios.php?buscaFuncionario=+" target="_blank"><img src="/img/search.png" >Adcionar Vendedor</a>
-                    </div><br><br>
+                                            <!-- =========================== BUSCAR CLIENTE ===============================-->
 
-             <!-- =========================== BUSCAR CLIENTE ===============================-->
-
-             <label for="idClienteVenda" >ID Cliente:</label>
+             <label for="idClienteVenda" st>ID Cliente:</label>
                 <input id="idClienteVenda" type="text" name="idClienteVenda" class="form-control" size="5" style="margin-right: 54%;"
-                    value="<?php if (isset($_GET['id_pessoa_get_up'])) 
+                    value="<?php if (isset($_GET['id_cliente_up_venda']) && !empty(['id_cliente_up_venda'])) 
                     {
-                            $id_pessoa_get_up = addslashes($_GET['id_pessoa_get_up']); 
-                                $retornoConsulta = $pessoa->selectPessoaCliente($id_pessoa_get_up); 
+                            $id_cliente_get_up = addslashes($_GET['id_cliente_up_venda']); 
+                                $retornoConsulta = $pessoa->selectPessoaCliente($id_cliente_get_up); 
                                     if(isset($retornoConsulta)){echo $retornoConsulta[0]['id_pessoa'];
                         }
                     } 
@@ -243,10 +257,10 @@
             
                 <label id="labelNomeCliente">Nome:</label>
                 <input id="nomeCliente" type="search" class="form-control" name="nomeCliente" size="30" style="margin-right: 11%;"
-                    value="<?php if (isset($_GET['id_pessoa_get_up'])) 
+                    value="<?php if (isset($_GET['id_cliente_up_venda']) && 'id_cliente_up_venda' !== NULL) 
                     {
-                            $id_pessoa_get_up = addslashes($_GET['id_pessoa_get_up']); 
-                                $retornoConsulta = $pessoa->selectPessoaCliente($id_pessoa_get_up); 
+                            $id_cliente_get_up = addslashes($_GET['id_cliente_up_venda']); 
+                                $retornoConsulta = $pessoa->selectPessoaCliente($id_cliente_get_up); 
                                     if(isset($retornoConsulta)){echo $retornoConsulta[0]['nome'];
                         }
                     } 
@@ -254,10 +268,10 @@
 
                 <label id="labelCpf">CPF:</label>
                 <input id="cpfCliente" type="text" name="cpfCliente" class="form-control" size="16" style="margin-right: 35%;"
-                    value="<?php if (isset($_GET['id_pessoa_get_up'])) 
+                    value="<?php if (isset($_GET['id_cliente_up_venda']) && !empty(['id_cliente_up_venda'])) 
                     {
-                            $id_pessoa_get_up = addslashes($_GET['id_pessoa_get_up']); 
-                                $retornoConsulta = $pessoa->selectPessoaCliente($id_pessoa_get_up); 
+                            $id_cliente_get_up = addslashes($_GET['id_cliente_up_venda']); 
+                                $retornoConsulta = $pessoa->selectPessoaCliente($id_cliente_get_up); 
                                     if(isset($retornoConsulta)){echo $retornoConsulta[0]['cpf_cnpj'];
                         }
                     }
@@ -265,7 +279,7 @@
 
                     <div id="adicionaClienteVenda">
                             <a href="ConsultaClientes.php?buscaCliente=+"><img src="/img/search.png">Buscar Cliente</a>
-                    </div><br><br>
+                    </div><br><br>  
 
                     
                             

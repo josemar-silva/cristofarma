@@ -99,7 +99,7 @@
                     }
         ?>
                          <td>
-                            <a id="acaoSelecionar" href="Vendas.php?id_pessoa_get_up=<?php echo $dados[$i]['id_pessoa'];?>">Selecionar</a> 
+                            <a id="acaoSelecionar" href="Vendas.php?id_cliente_up_venda=<?php echo $dados[$i]['id_pessoa'];?>">Selecionar</a> 
                             <a id="acaoEditar" href="AtualizaCliente.php?id_get_up=<?php echo $dados[$i]['id_pessoa'];?>" 
                                 style="border: solid green 1px; width: 40px; height: 40px; background-color: green;">Editar</a>
                             <a id="acaoExcluir" href="ConsultaClientes.php?id_get_del=<?php echo $dados[$i]['id_pessoa'];?>" style="border: solid red 1px; width: 40px; height: 40px;">Excluir</a> 
@@ -125,7 +125,7 @@
     {
         $id_up = addslashes($_GET['id_get_del']); # pegar ID desejado no array
         $pessoa->deletePessoa($id_up); 
-        header("location: ConsultaClientes.php"); #atualizar a pagina ao executar a exclusão
+        header("location: ConsultaClientes.php?buscaCliente=+"); #atualizar a pagina ao executar a exclusão
     }
     ?>
 </body>

@@ -104,7 +104,7 @@
                             }
                             ?>
                                 <td> 
-                                    <a id="acaoSelecionar" href="Vendas.php?id_get_up=<?php echo $dados[$i]['id_produto'];?>">Selecionar</a> 
+                                    <a id="acaoSelecionar" href="Vendas.php?id_produto_up_venda=<?php echo $dados[$i]['id_produto'];?>">Selecionar</a> 
                                     <a id="acaoEditar" href="AtualizaProduto.php?id_get_up=<?php echo $dados[$i]['id_produto'];?>">Editar</a>
                                     <a id="acaoExcluir" href="ConsultaProdutos.php?id_get_del=<?php echo $dados[$i]['id_produto'];?>">Excluir</a> 
                                     <!-- usar "echo $dados[$i]['id_pessoa']; "pegar ID desejado no array e passar como 'string' para o metodo $_GET-->
@@ -127,6 +127,6 @@
         {
             $id_up = addslashes($_GET['id_get_del']); # pegar ID desejado no array
             $produto->deleteProduto($id_up); 
-            header("location: ConsultaProdutos.php"); #atualizar a pagina ao executar a exclusão
+            header("location: ConsultaProdutos.php?buscaProdutos=+"); #atualizar a pagina ao executar a exclusão
         }
     ?>

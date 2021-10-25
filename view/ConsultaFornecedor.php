@@ -124,6 +124,6 @@
     {
         $id_up = addslashes($_GET['id_get_del']); # pegar ID desejado no array
         $pessoa->deletePessoa($id_up); 
-        header("location: ConsultaFornecedor.php"); #atualizar a pagina ao executar a exclusão
+        header("location: ConsultaFornecedor.php?buscaFornecedor=+"); #atualizar a pagina ao executar a exclusão
     }
 ?>
