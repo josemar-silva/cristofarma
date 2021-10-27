@@ -79,7 +79,7 @@
                 <legend>CADASTRO DE PRODUTOS</legend><br>
 
                 <label for="fornecedor">Fornecedor:</label><br>
-                <input id="fornecedor" class="form-control" type="text" type="text" 
+                <input id="fornecedor" class="form-control" type="text" type="text" autofocus required  
                     name="fornecedor" size="25" value="<?php if (isset($_GET['id_fornecedor_produto_get_up'])){ $id_fornecedor_produto_get_up = addslashes($_GET['id_fornecedor_produto_get_up']); 
                         $retornoConsulta = $pessoa->selectPessoaFornecedor($id_fornecedor_produto_get_up); if(isset($retornoConsulta)){echo $retornoConsulta[0]['nome'];}}?>"><br><br>
 
@@ -89,16 +89,16 @@
                 </div><br><br>
                 
                 <label for="descricaoProduto"> Descrição do Produto:</label><br>
-                <input id="descricaoProduto" class="form-control"  type="text" name="descricaoProduto" size="60"> <br><br>
+                <input id="descricaoProduto" class="form-control"  type="text" name="descricaoProduto" required size="60"> <br><br>
                 
                 <label for="codigoDeBarras"> Código de Barras:</label><br>
-                <input id="codigoDeBarras" class="form-control"  type="text" type="text" name="codigoDeBarras" size="40"><br><br>              
+                <input id="codigoDeBarras" class="form-control"  type="text" type="text" name="codigoDeBarras" required size="40"><br><br>              
 
                 <label for="precoCusto">Preço de Custo:</label><br>
-                <input id="precoCusto" class="form-control"  placeholder="R$" type="text" type="text" name="precoCusto" size="20"><br><br>
+                <input id="precoCusto" class="form-control"  placeholder="R$" type="text" type="text" name="precoCusto" required size="20"><br><br>
                 
                 <label for="precoVenda">Preço de Venda:</label><br>
-                <input id="precoVenda" class="form-control"  placeholder="R$" type="text" type="text" name="precoVenda" size="20"><br> <br>
+                <input id="precoVenda" class="form-control"  placeholder="R$" type="text" type="text" name="precoVenda" required size="20"><br> <br>
 
                 <input class="btn btn-outline-danger" type="submit" id="btnCadastrar" name="btnGravarClientes" style="margin-left: 40%; margin-top: 5%;"
                     value="<?php echo "Cadastrar"; ?>">

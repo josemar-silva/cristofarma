@@ -199,7 +199,7 @@
             </select><br/>
 
             <label for="nome" id="nome">Nome:</label><br/>
-            <input id="nome" type="text" class="form-control" name="nome" size="70" value="<?php if(isset($retornoConsulta)){echo $retornoConsulta[0]['nome'];}?>"><br/><br/>
+            <input id="nome" type="text" class="form-control" name="nome" size="70" autofocus required value="<?php if(isset($retornoConsulta)){echo $retornoConsulta[0]['nome'];}?>"><br/><br/>
 
             <label for="cpfAndCnpj" id="cpf">CPF/CNPJ:</label><br/>
             <input id="cpfAndCnpj" class="form-control" type="text" name="cpf_cnpj" size="25" value="<?php if(isset($retornoConsulta)){echo $retornoConsulta[0]['cpf_cnpj'];}?>"><br/><br/>

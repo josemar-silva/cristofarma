@@ -62,7 +62,7 @@
     <legend>CONSULTA PRDUTOS</legend><br><br>
     
     <label style="margin-left: 25%;"></label>
-    <input  type="search" id="buscaProdutos" class="form-control" name="buscaProdutos" value="<?php if (isset($_GET['buscaProdutos']) && !empty($_GET['buscaProdutos'])) 
+    <input  type="search" id="buscaProdutos" class="form-control" name="buscaProdutos" autofocus value="<?php if (isset($_GET['buscaProdutos']) && !empty($_GET['buscaProdutos'])) 
             echo $_GET['buscaProdutos'];?>" size=" 60" class="form-control-busca" placeholder="Digte aqui para buscar" style="display: inline;">
 
     <button class="btn btn-outline-danger" id="btnBuscar" onclick="" style="width: 10%; padding: 2px; margin-left: 3%;">Buscar</button><br><br>
@@ -75,7 +75,7 @@
                 if (isset($_GET['buscaProdutos'])) { 
                     echo '<table class="table table-hover">';
                     echo '<tr>';
-                    echo '<th> CÓDIGO PRODUTO </th>';
+                    echo '<th> ID PRODUTO </th>';
                     echo '<th> NOME DO PRODUTO </th>';
                     echo '<th> PREÇO CUSTO </th>';
                     echo '<th> PREÇO VENDA </th>';

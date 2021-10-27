@@ -45,39 +45,173 @@
     </div>
 
     </header>
+
+<?php 
+
+    require_once '../model/Pessoa.php';
+    require_once '../model/Venda.php';
+    require_once '../model/Produto.php';
+
+    $vendaRelatorio = new Venda();
+
+    $tipoRelatporio = filter_input(INPUT_POST, 'tipoRelatorio');
+    $tipoPagamento = filter_input(INPUT_POST, 'tipoRelatorioPagamento');
+    
+                                            // CONSULTA VENDA POR DATA INICIO E DATA FIM
+ 
+    if (isset($_POST['btnGerarRelatorioGerencial']) & $tipoRelatporio == 'data')
+    {
+        if (isset($_POST['getDataInicial']) && isset($_POST['getDataFinal']) && !empty($_POST['getDataInicial'])  && !empty($_POST['getDataFinal']))
+        {
+                
+                $data_ini = addslashes($_POST['getDataInicial']);
+                $data_fim = addslashes($_POST['getDataFinal']);
+
+                $resVendaRelatorio = $vendaRelatorio->selectVendaData( $data_ini, $data_fim);
+
+                // echo"<pre>"; 
+                //     var_dump($resVendaRelatorio);
+                //     echo $tipoRelatporio;
+                //     echo $data_ini;
+                //     echo $data_fim;
+                // echo"</pre>"; 
+        }
+    }
+                                                    // CONSULTA VENDA POR NOME CLIENTE 'LIKE'
+
+    if (isset($_POST['btnGerarRelatorioGerencial']) & $tipoRelatporio == 'cliente')
+    {
+    
+                $resVendaRelatorio =  $vendaRelatorio->selectVendaClienteLike($nomeCliente = "%".trim($_POST['nomeDoCliente'])."%");
+
+                // echo"<pre>"; 
+                //     var_dump($resVendaRelatorio);
+                // echo"</pre>"; 
+    }
+
+                                    // CONSULTA VENDA POR NOME CLIENTE + DATA INICIO E DATA FIM
+
+    if (isset($_POST['btnGerarRelatorioGerencial']) & $tipoRelatporio == 'cliente')
+    {
+    
+        if (isset($_POST['getDataInicial']) && isset($_POST['getDataFinal']) && !empty($_POST['getDataInicial'])  && !empty($_POST['getDataFinal']))
+        {
+                
+            $data_ini = addslashes($_POST['getDataInicial']);
+            $data_fim = addslashes($_POST['getDataFinal']);
+
+            $resVendaRelatorio =  $vendaRelatorio->selectVendaClienteLikeDataLike($nomeCliente = "%".trim($_POST['nomeDoCliente'])."%", $data_ini,  $data_fim);
+
+                // echo"<pre>"; 
+                //     var_dump($resVendaRelatorio);
+                // echo"</pre>";
+        }
+
+    }
+
+                                                    // CONSULTA VENDA POR TIPO DE PAGAMENTO
+
+    if (isset($_POST['btnGerarRelatorioGerencial']) & isset($_POST['tipoRelatorioPagamento']))
+    {
+        $resVendaRelatorio =  $vendaRelatorio->selectVendaAllLikePagamento($tipoPagamento);
+
+                echo"<pre>"; 
+                    var_dump($resVendaRelatorio);
+                echo"</pre>";
+    }
+
+                                                    // CONSULTA VENDA POR NOME VENDEDOR 'LIKE'
+
+    if (isset($_POST['btnGerarRelatorioGerencial']) & $tipoRelatporio == 'vendedor')
+    {
+    
+                $resVendaRelatorio =  $vendaRelatorio->selectVendaClienteLike($nomeCliente = "%".trim($_POST['nomeDoVendedor'])."%");
+
+                // echo"<pre>"; 
+                //     var_dump($resVendaRelatorio);
+                //     echo $tipoRelatporio;
+                //     echo $nomeCliente;
+
+                // echo"</pre>"; 
+    }
+
+                                    // CONSULTA VENDA POR NOME VENDEDOR + DATA INICIO E DATA FIM
+
+    if (isset($_POST['btnGerarRelatorioGerencial']) & $tipoRelatporio == 'vendedor')
+    {
+    
+        if (isset($_POST['getDataInicial']) && isset($_POST['getDataFinal']) && !empty($_POST['getDataInicial'])  && !empty($_POST['getDataFinal']))
+        {
+                
+            $data_ini = addslashes($_POST['getDataInicial']);
+            $data_fim = addslashes($_POST['getDataFinal']);
+
+            $resVendaRelatorio =  $vendaRelatorio->selectVendaClienteLikeDataLike($nomeCliente = "%".trim($_POST['nomeDoVendedor'])."%", $data_ini,  $data_fim);
+
+                // echo"<pre>"; 
+                //     var_dump($resVendaRelatorio);
+                //     echo $tipoRelatporio;
+                //     echo $nomeCliente;
+
+                // echo"</pre>";
+        }
+
+    }
+
+
+
+                                                    // CONSULTA VENDA POR NOME CLIENTE
+
+
+                                                    // CONSULTA VENDA POR NOME CLIENTE
+
+
+                                                    // CONSULTA VENDA POR NOME CLIENTE
+
+
+                                                    // CONSULTA VENDA POR NOME CLIENTE
+
+
+?>
     <section id="principalRelatoriVendas">
         <form id="relatorioGerencialVendas" style="margin-left: 5%;" action="" method="POST">
             <legend>
                 <legend>RELATÓRIO DE VENDAS</legend>
             </legend>
             <div style="margin-bottom: 7%;">
-                <label for="dataInicial">Data Inicio:</label> &nbsp; 
-                <input type="date" id="getDataInicial" class="form-control" style="display: inline;"> &nbsp; &nbsp;&nbsp; &nbsp;
+
+            <input type="radio" id="tipoRelatorio" name="tipoRelatorio" value="data">&nbsp; &nbsp;
+            <label for="cliente">Pesqusa por Data:</label><br>
+                <label for="dataInicial" >Data Inicio:</label> &nbsp; 
+                <input type="date" id="getDataInicial" name="getDataInicial" class="form-control" style="display: inline;" > &nbsp; &nbsp;&nbsp; &nbsp;
                 <label for="dataFinal">Data Fim:</label> &nbsp;
-                <input type="date" id="getDataFinal" class="form-control" style="display: inline;"><br>
+                <input type="date" id="getDataFinal" name="getDataFinal" class="form-control" style="display: inline;"><br>
             </div>
         <div style="margin-bottom: 7%;">
-            <input type="radio" id="cliente" name="tipoRelatorio" value="cliente">&nbsp; &nbsp;
-            <label for="cliente">Cliente:</label>&nbsp; &nbsp;
-            <input type="search" id="nomeDoCliente" class="form-control" size="40" placeholder="Nome/CPF/CNPJ do cliente" style="display: inline;"><br><br>
-            
-            <input type="radio" id="relatorioVendaAVvista" name="tipoRelatorioPagamento" value="Venda a Vista">&nbsp; &nbsp;
-            <label for="relatorioVendaAVvista">Venda à Vista</label>&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;
+            <input type="radio" id="tipoRelatorio" name="tipoRelatorio" value="cliente">&nbsp; &nbsp;
+            <label for="cliente">Pesqusa por Cliente:</label><br>
+            <label for="nomeDoCliente"> Cliente:</label>&nbsp; &nbsp;
+            <input type="search" id="nomeDoCliente" name="nomeDoCliente" class="form-control" size="40" placeholder="Nome do cliente" style="display: inline;"><br><br><br><br><br><br>
 
-            <input type="radio" id="relatorioVendaDebito" name="tipoRelatorioPagamento" value="Cartao de Debito">&nbsp; &nbsp;
+            <label>Pesqusa por Tipo Pagamento:</label><br><br>
+            
+            <input type="radio" id="relatorioVendaAvista" name="tipoRelatorioPagamento" value="a vista">&nbsp; &nbsp;
+            <label for="relatorioVendaAvista">Venda à Vista</label>&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;
+
+            <input type="radio" id="relatorioVendaDebito" name="tipoRelatorioPagamento" value="debito">&nbsp; &nbsp;
             <label for="relatorioVendaDebito">Venda a Débito</label>&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;
 
-            <input type="radio" id="relatorioVendaCredito" name="tipoRelatorioPagamento" value="Cartao de Credito">&nbsp; &nbsp;
+            <input type="radio" id="relatorioVendaCredito" name="tipoRelatorioPagamento" value="credito">&nbsp; &nbsp;
             <label for="relatorioVendaCredito">Venda a Crédito</label>
         </div>
 
-        <div style="margin-bottom: 5%;">
+        <div style="margin-bottom: 4%;">
             <input type="radio" id="vendedor" name="tipoRelatorio" value="vendedor">&nbsp; &nbsp;
-            <label for="vendedor">Vendedor:</label>&nbsp; &nbsp;
-            <input type="text" id="nomeDoVendedor" class="form-control" size="40" placeholder="Nome do vendedor" style="display: inline;"><br>
+            <label for="vendedor">Pesqusar por Vendedor:</label>&nbsp; &nbsp;
+            <input type="text" id="nomeDoVendedor" name="nomeDoVendedor" class="form-control" size="40" placeholder="Nome do vendedor" style="display: inline;"><br>
         </div>
 
-            <button class="btn btn-outline-danger" id="btnGerarRelatorioGerencial" style="margin-left: 40%;">Gerar Relatório</button>
+            <button class="btn btn-outline-danger" id="btnGerarRelatorioGerencial" name="btnGerarRelatorioGerencial" onclick="" style="margin-left: 40%;">Gerar Relatório</button>
 </form>
     </section>
 </body>

@@ -64,12 +64,12 @@
                     $venda = new Venda();
                     $estoque = new Estoque();
 
-        $dados = $venda->selectAllVenda();
+        $dados = $venda->selectAllVendaAberta();  
 
                 echo '<table class="table table-hover">';
                         echo '<tr>';
                             echo '<th> DATA </th>';
-                            echo '<th> CÓDIGO VENDA </th>';
+                            echo '<th> ID VENDA </th>';
                             echo '<th> NOME DO CLIENTE </th>';
                             echo '<th> VENDEDOR </th>';
                             echo '<th> VALOR VENDA </th>';

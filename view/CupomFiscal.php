@@ -50,7 +50,7 @@
             <label for="numVenda">Nº Venda</label> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
             <input type="radio" id="numeroCpf" name="tipoRelatorio" value="numeroCpf"> &nbsp; &nbsp;
             <label for="numCpf">Nº CPF</label>&nbsp; &nbsp;
-            <input type="text" class="form-control" size="60" id="" placeholder="Digite aqui para pesquisar">
+            <input type="text" class="form-control" size="60" id="" autofocus placeholder="Digite aqui para pesquisar">
 
             <button class="btn btn-outline-danger" type="submit" id="btnGerarNotaFiscal" name="gerarNotaFiscal" style="margin-left: 3%;">Buscar</button><br><br>
 

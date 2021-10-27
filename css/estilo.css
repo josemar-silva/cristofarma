@@ -5,7 +5,19 @@
     font-size: 13px;
 }
 
+label {
+
+    font-weight: bolder;
+    font-size: 15px;
+}
+
+input {
+    font-size: 20pt;
+    color: red;
+}
+
 #nomeEmpresa {
+
     font-size: 65pt;
     text-align: center;
     margin-top: 20px;
@@ -13,11 +25,13 @@
 }
 
 #missao {
+
     border:  #8b0211 2px solid; 
     padding: 10px;
 }
 
 #menu {
+
     list-style-type: none;
     margin: 0;
     padding: 0;
@@ -30,6 +44,7 @@
 }
 
 #menu {
+
     display: block;
     height: 70px;
     border: rgb(228, 225, 225) solid 1px;
@@ -40,6 +55,7 @@
 }
 
 section#principal {
+
     border:rgba(0, 0, 0, .1) 1px solid;
     border-radius: 5%;
     width: 50%;
@@ -57,6 +73,7 @@ section#principal {
 
 
 legend {
+
     text-align: center;
     font-size: 15pt;
     margin-top: 0px;
@@ -68,24 +85,28 @@ legend {
 
 }
   .feather {
+
     width: 16px;
     height: 16px;
     vertical-align: text-bottom;
   }
 
 #menu a.active {
+
     background-color: #3c075f;
     color: white;
     width: 100%;
 }
 
 #menu a:hover:not(.active) {
+
     background-color: rgb(77, 50, 50,50);
     color: rgb(206, 200, 221);
     box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
 }
 
 .campo{
+
     display: flex;
     justify-content: center;
     margin: 5px 0;
@@ -93,6 +114,7 @@ legend {
 
 
 .btn{
+
     border: none;
     background-color: #74032e;
     color: white;
@@ -106,12 +128,14 @@ legend {
 }
 
 .barrabotoes{
+
     display: flex;
     justify-content: space-between;
     margin: 15px;
 }
 
 .index{
+
 width: 100vw;
 height: 100vh;
 background-color: #bebebe3a;
@@ -127,6 +151,7 @@ color: lightseagreen;
 
 
 #login {
+
 width: 100vw;
 height: 100vh;
 background-color: #bebebe3a;
@@ -142,20 +167,22 @@ border: none;
 }
 
   .btn-outline-danger {
+
     color: #ff0000;
     background-color: transparent;
-
     border-color: #f1eeef;
     font: bold;
   }
   
 .btn-outline-danger:hover {
+
     color: #fff;
     background-color: #8b0210;
     border-color: #f7f7f7;
   }
 
   .legend {
+
       color: brown;
 
   }
@@ -185,7 +212,7 @@ border: none;
 
     float: right; 
     padding: 10px; 
-    width: 16%;
+    width: 18%;
     height: 60px;
     margin-top: -3%;
     font-size: 13pt;
@@ -222,6 +249,7 @@ border: none;
 
 
 #dadosClienteVenda {
+
     float:  right; 
     width: 30%;
     height: 200px;
@@ -258,16 +286,22 @@ border: none;
 #removeProdutoVenda {
 
     display: inline-block;
-    background-color: red;
-    Border: solid red 1px; 
-    width: 50px;
-    height: 25px;
+    width: 20px;
+    height: 20px;
     text-decoration: none;
     text-align: center;
     color: white;
-    font-size: 10pt; 
+    border: solid 1px red;
+    background-color: salmon;
+    font-size: solid 1px10pt; 
     font-weight: bolder;
     border-radius: 3px;
+}
+
+#removeProdutoVenda:hover{
+
+    border:  darkred;
+    background-color: #ff0000;
 }
 
 #saidaValorVenda {
@@ -337,9 +371,10 @@ border: none;
     }
 
     #acaoEditar {
+
         border: solid green 1px;
         border-radius: 5px;
-        background-color: green;
+        background-color: limegreen;
         color: white;
         text-decoration: none;
         font-size: 12px;
@@ -347,10 +382,16 @@ border: none;
         margin-left: 5px;
     }
 
+    #acaoEditar:hover {
+
+        background-color: darkgreen;
+    }
+
     #acaoExcluir {
-        border: solid red 1px;
+
+        border: solid darkred 1px;
         border-radius: 5px;
-        background-color: red;
+        background-color: tomato;
         color: white;
         text-decoration: none;
         font-size: 12px;
@@ -359,9 +400,14 @@ border: none;
         margin-left: 5px;
     }
 
+    #acaoExcluir:hover{
+
+        background-color: darkred;
+    }
+
     #acaoSelecionar {
 
-        border: solid royalblue 1px;
+        border: solid darkblue 1px;
         border-radius: 5px;
         background-color: royalblue;
         color: white;
@@ -372,7 +418,13 @@ border: none;
         margin-left: 5px;
     }
 
+    #acaoSelecionar:hover {
+
+        background-color: darkblue;
+    }
+
     .scroll {
+
         overflow-x: auto;
         overflow-y: auto;
     }
@@ -385,8 +437,22 @@ border: none;
         margin-right: 1%;
         margin-left: 80%;
         margin-top: -3%;
-        font-weight: bolder;
+    
+    }
+
+    #divSair a{
+
         color: white;
-        text-decoration-color: white;
+        font-weight: bolder;
+        padding: 3px;
+    }
+
+    #divSair a:hover{
+
+        border: solid 1px white;
+        text-decoration: none;
+        border-radius: 20%;
+
 
     }
+

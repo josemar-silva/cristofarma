@@ -51,7 +51,7 @@
     <legend>CONSULTA FUNCIONÁRIOS</legend><br><br>
     
     <label style="margin-left: 25%;"></label>
-    <input  type="search" id="buscaFuncionario" class="form-control" name="buscaFuncionario" value="<?php if (isset($_GET['buscaFuncionario']) && !empty($_GET['buscaFuncionario'])) 
+    <input  type="search" id="buscaFuncionario" class="form-control" name="buscaFuncionario" autofocus value="<?php if (isset($_GET['buscaFuncionario']) && !empty($_GET['buscaFuncionario'])) 
             echo $_GET['buscaFuncionario'];?>" size=" 60" class="form-control-busca" placeholder="Digte aqui para buscar" style="display: inline;">
 
     <button class="btn btn-outline-danger" id="btnBuscar" onclick="" style="width: 10%; padding: 2px; margin-left: 3%;" >Buscar</button><br><br>
@@ -65,7 +65,7 @@
     <div class="scroll">
             <table class="table table-hover">
         <tr>
-            <th> CÓDIGO FUNCIONÁRIO </th>
+            <th> ID FUNCIONÁRIO </th>
             <th> NOME DO FUNCIONÁRIO</th>
             <th> CPF/CNPJ</th>
             <th> EMAIL </th>

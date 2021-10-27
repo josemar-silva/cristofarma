@@ -51,7 +51,7 @@
     <legend>CONSULTA FORNECEDORES</legend><br><br>
     
     <label style="margin-left: 25%;"></label>
-    <input  type="search" id="buscaFornecedor" class="form-control" name="buscaFornecedor" value="<?php if (isset($_GET['buscaFornecedor']) && !empty($_GET['buscaFornecedor'])) 
+    <input  type="search" id="buscaFornecedor" class="form-control" name="buscaFornecedor" autofocus value="<?php if (isset($_GET['buscaFornecedor']) && !empty($_GET['buscaFornecedor'])) 
             echo $_GET['buscaFornecedor'];?>" size=" 60" class="form-control-busca" placeholder="Digte aqui para buscar" style="display: inline;" >
 
     <button class="btn btn-outline-danger" id="btnBuscar" onclick="" style="width: 10%; padding: 2px; margin-left: 3%;">Buscar</button><br><br>
@@ -65,13 +65,13 @@
     <div class="scroll">
         <table class="table table-hover">
     <tr>
-        <th> CÓDIGO FORNECEDOR </th>
-        <th> NOME DO FORNECEDOR</th>
+        <th> ID LABORATÓRIOO </th>
+        <th> LABORATÓRIOO</th>
         <th> CPF/CNPJ</th>
         <th> EMAIL </th>
         <th> TELEFONE FIXO </th>
         <th> TELEFONE CELULAR </th>
-        <th> ENDEREÇO DO FORNECEDOR</th>
+        <th> ENDEREÇO DO LABORATÓRIOO</th>
         <th> AÇÃO </th>
     </tr>
     <?php

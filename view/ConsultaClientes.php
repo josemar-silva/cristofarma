@@ -52,7 +52,7 @@
         <legend>CONSULTA CLIENTES</legend><br><br>
         
         <label style="margin-left: 25%;"></label>
-        <input  type="search" id="buscaCliente" class="form-control" name="buscaCliente" value="<?php if (isset($_GET['buscaCliente']) && !empty($_GET['buscaCliente'])) 
+        <input  type="search" id="buscaCliente" class="form-control" name="buscaCliente" autofocus value="<?php if (isset($_GET['buscaCliente']) && !empty($_GET['buscaCliente'])) 
                 echo $_GET['buscaCliente'];?>" size=" 60" class="form-control-busca" placeholder="Digte aqui para buscar" style="display: inline;">
 
         <button class="btn btn-outline-danger" id="btnBuscar" onclick="" style="width: 10%; padding: 2px; margin-left: 3%;" >Buscar</button><br><br>
@@ -66,7 +66,7 @@
 <div class="scroll">
             <table class="table table-hover">
         <tr>
-            <th> CÓDIGO CLIENTE </th>
+            <th> ID CLIENTE </th>
             <th> NOME DO CLIENTE</th>
             <th> CPF/CNPJ</th>
             <th> EMAIL </th>
@@ -79,6 +79,7 @@
         <?php
 
             $dados = $pessoa->consultaClienteFornecedorLike($consultaLike = "%".trim($_GET['buscaCliente'])."%", $tipoConsulta);
+            echo $consultaLike;
         
             #echo"<pre>"; // organizar o array (matriz de array)
             #var_dump($dados); // imprimir na tela o resultado do array

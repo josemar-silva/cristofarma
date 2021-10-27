@@ -26,11 +26,12 @@
 
             $vendaStatus = 'aberto';
 
+
             $pessoa_id_pessoa_vendedor = addslashes($_POST['vendedor']); 
             $pessoa_id_pessoa_cliente = addslashes($_POST['idClienteVenda']);
             $data_venda = addslashes($_POST['dataVenda']);
             $tipo_pagamento = addslashes($_POST['tipoPagamento']);
-            $status_venda = $vendaStatus; 
+            $status_venda = $vendaStatus;
             $valor_venda_sem_desconto = addslashes($_POST['totalSemDesconto']);
             $desconto = addslashes($_POST['desconto']);
             $valor_venda_com_desconto  = addslashes($_POST['totalComDesconto']);
@@ -39,9 +40,8 @@
             if ($venda->createVenda($pessoa_id_pessoa_vendedor, $pessoa_id_pessoa_cliente, $data_venda, $tipo_pagamento, $status_venda,
             $valor_venda_sem_desconto, $desconto, $valor_venda_com_desconto, $total_item_venda)) {
 
-    
                     $idVenda = $venda->selectVendaId($data_venda,  $pessoa_id_pessoa_cliente);
-                    $idProduto = '21';
+                    $idProduto = '9';
                     $produtoVenda->createProdutoVenda($idVenda, $idProduto);
 
                     echo '<script> alert("Venda finalizada Com sucesso!")</script>';
@@ -50,11 +50,11 @@
                     echo '<script> alert("Não foi possível concluir essa venda!")</script>';
 
                 }
-                
+
             } else {
                 echo '<script> alert(" Preencha todos os campos!")</script>';
             }
-        
+
     } else {
 
         if (isset($_POST['cancelarVenda'])) {
@@ -108,6 +108,7 @@
 
 <div id="itensAdicionados">
 <div class="scroll">
+    <form action="" method="POST">
     <table>
         <?php
 
@@ -115,12 +116,12 @@
 
                 echo '<tr>';
                 echo '<table class="table table-hover">';
-                    echo '<th> CODIGO </th>';
+                    echo '<th> ID PRODUTO </th>';
                     echo '<th> DESCRIÇÃO DO PRODUTO </th>';
-                    echo '<th> QTD </th>';
                     echo '<th> LABORATÓRIO </th>';
                     echo '<th> PREÇO UNID</th>';
-                    echo '<th> AÇÃO </th>';                           
+                    echo '<th> QNTD </th>'; 
+                    echo '<th> AÇÃO </th>';                          
                 echo '</tr>';
 
         $dadosPoduto = $produto->selectProduto($_GET['id_produto_up_venda']);
@@ -141,12 +142,7 @@
                         {
                             echo "<td>" .$value. "</td>";
                         }
-                    } 
-    ?>
-        <td>
-            <input id="quantidadeItemVenda" name="quantidadeItemVenda" style="border: none; text-align: center; " size="2" value="<?php echo'1';?>">
-        </td>                     
-     <?php                              
+                    }                              
                     foreach ($dadosPoduto[$i] as $key => $value) 
                     {   
                         if ($key == 'produto_fornecedor')  // IMPRIMIR VALOR SOMENTE SE...
@@ -161,8 +157,13 @@
                         }
                     }
     ?>
+        
+        <td>
+            <input id="quantidadeItemVenda" type="number" name="quantidadeItemVenda" id="cQtd" min="0" max="100" value="1" autofocus required style="font-size: 10pt; text-align: center;"></label>
+        </td>                     
+     
             <td>
-                <a id="removeProdutoVenda" href="#"> Excluir </a>
+                <a id="removeProdutoVenda" href="#"> X </a>
             </td>
                  <?php
                     echo "</tr>"; // fecha linha dos dados selecionados
@@ -171,16 +172,17 @@
     } else {
         echo '<tr>';
         echo '<table class="table table-hover">';
-            echo '<th> CODIGO </th>';
+            echo '<th> ID PRODUTO </th>';
             echo '<th> DESCRIÇÃO DO PRODUTO </th>';
-            echo '<th> QTD </th>';
             echo '<th> LABORATÓRIO </th>';
-            echo '<th> PREÇO </th>';
+            echo '<th> PREÇO UNID</th>';
+            echo '<th> QTD </th>';
             echo '<th> AÇÃO </th>';                           
         echo '</tr>';
     }
     ?>       
     </table>
+    </form>
     </div>
 </div>
 
@@ -206,7 +208,7 @@
                     <option value="credito">Crédito</option>
                 </select>
             </div><br>
-    <div id="divDabosVenda" style="width: 30%; float: right;  height: 540px; font-size: 13pt;">
+    <div id="divDabosVenda" style="width: 30%; float: right; margin-right: 0.5%; height: 540px; font-size: 13pt;">
     <legend style="border: solid 1px #8b0210; background-color: #8b0211; color: white;">DADOS DA VENDA</legend>
         
                                 <!-- ==================== BUSCAR VENDEDOR =====================-->
@@ -225,7 +227,7 @@
                                                         if ($key == "id_pessoa" ) // IMPRIMIR VALOR SOMENTE SE...
                                                         {
                                                             ?> 
-                                                                <option value="<?php echo  $value; ?>"> 
+                                                                <option value="<?php echo  $value; ?>" required> 
                                                                     <?php 
                                                         }
                                                     }
@@ -256,7 +258,7 @@
                         ?>"><br><br>
             
                 <label id="labelNomeCliente">Nome:</label>
-                <input id="nomeCliente" type="search" class="form-control" name="nomeCliente" size="30" style="margin-right: 11%;"
+                <input id="nomeCliente" type="search" class="form-control" name="nomeCliente" autofocus size="30" style="margin-right: 11%;"
                     value="<?php if (isset($_GET['id_cliente_up_venda']) && 'id_cliente_up_venda' !== NULL) 
                     {
                             $id_cliente_get_up = addslashes($_GET['id_cliente_up_venda']); 
@@ -280,16 +282,18 @@
                     <div id="adicionaClienteVenda">
                             <a href="ConsultaClientes.php?buscaCliente=+"><img src="/img/search.png">Buscar Cliente</a>
                     </div><br><br>  
-
-                    
-                            
+                
             <label id="total" for="totalSemDesconto"> Total: R$</label>
-            <input id="totalSemDesconto" name="totalSemDesconto" class="form-control" size="10"> <br><br>
+            <input id="totalSemDesconto" name="totalSemDesconto" class="form-control" size="10"> <br><br> 
             <label id="desconto" for="desconto"> Desconto: R$</label>
             <input id="desconto" type="text" name="desconto" class="form-control" size="10" placeholder="%"><br><br>
             <label for="totalComDesconto" id="totalComDesconto">Total com Desconto: R$</label>
-            <input id="totalComDesconto" name="totalComDesconto" class="form-control" size="10"><br><br><br>
-            
+
+            <input id="totalComDesconto" name="totalComDesconto" class="form-control"  size="10" 
+                value="<?php $n1 = filter_input(INPUT_POST, 'totalSemDesconto' );  $n2 = filter_input(INPUT_POST, 'desconto' );
+                    $n3 = $n1-$n2; echo number_format($n3, 2, ',', '.');?>"> <!--  echo number_format($n3, 2, ',', '.'); = convertendo para moeda local --> 
+                        <br><br><br> 
+
             <button class="btn btn-outline-danger" id="btnFecharVenda" name="fecharVenda" onclick="" style="display: inline;">Fechar Venda</button>
             <button class="btn btn-outline-danger" id="btnCncelarVenda" name="cancelarVenda" onclick="" style="display: inline; margin-left: 10%;">Cancelar</button>
         </div>

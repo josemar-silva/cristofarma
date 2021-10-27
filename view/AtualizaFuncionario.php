@@ -199,13 +199,13 @@
             </select><br/>
 
             <label for="nome" id="nome">Nome:</label><br/>
-            <input id="nome" type="text" class="form-control" name="nome" size="70" value="<?php if(isset($retornoConsulta)){echo $retornoConsulta[0]['nome'];}?>"><br/><br/>
+            <input id="nome" type="text" class="form-control" name="nome" size="70" autofocus required value="<?php if(isset($retornoConsulta)){echo $retornoConsulta[0]['nome'];}?>"><br/><br/>
 
             <label for="cpfAndCnpj" id="cpf">CPF/CNPJ:</label><br/>
-            <input id="cpfAndCnpj" class="form-control" type="text" name="cpf_cnpj" size="25" value="<?php if(isset($retornoConsulta)){echo $retornoConsulta[0]['cpf_cnpj'];}?>"><br/><br/>
+            <input id="cpfAndCnpj" class="form-control" type="text" name="cpf_cnpj" required size="25" value="<?php if(isset($retornoConsulta)){echo $retornoConsulta[0]['cpf_cnpj'];}?>"><br/><br/>
 
             <label for="email" id="email">E-mail:</label><br/>
-            <input id="email" class="form-control" type="email" name="email" size="60" value="<?php if(isset($retornoConsulta)){echo $retornoConsulta[0]['email'];}?>"><br/><br/>
+            <input id="email" class="form-control" type="email" name="email" size="60" required value="<?php if(isset($retornoConsulta)){echo $retornoConsulta[0]['email'];}?>"><br/><br/>
 
             <label for="telefoneFixo" id="telefoneFixo">Telefone Fixo:</label>
 
@@ -213,20 +213,20 @@
 
             <input id="telefoneFixo" class="form-control" type="text" name="telefoneFixo" size="25" value="<?php if(isset($retornoConsulta)){echo $retornoConsulta[0]['telefone_fixo'];}?>">&nbsp; &nbsp;
 
-            <input id="telefoneCelular" class="form-control" type="text" name="telefoneCelular" size="25"  style="margin-left: 15%;" value="<?php if(isset($retornoConsulta)){echo $retornoConsulta[0]['telefone_celular'];}?>"><br/><br/>
+            <input id="telefoneCelular" class="form-control" type="text" name="telefoneCelular" required size="25"  style="margin-left: 15%;" value="<?php if(isset($retornoConsulta)){echo $retornoConsulta[0]['telefone_celular'];}?>"><br/><br/>
 
             <label id="funcao" style="display: inline;">Função:</label>
             <label for="matricula" style="margin-left: 25%;">Matrícula:</label>
             <label for="senha" style="margin-left: 27%;">Senha:</label><br/>
 
-            <select id="listaFuncao" name="listaFuncao" class="form-control" style="display: inline;">
+            <select id="listaFuncao" name="listaFuncao" class="form-control" required style="display: inline;">
                 <option value="" selected> </option>
                 <option value="gerente" <?php if ($retornoFuncao == 'gerente'){echo 'selected';}?>>Gerente</option>
                 <option value="vendedor" <?php if ($retornoFuncao == 'vendedor'){echo 'selected';}?>>Vendedor</option>
                 <option value="operador de caixa" <?php if ($retornoFuncao == 'operador de caixa'){echo 'selected';}?>>Operador de Caixa</option>
             </select>  
 
-            <input id="matricula"  class="form-control"type="text" name="matricula" size="20" style="margin-left: 10%;"
+            <input id="matricula"  class="form-control"type="text" name="matricula" size="20" required style="margin-left: 10%;"
                 value="<?php if(isset($retornoConsulta)){if (isset($retornoConsulta[0]['matricula'])){ 
                     echo $retornoConsulta[0]['matricula'];} else { echo '';}}?>">&nbsp; 
 
@@ -235,7 +235,7 @@
                     echo $retornoConsulta[0]['senha'];} else { echo '';}}?>"> <br/><br/>
 
             <label for="endereco" id="endereco">Endereço:</label><br>
-            <input id="endereco" class="form-control"type="text" name="endereco" size="90" 
+            <input id="endereco" class="form-control"type="text" name="endereco" required size="90" 
                 value="<?php if(isset($retornoConsulta)){echo $retornoConsulta[0]['endereco'];}?>" > <br>
 
             <input  class="btn btn-outline-danger" id="btnCadastrar" type="submit" name="btnGravarClientes" style="margin-left: 40%; margin-top: 5%;"
