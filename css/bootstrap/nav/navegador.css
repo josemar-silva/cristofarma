@@ -1526,7 +1526,7 @@ pre code {
 
 .table th,
 .table td {
-  border: solid;
+  border: 1px solid #dee2e6 ;
   padding: 0.50rem;
   vertical-align: top;
   font-size: 10px;
