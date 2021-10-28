@@ -25,7 +25,7 @@ class ProdutoVenda
         $dados = $conexao->pdo->prepare("INSERT INTO produto_venda (venda_id_venda, produto_id_produto) VALUES (:idv, :idp)");
         $dados->bindValue("idv", $idVenda);
         $dados->bindValue("idp", $idProduto);
-        $dados->execute();
+        $dados->execute();  
 
         return true;   
     }
