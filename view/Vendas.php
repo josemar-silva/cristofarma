@@ -197,7 +197,7 @@
             <input id="dataVenda" name="dataVenda" value="<?php date_default_timezone_set('America/Sao_Paulo');
                 echo date('d/m/Y H:i:s'); ?>" 
                     style="color: blue; text-align: center; font-size: 15pt; border: none; display: inline;" 
-                    size="15" ></input>
+                    size="15" disabled></input>
         </div>
             <div id="divPagamentoTipo">            
                 <label id="labelTipoPagamento"> Tipo de Pagamento:</label>    

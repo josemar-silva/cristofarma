@@ -370,7 +370,7 @@ border: none;
         
     }
 
-    #acaoEditar {
+    .acaoVerde {
 
         border: solid green 1px;
         border-radius: 5px;
@@ -382,12 +382,15 @@ border: none;
         margin-left: 5px;
     }
 
-    #acaoEditar:hover {
+    .acaoVerde:hover {
 
         background-color: darkgreen;
+        text-decoration: none;
+        color: white;
+        text-transform: none;
     }
 
-    #acaoExcluir {
+    .acaoVermelho {
 
         border: solid darkred 1px;
         border-radius: 5px;
@@ -400,9 +403,13 @@ border: none;
         margin-left: 5px;
     }
 
-    #acaoExcluir:hover{
+    .acaoVermelho:hover{
 
         background-color: darkred;
+        text-decoration: none;
+        color: white;
+        text-transform: none;
+
     }
 
     #acaoSelecionar {
@@ -452,7 +459,13 @@ border: none;
         border: solid 1px white;
         text-decoration: none;
         border-radius: 20%;
+    }
 
+    #saidaRelatorio {
 
+        width: 80%;
+        height: 600px;
+        border: rgba(0, 0, 0, .2) solid 1px;
+        margin-left: 10%;
     }
 

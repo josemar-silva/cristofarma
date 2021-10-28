@@ -187,61 +187,20 @@ class Venda
     {
         $conexao = new Conexao("projeto_cristofarma", "localhost", "root", "");
 
-        $res = array();
-
-        $dados = $conexao->pdo->prepare("SELECT id_pessoa FROM pessoa WHERE nome LIKE :lk AND tipo_pessoa = 'cliente'");
+        $dados = $conexao->pdo->prepare("SELECT * FROM venda JOIN pessoa ON pessoa_id_pessoa_cliente = id_pessoa
+             WHERE nome LIKE :lk AND tipo_pessoa = 'cliente'");
         $dados->bindValue(":lk", $nomeCliente);
         $dados->execute();
         $dadosPessoaSelecionados = $dados->fetchAll(PDO::FETCH_ASSOC);
 
-
-        if(count($dadosPessoaSelecionados) > 0) 
-            {
-                for ($i=0; $i < count($dadosPessoaSelecionados) ; $i++) 
-                {
-
-                    $dados = $conexao->pdo->prepare("SELECT * FROM venda WHERE pesso_id_pessoa_cliente = :id ORDER BY data_venda DESC");
-                    $dados->bindValue(":id", $dadosPessoaSelecionados[$i]);
-                    $dados->execute();
-                    $dadosSelecionados = $dados->fetchAll(PDO::FETCH_ASSOC);
-                    $result = $dadosSelecionados;
-
-                }
-            }
-        
-       return $dadosSelecionados   ;
+       return $dadosPessoaSelecionados;
     }
 
     public function selectVendaClienteLikeDataLike($nomeCliente,  $data_ini,  $data_fim)
     {
         $conexao = new Conexao("projeto_cristofarma", "localhost", "root", "");
 
-        $res = array();
-
-        $dados = $conexao->pdo->prepare("SELECT id_pessoa FROM pessoa WHERE nome LIKE :ln AND tipo_pessoa = 'cliente' AND data_venda >= :di
-            AND data_venda <= :df");
-        $dados->bindValue(":ln", $nomeCliente);
-        $dados->bindValue(":di", $data_ini);
-        $dados->bindValue(":df", $data_fim);
-        $dados->execute();
-        $dadosPessoaSelecionados = $dados->fetchAll(PDO::FETCH_ASSOC);
-
-
-        if(count($dadosPessoaSelecionados) > 0) 
-            {
-                for ($i=0; $i < count($dadosPessoaSelecionados) ; $i++) 
-                {
-
-                    $dados = $conexao->pdo->prepare("SELECT * FROM venda WHERE pesso_id_pessoa_cliente = :id ORDER BY data_venda DESC");
-                    $dados->bindValue(":id", $dadosPessoaSelecionados[$i]);
-                    $dados->execute();
-                    $dadosSelecionados = $dados->fetchAll(PDO::FETCH_ASSOC);
-                    $result = $dadosSelecionados;
-
-                }
-            }
-        
-       return $dadosSelecionados   ;
+       
     }
 
     public function selectVendaAllLikePagamento($tipoPagamento)
@@ -258,24 +217,25 @@ class Venda
         return $dadosSelecionados;
     }
 
-    public function consultaVendaLikeVendedor($consultaLike)
+    public function consultaVendaLikeVendedor($nomeVendedor)
     {
         $conexao = new Conexao("projeto_cristofarma", "localhost", "root", "");
 
-        $dados = $conexao->pdo->prepare("SELECT id_pessoa FROM pessoa WHERE nome = :lk AND tipo_pessoa = 'vendedor'");
-        $dados->bindValue(":lk", $consultaLike);
+        $dados = $conexao->pdo->prepare("SELECT * FROM venda JOIN pessoa ON pessoa_id_pessoa_vendedor = id_pessoa
+             WHERE nome LIKE :lk AND tipo_pessoa = 'funcionario' AND funcao = 'vendedor'");
+        $dados->bindValue(":lk", $nomeVendedor);
         $dados->execute();
         $dadosPessoaSelecionados = $dados->fetchAll(PDO::FETCH_ASSOC);
-        $res = $dadosPessoaSelecionados['id_pessoa'];
 
-        $dadosSelecionados = array();
+       return $dadosPessoaSelecionados;
+        
+    }
 
-        $dados = $conexao->pdo->prepare("SELECT * FROM venda WHERE pesso_id_pessoa_vendedor = :id ORDER BY data_venda DESC");
-        $dados->bindValue(":id", $res);
-        $dados->execute();
-        $dadosSelecionados = $dados->fetchAll(PDO::FETCH_ASSOC);
+    public function selectVendaVendedorLikeDataLike($nomeVendedor,  $data_ini,  $data_fim)
+    {
+        $conexao = new Conexao("projeto_cristofarma", "localhost", "root", "");
 
-        return $dadosSelecionados;
+       
     }
 
     

@@ -79,7 +79,6 @@
         <?php
 
             $dados = $pessoa->consultaClienteFornecedorLike($consultaLike = "%".trim($_GET['buscaCliente'])."%", $tipoConsulta);
-            echo $consultaLike;
         
             #echo"<pre>"; // organizar o array (matriz de array)
             #var_dump($dados); // imprimir na tela o resultado do array
@@ -101,9 +100,8 @@
         ?>
                          <td>
                             <a id="acaoSelecionar" href="Vendas.php?id_cliente_up_venda=<?php echo $dados[$i]['id_pessoa'];?>">Selecionar</a> 
-                            <a id="acaoEditar" href="AtualizaCliente.php?id_get_up=<?php echo $dados[$i]['id_pessoa'];?>" 
-                                style="border: solid green 1px; width: 40px; height: 40px; background-color: green;">Editar</a>
-                            <a id="acaoExcluir" href="ConsultaClientes.php?id_get_del=<?php echo $dados[$i]['id_pessoa'];?>" style="border: solid red 1px; width: 40px; height: 40px;">Excluir</a> 
+                            <a class="acaoVerde" id="acaoEditar" href="AtualizaCliente.php?id_get_up=<?php echo $dados[$i]['id_pessoa'];?>">Editar</a>
+                            <a class="acaoVermelho" id="acaoExcluir" href="ConsultaClientes.php?id_get_del=<?php echo $dados[$i]['id_pessoa'];?>">Excluir</a> 
                             <!-- usar "echo $dados[$i]['id_pessoa']; "pegar ID desejado no array e passar como 'string' para o metodo $_GET-->
                         </td>
         <?php

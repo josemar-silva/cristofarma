@@ -5,7 +5,7 @@
     <meta charset="UTF-8" />
     <link rel="stylesheet" href="../css/bootstrap/nav/navegador.css">
     <link rel="stylesheet" href="../css/estilo.css">
-    <title>Estoque</title>
+    <title>Relatórios</title>
 </head>
 
 <body>    
@@ -38,11 +38,14 @@
                 </ul>
         </ul>
     </nav>
-    <a href="index.php" style="float: right; margin-right: 20px;">Sair</a>
-
     </header>
+
+    <div id="divSair"  >
+        <a href="index.php">Sair</a>
+    </div>
+
     <section id="principalAlimetarEstoque">
-        <div id="alimentaEstoque" style="margin-left: 5%;">
+        <div id="alimentaEstoque">
             <legend>
                 <legend>GERENCIAR ESTOQUE</legend><br>
             </legend>

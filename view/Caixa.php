@@ -132,8 +132,8 @@
                     }
         ?>
                          <td>
-                         <a id="acaoEditar" href="FecharVendaCaixa.php?id_get_venda_up=<?php echo $dados[$i]['id_venda'];?>"                         
-                                style="border: solid green 1px; width: 40px; height: 40px; background-color: green;">Receber</a>
+                        <a class="acaoVerde" id="fecharVendaNoCaixa" href="FecharVendaCaixa.php?id_get_venda_up=<?php echo $dados[$i]['id_venda'];?>">Receber</a>
+                        <a class="acaoVermelho" id="cancelaNoVendaCaixa" href="">Cancelar</a>
                         </td>
         <?php
                         echo "</tr>"; // fecha linha dos dados selecionados
