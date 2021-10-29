@@ -67,17 +67,16 @@
         $dados = $venda->selectAllVendaAberta();  
 
                 echo '<table class="table table-hover">';
-                        echo '<tr>';
-                            echo '<th> DATA </th>';
-                            echo '<th> ID VENDA </th>';
-                            echo '<th> NOME DO CLIENTE </th>';
-                            echo '<th> VENDEDOR </th>';
-                            echo '<th> VALOR VENDA </th>';
-                            echo '<th> PAGAMENTO </th>';
-                            echo '<th> SITUAÇÃO </th>';
-                            echo '<th> AÇÃO </th>';
-
-                        echo '</tr>';
+                    echo '<tr>';
+                        echo '<th> DATA </th>';
+                        echo '<th> ID VENDA </th>';
+                        echo '<th> NOME DO CLIENTE </th>';
+                        echo '<th> VENDEDOR </th>';
+                        echo '<th> VALOR VENDA </th>';
+                        echo '<th> PAGAMENTO </th>';
+                        echo '<th> SITUAÇÃO </th>';
+                        echo '<th> AÇÃO </th>';
+                    echo '</tr>';
 
             if (count($dados) > 0) {
 

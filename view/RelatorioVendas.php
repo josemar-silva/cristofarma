@@ -68,13 +68,13 @@
 
             <label>Pesqusa por Tipo Pagamento:</label><br><br>
             
-            <input type="radio" id="relatorioVendaAvista" name="tipoRelatorioPagamento" value="a vista">&nbsp; &nbsp;
+            <input type="radio" id="relatorioVendaAvista" name="tipoRelatorio" value="a vista">&nbsp; &nbsp;
             <label for="relatorioVendaAvista">Venda à Vista</label>&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;
 
-            <input type="radio" id="relatorioVendaDebito" name="tipoRelatorioPagamento" value="debito">&nbsp; &nbsp;
+            <input type="radio" id="relatorioVendaDebito" name="tipoRelatorio" value="debito">&nbsp; &nbsp;
             <label for="relatorioVendaDebito">Venda a Débito</label>&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;
 
-            <input type="radio" id="relatorioVendaCredito" name="tipoRelatorioPagamento" value="credito">&nbsp; &nbsp;
+            <input type="radio" id="relatorioVendaCredito" name="tipoRelatorio" value="credito">&nbsp; &nbsp;
             <label for="relatorioVendaCredito">Venda a Crédito</label>
         </div>
 

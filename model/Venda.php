@@ -150,7 +150,8 @@ class Venda
 
         $dadosSelecionados = array();
 
-        $dados  = $conexao->pdo->query("SELECT * FROM venda left JOIN pessoa ON pessoa_id_pessoa_cliente = id_pessoa where status_venda = 'aberto' ORDER BY data_venda DESC");
+        $dados  = $conexao->pdo->query("SELECT * FROM venda left JOIN pessoa ON pessoa_id_pessoa_cliente = id_pessoa where status_venda = 'aberto' 
+             ORDER BY data_venda DESC");
         $dadosSelecionados = $dados->fetchAll(PDO::FETCH_ASSOC);
         return $dadosSelecionados;
     }
@@ -161,26 +162,24 @@ class Venda
 
         $dadosSelecionados = array();
 
-        $dados  = $conexao->pdo->query("SELECT * FROM venda left JOIN pessoa ON pessoa_id_pessoa_cliente = id_pessoa where status_venda = 'fechado' ORDER BY data_venda DESC");
+        $dados  = $conexao->pdo->query("SELECT * FROM venda left JOIN pessoa ON pessoa_id_pessoa_cliente = id_pessoa where status_venda = 'fechado' 
+            ORDER BY data_venda DESC");
         $dadosSelecionados = $dados->fetchAll(PDO::FETCH_ASSOC);
         return $dadosSelecionados;
     }
-
 
     public function selectVendaData( $data_ini, $data_fim)
     {
         $conexao = new Conexao("projeto_cristofarma", "localhost", "root", "");
 
-        $dadosSelecionados = array();
-
-        $dados = $conexao->pdo->prepare("SELECT * FROM venda WHERE data_venda >= :di AND data_venda <= :df ORDER BY data_venda DESC");
+        $dados = $conexao->pdo->prepare("SELECT * FROM venda INNER JOIN pessoa ON pessoa_id_pessoa_cliente = id_pessoa WHERE data_venda >= :di 
+            AND data_venda <= :df ORDER BY data_venda DESC");
         $dados->bindValue(":di", $data_ini);
         $dados->bindValue(":df", $data_fim);
         $dados->execute();
         $dadosSelecionados = $dados->fetchAll(PDO::FETCH_ASSOC);
 
         return $dadosSelecionados;
-
     }
 
     public function selectVendaClienteLike($nomeCliente)
@@ -200,7 +199,15 @@ class Venda
     {
         $conexao = new Conexao("projeto_cristofarma", "localhost", "root", "");
 
-       
+        $dados = $conexao->pdo->prepare("SELECT * FROM venda LEFT JOIN pessoa ON pessoa_id_pessoa_cliente = id_pessoa AND 
+             WHERE nome LIKE :lk AND data_venda >= :di AND data_venda <= :df ORDER BY data_venda DESC");
+        $dados->bindValue(":lk", $nomeCliente);
+        $dados->bindValue(":di", $data_ini);
+        $dados->bindValue(":df", $data_fim);
+        $dados->execute();
+        $dadosPessoaSelecionados = $dados->fetchAll(PDO::FETCH_ASSOC);
+
+        return $dadosPessoaSelecionados;
     }
 
     public function selectVendaAllLikePagamento($tipoPagamento)
@@ -228,14 +235,22 @@ class Venda
         $dadosPessoaSelecionados = $dados->fetchAll(PDO::FETCH_ASSOC);
 
        return $dadosPessoaSelecionados;
-        
     }
 
     public function selectVendaVendedorLikeDataLike($nomeVendedor,  $data_ini,  $data_fim)
     {
         $conexao = new Conexao("projeto_cristofarma", "localhost", "root", "");
 
-       
+        $dados = $conexao->pdo->prepare("SELECT * FROM venda JOIN pessoa ON pessoa_id_pessoa_vendedor = id_pessoa
+             WHERE nome LIKE :lk AND funcao = 'vendedor' AND data_venda >= :di AND data_venda <= :df ORDER BY data_venda DESC");
+        $dados->bindValue(":lk", $nomeVendedor);
+        $dados->bindValue(":di", $data_ini);
+        $dados->bindValue(":df", $data_fim);
+
+        $dados->execute();
+        $dadosPessoaSelecionados = $dados->fetchAll(PDO::FETCH_ASSOC);
+
+        return $dadosPessoaSelecionados;
     }
 
     
