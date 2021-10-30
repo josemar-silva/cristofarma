@@ -51,49 +51,84 @@
     </div>
 
     <div id="divDetalharVenda">
-    <legend>VENDA Nº</legend>
+
+    <?php
+            require_once '../model/Produto.php';
+            require_once '../model/PrudutoVenda.php';
+            require_once '../model/Pessoa.php';
+            require_once '../model/Venda.php';
+            require_once '../model/Estoque.php';
+
+            $produto = new Produto();
+            $produtoVenda = new ProdutoVenda();
+            $pessoa = new Pessoa();
+            $venda = new Venda();
+            $estoque = new Estoque(60);
+
+            if (isset($_GET['id_get_venda_up'])) {
+                $idVenda = filter_input(INPUT_GET, 'id_get_venda_up');
+                
+                $return = $venda->selectVendaId($idVenda);
+            }
+
+         ?>
+
+    <legend><br>VENDA Nº  <input id="saidaIdVendaFecharCaixa" size="8" value="<?php echo '00000'.trim($return[0]['id_venda']);?>" 
+            style="color: blue; text-align: center; margin-top: -20%; border: none; text-decoration: none;" disabled></legend>
+
      <div class="scroll">
-        <table>            
-            <?php
-                    require_once '../model/Produto.php';
-                    require_once '../model/PrudutoVenda.php';
-                    require_once '../model/Pessoa.php';
-                    require_once '../model/Venda.php';
-                    require_once '../model/Estoque.php';
-
-                    $produto = new Produto();
-                    $produtoVenda = new ProdutoVenda();
-                    $pessoa = new Pessoa();
-                    $venda = new Venda();
-                    $estoque = new Estoque();
-
-                ?>
-        </table>
+            <div  id="descricaoVendaCaixa">            
+           
+           </div>
      </div>
     </div>
-    
-        <?php
-            if (isset($_POST['cancelar'])) {
-                header('location: Caixa.php');
-            }
-        ?>
 
+    <?php 
+        
+        
+    ?>
+    
         <form id="fecharVendaCaixa" name="fecharVenda" action="" method="POST"> 
             <legend style="margin-bottom: 10%; font-size: 25pt; font-weight: bolder; color: blue;">FINALIZAR VENDA</legend>
 
             <label>Total a Pagar:</label><br>
-            <input id="valorPagar" class="form-control" name="totalApagar" size="6" placeholder="R$" placeholder="R$"><br><br><br>
+            <input id="valorPagar" class="form-control" name="totalApagar" size="6" placeholder="R$" placeholder="R$" 
+                value="<?php if(isset($return)){echo $return[0]['valor_venda_com_desconto'];}?>" ><br><br><br>
 
             <label>Valor Recebido:</label><br>
-            <input id="valorRecebido" class="form-control" name="valorRecebido" type="text" size="6" placeholder="R$"><br><br><br>
+            <input id="valorRecebido" class="form-control" name="valorRecebido" type="text" size="6" placeholder="R$" 
+                value="<?php                 
+                            if (isset($_POST['valorRecebido'])) 
+                            { 
+                                $valorDigitado = filter_input(INPUT_POST, 'valorRecebido'); 
+
+                                echo number_format($valorDigitado, 2, ',','.');
+  
+                                $valorVenda = (float) addslashes($_POST['totalApagar']);
+
+                                $valorRecebido = (float) addslashes($_POST['valorRecebido']);
+
+                                $troco = calculaTroco($valorVenda, $valorRecebido);
+                            } 
+                                                    
+            function calculaTroco($valorVenda, $valorRecebido)
+            {
+                $troco = $valorRecebido - $valorVenda;
+                                
+                return $troco;
+            }
+                    ?>"><br><br><br>
 
             <label>Troco:</label><br>
-            <input id="troco" class="form-control" name="troco" size="6" placeholder="R$"><br><br>
+            <input id="troco" class="form-control" name="troco" size="6" placeholder="R$" 
+                value="<?php if (isset($valorDigitado)) {
+                    echo number_format($troco, 2, ',','.');
+                }?>" disabled><br><br>
 
             <button class="btn btn-outline-danger" id="btnFinalizar" name="finalizar" onclick="" style="display: inline; margin-left: 8%; margin-top: 15%;">Finalizar</button>
             <button class="btn btn-outline-danger" id="btnCancelar" name="cancelar" onclick=""  style="display: inline; margin-left: 18%; margin-top: 15%;">Cancelar</button>
         </form>
-       
+    </div>
     </section>
 </body>
 
