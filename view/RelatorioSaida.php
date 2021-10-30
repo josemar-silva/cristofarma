@@ -46,7 +46,7 @@
     <section id="principalSaidaRelatorio">
         <div id="saidaRelatorio">
             <legend>
-                <legend>RESULTADO RELATÓRIO DE VENDAS</legend><br>
+                <legend>RELATÓRIO DE VENDAS (<?php echo trim(filter_input(INPUT_POST, 'tipoRelatorio').')')?></legend><br>
             </legend>
 
 <div id="divRelatorioVendasEstoque">
@@ -75,6 +75,8 @@ $tipoRelatorio = filter_input(INPUT_POST, 'tipoRelatorio');
         echo '<th> TOTAL ITENS </th>';
         echo '<th> PAGAMENTO </th>';
         echo '<th> STATUS </th>';
+        echo '<th>AÇÃO</th>';
+
     echo '</tr>';
 
                                         // CONSULTA VENDA POR DATA INICIO E DATA FIM
@@ -163,6 +165,12 @@ if (isset($_POST['btnGerarRelatorioGerencial']) && $tipoRelatorio == 'data')
                     }
                 }
 
+                        ?>  
+                            <td> 
+                                <a id="detalharVendaReatorio" href=" " style="font-size: 12px;">Detalhar</a>
+                            </td>
+                        <?php
+
                 echo "</tr>"; 
         } 
     }
@@ -249,6 +257,13 @@ if (isset($_POST['btnGerarRelatorioGerencial']) && $tipoRelatorio == 'cliente')
                         echo "<td>" .$value. "</td>";
                     }
                 }
+
+                
+            ?>  
+                <td> 
+                    <a id="detalharVendaReatorio" href=" " style="font-size: 12px;">Detalhar</a>
+                </td>
+            <?php
 
                 echo "</tr>"; // fecha linha dos dados selecionados
         } 
@@ -341,6 +356,13 @@ if (isset($_POST['btnGerarRelatorioGerencial']) && $tipoRelatorio == 'cliente')
                             echo "<td>" .$value. "</td>";
                         }
                     }
+
+                    
+                ?>  
+                    <td> 
+                        <a id="detalharVendaReatorio" href=" " style="font-size: 12px;">Detalhar</a>
+                    </td>
+                <?php
     
                     echo "</tr>"; // fecha linha dos dados selecionados
             } 
@@ -433,6 +455,13 @@ if (isset($_POST['btnGerarRelatorioGerencial']) && isset($_POST['tipoRelatorio']
                         echo "<td>" .$value. "</td>";
                     }
                 }
+
+            
+            ?>  
+                <td> 
+                    <a id="detalharVendaReatorio" href=" " style="font-size: 12px;">Detalhar</a>
+                </td>
+            <?php
 
                 echo "</tr>"; // fecha linha dos dados selecionados
         } 
@@ -527,6 +556,13 @@ if (isset($_POST['btnGerarRelatorioGerencial']) && $tipoRelatorio == 'vendedor')
                     }
                 }
 
+                
+            ?>  
+                <td> 
+                    <a id="detalharVendaReatorio" href=" " style="font-size: 12px;">Detalhar</a>
+                </td>
+            <?php
+
                 echo "</tr>"; // fecha linha dos dados selecionados
         } 
     }
@@ -618,6 +654,13 @@ if (isset($_POST['btnGerarRelatorioGerencial']) && $tipoRelatorio == 'vendedor')
                             echo "<td>" .$value. "</td>";
                         }
                     }
+
+                    
+                ?>  
+                    <td> 
+                        <a id="detalharVendaReatorio" href=" " style="font-size: 12px;">Detalhar</a>
+                    </td>
+                <?php
     
                     echo "</tr>"; // fecha linha dos dados selecionados
             } 

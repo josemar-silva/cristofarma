@@ -68,7 +68,7 @@
             if (isset($_GET['id_get_venda_up'])) {
                 $idVenda = filter_input(INPUT_GET, 'id_get_venda_up');
                 
-                $return = $venda->selectVendaId($idVenda);
+                $return = $venda->selectAllVendaAberta($idVenda);
             }
 
          ?>

@@ -119,18 +119,6 @@ class Venda
             $dados->execute();
     }
 
-    public function selectVendaId($id_venda)
-    {
-        $conexao = new Conexao("projeto_cristofarma", "localhost", "root", "");
-
-        $dados  = $conexao->pdo->prepare("SELECT * FROM venda WHERE id_venda = :id"); // dados retornam como ARRAY
-        $dados->bindValue("id", $id_venda);
-        $dados->execute();
-        $dadosSelecionados = $dados->fetchAll(PDO::FETCH_ASSOC);
-       
-        return $dadosSelecionados;
-    }
-
     public function selectAllVenda()
     {
         $conexao = new Conexao("projeto_cristofarma", "localhost", "root", "");
@@ -143,15 +131,46 @@ class Venda
         return $dadosSelecionados;
     }
 
+    public function selectVendaId($idVendaLike)
+    {
+        $conexao = new Conexao("projeto_cristofarma", "localhost", "root", "");
+
+        $dados  = $conexao->pdo->prepare("SELECT * FROM venda WHERE id_venda LIKE :id AND status_venda = 'fechado'"); // dados retornam como ARRAY
+        $dados->bindValue("id", $idVendaLike);
+        $dados->execute();
+        $dadosSelecionados = $dados->fetchAll(PDO::FETCH_ASSOC);
+       
+        return $dadosSelecionados;
+    }
+
+    public function selectVendaLikeCpf($buscaCpf)
+    {
+        $conexao = new Conexao("projeto_cristofarma", "localhost", "root", "");
+
+        $dados  = $conexao->pdo->prepare("SELECT id_pessoa FROM pessoa WHERE cpf_cnpj = :cpf"); // dados retornam como ARRAY
+        $dados->bindValue("cpf", $buscaCpf);
+        $dados->execute();
+        $dadosSelecionados = $dados->fetch(PDO::FETCH_ASSOC);
+        $idPessoa = $dadosSelecionados['id_pessoa'];
+
+        $dados  = $conexao->pdo->prepare("SELECT * FROM venda WHERE pessoa_id_pessoa_cliente = :fk  AND status_venda = 'fechado' "); // dados retornam como ARRAY
+        $dados->bindValue("fk", $idPessoa);
+        $dados->execute();
+        $dadosSelecionados = $dados->fetchAll(PDO::FETCH_ASSOC);
+       
+        return $dadosSelecionados;
+    }
+
     public function selectAllVendaAberta()
     {
         $conexao = new Conexao("projeto_cristofarma", "localhost", "root", "");
 
         $dadosSelecionados = array();
 
-        $dados  = $conexao->pdo->query("SELECT * FROM venda left JOIN pessoa ON pessoa_id_pessoa_cliente = id_pessoa where status_venda = 'aberto' 
+        $dados  = $conexao->pdo->query("SELECT * FROM venda LEFT JOIN pessoa ON pessoa_id_pessoa_cliente = id_pessoa WHERE status_venda = 'aberto' 
              ORDER BY data_venda DESC");
         $dadosSelecionados = $dados->fetchAll(PDO::FETCH_ASSOC);
+
         return $dadosSelecionados;
     }
 
@@ -164,6 +183,7 @@ class Venda
         $dados  = $conexao->pdo->query("SELECT * FROM venda left JOIN pessoa ON pessoa_id_pessoa_cliente = id_pessoa where status_venda = 'fechado' 
             ORDER BY data_venda DESC");
         $dadosSelecionados = $dados->fetchAll(PDO::FETCH_ASSOC);
+
         return $dadosSelecionados;
     }
 

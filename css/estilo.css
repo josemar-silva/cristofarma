@@ -472,14 +472,18 @@ border: none;
 
     #saidaRelatorio {
 
-        width: 80%;
-        height: 600px;
-        border: rgba(0, 0, 0, .2) solid 1px;
-        margin-left: 10%;
+        width: 95%;
+        height: 610px;
+        border: none    ;
+        margin-left: 2%;
     }
 
     #tableRelatorioVendasEstoque {
 
         margin-top: -3%;
+    }
+
+    table tr, td {
+        font-size: 13pt;
     }
 

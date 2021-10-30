@@ -43,45 +43,346 @@
         <a href="index.php">Sair</a>
     </div>
 
-    <section id="principalNotaFiscal">
-        <form id="notaFiscal" style="margin-left: 1%;">
+    <section id="principalNotaFiscal" style="height: 610px;; border: none;">
+        <form id="notaFiscal" style="margin-left: 1%; margin-right: 1%;" action="" method="POST">
             <Legend>CUPOM FISCAL</Legend><br>
-            <input type="radio" id="numVenda" name="tipoRelatorio" value="numeroVenda" checked style="margin-left: 20%;"> &nbsp; &nbsp;
+            <input type="radio" id="numVenda" name="tipoRelatorioCupom" value="numeroVenda" style="margin-left: 20%;"> &nbsp; &nbsp;
             <label for="numVenda">Nº Venda</label> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
-            <input type="radio" id="numeroCpf" name="tipoRelatorio" value="numeroCpf"> &nbsp; &nbsp;
+            <input type="radio" id="numeroCpf" name="tipoRelatorioCupom" value="numeroCpf"> &nbsp; &nbsp;
             <label for="numCpf">Nº CPF</label>&nbsp; &nbsp;
-            <input type="text" class="form-control" size="60" id="" autofocus placeholder="Digite aqui para pesquisar">
+            <input type="search" class="form-control" size="30" id="buscarDadosCupom" name="buscarDadosCupom" autofocus placeholder="Digite aqui para pesquisar">
 
-            <button class="btn btn-outline-danger" type="submit" id="btnGerarNotaFiscal" name="gerarNotaFiscal" style="margin-left: 3%;">Buscar</button><br><br>
+            <button class="btn btn-outline-danger" type="submit" id="btnBuscarVendaEmissao" name="btnBuscarVendaEmissao" onclick="" style="margin-left: 3%;">Buscar</button><br><br>   
 
-            <?php
-                    require_once '../model/Produto.php';
-                    require_once '../model/PrudutoVenda.php';
-                    require_once '../model/Pessoa.php';
-                    require_once '../model/Venda.php';
-                    require_once '../model/Estoque.php';
+    <table id="" class="table table-hover">
+<?php    
 
-                    $produto = new Produto();
-                    $produtoVenda = new ProdutoVenda();
-                    $pessoa = new Pessoa();
-                    $venda = new Venda();
-                    $estoque = new Estoque();
+    require_once '../model/Pessoa.php';
+    require_once '../model/Venda.php';
+    require_once '../model/Produto.php';
 
-                    echo '<table class="table table-hover">';
-                        echo '<tr>';
-                            echo '<th> CODIGO </th>';
-                            echo '<th> DESCRIÇÃO DO PRODUTO </th>';
-                            echo '<th> QTD </th>';
-                            echo '<th> LABORATÓRIO </th>';
-                            echo '<th> PREÇO </th>';                            
-                        echo '</tr>';
-                ?>
+    $vendaRelatorio = new Venda();
+    $pessoa = new Pessoa();
+
+    $tipoRelatorio = filter_input(INPUT_POST, 'tipoRelatorioCupom');
+
+
+        echo '<tr>';
+            echo '<th> ID VENDA </th>';
+            echo '<th> DATA VENDA</th>';
+            echo '<th> NOME DO CLIENTE </th>';
+            echo '<th> VENDEDOR </th>';
+            echo '<th> VALOR SEM DESCONTO </th>';
+            echo '<th> DESCONTO </th>';
+            echo '<th> VALOR COM DESCONTO </th>';
+            echo '<th> TOTAL ITENS </th>';
+            echo '<th> PAGAMENTO </th>';
+            echo '<th> STATUS </th>';
+            echo '<th> CHECKED </th>';
+
+        echo '</tr>';
+
+                                            // CONSULTA VENDA POR DATA INICIO E DATA FIM
+
+    if (empty($_POST['buscarDadosCupom']))
+    {
+
+            $returnVendas = $vendaRelatorio->selectAllVendaFechada();
+        
+            if(count($returnVendas) > 0)  
+        {
+            for ($i=0; $i < count($returnVendas) ; $i++) 
+            { 
+                echo "<tr>";
+
+                    foreach ($returnVendas[$i] as $key => $value) 
+                    {
+                        if ($key == 'id_venda') 
+                        {
+                            echo "<td>" .$value. "</td>";
+                        }
+                    } foreach ($returnVendas[$i] as $key => $value) 
+                    {
+                        if ($key == 'data_venda')  
+                        {
+                            echo "<td>" .$value. "</td>";
+                        }
+                    } foreach ($returnVendas[$i] as $key => $value) 
+                    {   
+                        if ($key == 'pessoa_id_pessoa_cliente') 
+                        {
+                        ?>
+                    
+                            <td> <?php $p = $pessoa->selectPessoaCliente($value); echo $p[0]['nome'];?> </td>
+
+                        <?php 
+                        }
+                    } foreach ($returnVendas[$i] as $key => $value) 
+                    {   
+                        if ($key == 'pessoa_id_pessoa_vendedor')
+                        {
+                        
+                        ?>
+                    
+                            <td> <?php $p = $pessoa->selectPessoaFuncionarioVendedor($value); echo $p[0]['nome'];?> </td>
+
+                        <?php   
+
+                        }
+                    } foreach ($returnVendas[$i] as $key => $value) 
+                    {
+                        if ($key == 'valor_venda_sem_desconto') 
+                        {
+                            echo "<td>" .$value. "</td>";
+                        }
+                    } foreach ($returnVendas[$i] as $key => $value) 
+                    {
+                        if ($key == 'desconto')  
+                        {
+                            echo "<td>" .$value. "</td>";
+                        }
+                    } foreach ($returnVendas[$i] as $key => $value) 
+                    {
+                        if ($key == 'valor_venda_com_desconto') 
+                        {
+                            echo "<td>" .$value. "</td>";
+                        }
+                    } foreach ($returnVendas[$i] as $key => $value) 
+                    {
+                        if ($key == 'total_item_venda')  // IMPRIMIR VALOR SOMENTE SE...
+                        {
+                            echo "<td>" .$value. "</td>";
+                        }
+                    } foreach ($returnVendas[$i] as $key => $value) 
+                    {
+                        if ($key == 'tipo_pagamento')  // IMPRIMIR VALOR SOMENTE SE...
+                        {
+                            echo "<td>" .$value. "</td>";
+                        }
+                    } foreach ($returnVendas[$i] as $key => $value) 
+                    {
+                        if ($key == 'status_venda')  // IMPRIMIR VALOR SOMENTE SE...
+                        {
+                            echo "<td>" .$value. "</td>";
+                        }
+                    
+                    }
+
+                    ?>
+
+                   <td>
+                    <input type="radio" id="checkerCupom" name="checkedCumpom" value="<?php echo $returnVendas[$i]['id_venda']?>">
+                   </td>
+
+                    <?php
+
+                    echo "</tr>"; 
+            } 
+        }
+
+    } else {
+
+        if (isset($_POST['tipoRelatorioCupom']) && $tipoRelatorio == 'numeroVenda') 
+        {
+            
+            $returnVendas = $vendaRelatorio->selectVendaId($idVendaLike = "%".trim($_POST['buscarDadosCupom'])."%");
+        
+            if(count($returnVendas) > 0)  
+        {
+            for ($i=0; $i < count($returnVendas) ; $i++) 
+            { 
+                echo "<tr>";
+
+                    foreach ($returnVendas[$i] as $key => $value) 
+                    {
+                        if ($key == 'id_venda') 
+                        {
+                            echo "<td>" .$value. "</td>";
+                        }
+                    } foreach ($returnVendas[$i] as $key => $value) 
+                    {
+                        if ($key == 'data_venda')  
+                        {
+                            echo "<td>" .$value. "</td>";
+                        }
+                    } foreach ($returnVendas[$i] as $key => $value) 
+                    {   
+                        if ($key == 'pessoa_id_pessoa_cliente') 
+                        {
+                        ?>
+                    
+                            <td> <?php $p = $pessoa->selectPessoaCliente($value); echo $p[0]['nome'];?> </td>
+
+                        <?php 
+                        }
+                    } foreach ($returnVendas[$i] as $key => $value) 
+                    {   
+                        if ($key == 'pessoa_id_pessoa_vendedor')
+                        {
+                        
+                        ?>
+                    
+                            <td> <?php $p = $pessoa->selectPessoaFuncionarioVendedor($value); echo $p[0]['nome'];?> </td>
+
+                        <?php   
+
+                        }
+                    } foreach ($returnVendas[$i] as $key => $value) 
+                    {
+                        if ($key == 'valor_venda_sem_desconto') 
+                        {
+                            echo "<td>" .$value. "</td>";
+                        }
+                    } foreach ($returnVendas[$i] as $key => $value) 
+                    {
+                        if ($key == 'desconto')  
+                        {
+                            echo "<td>" .$value. "</td>";
+                        }
+                    } foreach ($returnVendas[$i] as $key => $value) 
+                    {
+                        if ($key == 'valor_venda_com_desconto') 
+                        {
+                            echo "<td>" .$value. "</td>";
+                        }
+                    } foreach ($returnVendas[$i] as $key => $value) 
+                    {
+                        if ($key == 'total_item_venda')  // IMPRIMIR VALOR SOMENTE SE...
+                        {
+                            echo "<td>" .$value. "</td>";
+                        }
+                    } foreach ($returnVendas[$i] as $key => $value) 
+                    {
+                        if ($key == 'tipo_pagamento')  // IMPRIMIR VALOR SOMENTE SE...
+                        {
+                            echo "<td>" .$value. "</td>";
+                        }
+                    } foreach ($returnVendas[$i] as $key => $value) 
+                    {
+                        if ($key == 'status_venda')  // IMPRIMIR VALOR SOMENTE SE...
+                        {
+                            echo "<td>" .$value. "</td>";
+                        }
+                    
+                    }
+
+                    ?>
+
+                   <td>
+                    <input type="radio" id="checkerCupom" name="checkedCumpom" value="emitirCupomVenda" checked>
+                   </td>
+
+                    <?php
+
+                    echo "</tr>"; 
+            } 
+        }
+        } else {
+            if (isset($_POST['tipoRelatorioCupom']) && $tipoRelatorio == 'numeroCpf') {
+            
+                $buscaCpf = filter_input(INPUT_POST, 'buscarDadosCupom');
+                
+                $returnVendas = $vendaRelatorio->selectVendaLikeCpf($buscaCpf);
+            
+                if(count($returnVendas) > 0)  
+            {
+                for ($i=0; $i < count($returnVendas) ; $i++) 
+                { 
+                    echo "<tr>";
+    
+                        foreach ($returnVendas[$i] as $key => $value) 
+                        {
+                            if ($key == 'id_venda') 
+                            {
+                                echo "<td>" .$value. "</td>";
+                            }
+                        } foreach ($returnVendas[$i] as $key => $value) 
+                        {
+                            if ($key == 'data_venda')  
+                            {
+                                echo "<td>" .$value. "</td>";
+                            }
+                        } foreach ($returnVendas[$i] as $key => $value) 
+                        {   
+                            if ($key == 'pessoa_id_pessoa_cliente') 
+                            {
+                            ?>
+                        
+                                <td> <?php $p = $pessoa->selectPessoaCliente($value); echo $p[0]['nome'];?> </td>
+    
+                            <?php 
+                            }
+                        } foreach ($returnVendas[$i] as $key => $value) 
+                        {   
+                            if ($key == 'pessoa_id_pessoa_vendedor')
+                            {
+                            
+                            ?>
+                        
+                                <td> <?php $p = $pessoa->selectPessoaFuncionarioVendedor($value); echo $p[0]['nome'];?> </td>
+    
+                            <?php   
+    
+                            }
+                        } foreach ($returnVendas[$i] as $key => $value) 
+                        {
+                            if ($key == 'valor_venda_sem_desconto') 
+                            {
+                                echo "<td>" .$value. "</td>";
+                            }
+                        } foreach ($returnVendas[$i] as $key => $value) 
+                        {
+                            if ($key == 'desconto')  
+                            {
+                                echo "<td>" .$value. "</td>";
+                            }
+                        } foreach ($returnVendas[$i] as $key => $value) 
+                        {
+                            if ($key == 'valor_venda_com_desconto') 
+                            {
+                                echo "<td>" .$value. "</td>";
+                            }
+                        } foreach ($returnVendas[$i] as $key => $value) 
+                        {
+                            if ($key == 'total_item_venda')  // IMPRIMIR VALOR SOMENTE SE...
+                            {
+                                echo "<td>" .$value. "</td>";
+                            }
+                        } foreach ($returnVendas[$i] as $key => $value) 
+                        {
+                            if ($key == 'tipo_pagamento')  // IMPRIMIR VALOR SOMENTE SE...
+                            {
+                                echo "<td>" .$value. "</td>";
+                            }
+                        } foreach ($returnVendas[$i] as $key => $value) 
+                        {
+                            if ($key == 'status_venda')  // IMPRIMIR VALOR SOMENTE SE...
+                            {
+                                echo "<td>" .$value. "</td>";
+                            }
+                        
+                        }
+    
+                        ?>
+    
+                       <td>
+                        <input type="radio" id="checkerCupom" name="checkedCumpom" value="emitirCupomVenda" checked>
+                       </td>
+    
+                        <?php
+    
+                        echo "</tr>"; 
+                } 
+            }
+            }
+        }
+    }
+                    ?>
         </table>
-
-            <button class="btn btn-outline-danger"type="submit" id="btnGerarNotaFiscal" name="gerarNotaFiscal" style="margin-left: 40%;">Emitir Cupom Fiscal</button>
-
-        </fom><br>
+        </form>
     </section>
+    <button class="btn btn-outline-danger"type="submit" id="btnGerarNotaFiscal" name="gerarCumpom" style="margin-left: 40%; margin-top: 1%;">Emitir Cupom Fiscal</button>
+
 </body>
 
 </html>
