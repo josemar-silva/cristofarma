@@ -62,7 +62,7 @@ class Produto
         $dados  = $conexao->pdo->prepare("SELECT * FROM produto WHERE id_produto = :id" ); // dados retornam como ARRAY
         $dados->bindValue("id", $id_up); // substituíção dos valores com o método BINDVALUE
         $dados->execute(); // comando que executa a busca no BD
-        $dadosSelecionados = $dados->fetchAll(PDO::FETCH_ASSOC); // método fatch retorana um ARRAY, fatchAll retorna uma matriz
+        $dadosSelecionados = $dados->fetch(PDO::FETCH_ASSOC); // método fatch retorana um ARRAY, fatchAll retorna uma matriz
         
         return $dadosSelecionados; //varialvel de retorno da funcao
     }   

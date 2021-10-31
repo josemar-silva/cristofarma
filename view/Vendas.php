@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="../css/estilo.css">
 
     <?php
+        
         require_once '../model/Produto.php';
         require_once '../model/PrudutoVenda.php';
         require_once '../model/Pessoa.php';
@@ -27,20 +28,20 @@
             $vendaStatus = 'aberto';
 
 
-            $pessoa_id_pessoa_vendedor = addslashes($_POST['vendedor']); 
-            $pessoa_id_pessoa_cliente = addslashes($_POST['idClienteVenda']);
+            $pessoa_id_pessoa_vendedor = (int) addslashes($_POST['vendedor']); 
+            $pessoa_id_pessoa_cliente = (int) addslashes($_POST['idClienteVenda']);
             $data_venda = addslashes($_POST['dataVenda']);
             $tipo_pagamento = addslashes($_POST['tipoPagamento']);
             $status_venda = $vendaStatus;
-            $valor_venda_sem_desconto = addslashes($_POST['totalSemDesconto']);
-            $desconto = addslashes($_POST['desconto']);
-            $valor_venda_com_desconto  = addslashes($_POST['totalComDesconto']);
-            $total_item_venda = '1';
+            $valor_venda_sem_desconto = (double) addslashes($_POST['totalSemDesconto']);
+            $desconto = (double) addslashes($_POST['desconto']);
+            $valor_venda_com_desconto = (double) addslashes($_POST['totalComDesconto']);
+            $total_item_venda = (int) '0'; // CASTING garante que valor será do tipo INTEIRO
 
             if ($venda->createVenda($pessoa_id_pessoa_vendedor, $pessoa_id_pessoa_cliente, $data_venda, $tipo_pagamento, $status_venda,
             $valor_venda_sem_desconto, $desconto, $valor_venda_com_desconto, $total_item_venda)) {
 
-                    $idVenda = $venda->selectVendaId($data_venda,  $pessoa_id_pessoa_cliente);
+                    $idVenda = (int) $venda->selectVendaId($data_venda,  $pessoa_id_pessoa_cliente);
                     $idProduto = '9';
                     $produtoVenda->createProdutoVenda($idVenda, $idProduto);
 
@@ -51,8 +52,6 @@
 
                 }
 
-            } else {
-                echo '<script> alert(" Preencha todos os campos!")</script>';
             }
 
     } else {
@@ -108,86 +107,85 @@
 
 <div id="itensAdicionados">
 <div class="scroll">
-    <form action="" method="POST">
+<form action="" method="POST">
     <table>
-        <?php
 
-            if (isset($_GET['id_produto_up_venda']) && !empty(['id_produto_up_venda'])) {
+        <tr>
+            <table class="table table-hover">
+                <th> CODIGO PRODUTO </th>
+                <th> DESCRIÇÃO DO PRODUTO </th>
+                <th> LABORATÓRIO </th>
+                <th> PREÇO UNID</th>
+                <th> QTD </th>
+                <th> R$ TOTAL </th>
+                <th> AÇÃO </th>                       
+        </tr>
 
-                echo '<tr>';
-                echo '<table class="table table-hover">';
-                    echo '<th> ID PRODUTO </th>';
-                    echo '<th> DESCRIÇÃO DO PRODUTO </th>';
-                    echo '<th> LABORATÓRIO </th>';
-                    echo '<th> PREÇO UNID</th>';
-                    echo '<th> QNTD </th>'; 
-                    echo '<th> AÇÃO </th>';                          
-                echo '</tr>';
+    <?php  
+        // ADIDIONANDO ITENS AO CARRINHO DE COMPRAS //
 
-        $dadosPoduto = $produto->selectProduto($_GET['id_produto_up_venda']);
-        if(count($dadosPoduto) > 0)  
+        session_start(); // trabalhar com informaçoes persistentes, sem perder os dados ao trocar de pagina ou arquivo //
+
+        if (isset($_GET['id_produto_up_venda']) && !empty(['id_produto_up_venda']))
         {
-           for ($i=0; $i < count($dadosPoduto) ; $i++) 
-            { 
-                 echo "<tr>"; // abre a linha dos dados selecionados
-                    foreach ($dadosPoduto[$i] as $key => $value) 
-                    {
-                        if ($key == 'id_produto')  // IMPRIMIR VALOR SOMENTE SE...
-                        {
-                            echo "<td>" .$value. "</td>";
-                        }
-                    } foreach ($dadosPoduto[$i] as $key => $value) 
-                    {
-                        if ($key == 'nome_produto')  
-                        {
-                            echo "<td>" .$value. "</td>";
-                        }
-                    }                              
-                    foreach ($dadosPoduto[$i] as $key => $value) 
-                    {   
-                        if ($key == 'produto_fornecedor')  // IMPRIMIR VALOR SOMENTE SE...
-                        {
-                            echo "<td>" .$value. "</td>";
-                        }
-                    } foreach ($dadosPoduto[$i] as $key => $value) 
-                    {
-                        if ($key == 'preco_venda')  // IMPRIMIR VALOR SOMENTE SE...
-                        {
-                            echo "<td>" .$value. "</td>";
-                        }
-                    }
-    ?>
-        
-        <td>
-            <input id="quantidadeItemVenda" type="number" name="quantidadeItemVenda" id="cQtd" min="0" max="100" value="1" autofocus required style="font-size: 10pt; text-align: center;"></label>
-        </td>                     
-     
-            <td>
-                <a id="removeProdutoVenda" href="#"> X </a>
-            </td>
-                 <?php
-                    echo "</tr>"; // fecha linha dos dados selecionados
-            } 
+            $id_Produto = (int) $_GET['id_produto_up_venda'];
+
+            if (!isset($_SESSION['intens'][$id_Produto])) 
+            {             
+                    $_SESSION['intens'][$id_Produto] = 1; // criar $_SESSION com valor 1, caso não exista ainda
+
+            } else {
+
+                    $_SESSION['intens'][$id_Produto] += 1; // se a $_SESSION já existe é somado 1 ao seu valor que representa sua quantidade
+            }
         }   
-    } else {
-        echo '<tr>';
-        echo '<table class="table table-hover">';
-            echo '<th> ID PRODUTO </th>';
-            echo '<th> DESCRIÇÃO DO PRODUTO </th>';
-            echo '<th> LABORATÓRIO </th>';
-            echo '<th> PREÇO UNID</th>';
-            echo '<th> QTD </th>';
-            echo '<th> AÇÃO </th>';                           
-        echo '</tr>';
-    }
-    ?>       
+
+        // EXIBINDO DADOS DOS ITENS NO CARRINHO DE COMPRAS //
+
+            if (count($_SESSION['intens']) == 0)
+            {
+               echo 'Adicione produtos a venda.';
+               
+            } else {
+                foreach ($_SESSION['intens'] as $protutos => $quantidade)
+                {
+                    $idItem = (int) $protutos;
+                   
+                    $dados = $produto->selectProduto($idItem);
+                        echo '<tr>
+                                <td>'.$dados['id_produto'].'</td>'
+                                    .'<td>'.$dados['nome_produto'].'</td>'
+                                        .'<td>'.$dados['produto_fornecedor'].'</td>'
+                                            .'<td>'.$valor = $dados["preco_venda"].'</td>'.'<td>'
+                                                .$quantidade.'</td>'
+                                                    .'<td>'.$quantidade = $dados["preco_venda"].'</td>' 
+                                                        ?> 
+                                                            <td><a id="removeProdutoVenda" href="Vendas.php?removeProdutoVenda=<?php echo $dados['id_produto'];?>"> X </a></td> 
+                                                        <?php
+                                                            echo '</tr>';
+                }
+
+                
+            }
+        
+        // EXCLUINDO OS ITENS DO CARRINHO DE COMPRAS //
+
+            if (isset($_GET['removeProdutoVenda'])) 
+            {
+                $id_remove_produto = (int) $_GET['removeProdutoVenda'];
+
+                unset($_SESSION['intens'][$id_remove_produto]);
+                echo '<META HTTP-EQUIV="REFRESH" CONTENT="0;URL=Vendas.php"/>'; // REFRESH para atualizar a página
+            }
+        
+    ?>        
     </table>
-    </form>
+</form>
     </div>
 </div>
 
     <div id="adicionaPrudutoVenda" style="padding: 10px;" >
-                <a href="ConsultaProdutos.php?buscaProdutos=+"><img src="/img/search.png">Adcionar Produto</a>
+                <a id="adicionar-produto" href="ConsultaProdutos.php?buscaProdutos=+"><img src="/img/search.png">Adcionar Produto</a>
     </div>
 
     <form id="upVendas" action="" method="POST">
@@ -211,7 +209,7 @@
     <div id="divDabosVenda" style="width: 30%; float: right; margin-right: 0.5%; height: 540px; font-size: 13pt;">
     <legend style="border: solid 1px #8b0210; background-color: #8b0211; color: white;">DADOS DA VENDA</legend>
         
-                                <!-- ==================== BUSCAR VENDEDOR =====================-->
+                    <!-- ==================== BUSCAR VENDEDOR =====================-->
 
         <div id="vendedorSelecionado">      
                 <label id="labelVendedorSelecionado">Vendedor:</label>
@@ -244,7 +242,7 @@
                                         ?> 
                             </select><br/><br/><br/><br/>
 
-                                            <!-- =========================== BUSCAR CLIENTE ===============================-->
+                           <!-- =========================== BUSCAR CLIENTE ===============================-->
 
              <label for="idClienteVenda" st>ID Cliente:</label>
                 <input id="idClienteVenda" type="text" name="idClienteVenda" class="form-control" size="5" style="margin-right: 54%;"
