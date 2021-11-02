@@ -8,10 +8,10 @@ require_once 'Estoque.php';
 require_once 'Pessoa.php';
 
 
-class ProdutoCompra{
-    public int $produto_id_compra;
-    public int $compra_id_compra;
-    public string $quantidade_compra;
+class Compra{
+    public int $id_compra;
+    public string $data_compra;
+    public string $numero_nota;
  
 
     function __constructPprodutoCompra()

@@ -185,7 +185,7 @@
         if (isset($_POST['tipoRelatorioCupom']) && $tipoRelatorio == 'numeroVenda') 
         {
             
-            $returnVendas = $vendaRelatorio->selectVendaId($idVendaLike = "%".trim($_POST['buscarDadosCupom'])."%");
+            $returnVendas = $vendaRelatorio->selectVendaIdRelatorio($idVendaLike = "%".trim($_POST['buscarDadosCupom'])."%");
         
             if(count($returnVendas) > 0)  
         {

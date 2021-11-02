@@ -7,7 +7,7 @@ class Pessoa
 
 {
     // declaração de propriedade
-    public string $id_pessoa;
+    public int $id_pessoa;
     public string $nome;
     public string $cpf_cnpj;
     public string $tipo_pessoa;
@@ -103,16 +103,6 @@ class Pessoa
         $dados->bindValue(":id", $id_upd); 
         $dados->execute();
         
-        // CASO SEJA UM FORNECEDOR, ATUALIZA NOME E ID NO PRODURO
-
-        if ($tipo_pessoa == 'fornecedor') {
-
-        $dados = $conexao->pdo->prepare("UPDATE produto SET produto_fornecedor = :n WHERE pessoa_id_pessoa = :id");
-        $dados->bindValue(":n", $nome);
-        $dados->bindValue(":id", $id_upd);
-        $dados->execute();
-        }
-
         return true;
     }
 

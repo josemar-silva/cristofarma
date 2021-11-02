@@ -197,9 +197,11 @@
 
             <label for="telefoneCelular" id="telefoneCelular" style="margin-left: 35%;">Telefone Celular:</label><br/>
 
-            <input id="telefoneFixo" class="form-control" type="text" name="telefoneFixo" size="25" value="<?php if(isset($retornoConsulta)){echo $retornoConsulta[0]['telefone_fixo'];}?>">&nbsp; &nbsp;
+            <input id="telefoneFixo" class="form-control" type="text" name="telefoneFixo" data-mask="(00) 0000-0000" 
+                data-mask-selectonfocus="true" size="25" value="<?php if(isset($retornoConsulta)){echo $retornoConsulta[0]['telefone_fixo'];}?>">&nbsp; &nbsp;
 
-            <input id="telefoneCelular" class="form-control" type="text" name="telefoneCelular" size="25"  required style="margin-left: 15%;" value="<?php if(isset($retornoConsulta)){echo $retornoConsulta[0]['telefone_celular'];}?>"><br/><br/>
+            <input id="telefoneCelular" class="form-control" type="text" name="telefoneCelular" data-mask="(00) 00000-0000" 
+                data-mask-selectonfocus="true" size="25"  required style="margin-left: 15%;" value="<?php if(isset($retornoConsulta)){echo $retornoConsulta[0]['telefone_celular'];}?>"><br/><br/>
 
             <label id="funcao" style="display: inline;">Função:</label>
             <label for="matricula" style="margin-left: 25%;">Matrícula:</label>

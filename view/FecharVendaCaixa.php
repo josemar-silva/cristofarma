@@ -63,22 +63,39 @@
             $produtoVenda = new ProdutoVenda();
             $pessoa = new Pessoa();
             $venda = new Venda();
-            $estoque = new Estoque(60);
+            $estoque = new Estoque();
 
             if (isset($_GET['id_get_venda_up'])) {
-                $idVenda = filter_input(INPUT_GET, 'id_get_venda_up');
+                $idVenda = $_GET['id_get_venda_up'];
                 
-                $return = $venda->selectAllVendaAberta($idVenda);
+                $return = $venda->selectVendaAbertaLikeId($idVenda);
+                $res = $return[0]['id_venda'];
             }
 
          ?>
 
-    <legend><br>VENDA Nº  <input id="saidaIdVendaFecharCaixa" size="8" value="<?php echo '00000'.trim($return[0]['id_venda']);?>" 
+    <legend><br>VENDA Nº  <input id="saidaIdVendaFecharCaixa" size="8" value="<?php echo $res;?>" 
             style="color: blue; text-align: center; margin-top: -20%; border: none; text-decoration: none;" disabled></legend>
 
      <div class="scroll">
-            <div  id="descricaoVendaCaixa">            
-           
+            <div  id="descricaoVendaCaixa">
+                                
+                <p id="descItens"> adfasfsadsafsdfasdfadadsafsdfasdfad.</p>
+                <p id="descItens"> fadfasfsadsafsdfasdfadadsafsdfasdfad.</p>
+                <p id="descItens"> fsadfasfsadsafsdfasdfadadsafsdfasdfad.</p>
+                <p id="descItens"> fsfasfsadsafsdfasdfadadsafsdfasdfad.</p>
+                <p id="descItens"> fsadfafgfsafsdfasdfadadsafsdfasdfad.</p>
+                <p id="descItens"> fsadfasfsadsafsdfasdfadadsafsdfasdfad.</p>
+                <p id="descItens"> fsadfasfsadsafsdfasdfadadsafsdfasdfad.</p>
+                <p id="descItens"> fsadfasfsfssafsdfasdfadadsafsdfasdfad.</p>
+
+
+                <p id="descPagamento"> .ffsdfsdsafsdfasdfadfsdafasdfsadfsadf</p>
+
+                <p id="descVendedor"> fsdfsdafsdafdsafsdfasdfadfsadfasdfsda</p>
+
+                <p id="descCliente"> fsdafsdfsdafsadfsdfasdfadfasdfasdfasdf</p> 
+
            </div>
      </div>
     </div>

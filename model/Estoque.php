@@ -6,8 +6,8 @@ require_once 'Venda.php';
 
 class Estoque
 {
-    public string $produto_id_produto;
-    public string $quantidade;
+    public int $produto_id_estoque;
+    public int $quantidade;
 }
 
 function __construct_pessoa()

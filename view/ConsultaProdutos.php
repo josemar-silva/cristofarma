@@ -69,8 +69,9 @@
 </form>
 
     <!---------------------- BUSCA %like% = 'quem contem'... ----------------------->
+    <div>
     <div class="scroll">
-        <table>            
+        <table>             
              <?php
                 if (isset($_GET['buscaProdutos'])) { 
                     echo '<table class="table table-hover">';
@@ -116,6 +117,7 @@
                 }
             ?>
         </table>
+    </div>
     </div>
     </section>
 </body>

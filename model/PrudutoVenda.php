@@ -7,8 +7,8 @@ require_once 'Conexao.php';
 
 class ProdutoVenda
 {
-    public Venda $venda_id_venda;
-    public Produto $produto_id_produto;
+    public int $venda_id_venda;
+    public int $produto_id_produto;
     public string $quantidade;
     public string $valor;
 
@@ -30,10 +30,16 @@ class ProdutoVenda
         return true;   
     }
 
-    public function deleteProdutoVenda(){
+    public function deleteProdutoVenda($id_venda,$id_Produto){
 
         $conexao = new Conexao("projeto_cristofarma", "localhost", "root", "");
 
+        $dados = $conexao->pdo->prepare(" DELETE * produto_venda WHERE venda_id_venda = :idv AND produto_id_produto = :idp)");
+        $dados->bindValue("idv", $id_venda);
+        $dados->bindValue("idp", $id_Produto);
+        $dados->execute();  
+
+        return true;   
         
     }
 

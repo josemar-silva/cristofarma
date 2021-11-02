@@ -114,7 +114,7 @@
                     {
                         if ($key == 'valor_venda_com_desconto')  // IMPRIMIR VALOR SOMENTE SE...
                         {
-                            echo "<td>" .$value. "</td>";
+                            echo "<td>".number_format($value, 2, ',', '.'). "</td>";
                         }
                     } foreach ($dados[$i] as $key => $value) 
                     {

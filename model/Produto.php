@@ -7,13 +7,12 @@ require_once 'Venda.php';
 
 class Produto 
 {   
-    public string $id_produto;
+    public int $id_produto;
     public string $nome_produto;
-    public string $preco_custo;
-    public string $preco_venda;
+    public float $preco_custo;
+    public float $preco_venda;
     public string $codigo_barras;
-    public Pessoa $produto_fornecedor;
-    public string $pessoa_id_pessoa;
+    public Pessoa $pessoa_id_pessoa;
 
 
     function __construct()
@@ -39,13 +38,12 @@ class Produto
             return false;
         } else {
             $dados = $conexao->pdo->prepare("INSERT INTO produto (nome_produto, preco_custo, preco_venda, 
-            codigo_barras, produto_fornecedor, pessoa_id_pessoa)
-            VALUES (:pn, :pc, :pv, :cb, :pf, :pfk)");
+            codigo_barras, pessoa_id_pessoa)
+            VALUES (:pn, :pc, :pv, :cb, :pfk)");
             $dados->bindValue(":pn", $produto_nome);
             $dados->bindValue(":pc", $produto_preco_custo);
             $dados->bindValue(":pv", $produto_preco_venda);
             $dados->bindValue(":cb", $produto_codigo_barras);
-            $dados->bindValue(":pf", $produto_fornecedor);
             $dados->bindValue(":pfk", $res2);
             $dados->execute();
                 
@@ -62,7 +60,7 @@ class Produto
         $dados  = $conexao->pdo->prepare("SELECT * FROM produto WHERE id_produto = :id" ); // dados retornam como ARRAY
         $dados->bindValue("id", $id_up); // substituíção dos valores com o método BINDVALUE
         $dados->execute(); // comando que executa a busca no BD
-        $dadosSelecionados = $dados->fetch(PDO::FETCH_ASSOC); // método fatch retorana um ARRAY, fatchAll retorna uma matriz
+        $dadosSelecionados = $dados->fetchAll(PDO::FETCH_ASSOC); // método fatch retorana um ARRAY, fatchAll retorna uma matriz
         
         return $dadosSelecionados; //varialvel de retorno da funcao
     }   
@@ -87,19 +85,17 @@ class Produto
     }
 
     public function updateProduto($id_up, $produto_nome, $produto_preco_custo, $produto_preco_venda, 
-        $produto_codigo_barras, $produto_fornecedor)
+        $produto_codigo_barras)
     {
         $conexao = new Conexao("projeto_cristofarma", "localhost", "root", "");
 
         
             $dados = $conexao->pdo->prepare("UPDATE produto SET produto.nome_produto = :pn, produto.preco_custo = :pc, 
-            produto.preco_venda = :pv, produto.codigo_barras = :cb, produto.produto_fornecedor = :pf 
-            WHERE produto.id_produto = :idf");
+            produto.preco_venda = :pv, produto.codigo_barras = :cb WHERE produto.id_produto = :idf");
             $dados->bindValue(":pn", $produto_nome);
             $dados->bindValue(":pc", $produto_preco_custo);
             $dados->bindValue(":pv", $produto_preco_venda);
             $dados->bindValue(":cb", $produto_codigo_barras);
-            $dados->bindValue(":pf", $produto_fornecedor);
             $dados->bindValue(":idf", $id_up);
             $dados->execute();
 }
