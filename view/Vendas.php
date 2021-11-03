@@ -8,6 +8,17 @@
     <link rel="stylesheet" href="../css/estilo.css">
 
     <?php
+
+    
+// $nome = 'teste';
+// $cpf = '09898787676';
+// $tipo = 'cliente';
+// $email = 'teste@teste.com';
+// $telefone = '6233334444';
+// $celular = '62999998888';
+// $endereco = 'teste endereço completo';
+
+        session_start(); // trabalhar com informaçoes persistentes, sem perder os dados ao trocar de pagina ou arquivo //
         
         require_once '../model/Produto.php';
         require_once '../model/PrudutoVenda.php';
@@ -21,14 +32,12 @@
         $pessoa = new Pessoa();
         $venda = new Venda();
         $estoque = new Estoque();
-        
 
+        
         if (isset($_POST['fecharVenda'])) 
         {
-
             if (!empty($_POST['idClienteVenda']) && !empty($_POST['vendedor'])&& !empty($_POST['tipoPagamento'])) 
             {
-
                 $vendaStatus = 'aberto';
 
                 $id_venda = addslashes($_POST['codigoVenda']);
@@ -48,19 +57,12 @@
                     echo '<script> alert("Não foi possível concluir essa venda!")</script>';
                         
                 } else {
-
-                    if (isset($_SESSION['itens'])) {
-                        $produtoVenda->createProdutoVenda($codigo_gerado_venda, $idItem); 
-                    } else {
-                        echo 'Não foi possivel comcluir ProdutoVenda.';
-                    }
-                     
+                   
                     echo '<script> alert("Venda finalizada Com sucesso!")</script>';
                     session_destroy(); // encerrar a seção e destroi as variaves existentes nela
                     echo '<META HTTP-EQUIV="REFRESH" CONTENT="0;URL=Vendas.php"/>'; // REFRESH para atualizar a página
                 }
             }
-
         } 
     ?>
     <title>Vendas</title>
@@ -101,9 +103,17 @@
         <a href="index.php">Sair</a>
     </div>
 <form method="POST">
-    <div id="divCodigoVenda">
+    <div id="itensAdicionados">
 
-<label style="font-weight: bolder; font-size: 15px; margin-left: 1%;">Código da Venda:</label>
+    <section id="principalVendas">
+    
+<div class="scroll">
+
+    <table>
+    <legend style="margin-left: -1%;">REALIZAR VENDA/ORÇAMENTO</legend>
+
+    <div id="divCodigoVenda" style="margin-left: 1%; width:98%; margin-top: -3.5%;" >
+    <label style="font-weight: bolder; font-size: 15px; margin-left: 1%;">Código da Venda:</label>
     <?php 
         date_default_timezone_set('America/Sao_Paulo');
         $ano = date('Y');
@@ -111,20 +121,14 @@
         $dia = date('d');
         $countVendasDia = count($venda->selectAllVenda());
         $codigo_gerado_venda = $ano.$mes.$dia.$countVendasDia; /* GERANDO CODIGO DA VENDA */
-        
     ?>
         <input id="codigoVenda" name="codigoVenda" value=" <?php echo $codigo_gerado_venda; ?>" 
-        style="color: blue; text-align: center; font-size: 15pt; border: none; display: inline; margin-top: -10%;" size="10" ></input>
+            style="color: blue; text-align: center; font-size: 15pt; border: none; display: inline-block;" size="10" ></input>
+            
+        <label style="font-weight: bolder; font-size: 15px; margin-left: 60%;">Qtd Item:</label>
+        <input id="contatorItem" name="contatorItem" value=" <?php echo $count ?>" style="color: blue; font-weight: bold; font-size: 15px;
+            text-align: center;" size="1" ></input>
 </div>
-
-    <div id="itensAdicionados">
-
-    <section id="principalVendas">
-    <legend style="margin-left: -1%">REALIZAR VENDA/ORÇAMENTO</legend>
-
-<div class="scroll">
-
-    <table>
         <tr>
             <table class="table table-hover">
                 <th> CODIGO PRODUTO </th>
@@ -136,80 +140,83 @@
                 <th> AÇÃO </th>                       
         </tr>
     <?php  
-                                        // ADIDIONANDO ITENS AO CARRINHO DE COMPRAS //
+                        // ADIDIONANDO ITENS AO CARRINHO DE COMPRAS //
 
-        session_start(); // trabalhar com informaçoes persistentes, sem perder os dados ao trocar de pagina ou arquivo //
+if (isset($_GET['id_produto_up_venda']) && !empty(['id_produto_up_venda']))
+{ 
+    $id_Produto = (int) $_GET['id_produto_up_venda'];
 
-        if (isset($_GET['id_produto_up_venda']) && !empty(['id_produto_up_venda']))
-        { 
-            $id_Produto = (int) $_GET['id_produto_up_venda'];
+        // echo '<META HTTP-EQUIV="REFRESH" CONTENT="0;URL=Vendas.php"/>';
 
-            echo '<META HTTP-EQUIV="REFRESH" CONTENT="0;URL=Vendas.php"/>';
-
-            if (!isset($_SESSION['itens'][$id_Produto])) 
-            {             
-                    $_SESSION['itens'][$id_Produto] = 1; // criar $_SESSION com valor 1, caso não exista ainda
+        if (!isset($_SESSION['venda'][$id_Produto])) 
+        {             
+             $_SESSION['venda'][$id_Produto] = 1; // criar $_SESSION com valor 1, caso não exista ainda
                 
-            } else {
+        } else {
 
-                    $_SESSION['itens'][$id_Produto] += 1; // se a $_SESSION já existe é somado 1 ao seu valor que representa sua quantidade
-            } 
-        }   
-                                // EXIBINDO DADOS DOS ITENS NO CARRINHO DE COMPRAS //
+            $_SESSION['venda'][$id_Produto] += 1; // se a $_SESSION já existe é somado 1 ao seu valor que representa sua quantidade
+        }
 
-        if (isset($_SESSION['itens'])) {
+            // CADASTRAR ID_VENDA E ID_PRODUTO NA TABELA TABELA PRODUTO_VENDA
 
-            if (count($_SESSION['itens']) == 0) {
+        if (isset($_SESSION['venda'][$id_Produto]) && isset($_GET['id_produto_up_venda'])) {
 
-                global $verificaSecao;
-                $verificaSecao = true;
-               
-            } else {
-                foreach ($_SESSION['itens'] as $protutos => $quantidade)
-                {
-                    $idItem = (int) $protutos;
-                   
-                    $dados = $produto->selectProduto($idItem); 
-                        echo '<tr>
-                                <td>'.$dados['id_produto'].'</td>'
-                                    .'<td>'.$dados['nome_produto'].'</td>'
-                                        .'<td>'.$dados['produto_fornecedor'].'</td>'
-                                            .'<td>'.$valor = $dados["preco_venda"].'</td>'.'<td>'
-                                                .$quantidade.'</td>'
-                                                    .'<td>'.$quantidade = $dados["preco_venda"].'</td>' 
+            foreach ($_SESSION['venda'] as $protutos => $quantidade)
+            {
+                
+            }
+        }
+}   
+                           // EXIBINDO DADOS DOS ITENS NO CARRINHO DE COMPRAS //
+
+    if (isset($_SESSION['venda'])) {
+
+        if (count($_SESSION['venda']) == 0) {
+
+        } else {
+            foreach ($_SESSION['venda'] as $protutos => $quantidade)
+            {
+                $idItem = (int) $protutos;
+                
+                $dados = $produto->selectProduto($idItem); 
+                    echo '<tr>
+                            <td>'.$dados['id_produto'].'</td>'
+                                .'<td>'.$dados['nome_produto'].'</td>'
+                                    .'<td>'.$dados['produto_fornecedor'].'</td>'
+                                        .'<td>'.$valor = $dados["preco_venda"].'</td>'
+                                            .'<td>'.$quantidade.'</td>'
+                                                .'<td>'.$soma = (int) $quantidade * number_format($dados["preco_venda"], 2, '.','.').'</td>'
     ?> 
         <td><a id="removeProdutoVenda" href="Vendas.php?removeProdutoVenda=<?php echo $dados['id_produto'];?>"> X </a></td> 
     <?php
                     echo '</tr>';                                      
-                }
             }
         }
-                                        // EXCLUINDO OS ITENS DO CARRINHO DE COMPRAS //
+    }
+                            // EXCLUINDO OS ITENS DO CARRINHO DE COMPRAS //
 
-            if (isset($_GET['removeProdutoVenda'])) 
-            {
-                $id_remove_produto = (int) $_GET['removeProdutoVenda'];
+if (isset($_GET['removeProdutoVenda'])) 
+{
+    $id_remove_produto = (int) $_GET['removeProdutoVenda'];
 
-                unset($_SESSION['itens'][$id_remove_produto]);
-                echo '<META HTTP-EQUIV="REFRESH" CONTENT="0;URL=Vendas.php"/>'; // REFRESH para atualizar a página
-            }
+        unset($_SESSION['venda'][$id_remove_produto]);
+            echo '<META HTTP-EQUIV="REFRESH" CONTENT="0;URL=Vendas.php"/>'; // REFRESH para atualizar a página
+}
 
-                                     // LIMPAR DAOS VARIAVIIS E CARRINHO AO FECHAR OU CANCELAR  VENDA 
+                                // LIMPAR DAOS VARIAVIIS E CARRINHO AO FECHAR OU CANCELAR  VENDA 
 
-            if (isset($_POST['cancelarVenda']) && isset($_SESSION['itens'])) {
+if (isset($_POST['cancelarVenda']) && isset($_SESSION['venda'])) {
                 
-                session_destroy(); // encerrar a seção e destroi as variaves existentes nela
-                echo '<META HTTP-EQUIV="REFRESH" CONTENT="0;URL=Vendas.php"/>'; // REFRESH para atualizar a página
-            }
+    session_destroy(); // encerrar a seção e destroi as variaves existentes nela
+        echo '<META HTTP-EQUIV="REFRESH" CONTENT="0;URL=Vendas.php"/>'; // REFRESH para atualizar a página
+    }
     ?>                      
        </table>
     </div>
 </div>
-
     <div id="adicionaPrudutoVenda" style="padding: 10px;" >
                 <a id="adicionar-produto" href="ConsultaProdutos.php?buscaProdutos=+"><img src="/img/search.png">Adcionar Produto</a>
     </div>
-
         <div id="divDataHoraVenda">   
             <label>Data:</label>
             <input id="dataVenda" name="dataVenda" value="<?php date_default_timezone_set('America/Sao_Paulo');
@@ -226,7 +233,7 @@
                     <option value="credito">Crédito</option>
                 </select>
             </div><br>
-    <div id="divDabosVenda" style="width: 30%; float: right; margin-right: 0.5%; height: 540px; font-size: 13pt;">
+    <div id="divDabosVenda" style="width: 30%; float: right; margin-right: 0.5%; height: 540px; font-size: 13pt; padding: 15px;">
     <legend style="border: solid 1px #8b0210; background-color: #8b0211; color: white;">DADOS DA VENDA</legend><br>
         
                     <!-- ==================== BUSCAR VENDEDOR =====================-->

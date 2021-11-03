@@ -51,51 +51,18 @@
             <label for="estoque" style="font-size: 13pt;">Relatório de Estoque</label><br><br>
 
 <form action="" method="POST">
-<button class="btn btn-outline-danger" id="btnGerarRelatorioGerencial" name="btnGerarRelatorioGerencial" onclick="cratePdv();" style="margin-left: 40%;">Gerar Relatório</button>
-</form>        </div>
-
-        <?php 
-
-require_once '../model/Produto.php';
-require_once '../model/PrudutoVenda.php';
-require_once '../model/Pessoa.php';
-require_once '../model/Venda.php';
-require_once '../model/Estoque.php';
-require_once '../model/Conexao.php';
-
-$produto = new Produto();
-$produtoVenda = new ProdutoVenda();
-$pessoa = new Pessoa();
-$venda = new Venda();
-$estoque = new Estoque();
-
-
-    $a = 'teste nome';
-    $b = '200';
-    $c = '100';
-    $d = '000000000000000';
-    $e = 'neo quimica';
-   
-
-
-    $idv = '2021110120';
-    $idp = '14';
-
-    if (isset($_POST['btnGerarRelatorioGerencial'])) {
-        
-
-            if (!$produto->createProduto($a, $b, $c, $d, $e)) {
-                echo "Produto já está cadastrado!";
-            }
-        } else {
-            echo '<script> alert("Preencha todos os campos!")</script>';
-        } 
+        <?php // $nome = 'teste';
+                // $cpf = '09898787676';
+                // $tipo = 'cliente';
+                // $email = 'teste@teste.com';
+                // $telefone = '6233334444';
+                // $celular = '62999998888';
+                // $endereco = 'teste endereço completo';
+                // $pessoa->createPessoa($nome,$cpf,$tipo,$email,$telefone,$celular,$endereco);
 ?>
-
-
-       
-
-
+<button class="btn btn-outline-danger" id="btnGerarRelatorioGerencial" name="btnGerarRelatorioGerencial" onclick="cratePdv();" style="margin-left: 40%;">Gerar Relatório</button>
+</form>        
+</div>
     </section>
 </body>
 

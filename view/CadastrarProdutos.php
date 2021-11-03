@@ -92,7 +92,7 @@
                 <input id="descricaoProduto" class="form-control"  type="text" name="descricaoProduto" required size="60"> <br><br>
                 
                 <label for="codigoDeBarras"> Código de Barras:</label><br>
-                <input id="codigoDeBarras" class="form-control"  type="text" type="text" name="codigoDeBarras" required size="40"><br><br>              
+                <input id="codigoDeBarras" class="form-control"  type="text" type="text" name="codigoDeBarras" maxlength="60" required size="40"><br><br>              
 
                 <label for="precoCusto">Preço de Custo:</label><br>
                 <input id="precoCusto" class="form-control"  placeholder="R$" type="text" type="text" name="precoCusto" required size="20"><br><br>

@@ -188,7 +188,7 @@
             <input id="nome" type="text" class="form-control" name="nome" size="70" required value="<?php if(isset($retornoConsulta)){echo $retornoConsulta[0]['nome'];}?>"><br/><br/>
 
             <label for="cpfAndCnpj" id="cpf">CPF/CNPJ:</label><br/>
-            <input id="cpfAndCnpj" class="form-control" type="text" name="cpf_cnpj" size="25" value="<?php if(isset($retornoConsulta)){echo $retornoConsulta[0]['cpf_cnpj'];}?>"><br/><br/>
+            <input id="cpfAndCnpj" class="form-control" type="text" name="cpf_cnpj" size="25" maxlength="14" value="<?php if(isset($retornoConsulta)){echo $retornoConsulta[0]['cpf_cnpj'];}?>"><br/><br/>
 
             <label for="email" id="email">E-mail:</label><br/>
             <input id="email" class="form-control" type="email" name="email" size="60" required value="<?php if(isset($retornoConsulta)){echo $retornoConsulta[0]['email'];}?>"><br/><br/>

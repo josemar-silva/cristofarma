@@ -12,6 +12,7 @@ class Produto
     public float $preco_custo;
     public float $preco_venda;
     public string $codigo_barras;
+    public string $produto_fornecedor;
     public Pessoa $pessoa_id_pessoa;
 
 
@@ -27,7 +28,7 @@ class Produto
         $dados = $conexao->pdo->prepare("SELECT id_pessoa FROM pessoa WHERE nome  = :f");
         $dados->bindValue(":f", $produto_fornecedor);
         $dados->execute();
-        $res = $dados->fetch(PDO::FETCH_ASSOC);
+        $res = $dados->fetchAll(PDO::FETCH_ASSOC);
         $res2 = $res['id_pessoa'];        
         
         $dados = $conexao->pdo->prepare("SELECT id_produto  FROM produto WHERE codigo_barras = :cb");
@@ -60,7 +61,7 @@ class Produto
         $dados  = $conexao->pdo->prepare("SELECT * FROM produto WHERE id_produto = :id" ); // dados retornam como ARRAY
         $dados->bindValue("id", $id_up); // substituíção dos valores com o método BINDVALUE
         $dados->execute(); // comando que executa a busca no BD
-        $dadosSelecionados = $dados->fetchAll(PDO::FETCH_ASSOC); // método fatch retorana um ARRAY, fatchAll retorna uma matriz
+        $dadosSelecionados = $dados->fetch(PDO::FETCH_ASSOC); // método fatch retorana um ARRAY, fatchAll retorna uma matriz
         
         return $dadosSelecionados; //varialvel de retorno da funcao
     }   
@@ -85,18 +86,19 @@ class Produto
     }
 
     public function updateProduto($id_up, $produto_nome, $produto_preco_custo, $produto_preco_venda, 
-        $produto_codigo_barras)
+        $produto_codigo_barras, $produto_fornecedor)
     {
         $conexao = new Conexao("projeto_cristofarma", "localhost", "root", "");
 
         
             $dados = $conexao->pdo->prepare("UPDATE produto SET produto.nome_produto = :pn, produto.preco_custo = :pc, 
-            produto.preco_venda = :pv, produto.codigo_barras = :cb WHERE produto.id_produto = :idf");
+            produto.preco_venda = :pv, produto.codigo_barras = :cb, produto.produto_fornecedor = :pf WHERE produto.id_produto = :id");
             $dados->bindValue(":pn", $produto_nome);
             $dados->bindValue(":pc", $produto_preco_custo);
             $dados->bindValue(":pv", $produto_preco_venda);
             $dados->bindValue(":cb", $produto_codigo_barras);
-            $dados->bindValue(":idf", $id_up);
+            $dados->bindValue(":pf", $produto_fornecedor);
+            $dados->bindValue(":id", $id_up);
             $dados->execute();
 }
     public function consultaProdutoLike($consultaLike){

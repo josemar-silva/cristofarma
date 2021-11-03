@@ -29,7 +29,7 @@
             $produto_preco_custo = addslashes($_POST['precoCusto']);
             $produto_preco_venda = addslashes($_POST['precoVenda']);
             $produto_codigo_barras = addslashes($_POST['codigoDeBarras']);
-            $produto_fornecedor = addslashes($_POST['fornecedor']);
+            $produto_fornecedor = addslashes($_POST['fornecedorSelecionado']);
     
             if (!empty($produto_nome) && !empty($produto_codigo_barras))  // validar se há ao menos um dado a ser cadastrado
             {
@@ -119,18 +119,17 @@
                     value="<?php if(isset($retornoConsulta)){echo $retornoConsulta['nome_produto'];}?>"><br/><br/>
 
                 <label id="codigoDeBarras">Código de Barras:</label><br/>
-                <input id="codigoDeBarras" class="form-control" type="text" name="codigoDeBarras" size="60" required
+                <input id="codigoDeBarras" class="form-control" type="text" maxlength="60" name="codigoDeBarras" size="60" required
                     value="<?php if(isset($retornoConsulta)){echo $retornoConsulta['codigo_barras'];}?>"><br/><br/>
 
                     <?php
-                        $consultaLike = $produto_fornecedor;
-                        $tipoConsulta = 'fornecedor';
-                        $res = $pessoa->consultaClienteFornecedorLike($consultaLike, $tipoConsulta)
+                        $consultaLike = $retornoConsulta['pessoa_id_pessoa'];
+                        $res = $pessoa->selectPessoaFornecedor($consultaLike);
                     ?>
 
                 <label id="fornecedor">Fornecedor:</label><br/>
-                <input id="fornecedor" class="form-control" type="text" name="fornecedor" size="60" required
-                    value="<?php if(isset($retornoConsulta)){echo $res[0]['nome'];} ?>"><br/><br/>
+                <input id="fornecedor" class="form-control" type="text" name="fornecedorSelecionado" size="60" required
+                    value="<?php if(isset($res)){echo $res[0]['nome'];} ?>"><br/><br/>
 
                 <label id="precoCusto">Preço de Custo:</label><br/>
                 <input id="precoCusto" class="form-control" type="text" name="precoCusto" size="" required

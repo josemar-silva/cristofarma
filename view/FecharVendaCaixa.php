@@ -119,7 +119,7 @@
                             { 
                                 $valorDigitado = filter_input(INPUT_POST, 'valorRecebido'); 
 
-                                echo number_format($valorDigitado, 2, ',','.');
+                                echo number_format($valorDigitado, 2, '.','.');
   
                                 $valorVenda = (float) addslashes($_POST['totalApagar']);
 
@@ -139,7 +139,7 @@
             <label>Troco:</label><br>
             <input id="troco" class="form-control" name="troco" size="6" placeholder="R$" 
                 value="<?php if (isset($valorDigitado)) {
-                    echo number_format($troco, 2, ',','.');
+                    echo number_format($troco, 2, '.','.');
                 }?>" disabled><br><br>
 
             <button class="btn btn-outline-danger" id="btnFinalizar" name="finalizar" onclick="" style="display: inline; margin-left: 8%; margin-top: 15%;">Finalizar</button>
