@@ -54,27 +54,25 @@
 
     <?php
             require_once '../model/Produto.php';
-            require_once '../model/PrudutoVenda.php';
-            require_once '../model/Pessoa.php';
             require_once '../model/Venda.php';
-            require_once '../model/Estoque.php';
+        
 
             $produto = new Produto();
-            $produtoVenda = new ProdutoVenda();
+            $itemVenda = new ItemVenda();
             $pessoa = new Pessoa();
             $venda = new Venda();
             $estoque = new Estoque();
 
             if (isset($_GET['id_get_venda_up'])) {
-                $idVenda = $_GET['id_get_venda_up'];
+                $codigo_venda = $_GET['id_get_venda_up'];
                 
-                $return = $venda->selectVendaAbertaLikeId($idVenda);
-                $res = $return[0]['id_venda'];
+                $return = $venda->selectVendaAbertaLikeId($codigo_venda);
+                $codigo_venda_return = $return[0]['codigo_venda'];
             }
 
          ?>
 
-    <legend><br>VENDA Nº  <input id="saidaIdVendaFecharCaixa" size="8" value="<?php echo $res;?>" 
+    <legend><br>VENDA Nº  <input id="saidaIdVendaFecharCaixa" size="8" value="<?php echo $codigo_venda_return;?>" 
             style="color: blue; text-align: center; margin-top: -20%; border: none; text-decoration: none;" disabled></legend>
 
      <div class="scroll">
@@ -138,9 +136,9 @@
 
             <label>Troco:</label><br>
             <input id="troco" class="form-control" name="troco" size="6" placeholder="R$" 
-                value="<?php if (isset($valorDigitado)) {
-                    echo number_format($troco, 2, '.','.');
-                }?>" disabled><br><br>
+                    value="<?php if (isset($valorDigitado)) {
+                        echo number_format($troco, 2, '.','.');
+                    }?>" disabled><br><br>
 
             <button class="btn btn-outline-danger" id="btnFinalizar" name="finalizar" onclick="" style="display: inline; margin-left: 8%; margin-top: 15%;">Finalizar</button>
             <button class="btn btn-outline-danger" id="btnCancelar" name="cancelar" onclick=""  style="display: inline; margin-left: 18%; margin-top: 15%;">Cancelar</button>

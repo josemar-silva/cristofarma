@@ -51,16 +51,32 @@
             <label for="estoque" style="font-size: 13pt;">Relatório de Estoque</label><br><br>
 
 <form action="" method="POST">
-        <?php // $nome = 'teste';
-                // $cpf = '09898787676';
-                // $tipo = 'cliente';
-                // $email = 'teste@teste.com';
-                // $telefone = '6233334444';
-                // $celular = '62999998888';
-                // $endereco = 'teste endereço completo';
-                // $pessoa->createPessoa($nome,$cpf,$tipo,$email,$telefone,$celular,$endereco);
-?>
-<button class="btn btn-outline-danger" id="btnGerarRelatorioGerencial" name="btnGerarRelatorioGerencial" onclick="cratePdv();" style="margin-left: 40%;">Gerar Relatório</button>
+
+            <?php 
+                require_once '../model/ItemVenda.php';
+                require_once '../model/Conexao.php';
+                
+                $itemVenda = new ItemVenda();
+
+                if (isset($_POST['btnGerarRelatorioGerencial'])) {
+                  
+                    $itemVenda = new ItemVenda();
+
+                    $dados = $itemVenda->selectQuantidadeValor('202111060','14');
+                 
+                    $cv = '202111060';
+                    $cp = '14';
+                    $q = $dados['quantidade_item']+1;
+                    $v = $dados['valor_total_item'];
+                    $vf = $v+$v;
+                    $itemVenda->updateItemVenda($cv, $cp, $q, $vf);
+
+                }
+
+                
+            ?>
+
+<button class="btn btn-outline-danger" id="btnGerarRelatorioGerencial" name="btnGerarRelatorioGerencial" onclick="" style="margin-left: 40%;">Gerar Relatório</button>
 </form>        
 </div>
     </section>
