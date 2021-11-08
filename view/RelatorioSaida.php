@@ -671,6 +671,11 @@ if (isset($_POST['btnGerarRelatorioGerencial']) && $tipoRelatorio == 'vendedor')
         }
     }
 }
+
+if (isset($_POST['fecharRelatorio'])) {
+
+    echo '<META HTTP-EQUIV="REFRESH" CONTENT="0;URL=RelatorioVendas.php"/>';
+}
            
 ?>
 
@@ -680,7 +685,7 @@ if (isset($_POST['btnGerarRelatorioGerencial']) && $tipoRelatorio == 'vendedor')
         </div>
 
             <input  class="btn btn-outline-danger" id="fecharRelatorio" type="submit" name="fecharRelatorio" style="margin-left: 40%; margin-top: 1%;"
-               onclick="window.URL('RelatorioVendas.php');" value="<?php echo 'Fechar Relatório';?>">
+               onclick="" value="<?php echo 'Fechar Relatório';?>">
     </section>
 </body>
 

@@ -113,6 +113,24 @@ class Venda
             $dados->execute();
     }
 
+    public function fecharVenda($codigo_venda)
+    {
+        $conexao = new Conexao("projeto_cristofarma", "localhost", "root", "");
+
+        $dados  = $conexao->pdo->prepare("SELECT id_venda FROM venda WHERE codigo_venda = :cdv"); // dados retornam como ARRAY
+        $dados->bindValue("cdv", $codigo_venda);
+        $dados->execute(); 
+        $res = $dados->fetch(PDO::FETCH_ASSOC);
+        $id_venda = $res['id_venda'];
+
+        $dados = $conexao->pdo->prepare("UPDATE venda SET status_venda = 'fechado' WHERE id_venda = :cdv");
+
+        $dados->bindValue(":cdv", $id_venda);
+        $dados->execute();
+
+        return true;
+    }
+
     public function selectAllVenda()
     {
         $conexao = new Conexao("projeto_cristofarma", "localhost", "root", "");

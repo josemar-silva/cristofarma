@@ -55,6 +55,7 @@
     <?php
             require_once '../model/Produto.php';
             require_once '../model/Venda.php';
+            require_once '../model/Cupom.php';
         
 
             $produto = new Produto();
@@ -62,12 +63,31 @@
             $pessoa = new Pessoa();
             $venda = new Venda();
             $estoque = new Estoque();
+            $cupom = new Cupom();
+
+                                        // BUSCAR TODAS AS VENDAS COM STATUS ABERTO
 
             if (isset($_GET['id_get_venda_up'])) {
                 $codigo_venda = $_GET['id_get_venda_up'];
                 
-                $return = $venda->selectVendaAbertaLikeId($codigo_venda);
-                $codigo_venda_return = $return[0]['codigo_venda'];
+                $ListVendaReturn = $venda->selectVendaAbertaLikeId($codigo_venda);
+                $codigo_venda_return = $ListVendaReturn[0]['codigo_venda'];
+            }
+                                        // CONFIRMAR RECEBIMENTO E MUDAR STATUS VENDA PARA "FECHADO" / GERAR RECIBO
+
+            if (isset($_POST['btnFinalizar'])) {
+                
+                $cupom->createCupomFiscal($codigo_venda_return);
+                $venda->fecharVenda($codigo_venda_return);
+
+                // echo '<script> alert("Deseja fechar este recebimento?")</script>';
+                // echo '<META HTTP-EQUIV="REFRESH" CONTENT="0;URL=Caixa.php"/>'; 
+            }
+
+            if (isset($_POST['btnCancelar'])) {
+
+                echo '<script> alert("Deseja cancelar o recebimento?")</script>';
+                echo '<META HTTP-EQUIV="REFRESH" CONTENT="0;URL=Caixa.php"/>';
             }
 
          ?>
@@ -77,6 +97,15 @@
 
      <div class="scroll">
             <div  id="descricaoVendaCaixa">
+
+            <?php 
+                                        // DETALHAR VENDA SELECIONADA
+
+                if (isset($ListVendaReturn) && !empty($ListVendaReturn))  {
+                        
+                }
+
+            ?>
                                 
                 <p id="descItens"> adfasfsadsafsdfasdfadadsafsdfasdfad.</p>
                 <p id="descItens"> fadfasfsadsafsdfasdfadadsafsdfasdfad.</p>
@@ -108,7 +137,7 @@
 
             <label>Total a Pagar:</label><br>
             <input id="valorPagar" class="form-control" name="totalApagar" size="6" placeholder="R$" placeholder="R$" 
-                value="<?php if(isset($return)){echo $return[0]['valor_venda_com_desconto'];}?>" ><br><br><br>
+                value="<?php if(isset($ListVendaReturn)){echo $ListVendaReturn[0]['valor_venda_com_desconto'];}?>" ><br><br><br>
 
             <label>Valor Recebido:</label><br>
             <input id="valorRecebido" class="form-control" name="valorRecebido" type="text" size="6" placeholder="R$" 
@@ -140,8 +169,8 @@
                         echo number_format($troco, 2, '.','.');
                     }?>" disabled><br><br>
 
-            <button class="btn btn-outline-danger" id="btnFinalizar" name="finalizar" onclick="" style="display: inline; margin-left: 8%; margin-top: 15%;">Finalizar</button>
-            <button class="btn btn-outline-danger" id="btnCancelar" name="cancelar" onclick=""  style="display: inline; margin-left: 18%; margin-top: 15%;">Cancelar</button>
+            <button class="btn btn-outline-danger" id="btnFinalizar" name="btnFinalizar" onclick="" style="display: inline; margin-left: 8%; margin-top: 15%;">Finalizar</button>
+            <button class="btn btn-outline-danger" id="btnCancelar" name="btnCancelar" onclick=""  style="display: inline; margin-left: 18%; margin-top: 15%;">Cancelar</button>
         </form>
     </div>
     </section>
