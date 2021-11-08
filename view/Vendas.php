@@ -7,63 +7,23 @@
     <link rel="stylesheet" href="../css/bootstrap/nav/navegador.css">
     <link rel="stylesheet" href="../css/estilo.css">
 
-    <?php
-
-    
-// $nome = 'teste';
-// $cpf = '09898787676';
-// $tipo = 'cliente';
-// $email = 'teste@teste.com';
-// $telefone = '6233334444';
-// $celular = '62999998888';
-// $endereco = 'teste endereço completo';
-
+<?php
         session_start(); // trabalhar com informaçoes persistentes, sem perder os dados ao trocar de pagina ou arquivo //
         
         require_once '../model/Produto.php';
-        require_once '../model/PrudutoVenda.php';
+        require_once '../model/ItemVenda.php';
         require_once '../model/Pessoa.php';
         require_once '../model/Venda.php';
         require_once '../model/Estoque.php';
         require_once '../model/Conexao.php';
 
         $produto = new Produto();
-        $produtoVenda = new ProdutoVenda();
+        $itemVenda = new ItemVenda();
         $pessoa = new Pessoa();
         $venda = new Venda();
         $estoque = new Estoque();
-
         
-        if (isset($_POST['fecharVenda'])) 
-        {
-            if (!empty($_POST['idClienteVenda']) && !empty($_POST['vendedor'])&& !empty($_POST['tipoPagamento'])) 
-            {
-                $vendaStatus = 'aberto';
-
-                $id_venda = addslashes($_POST['codigoVenda']);
-                $pessoa_id_pessoa_vendedor =  addslashes($_POST['vendedor']); 
-                $pessoa_id_pessoa_cliente =  addslashes($_POST['idClienteVenda']);
-                $data_venda = addslashes($_POST['dataVenda']);
-                $tipo_pagamento = addslashes($_POST['tipoPagamento']);
-                $status_venda = $vendaStatus;
-                $valor_venda_sem_desconto =  addslashes($_POST['totalSemDesconto']);
-                $desconto =  addslashes($_POST['desconto']);
-                $valor_venda_com_desconto =  addslashes($_POST['totalComDesconto']);
-                $total_item_venda = 1; // CASTING garante que valor será do tipo INTEIRO
-
-                if (!$venda->createVenda($id_venda, $pessoa_id_pessoa_vendedor, $pessoa_id_pessoa_cliente, $data_venda, $tipo_pagamento, $status_venda,
-                $valor_venda_sem_desconto, $desconto, $valor_venda_com_desconto, $total_item_venda)) 
-                {
-                    echo '<script> alert("Não foi possível concluir essa venda!")</script>';
-                        
-                } else {
-                   
-                    echo '<script> alert("Venda finalizada Com sucesso!")</script>';
-                    session_destroy(); // encerrar a seção e destroi as variaves existentes nela
-                    echo '<META HTTP-EQUIV="REFRESH" CONTENT="0;URL=Vendas.php"/>'; // REFRESH para atualizar a página
-                }
-            }
-        } 
+        
     ?>
     <title>Vendas</title>
 </head>
@@ -112,23 +72,7 @@
     <table>
     <legend style="margin-left: -1%;">REALIZAR VENDA/ORÇAMENTO</legend>
 
-    <div id="divCodigoVenda" style="margin-left: 1%; width:98%; margin-top: -3.5%;" >
-    <label style="font-weight: bolder; font-size: 15px; margin-left: 1%;">Código da Venda:</label>
-    <?php 
-        date_default_timezone_set('America/Sao_Paulo');
-        $ano = date('Y');
-        $mes = date('m');
-        $dia = date('d');
-        $countVendasDia = count($venda->selectAllVenda());
-        $codigo_gerado_venda = $ano.$mes.$dia.$countVendasDia; /* GERANDO CODIGO DA VENDA */
-    ?>
-        <input id="codigoVenda" name="codigoVenda" value=" <?php echo $codigo_gerado_venda; ?>" 
-            style="color: blue; text-align: center; font-size: 15pt; border: none; display: inline-block;" size="10" ></input>
-            
-        <label style="font-weight: bolder; font-size: 15px; margin-left: 60%;">Qtd Item:</label>
-        <input id="contatorItem" name="contatorItem" value=" <?php echo $count ?>" style="color: blue; font-weight: bold; font-size: 15px;
-            text-align: center;" size="1" ></input>
-</div>
+    
         <tr>
             <table class="table table-hover">
                 <th> CODIGO PRODUTO </th>
@@ -136,81 +80,128 @@
                 <th> LABORATÓRIO </th>
                 <th> PREÇO UNID</th>
                 <th> QTD </th>
-                <th> R$ TOTAL </th>
+                <th id="get_rows_value"> R$ TOTAL </th>
                 <th> AÇÃO </th>                       
         </tr>
-    <?php  
+    <?php 
+    
+    
+    echo '<div id="divCodigoVenda" style="margin-left: 1%; width:98%; margin-top: -3.5%;" >';
+    echo '<label style="font-weight: bolder; font-size: 15px; margin-left: 1%;">Código da Venda:</label>';
+    
+        date_default_timezone_set('America/Sao_Paulo');
+        $ano = date('Y');
+        $mes = date('m');
+        $dia = date('d');
+        $countVendasDia = count($venda->selectAllVenda());
+        $codigo_gerado_venda = $ano.$mes.$dia.$countVendasDia; /* GERANDO CODIGO DA VENDA */
+    
                         // ADIDIONANDO ITENS AO CARRINHO DE COMPRAS //
 
 if (isset($_GET['id_produto_up_venda']) && !empty(['id_produto_up_venda']))
 { 
-    $id_Produto = (int) $_GET['id_produto_up_venda'];
+    $fk_id_produto = (int) $_GET['id_produto_up_venda'];
 
-        // echo '<META HTTP-EQUIV="REFRESH" CONTENT="0;URL=Vendas.php"/>';
+        echo '<META HTTP-EQUIV="REFRESH" CONTENT="0;URL=Vendas.php"/>';  
 
-        if (!isset($_SESSION['venda'][$id_Produto])) 
-        {             
-             $_SESSION['venda'][$id_Produto] = 1; // criar $_SESSION com valor 1, caso não exista ainda
-                
-        } else {
-
-            $_SESSION['venda'][$id_Produto] += 1; // se a $_SESSION já existe é somado 1 ao seu valor que representa sua quantidade
-        }
-
-            // CADASTRAR ID_VENDA E ID_PRODUTO NA TABELA TABELA PRODUTO_VENDA
-
-        if (isset($_SESSION['venda'][$id_Produto]) && isset($_GET['id_produto_up_venda'])) {
-
-            foreach ($_SESSION['venda'] as $protutos => $quantidade)
-            {
-                
-            }
-        }
-}   
-                           // EXIBINDO DADOS DOS ITENS NO CARRINHO DE COMPRAS //
-
-    if (isset($_SESSION['venda'])) {
-
-        if (count($_SESSION['venda']) == 0) {
+        if (!isset($_SESSION['venda'][$fk_id_produto])) 
+        {   
+            $_SESSION['venda'][$fk_id_produto] = 1;
 
         } else {
-            foreach ($_SESSION['venda'] as $protutos => $quantidade)
-            {
-                $idItem = (int) $protutos;
-                
-                $dados = $produto->selectProduto($idItem); 
-                    echo '<tr>
-                            <td>'.$dados['id_produto'].'</td>'
-                                .'<td>'.$dados['nome_produto'].'</td>'
-                                    .'<td>'.$dados['produto_fornecedor'].'</td>'
-                                        .'<td>'.$valor = $dados["preco_venda"].'</td>'
-                                            .'<td>'.$quantidade.'</td>'
-                                                .'<td>'.$soma = (int) $quantidade * number_format($dados["preco_venda"], 2, '.','.').'</td>'
-    ?> 
-        <td><a id="removeProdutoVenda" href="Vendas.php?removeProdutoVenda=<?php echo $dados['id_produto'];?>"> X </a></td> 
-    <?php
-                    echo '</tr>';                                      
-            }
-        }
+
+            $_SESSION['venda'][$fk_id_produto] += 1; // se a $_SESSION já existe é somado 1 ao seu valor que representa sua quantidade
+
+            // $itemVenda->updateItemVenda($cdv, $fk_id_produto, $update_quantidade, $update_valor_total_item);
     }
-                            // EXCLUINDO OS ITENS DO CARRINHO DE COMPRAS //
-
-if (isset($_GET['removeProdutoVenda'])) 
-{
-    $id_remove_produto = (int) $_GET['removeProdutoVenda'];
-
-        unset($_SESSION['venda'][$id_remove_produto]);
-            echo '<META HTTP-EQUIV="REFRESH" CONTENT="0;URL=Vendas.php"/>'; // REFRESH para atualizar a página
 }
 
-                                // LIMPAR DAOS VARIAVIIS E CARRINHO AO FECHAR OU CANCELAR  VENDA 
+if (isset($_POST['fecharVenda']) && !empty($_POST['idClienteVenda']) && !empty($_POST['vendedor']) && !empty($_POST['tipoPagamento'])) 
+{ 
+            $vendaStatus = 'aberto';
 
-if (isset($_POST['cancelarVenda']) && isset($_SESSION['venda'])) {
-                
-    session_destroy(); // encerrar a seção e destroi as variaves existentes nela
-        echo '<META HTTP-EQUIV="REFRESH" CONTENT="0;URL=Vendas.php"/>'; // REFRESH para atualizar a página
+            $codigo_venda = addslashes($_POST['codigoVenda']);
+            $pessoa_id_pessoa_vendedor =  addslashes($_POST['vendedor']); 
+            $pessoa_id_pessoa_cliente =  addslashes($_POST['idClienteVenda']);
+            $data_venda = addslashes($_POST['dataVenda']);
+            $tipo_pagamento = addslashes($_POST['tipoPagamento']);
+            $status_venda = $vendaStatus;
+            $valor_venda_sem_desconto =  number_format(addslashes($_POST['totalSemDesconto']), 2,'.','.');
+            $GetDesconto = addslashes($_POST['desconto']);
+            $desconto = (float) $GetDesconto;
+            $get_valor_venda_com_desconto = addslashes($_POST['totalComDesconto']);
+            $valor_venda_com_desconto = (float) $get_valor_venda_com_desconto;
+            $get_total_item_venda = count($_SESSION['venda']);
+            $total_item_venda = $get_total_item_venda;
+
+            $venda->createVenda($codigo_venda, $pessoa_id_pessoa_vendedor, $pessoa_id_pessoa_cliente, $data_venda, $tipo_pagamento, $status_venda,
+            $valor_venda_sem_desconto, $desconto, $valor_venda_com_desconto, $total_item_venda);
+
+    foreach ($_SESSION['venda'] as $product => $value)
+    {
+        $prod = $produto->selectProduto($product);
+        $quantidade_produto = $_SESSION['venda'][$product];
+        $valor_produto = $quantidade_produto*$prod['preco_venda'];
+
+        $itemVenda->createItemVenda((int)$codigo_gerado_venda, (int)$product, (int)$quantidade_produto, (float)$valor_produto);
+        
     }
-    ?>                      
+            echo '<script> alert("Venda finalizada Com sucesso!")</script>';
+                session_destroy(); // encerrar a seção e destroi as variaves existentes nela
+                    echo '<META HTTP-EQUIV="REFRESH" CONTENT="0;URL=Vendas.php"/>'; // REFRESH para atualizar a página
+}
+
+    echo '<input id="codigoVenda" name="codigoVenda" value="'. $codigo_gerado_venda .'"style="color: blue; text-align: 
+        center; font-size: 15pt; border: none; display: inline-block;" size="10" ></input>';
+            
+        // EXCLUINDO OS ITENS DO CARRINHO DE COMPRAS //
+
+ if (isset($_GET['removeProdutoVenda']))
+ {  
+        $fk_id_produto = $_GET['removeProdutoVenda'];
+            unset($_SESSION['venda'][$fk_id_produto]);
+                echo '<META HTTP-EQUIV="REFRESH" CONTENT="0;URL=Vendas.php"/>'; // REFRESH para atualizar a página
+ }
+        // EXIBINDO DADOS DOS ITENS NO CARRINHO DE COMPRAS //
+
+$soma_total_venda = array(); // ARRAY PARA SOMAR TODOS OS VALORES TOTAIS DOS ITENS ADICIONAIS
+
+if (isset($_SESSION['venda'])) {
+
+    if (count($_SESSION['venda']) == 0) {
+
+    } else {        
+        foreach ($_SESSION['venda'] as $protutos => $quantidade)
+        {
+        $idItem = (int) $protutos;
+            $dados = $produto->selectProduto($idItem);
+                echo '<tr>
+                        <td>'.$dados['id_produto'].'</td>'
+                            .'<td>'.$dados['nome_produto'].'</td>'
+                                .'<td>'; $consultaLike = $dados['pessoa_id_pessoa'];
+                                          $return = $pessoa->selectPessoaFornecedor($consultaLike); 
+                                          echo $return[0]['nome'] .'</td>'
+                                    .'<td>'.$valor = $dados["preco_venda"].'</td>'
+                                        .'<td>'.$quantidade.'</td>'
+                                            .'<td id"get_rows_value">'.$soma = (int) $quantidade * number_format($dados["preco_venda"], 2, '.','.').'</td>';
+                                                
+                                                array_push($soma_total_venda, $soma); // ADICIONANDO OS VALORS AO ARRAY 
+?> 
+    <td><a id="removeProdutoVenda" href="Vendas.php?removeProdutoVenda=<?php echo $dados['id_produto'];?>"> X </a></td> 
+<?php
+            echo '</tr>';
+            
+        }
+    }
+}
+                                        // LIMPAR DAOS VARIAVIIS E CARRINHO AO FECHAR OU CANCELAR VENDA 
+
+    if (isset($_POST['cancelarVenda']) && isset($_SESSION['venda'])) 
+    {
+        session_destroy();
+        echo '<META HTTP-EQUIV="REFRESH" CONTENT="0;URL=Vendas.php"/>';
+    }
+?>                      
        </table>
     </div>
 </div>
@@ -227,7 +218,7 @@ if (isset($_POST['cancelarVenda']) && isset($_SESSION['venda'])) {
             <div id="divPagamentoTipo">           
                 <label id="labelTipoPagamento"> Tipo de Pagamento:</label>    
                 <select id="tipoPagamento" name="tipoPagamento" class="form-control"> 
-                    <option value="" selected> </option> 
+                    <option value="" selected required> </option> 
                     <option value="a vista" >À Vista</option>
                     <option value="debito">Débito</option>
                     <option value="credito">Crédito</option>
@@ -306,25 +297,57 @@ if (isset($_POST['cancelarVenda']) && isset($_SESSION['venda'])) {
 
                 <div id="adicionaClienteVenda">
                         <a href="ConsultaClientes.php?buscaCliente=+"><img src="/img/search.png">Buscar Cliente</a>
-                </div><br><br>  
-                
-            <label id="total" for="totalSemDesconto"> Total: R$</label>
-            <input id="totalSemDesconto" name="totalSemDesconto" class="form-control" size="10"> <br><br> 
-            <label id="desconto" for="desconto"> Desconto: R$</label>
-            <input id="desconto" type="text" name="desconto" class="form-control" size="10" placeholder="%"><br><br>
-            <label for="totalComDesconto" id="totalComDesconto">Total com Desconto: R$</label>
+                </div><br><br>
 
-            <input id="totalComDesconto" name="totalComDesconto" class="form-control"  size="10" value=""><br><br><br> 
+                
+
+            <?php
+                 $valor_total_venda = array_sum($soma_total_venda);           
+            ?>
+
+            <label id="total" for="totalSemDesconto"> Total: R$</label>
+            <input id="totalSemDesconto" name="totalSemDesconto" class="form-control" size="6" placeholder="0.00" 
+                value="<?php if (isset($_SESSION['venda'])) {  echo number_format($valor_total_venda, 2, '.','.');  }  ?>"
+                    style="text-align: right; color: blue; font-size: 25px; padding: 5%; background-color: #FFFF00; font-weight: bolder;"> <br><br> 
+
+            <label id="desconto" for="desconto"> Desconto: R$</label>
+            <input id="desconto" type="text" name="desconto" class="form-control" size="6" placeholder="0.00" 
+                value="<?php if (isset($_POST['desconto'])) 
+                            { 
+                                $desc = filter_input(INPUT_POST, 'desconto'); 
+
+                                echo number_format($desc, 2, '.','.');
+  
+                                $valor_total_venda = (float) addslashes($_POST['totalSemDesconto']);
+
+                                $desc = (float) addslashes($_POST['desconto']);
+
+                                $total = calculaVenda($valor_total_venda, $desc );
+                            } 
+                                                    
+            function calculaVenda($valor_total_venda, $desc)
+            {
+                $total = $valor_total_venda - $desc;
+                                
+                return $total;
+            } ?>" 
+                    style="text-align: right; color: blue; font-size: 25px; padding: 5%; background-color: #FFFF00; font-weight: bolder;"><br><br>
+            
+            <label for="totalComDesconto" id="totalComDesconto" >Total com Desconto: R$</label>
+            <input id="totalComDesconto" name="totalComDesconto" class="form-control"  size="6" placeholder="0.00"  
+                value=" <?php if (isset($desc)) {
+                    echo number_format($total, 2, '.','.'); } else { echo $valor_total_venda;}?> " 
+                    style="text-align: right; color: blue; font-size: 25px; padding: 5%; background-color: #FFFF00; font-weight: bolder;"><br><br><br> 
 
                     <!--======================== FUNCAO JAVASCRIPT COMFIRMAÇÃO ALERT ==============================-->
 
-                        <script language=javascript>
+            <script language=javascript>
                             
-                            function confirmacao(){
-                                if (confirm("Venda não finalizada, Deseja cancelar essa venda??"))
-                                    alert("Venda cancelada com sucesso!.");
-                                }
-                        </script>
+                function confirmacao(){
+                    if (confirm("Venda não finalizada, Deseja cancelar essa venda??"))
+                        alert("Venda cancelada com sucesso!.");
+                    }
+            </script>
 
                     <!-- ======================================================================================== -->
 

@@ -1,7 +1,10 @@
 <?php
     require_once '../model/Produto.php';
+    require_once '../model/Produto.php';
     $produto = new Produto();
+    $pessoa = new Pessoa();
 ?>
+
 <!doctype html>
 <html lang="pt">
 
@@ -96,13 +99,23 @@
                         for ($i=0; $i < count($dados) ; $i++) 
                         { 
                             echo "<tr>"; // abre a linha dos dados selecionados
-                            foreach ($dados[$i] as $key => $value) 
-                            {
-                                if ($key != "pessoa_id_pessoa" ) // ignorar coluna ID
+                                foreach ($dados[$i] as $key => $value) 
                                 {
-                                    echo "<td>" .$value. "</td>";
+                                    if ($key != "pessoa_id_pessoa" ) // ignorar coluna ID
+                                    {
+                                        echo "<td>" .$value. "</td>";
+                                    }
+                                } foreach ($dados[$i] as $key => $value) 
+                                {
+                                    if ($key == "pessoa_id_pessoa" ) // ignorar coluna ID
+                                    {
+                                        $id_up = $value;
+                                        $return = $pessoa->selectPessoaFornecedor($id_up);
+                                        $result = $return[0]['nome'];
+                                        
+                                        echo "<td>" .$result. "</td>";
+                                    }
                                 }
-                            }
                             ?>
                                 <td> 
                                     <a id="acaoSelecionar" href="Vendas.php?id_produto_up_venda=<?php echo $dados[$i]['id_produto'];?>">Selecionar</a> 

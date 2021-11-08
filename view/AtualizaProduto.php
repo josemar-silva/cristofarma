@@ -11,7 +11,7 @@
 </head>
 
 <body>
-    <?php
+<?php
 
     require_once '../model/Conexao.php';
     require_once '../model/Pessoa.php';
@@ -29,7 +29,6 @@
             $produto_preco_custo = addslashes($_POST['precoCusto']);
             $produto_preco_venda = addslashes($_POST['precoVenda']);
             $produto_codigo_barras = addslashes($_POST['codigoDeBarras']);
-            $produto_fornecedor = addslashes($_POST['fornecedorSelecionado']);
     
             if (!empty($produto_nome) && !empty($produto_codigo_barras))  // validar se há ao menos um dado a ser cadastrado
             {
@@ -38,7 +37,6 @@
 
                     header("location: ConsultaProdutos.php?buscaProdutos=$produto_nome");
                    
-                
             } else {
                 echo "Preencha todos os campos!";
             } 
@@ -65,9 +63,7 @@
             } 
         }
     }
-
-    ?>
-
+?>
 <header>
 <nav class="dp-menu">
         <ul>

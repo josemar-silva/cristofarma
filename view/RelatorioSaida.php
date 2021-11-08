@@ -84,11 +84,15 @@ $tipoRelatorio = filter_input(INPUT_POST, 'tipoRelatorio');
 if (isset($_POST['btnGerarRelatorioGerencial']) && $tipoRelatorio == 'data')
 {
     if (isset($_POST['getDataInicial']) && isset($_POST['getDataFinal']) && !empty($_POST['getDataInicial'])  && !empty($_POST['getDataFinal']))
-    {
-            
-        $data_ini = addslashes($_POST['getDataInicial']);
-        $data_fim = addslashes($_POST['getDataFinal']);
+    {   
+        // FORMATANDO STRING EM DATE //
 
+        $di = strtotime($_POST['getDataInicial']);
+        $data_ini = date('d/m/Y', $di);
+        
+        $df = strtotime($_POST['getDataFinal']);
+        $data_fim = date('d/m/Y', $df);
+        
         $returnVendas = $vendaRelatorio->selectVendaData($data_ini, $data_fim);
        
         if(count($returnVendas) > 0)  
@@ -99,7 +103,7 @@ if (isset($_POST['btnGerarRelatorioGerencial']) && $tipoRelatorio == 'data')
 
                 foreach ($returnVendas[$i] as $key => $value) 
                 {
-                    if ($key == 'id_venda') 
+                    if ($key == 'codigo_venda') 
                     {
                         echo "<td>" .$value. "</td>";
                     }
@@ -192,7 +196,7 @@ if (isset($_POST['btnGerarRelatorioGerencial']) && $tipoRelatorio == 'cliente')
 
                 foreach ($returnVendas[$i] as $key => $value) 
                 {
-                    if ($key == 'id_venda') 
+                    if ($key == 'codigo_venda') 
                     {
                         echo "<td>" .$value. "</td>";
                     }
@@ -291,7 +295,7 @@ if (isset($_POST['btnGerarRelatorioGerencial']) && $tipoRelatorio == 'cliente')
     
                     foreach ($returnVendas[$i] as $key => $value) 
                     {
-                        if ($key == 'id_venda') 
+                        if ($key == 'codigo_venda') 
                         {
                             echo "<td>" .$value. "</td>";
                         }
@@ -386,7 +390,7 @@ if (isset($_POST['btnGerarRelatorioGerencial']) && isset($_POST['tipoRelatorio']
 
                 foreach ($returnVendas[$i] as $key => $value) 
                 {
-                    if ($key == 'id_venda') 
+                    if ($key == 'codigo_venda') 
                     {
                         echo "<td>" .$value. "</td>";
                     }
@@ -484,7 +488,7 @@ if (isset($_POST['btnGerarRelatorioGerencial']) && $tipoRelatorio == 'vendedor')
 
                 foreach ($returnVendas[$i] as $key => $value) 
                 {
-                    if ($key == 'id_venda') 
+                    if ($key == 'codigo_venda') 
                     {
                         echo "<td>" .$value. "</td>";
                     }
@@ -589,7 +593,7 @@ if (isset($_POST['btnGerarRelatorioGerencial']) && $tipoRelatorio == 'vendedor')
     
                     foreach ($returnVendas[$i] as $key => $value) 
                     {
-                        if ($key == 'id_venda') 
+                        if ($key == 'codigo_venda') 
                         {
                             echo "<td>" .$value. "</td>";
                         }

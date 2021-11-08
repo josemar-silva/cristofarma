@@ -2,9 +2,7 @@
     padding: 0px;
     margin: 0px;
     font-family: sans-serif;
-    font-size: 13px;
-    
-    
+    font-size: 13px;   
 }
 
 #nomeEmpresa {
@@ -310,7 +308,7 @@ border: none;
         float: right;
         margin-right: 1%;
         padding: 10px;
-        border-radius: 5%;
+        border-radius: 5%;  
 }
 
     #fecharVendaCaixa label{

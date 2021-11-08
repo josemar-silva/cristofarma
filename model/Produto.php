@@ -12,7 +12,6 @@ class Produto
     public float $preco_custo;
     public float $preco_venda;
     public string $codigo_barras;
-    public string $produto_fornecedor;
     public Pessoa $pessoa_id_pessoa;
 
 
@@ -20,13 +19,13 @@ class Produto
     {
 
     }
-        public function createProduto($produto_nome, $produto_preco_custo, $produto_preco_venda, $produto_codigo_barras, $produto_fornecedor)
+        public function createProduto($produto_nome, $produto_preco_custo, $produto_preco_venda, $produto_codigo_barras, $pessoa_id_pessoa)
     {
         $conexao = new Conexao("projeto_cristofarma", "localhost", "root", "");
 
         global $res2;
         $dados = $conexao->pdo->prepare("SELECT id_pessoa FROM pessoa WHERE nome  = :f");
-        $dados->bindValue(":f", $produto_fornecedor);
+        $dados->bindValue(":f", $pessoa_id_pessoa);
         $dados->execute();
         $res = $dados->fetchAll(PDO::FETCH_ASSOC);
         $res2 = $res['id_pessoa'];        
@@ -86,18 +85,17 @@ class Produto
     }
 
     public function updateProduto($id_up, $produto_nome, $produto_preco_custo, $produto_preco_venda, 
-        $produto_codigo_barras, $produto_fornecedor)
+        $produto_codigo_barras)
     {
         $conexao = new Conexao("projeto_cristofarma", "localhost", "root", "");
 
         
             $dados = $conexao->pdo->prepare("UPDATE produto SET produto.nome_produto = :pn, produto.preco_custo = :pc, 
-            produto.preco_venda = :pv, produto.codigo_barras = :cb, produto.produto_fornecedor = :pf WHERE produto.id_produto = :id");
+            produto.preco_venda = :pv, produto.codigo_barras = :cb WHERE produto.id_produto = :id");
             $dados->bindValue(":pn", $produto_nome);
             $dados->bindValue(":pc", $produto_preco_custo);
             $dados->bindValue(":pv", $produto_preco_venda);
             $dados->bindValue(":cb", $produto_codigo_barras);
-            $dados->bindValue(":pf", $produto_fornecedor);
             $dados->bindValue(":id", $id_up);
             $dados->execute();
 }

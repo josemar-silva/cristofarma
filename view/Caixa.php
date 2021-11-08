@@ -53,13 +53,13 @@
         <table>            
             <?php
                     require_once '../model/Produto.php';
-                    require_once '../model/PrudutoVenda.php';
+                    require_once '../model/ItemVenda.php';
                     require_once '../model/Pessoa.php';
                     require_once '../model/Venda.php';
                     require_once '../model/Estoque.php';
 
                     $produto = new Produto();
-                    $produtoVenda = new ProdutoVenda();
+                    $itemVenda = new ItemVenda();
                     $pessoa = new Pessoa();
                     $venda = new Venda();
                     $estoque = new Estoque();
@@ -92,7 +92,7 @@
                         }
                     } foreach ($dados[$i] as $key => $value) 
                     {
-                        if ($key == 'id_venda')  // IMPRIMIR VALOR SOMENTE SE...
+                        if ($key == 'codigo_venda')  // IMPRIMIR VALOR SOMENTE SE...
                         {
                             echo "<td>" .$value. "</td>";
                         }

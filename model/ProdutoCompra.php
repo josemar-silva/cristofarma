@@ -9,9 +9,10 @@ require_once 'Pessoa.php';
 
 
 class ProdutoCompra{
-    public int $produto_id_compra;
-    public int $compra_id_compra;
-    public string $quantidade_compra;
+    public int $id_compra;
+    public int $quantidade_compra;
+    public float $valor_total_compra;
+    public Produto $fk_produto;
  
 
     function __constructPprodutoCompra()

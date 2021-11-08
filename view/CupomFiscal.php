@@ -97,7 +97,7 @@
 
                     foreach ($returnVendas[$i] as $key => $value) 
                     {
-                        if ($key == 'id_venda') 
+                        if ($key == 'codigo_venda') 
                         {
                             echo "<td>" .$value. "</td>";
                         }
@@ -195,7 +195,7 @@
 
                     foreach ($returnVendas[$i] as $key => $value) 
                     {
-                        if ($key == 'id_venda') 
+                        if ($key == 'codigo_venda') 
                         {
                             echo "<td>" .$value. "</td>";
                         }
@@ -292,7 +292,7 @@
     
                         foreach ($returnVendas[$i] as $key => $value) 
                         {
-                            if ($key == 'id_venda') 
+                            if ($key == 'codigo_venda') 
                             {
                                 echo "<td>" .$value. "</td>";
                             }

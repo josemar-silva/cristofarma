@@ -4,13 +4,14 @@ require_once 'Conexao.php';
 require_once 'Produto.php';
 require_once 'Estoque.php';
 require_once 'Pessoa.php';
-require_once 'PrudutoVenda.php';
+require_once 'ItemVenda.php';
 
 class Venda
 {
     public int $id_venda;
-    public int $pessoa_id_pessoa_vendedor;
-    public int $pessoa_id_pessoa_Cliente;
+    public int $codigo_venda;
+    public Pessoa $pessoa_id_pessoa_vendedor;
+    public Pessoa $pessoa_id_pessoa_Cliente;
     public string $data_venda;
     public string $tipo_pagamento;
     public string $status_venda;
@@ -25,11 +26,10 @@ class Venda
     
     }
 
-    public function createVenda($id_venda, $pessoa_id_pessoa_vendedor, $pessoa_id_pessoa_Cliente, $data_venda, $tipo_pagamento, $status_venda,
+    public function createVenda($codigo_venda, $pessoa_id_pessoa_vendedor, $pessoa_id_pessoa_Cliente, $data_venda, $tipo_pagamento, $status_venda,
     $valor_venda_sem_desconto, $desconto, $valor_venda_com_desconto, $total_item_venda)
     {
         $conexao = new Conexao("projeto_cristofarma", "localhost", "root", "");
-
 
         $dados  = $conexao->pdo->prepare("SELECT id_pessoa FROM pessoa WHERE id_pessoa = :fk"); // dados retornam como ARRAY
         $dados->bindValue("fk", $pessoa_id_pessoa_vendedor);
@@ -43,10 +43,10 @@ class Venda
         $res2 = $dados->fetch(PDO::FETCH_ASSOC); 
         $fk_cliente = $res2['id_pessoa'];
 
-            $dados = $conexao->pdo->prepare("INSERT INTO venda (id_venda, pessoa_id_pessoa_vendedor, pessoa_id_pessoa_Cliente, data_venda,
+            $dados = $conexao->pdo->prepare("INSERT INTO venda (codigo_venda, pessoa_id_pessoa_vendedor, pessoa_id_pessoa_Cliente, data_venda,
                 tipo_pagamento, status_venda, valor_venda_sem_desconto, desconto, valor_venda_com_desconto, total_item_venda)
                     VALUES (:id, :fkv, :fkc, :dt, :tp, :stv, :vsd, :d, :vcd, :tiv)");
-            $dados->bindValue(":id", $id_venda);
+            $dados->bindValue(":id", $codigo_venda);
             $dados->bindValue(":fkv", $fk_vendedor);
             $dados->bindValue(":fkc", $fk_cliente);
             $dados->bindValue(":dt", $data_venda);
@@ -74,7 +74,7 @@ class Venda
     $res = $dados->fetch(PDO::FETCH_ASSOC);
     $fk_venda = $res[0]['id_venda'];
 
-    $dados = $conexao->pdo->prepare("DELETE FROM venda WHERE id_venda = :id");
+    $dados = $conexao->pdo->prepare("DELETE FROM venda WHERE codigo_venda = :id");
     $dados->bindValue("id", $fk_venda);
     $dados->execute();
 }
@@ -96,9 +96,9 @@ class Venda
         $res2 = $dados->fetch(PDO::FETCH_ASSOC); 
         $fk_cliente = $res2['id_pessoa'];
         
-        $dados = $conexao->pdo->prepare("UPDATE venda SET id_venda = :id, pesoa_id_pessoa_vendedor = :fkv, pesoa_id_pessoa_clinte = :fkc, 
+        $dados = $conexao->pdo->prepare("UPDATE venda SET codigo_venda = :id, pesoa_id_pessoa_vendedor = :fkv, pesoa_id_pessoa_clinte = :fkc, 
             produto.preco_custo = :pc, data_venda = :dt, tipo_pagamento = :tp, status_venda = :stv, valor_venda_sem_desconto = :vsd,
-                desconto = :d, valor_venda_com_desconto = :vcd, total_item_venda = :tiv WHERE id_venda = :id");
+                desconto = :d, valor_venda_com_desconto = :vcd, total_item_venda = :tiv WHERE codigo_venda = :id");
 
             $dados->bindValue(":id", $id_venda_up);
             $dados->bindValue(":fkv", $fk_vendedor);
@@ -129,10 +129,10 @@ class Venda
     {
         $conexao = new Conexao("projeto_cristofarma", "localhost", "root", "");
 
-        $dados  = $conexao->pdo->prepare("SELECT * FROM venda WHERE id_venda LIKE :id AND status_venda = 'fechado'"); // dados retornam como ARRAY
+        $dados  = $conexao->pdo->prepare("SELECT * FROM venda WHERE codigo_venda LIKE :id AND status_venda = 'fechado'"); // dados retornam como ARRAY
         $dados->bindValue("id", $idVendaLike);
         $dados->execute();
-        $dadosSelecionados = $dados->fetchAll(PDO::FETCH_ASSOC);
+        $dadosSelecionados = $dados->fetchAll(PDO::FETCH_ASSOC);    
        
         return $dadosSelecionados;
     }
@@ -270,7 +270,7 @@ class Venda
     {
         $conexao = new Conexao("projeto_cristofarma", "localhost", "root", "");
 
-        $dados  = $conexao->pdo->prepare("SELECT * FROM venda WHERE id_venda LIKE :id AND status_venda = 'aberto'"); // dados retornam como ARRAY
+        $dados  = $conexao->pdo->prepare("SELECT * FROM venda WHERE id_venda = :id AND status_venda = 'aberto'"); // dados retornam como ARRAY
         $dados->bindValue("id", $idVendaLike);
         $dados->execute();
         $dadosSelecionados = $dados->fetchAll(PDO::FETCH_ASSOC);
@@ -282,7 +282,7 @@ class Venda
     {
         $conexao = new Conexao("projeto_cristofarma", "localhost", "root", "");
 
-        $dados  = $conexao->pdo->prepare("SELECT id_venda FROM venda WHERE data_venda = :id AND pessoa_id_pessoa_cliente = :fk"); // dados retornam como ARRAY
+        $dados  = $conexao->pdo->prepare("SELECT codigo_venda FROM venda WHERE data_venda = :id AND pessoa_id_pessoa_cliente = :fk"); // dados retornam como ARRAY
         $dados->bindValue("id", $data_venda);
         $dados->bindValue("fk", $pessoa_id_pessoa_cliente);
         $dados->execute();
