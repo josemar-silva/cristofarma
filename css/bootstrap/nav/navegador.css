@@ -9116,4 +9116,10 @@ a.text-dark:hover, a.text-dark:focus {
  display: inline;
  margin: auto;
 }
+.borda{
+  border-width:10px;
+  border-style: double;
+  border-color: var(--red);
+
+}
 /*# sourceMappingURL=bootstrap.css.map */
