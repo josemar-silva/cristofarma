@@ -73,17 +73,7 @@
                 $ListVendaReturn = $venda->selectVendaAbertaLikeId($codigo_venda);
                 $codigo_venda_return = $ListVendaReturn[0]['codigo_venda'];
             }
-                                        // CONFIRMAR RECEBIMENTO E MUDAR STATUS VENDA PARA "FECHADO" / GERAR RECIBO
-
-            if (isset($_POST['btnFinalizar'])) {
                 
-                $cupom->createCupomFiscal($codigo_venda_return);
-                $venda->fecharVenda($codigo_venda_return);
-
-                // echo '<script> alert("Deseja fechar este recebimento?")</script>';
-                // echo '<META HTTP-EQUIV="REFRESH" CONTENT="0;URL=Caixa.php"/>'; 
-            }
-
             if (isset($_POST['btnCancelar'])) {
 
                 echo '<script> alert("Deseja cancelar o recebimento?")</script>';
@@ -172,6 +162,35 @@
             <button class="btn btn-outline-danger" id="btnFinalizar" name="btnFinalizar" onclick="" style="display: inline; margin-left: 8%; margin-top: 15%;">Finalizar</button>
             <button class="btn btn-outline-danger" id="btnCancelar" name="btnCancelar" onclick=""  style="display: inline; margin-left: 18%; margin-top: 15%;">Cancelar</button>
         </form>
+
+        <?php 
+
+                                    // CONFIRMAR RECEBIMENTO E MUDAR STATUS VENDA PARA "FECHADO" / GERAR RECIBO
+                
+                                    if (isset($_POST['btnFinalizar'])) {
+
+                                        $idVenda = $_GET['id_get_venda_up'];
+                                        $vendaRes = $venda->selectVendaAbertaLikeId($idVenda);
+                                        
+                                        $codigoVenda = $vendaRes[0]['codigo_venda'];
+                                       
+                                        
+                                        $idCliente = $vendaRes[0]['pessoa_id_pessoa_cliente'];
+                                        $clienteReturn = $pessoa->selectPessoaCliente($idCliente);
+                                        $cliente_cupom = $clienteReturn[0]['nome'];
+                                        
+                                        $cupom->createCupomFiscal($codigoVenda, $valorVenda, $valorRecebido, $troco, $cliente_cupom);
+                                        $venda->fecharVenda($codigoVenda);
+                        
+                                        echo '<script> alert("Deseja fechar este recebimento?")</script>';
+                                        echo '<META HTTP-EQUIV="REFRESH" CONTENT="0;URL=Caixa.php"/>'; 
+                                    
+                                        '<META HTTP-EQUIV="REFRESH" CONTENT="0;URL=Caixa.php"/>';
+                                    }
+                    
+        
+        ?>
+        
     </div>
     </section>
 </body>

@@ -558,9 +558,7 @@ if (isset($_POST['btnGerarRelatorioGerencial']) && $tipoRelatorio == 'vendedor')
                     {
                         echo "<td>" .$value. "</td>";
                     }
-                }
-
-                
+                }                
             ?>  
                 <td> 
                     <a id="detalharVendaReatorio" href=" " style="font-size: 12px;">Detalhar</a>
