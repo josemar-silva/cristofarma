@@ -116,6 +116,28 @@ if (isset($_GET['id_produto_up_venda']) && !empty(['id_produto_up_venda']))
     }
 }
 
+    if (isset($_POST['desconto'])) 
+    { 
+        $desc = filter_input(INPUT_POST, 'desconto'); 
+  
+        $valor_total_venda = (float) addslashes($_POST['totalSemDesconto']);
+
+        $desc = (float) addslashes($_POST['desconto']);
+
+        $total = calcularVenda($valor_total_venda, $desc );
+    } 
+
+                                            //FUNCAO CALCULA VENDA
+                                                    
+    function calcularVenda($valor_total_venda, $desc)
+    {
+        $total = $valor_total_venda - $desc;
+                                
+        return $total;
+    }
+
+                                            // CRIAR VENDA E ITEM_VENDA
+
 if (isset($_POST['fecharVenda']) && !empty($_POST['idClienteVenda']) && !empty($_POST['vendedor']) && !empty($_POST['tipoPagamento'])) 
 { 
             $vendaStatus = 'aberto';
@@ -126,29 +148,28 @@ if (isset($_POST['fecharVenda']) && !empty($_POST['idClienteVenda']) && !empty($
             $data_venda = addslashes($_POST['dataVenda']);
             $tipo_pagamento = addslashes($_POST['tipoPagamento']);
             $status_venda = $vendaStatus;
-            $valor_venda_sem_desconto =  number_format(addslashes($_POST['totalSemDesconto']), 2,'.','.');
-            $GetDesconto = addslashes($_POST['desconto']);
-            $desconto = (float) $GetDesconto;
-            $get_valor_venda_com_desconto = addslashes($_POST['totalComDesconto']);
-            $valor_venda_com_desconto = (float) $get_valor_venda_com_desconto;
-            $get_total_item_venda = count($_SESSION['venda']);
-            $total_item_venda = $get_total_item_venda;
+          
+            $valor_venda_sem_desconto = (float) $valor_total_venda;
+            $desconto = (float) $desc;
+            $valor_venda_com_desconto = (float) $total;
+
+            $total_item_venda = array_sum($_SESSION['venda']);
 
             $venda->createVenda($codigo_venda, $pessoa_id_pessoa_vendedor, $pessoa_id_pessoa_cliente, $data_venda, $tipo_pagamento, $status_venda,
             $valor_venda_sem_desconto, $desconto, $valor_venda_com_desconto, $total_item_venda);
 
-    foreach ($_SESSION['venda'] as $product => $value)
-    {
-        $prod = $produto->selectProduto($product);
-        $quantidade_produto = $_SESSION['venda'][$product];
-        $valor_produto = $quantidade_produto*$prod['preco_venda'];
+            foreach ($_SESSION['venda'] as $product => $value)
+            {
+                $prod = $produto->selectProduto($product);
+                $quantidade_produto = $_SESSION['venda'][$product];
+                $valor_produto = $quantidade_produto*$prod['preco_venda'];
 
-        $itemVenda->createItemVenda((int)$codigo_gerado_venda, (int)$product, (int)$quantidade_produto, (float)$valor_produto);
-        
-    }
-            echo '<script> alert("Venda finalizada Com sucesso!")</script>';
-                session_destroy(); // encerrar a seção e destroi as variaves existentes nela
-                    echo '<META HTTP-EQUIV="REFRESH" CONTENT="0;URL=Vendas.php"/>'; // REFRESH para atualizar a página
+                $itemVenda->createItemVenda((int)$codigo_gerado_venda, (int)$product, (int)$quantidade_produto, (float)$valor_produto);
+            }
+
+            // echo '<script> alert("Venda finalizada Com sucesso!")</script>';
+                // session_destroy(); // encerrar a seção e destroi as variaves existentes nela
+                    // echo '<META HTTP-EQUIV="REFRESH" CONTENT="0;URL=Vendas.php"/>'; // REFRESH para atualizar a página
 }
 
     echo '<input id="codigoVenda" name="codigoVenda" value="'. $codigo_gerado_venda .'"style="color: blue; text-align: 
@@ -185,7 +206,7 @@ if (isset($_SESSION['venda'])) {
                                         .'<td>'.$quantidade.'</td>'
                                             .'<td id"get_rows_value">'.$soma = (int) $quantidade * number_format($dados["preco_venda"], 2, '.','.').'</td>';
                                                 
-                                                array_push($soma_total_venda, $soma); // ADICIONANDO OS VALORS AO ARRAY 
+                                                array_push($soma_total_venda, $soma); // ADICIONANDO OS VALORS AO ARRAY
 ?> 
     <td><a id="removeProdutoVenda" href="Vendas.php?removeProdutoVenda=<?php echo $dados['id_produto'];?>"> X </a></td> 
 <?php
@@ -299,10 +320,8 @@ if (isset($_SESSION['venda'])) {
                         <a href="ConsultaClientes.php?buscaCliente=+"><img src="/img/search.png">Buscar Cliente</a>
                 </div><br><br>
 
-                
-
             <?php
-                 $valor_total_venda = array_sum($soma_total_venda);           
+                 $valor_total_venda = array_sum($soma_total_venda);      
             ?>
 
             <label id="total" for="totalSemDesconto"> Total: R$</label>
@@ -312,38 +331,20 @@ if (isset($_SESSION['venda'])) {
 
             <label id="desconto" for="desconto"> Desconto: R$</label>
             <input id="desconto" type="text" name="desconto" class="form-control" size="6" placeholder="0.00" 
-                value="<?php if (isset($_POST['desconto'])) 
-                            { 
-                                $desc = filter_input(INPUT_POST, 'desconto'); 
-
-                                echo number_format($desc, 2, '.','.');
-  
-                                $valor_total_venda = (float) addslashes($_POST['totalSemDesconto']);
-
-                                $desc = (float) addslashes($_POST['desconto']);
-
-                                $total = calculaVenda($valor_total_venda, $desc );
-                            } 
-                                                    
-            function calculaVenda($valor_total_venda, $desc)
-            {
-                $total = $valor_total_venda - $desc;
-                                
-                return $total;
-            } ?>" 
+                value="<?php  if (isset($desc)) { echo number_format($desc, 2, '.','.'); }  ?>" 
                     style="text-align: right; color: blue; font-size: 25px; padding: 5%; background-color: #FFFF00; font-weight: bolder;"><br><br>
             
             <label for="totalComDesconto" id="totalComDesconto" >Total com Desconto: R$</label>
             <input id="totalComDesconto" name="totalComDesconto" class="form-control"  size="6" placeholder="0.00"  
                 value=" <?php if (isset($desc)) {
-                    echo number_format($total, 2, '.','.'); } else { echo $valor_total_venda;}?> " 
+                    echo number_format($total, 2, '.','.'); } else { echo $valor_total_venda;}?>" 
                     style="text-align: right; color: blue; font-size: 25px; padding: 5%; background-color: #FFFF00; font-weight: bolder;"><br><br><br> 
 
                     <!--======================== FUNCAO JAVASCRIPT COMFIRMAÇÃO ALERT ==============================-->
 
             <script language=javascript>
                             
-                function confirmacao(){
+                function confirmaCancelaVenda(){
                     if (confirm("Venda não finalizada, Deseja cancelar essa venda??"))
                         alert("Venda cancelada com sucesso!.");
                     }
@@ -352,7 +353,7 @@ if (isset($_SESSION['venda'])) {
                     <!-- ======================================================================================== -->
 
             <button class="btn btn-outline-danger" id="btnFecharVenda" name="fecharVenda" onclick="" style="display: inline;">Fechar Venda</button>
-            <button class="btn btn-outline-danger" id="btnCncelarVenda" name="cancelarVenda" onclick=" return confirmacao();" style="display: inline; margin-left: 10%;">Cancelar</button>
+            <button class="btn btn-outline-danger" id="btnCncelarVenda" name="cancelarVenda" onclick=" return confirmaCancelaVenda();" style="display: inline; margin-left: 10%;">Cancelar</button>
         </div>
     </div>
 </div>

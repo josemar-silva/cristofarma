@@ -140,7 +140,18 @@ class ItemVenda
         return $dadosSelecionados;
     }
 
-    public function selectItemVendaId(){
+    public function selectItemVendaLikeId($id_venda){
+
+        $conexao = new Conexao("projeto_cristofarma", "localhost", "root", ""); 
+
+        $dadosSelecionados = array();
+
+        $dados = $conexao->pdo->prepare(" SELECT * FROM item_venda WHERE venda_id_venda = :idv");
+        $dados->bindValue("idv", $id_venda);
+        $dados->execute();
+        $dadosSelecionados = $dados->fetchAll(PDO::FETCH_ASSOC);
+
+        return $dadosSelecionados;
 
     }
 

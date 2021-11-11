@@ -66,13 +66,13 @@ $pessoa = new Pessoa();
                     <table>
                         <table class="table table-hover">
                             <tr>
-                                <th> ID LABORATÓRIOO </th>
-                                <th> LABORATÓRIOO</th>
+                                <th> ID </th>
+                                <th> LABORATÓRIO</th>
                                 <th> CPF/CNPJ</th>
                                 <th> EMAIL </th>
                                 <th> TELEFONE FIXO </th>
                                 <th> TELEFONE CELULAR </th>
-                                <th> ENDEREÇO DO LABORATÓRIOO</th>
+                                <th> ENDEREÇO DO LABORATÓRIO</th>
                                 <th> AÇÃO </th>
                             </tr>
                         </table>
@@ -88,12 +88,12 @@ $pessoa = new Pessoa();
 
                                 if (count($dados) > 0) {
                                     for ($i = 0; $i < count($dados); $i++) {
-                                        echo "<tr >"; // abre a linha dos dados selecionados
+                                        echo "<tr>"; // abre a linha dos dados selecionados
 
                                         foreach ($dados[$i] as $key => $value) {
                                             if ($key != "matricula" && $key != "senha" && $key != "funcao" && $key != "tipo_pessoa") // ignorar coluna
                                             {
-                                                echo "<td >" . $value . "</td>";
+                                                echo "<td>" . $value . "</td>";
                                             }
                                         }
                                 ?>
@@ -112,10 +112,9 @@ $pessoa = new Pessoa();
                         </div>
                 </form>
             <?php
-
             }
-            ?>
-        </section>
+        ?>
+    </section>
 </body>
 
 </html>

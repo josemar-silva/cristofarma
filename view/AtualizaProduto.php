@@ -123,7 +123,7 @@
                         $res = $pessoa->selectPessoaFornecedor($consultaLike);
                     ?>
 
-                <label id="fornecedor">Fornecedor:</label><br/>
+                <label id="fornecedor">Laboratorio:</label><br/>
                 <input id="fornecedor" class="form-control" type="text" name="fornecedorSelecionado" size="60" required
                     value="<?php if(isset($res)){echo $res[0]['nome'];} ?>"><br/><br/>
 

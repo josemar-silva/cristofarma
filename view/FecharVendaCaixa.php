@@ -71,7 +71,13 @@
                 $codigo_venda = $_GET['id_get_venda_up'];
                 
                 $ListVendaReturn = $venda->selectVendaAbertaLikeId($codigo_venda);
+
+                $id_venda = $ListVendaReturn[0]['id_venda'];
+
                 $codigo_venda_return = $ListVendaReturn[0]['codigo_venda'];
+                $valor_venda_return = $ListVendaReturn[0]['valor_venda_com_desconto'];
+                $total_item_venda_return = $ListVendaReturn[0]['total_item_venda'];
+
             }
                 
             if (isset($_POST['btnCancelar'])) {
@@ -79,40 +85,78 @@
                 echo '<script> alert("Deseja cancelar o recebimento?")</script>';
                 echo '<META HTTP-EQUIV="REFRESH" CONTENT="0;URL=Caixa.php"/>';
             }
-
          ?>
 
-    <legend><br>VENDA Nº  <input id="saidaIdVendaFecharCaixa" size="8" value="<?php echo $codigo_venda_return;?>" 
-            style="color: blue; text-align: center; margin-top: -20%; border: none; text-decoration: none;" disabled></legend>
+    <legend style="color: white; font-weight: bold; margin-top: 1%;"> VENDA Nº  <input id="saidaIdVendaFecharCaixa" size="8"
+         value="<?php echo $codigo_venda_return;?>" style="background-color: rgba(168, 57, 68); color: aqua; text-align: center; margin-top: -30%; border: none; 
+            text-decoration: none; font-weight: bold; font-size: 15pt;"><br>
 
-     <div class="scroll">
-            <div  id="descricaoVendaCaixa">
+                                            <!-- CABEÇALHO CUPOM VENDA -->
 
-            <?php 
+    <p id="cabecalho" style="color: yellow; font-size: 18pt;"> DROGARIA CRISTOFARMA PLUS</br>
+        Tele-Entregas: (62) 3242-7373 / (62) 99279-1340  / WhatsApp: (62) 98437-1551 <br>
+            Rua Jassitata, Q. 07 Lote 31 Sala 05 - Cardoso I, Aparecida de Goiânia - GO </p></legend>
+     <div >
+            <div  id="descricaoVendaCaixa" class="scroll">
+        <?php 
                                         // DETALHAR VENDA SELECIONADA
 
-                if (isset($ListVendaReturn) && !empty($ListVendaReturn))  {
+            if (isset($ListVendaReturn) && !empty($ListVendaReturn))  {
+                    
+                $itemVendaReturn = $itemVenda->selectItemVendaLikeId($id_venda);
+                    
+                $complemento = 000;
+
+                ?><br>
+
+                <table style="width: 99%; text-align: right; color: white; margin-top: -2%;">               
+
+                <?php
+                
+                for ($i=0; $i < count($itemVendaReturn) ; $i++) 
+                {
+                    echo "<tr>"; 
+
+                    foreach ($itemVendaReturn[$i] as $key => $value) 
+                    {
+                        if ($key == "produto_id_produto") // ignorar coluna
+                        {
+                            $dados = $produto->selectProduto($value);
+                            echo "<td style='text-align: center;'>".$complemento.$complemento.$dados['id_produto']."</td>"; 
+                            
+                                echo "<td style='text-align: left;'>".$dados['nome_produto']."</td>"; 
+                        }
+                    } 
+                        foreach ($itemVendaReturn[$i] as $key => $value) 
+                        {
+                            if ($key == "valor_total_item") // ignorar coluna
+                            {
+                                echo "<td>".$dados['preco_venda']."</td>";
+                            }
+                        }
+
+                        foreach ($itemVendaReturn[$i] as $key => $value) 
+                        {
+                            if ($key == "quantidade_item") // ignorar coluna
+                            {
+                                echo "<td>".$value.'&nbsp unid'."</td>";
+                            }
+                        }
                         
-                }
-
-            ?>
+                        foreach ($itemVendaReturn[$i] as $key => $value) 
+                        {
+                            if ($key == "valor_total_item") // ignorar coluna
+                            {
+                                echo "<td>".$value."</td>";
+                                echo "<td>"."</td>";
                                 
-                <p id="descItens"> adfasfsadsafsdfasdfadadsafsdfasdfad.</p>
-                <p id="descItens"> fadfasfsadsafsdfasdfadadsafsdfasdfad.</p>
-                <p id="descItens"> fsadfasfsadsafsdfasdfadadsafsdfasdfad.</p>
-                <p id="descItens"> fsfasfsadsafsdfasdfadadsafsdfasdfad.</p>
-                <p id="descItens"> fsadfafgfsafsdfasdfadadsafsdfasdfad.</p>
-                <p id="descItens"> fsadfasfsadsafsdfasdfadadsafsdfasdfad.</p>
-                <p id="descItens"> fsadfasfsadsafsdfasdfadadsafsdfasdfad.</p>
-                <p id="descItens"> fsadfasfsfssafsdfasdfadadsafsdfasdfad.</p>
-
-
-                <p id="descPagamento"> .ffsdfsdsafsdfasdfadfsdafasdfsadfsadf</p>
-
-                <p id="descVendedor"> fsdfsdafsdafdsafsdfasdfadfsadfasdfsda</p>
-
-                <p id="descCliente"> fsdafsdfsdafsadfsdfasdfadfasdfasdfasdf</p> 
-
+                            }
+                        }
+                        echo "</tr>";
+                }        
+            }
+    ?>
+    </table>
            </div>
      </div>
     </div>
@@ -127,7 +171,7 @@
 
             <label>Total a Pagar:</label><br>
             <input id="valorPagar" class="form-control" name="totalApagar" size="6" placeholder="R$" placeholder="R$" 
-                value="<?php if(isset($ListVendaReturn)){echo $ListVendaReturn[0]['valor_venda_com_desconto'];}?>" ><br><br><br>
+                value="<?php if(isset($ListVendaReturn)){echo $valor_venda_return;}?>" ><br><br><br>
 
             <label>Valor Recebido:</label><br>
             <input id="valorRecebido" class="form-control" name="valorRecebido" type="text" size="6" placeholder="R$" 
@@ -159,36 +203,47 @@
                         echo number_format($troco, 2, '.','.');
                     }?>" disabled><br><br>
 
+        <Script>
+            $(document).ready(function () 
+            {
+                $('input').keypress(function (e) 
+                {
+                    var code = null;
+                    code = (e.keyCode ? e.keyCode : e.which);                
+                    return (code == 13) ? false : true;
+                 });
+            });
+        </Script>
+
             <button class="btn btn-outline-danger" id="btnFinalizar" name="btnFinalizar" onclick="" style="display: inline; margin-left: 8%; margin-top: 15%;">Finalizar</button>
             <button class="btn btn-outline-danger" id="btnCancelar" name="btnCancelar" onclick=""  style="display: inline; margin-left: 18%; margin-top: 15%;">Cancelar</button>
         </form>
 
-        <?php 
-
+        <?php
                                     // CONFIRMAR RECEBIMENTO E MUDAR STATUS VENDA PARA "FECHADO" / GERAR RECIBO
                 
-                                    if (isset($_POST['btnFinalizar'])) {
+            if (isset($_POST['btnFinalizar'])) 
+            {
 
-                                        $idVenda = $_GET['id_get_venda_up'];
-                                        $vendaRes = $venda->selectVendaAbertaLikeId($idVenda);
-                                        
-                                        $codigoVenda = $vendaRes[0]['codigo_venda'];
-                                       
-                                        
-                                        $idCliente = $vendaRes[0]['pessoa_id_pessoa_cliente'];
-                                        $clienteReturn = $pessoa->selectPessoaCliente($idCliente);
-                                        $cliente_cupom = $clienteReturn[0]['nome'];
-                                        
-                                        $cupom->createCupomFiscal($codigoVenda, $valorVenda, $valorRecebido, $troco, $cliente_cupom);
-                                        $venda->fecharVenda($codigoVenda);
-                        
-                                        echo '<script> alert("Deseja fechar este recebimento?")</script>';
-                                        echo '<META HTTP-EQUIV="REFRESH" CONTENT="0;URL=Caixa.php"/>'; 
-                                    
-                                        '<META HTTP-EQUIV="REFRESH" CONTENT="0;URL=Caixa.php"/>';
-                                    }
-                    
-        
+                if ($valorRecebido >= $valorVenda) {
+
+                    $idVenda = $_GET['id_get_venda_up'];
+                    $vendaRes = $venda->selectVendaAbertaLikeId($idVenda);
+                                            
+                    $codigoVenda = $vendaRes[0]['codigo_venda'];
+                                           
+                    $idCliente = $vendaRes[0]['pessoa_id_pessoa_cliente'];
+                    $clienteReturn = $pessoa->selectPessoaCliente($idCliente);
+                    $cliente_cupom = $clienteReturn[0]['nome'];
+                                            
+                    $cupom->createCupomFiscal($codigoVenda, $valorVenda, $valorRecebido, $troco, $cliente_cupom);
+                    $venda->fecharVenda($codigoVenda);
+
+                } else {
+
+                    echo '<script> alert(" Valor recebido é menor que o valor da venda! Verifique novamente!")</script>';
+                }
+            }
         ?>
         
     </div>
