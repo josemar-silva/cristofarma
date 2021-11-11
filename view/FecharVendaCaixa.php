@@ -93,9 +93,7 @@
 
                                             <!-- CABEÇALHO CUPOM VENDA -->
 
-    <p id="cabecalho" style="color: yellow; font-size: 18pt;"> DROGARIA CRISTOFARMA PLUS</br>
-        Tele-Entregas: (62) 3242-7373 / (62) 99279-1340  / WhatsApp: (62) 98437-1551 <br>
-            Rua Jassitata, Q. 07 Lote 31 Sala 05 - Cardoso I, Aparecida de Goiânia - GO </p></legend>
+    <p id="cabecalho" style="color: white; font-size: 18pt;"> </p></legend>
      <div >
             <div  id="descricaoVendaCaixa" class="scroll">
         <?php 
@@ -105,11 +103,11 @@
                     
                 $itemVendaReturn = $itemVenda->selectItemVendaLikeId($id_venda);
                     
-                $complemento = 000;
+                $complemento = 0;
 
                 ?><br>
 
-                <table style="width: 99%; text-align: right; color: white; margin-top: -2%;">               
+                <table style="width: 95%; text-align: right; color: white; margin-top: -2%; margin-left: 2%;">               
 
                 <?php
                 
@@ -122,7 +120,7 @@
                         if ($key == "produto_id_produto") // ignorar coluna
                         {
                             $dados = $produto->selectProduto($value);
-                            echo "<td style='text-align: center;'>".$complemento.$complemento.$dados['id_produto']."</td>"; 
+                            echo "<td style='text-align: left;'>".$complemento.$dados['id_produto']."</td>"; 
                             
                                 echo "<td style='text-align: left;'>".$dados['nome_produto']."</td>"; 
                         }
@@ -157,7 +155,20 @@
             }
     ?>
     </table>
+    
            </div>
+
+    <div id="resumoVenda" style=" color: white; font-size: 15pt; font-family: Arial, Helvetica, sans-serif; float: right; margin-right: 3%;">
+        
+        <?php 
+            if (isset($ListVendaReturn) && !empty($ListVendaReturn))  {
+                echo 'Total Itens:&nbsp;'.$total_item_venda_return.'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;';
+                echo 'Valor Total: R$ &nbsp;'.$valor_venda_return;
+            }
+        ?>
+        
+    </div>
+
      </div>
     </div>
 
