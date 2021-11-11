@@ -1532,6 +1532,7 @@ pre code {
   font-size: 10px;
   font-style: var(--gray);
   text-align: center;
+  font-weight: bold;
   
  
 }
@@ -2805,6 +2806,7 @@ fieldset:disabled a.btn {
   color: #fff;
   background-color: #dc3545;
   border-color: #dc3545;
+  background-color: #003c96;
 }
 
 .btn-outline-danger:focus, .btn-outline-danger.focus {
