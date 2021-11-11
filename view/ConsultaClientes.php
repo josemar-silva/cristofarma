@@ -66,7 +66,9 @@ $pessoa = new Pessoa();
             <table>
                 <table class="table table-hover">
                     <tr>
-                        <th> ID CLIENTE </th>
+                    
+
+                        <th> ID </th>
                         <th> NOME DO CLIENTE</th>
                         <th> CPF/CNPJ</th>
                         <th> EMAIL </th>
@@ -74,6 +76,7 @@ $pessoa = new Pessoa();
                         <th> TELEFONE CELULAR </th>
                         <th> ENDEREÇO DO CLIENTE</th>
                         <th> AÇÃO </th>
+
                     </tr>
                 </table>
                 <div class="scroll" class="nav nav-pills nav-stacked" style="height: 450px; overflow-y: scroll;">
