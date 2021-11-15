@@ -23,7 +23,7 @@
 
     function createCupomFiscal($codigo_venda, $valor_venda, $valor_recebido, $troco, $cliente) {
 
-        $conexao = new Conexao("projeto_cristofarma", "localhost", "root", "");
+        $conexao = new Conexao();
 
         $dados  = $conexao->pdo->prepare("SELECT id_venda FROM venda WHERE codigo_venda = :cdv"); // dados retornam como ARRAY
         $dados->bindValue("cdv", $codigo_venda);

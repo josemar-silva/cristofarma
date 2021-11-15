@@ -29,7 +29,7 @@ class Venda
     public function createVenda($codigo_venda, $pessoa_id_pessoa_vendedor, $pessoa_id_pessoa_Cliente, $data_venda, $tipo_pagamento, $status_venda,
     $valor_venda_sem_desconto, $desconto, $valor_venda_com_desconto, $total_item_venda)
     {
-        $conexao = new Conexao("projeto_cristofarma", "localhost", "root", "");
+        $conexao = new Conexao();
 
         $dados  = $conexao->pdo->prepare("SELECT id_pessoa FROM pessoa WHERE id_pessoa = :fk"); // dados retornam como ARRAY
         $dados->bindValue("fk", $pessoa_id_pessoa_vendedor);
@@ -63,7 +63,7 @@ class Venda
 
     public function deleteVenda($data_venda, $idClienteVenda)
 {
-    $conexao = new Conexao("projeto_cristofarma", "localhost", "root", "");
+    $conexao = new Conexao();
 
     $fk_venda = array();
 
@@ -82,7 +82,7 @@ class Venda
     public function updateVenda($id_venda_up, $pessoa_id_pessoa_vendedor, $pessoa_id_pessoa_Cliente, $data_venda, $tipo_pagamento, $status_venda,
     $valor_venda_sem_desconto, $desconto, $valor_venda_com_desconto, $total_item_venda)
     {
-        $conexao = new Conexao("projeto_cristofarma", "localhost", "root", "");
+        $conexao = new Conexao();
 
         $dados  = $conexao->pdo->prepare("SELECT id_pessoa FROM pessoa WHERE id_pessoa = :fk"); // dados retornam como ARRAY
         $dados->bindValue("fk", $pessoa_id_pessoa_vendedor);
@@ -115,7 +115,7 @@ class Venda
 
     public function fecharVenda($codigo_venda)
     {
-        $conexao = new Conexao("projeto_cristofarma", "localhost", "root", "");
+        $conexao = new Conexao();
 
         $dados  = $conexao->pdo->prepare("SELECT id_venda FROM venda WHERE codigo_venda = :cdv"); // dados retornam como ARRAY
         $dados->bindValue("cdv", $codigo_venda);
@@ -133,7 +133,7 @@ class Venda
 
     public function selectAllVenda()
     {
-        $conexao = new Conexao("projeto_cristofarma", "localhost", "root", "");
+        $conexao = new Conexao();
 
         $dadosSelecionados = array();
 
@@ -145,7 +145,7 @@ class Venda
 
     public function selectVendaIdRelatorio($idVendaLike)
     {
-        $conexao = new Conexao("projeto_cristofarma", "localhost", "root", "");
+        $conexao = new Conexao();
 
         $dados  = $conexao->pdo->prepare("SELECT * FROM venda WHERE codigo_venda LIKE :id AND status_venda = 'fechado'"); // dados retornam como ARRAY
         $dados->bindValue("id", $idVendaLike);
@@ -157,7 +157,7 @@ class Venda
 
     public function selectVendaLikeCpf($buscaCpf)
     {
-        $conexao = new Conexao("projeto_cristofarma", "localhost", "root", "");
+        $conexao = new Conexao();
 
         $dados  = $conexao->pdo->prepare("SELECT id_pessoa FROM pessoa WHERE cpf_cnpj = :cpf"); // dados retornam como ARRAY
         $dados->bindValue("cpf", $buscaCpf);
@@ -175,7 +175,7 @@ class Venda
 
     public function selectAllVendaAberta()
     {
-        $conexao = new Conexao("projeto_cristofarma", "localhost", "root", "");
+        $conexao = new Conexao();
 
         $dadosSelecionados = array();
 
@@ -188,7 +188,7 @@ class Venda
 
     public function selectAllVendaFechada()
     {
-        $conexao = new Conexao("projeto_cristofarma", "localhost", "root", "");
+        $conexao = new Conexao();
 
         $dadosSelecionados = array();
 
@@ -201,7 +201,7 @@ class Venda
 
     public function selectVendaData( $data_ini, $data_fim)
     {
-        $conexao = new Conexao("projeto_cristofarma", "localhost", "root", "");
+        $conexao = new Conexao();
 
         $dados = $conexao->pdo->prepare("SELECT * FROM venda INNER JOIN pessoa ON pessoa_id_pessoa_cliente = id_pessoa WHERE data_venda >= :di 
             AND data_venda <= :df ORDER BY data_venda DESC");
@@ -215,7 +215,7 @@ class Venda
 
     public function selectVendaClienteLike($nomeCliente)
     {
-        $conexao = new Conexao("projeto_cristofarma", "localhost", "root", "");
+        $conexao = new Conexao();
 
         $dados = $conexao->pdo->prepare("SELECT * FROM venda JOIN pessoa ON pessoa_id_pessoa_cliente = id_pessoa
              WHERE nome LIKE :lk AND tipo_pessoa = 'cliente'");
@@ -228,7 +228,7 @@ class Venda
 
     public function selectVendaClienteLikeDataLike($nomeCliente,  $data_ini,  $data_fim)
     {
-        $conexao = new Conexao("projeto_cristofarma", "localhost", "root", "");
+        $conexao = new Conexao();
 
         $dados = $conexao->pdo->prepare("SELECT * FROM venda LEFT JOIN pessoa ON pessoa_id_pessoa_cliente = id_pessoa AND 
              WHERE nome LIKE :lk AND data_venda >= :di AND data_venda <= :df ORDER BY data_venda DESC");
@@ -243,7 +243,7 @@ class Venda
 
     public function selectVendaAllLikePagamento($tipoPagamento)
     {
-        $conexao = new Conexao("projeto_cristofarma", "localhost", "root", "");
+        $conexao = new Conexao();
 
         $dadosSelecionados = array();
 
@@ -257,7 +257,7 @@ class Venda
 
     public function consultaVendaLikeVendedor($nomeVendedor)
     {
-        $conexao = new Conexao("projeto_cristofarma", "localhost", "root", "");
+        $conexao = new Conexao();
 
         $dados = $conexao->pdo->prepare("SELECT * FROM venda JOIN pessoa ON pessoa_id_pessoa_vendedor = id_pessoa
              WHERE nome LIKE :lk AND tipo_pessoa = 'funcionario' AND funcao = 'vendedor'");
@@ -270,7 +270,7 @@ class Venda
 
     public function selectVendaVendedorLikeDataLike($nomeVendedor,  $data_ini,  $data_fim)
     {
-        $conexao = new Conexao("projeto_cristofarma", "localhost", "root", "");
+        $conexao = new Conexao();
 
         $dados = $conexao->pdo->prepare("SELECT * FROM venda JOIN pessoa ON pessoa_id_pessoa_vendedor = id_pessoa
              WHERE nome LIKE :lk AND funcao = 'vendedor' AND data_venda >= :di AND data_venda <= :df ORDER BY data_venda DESC");
@@ -286,7 +286,7 @@ class Venda
 
     public function selectVendaAbertaLikeId($idVendaLike)
     {
-        $conexao = new Conexao("projeto_cristofarma", "localhost", "root", "");
+        $conexao = new Conexao();
 
         $dados  = $conexao->pdo->prepare("SELECT * FROM venda WHERE id_venda = :id AND status_venda = 'aberto'"); // dados retornam como ARRAY
         $dados->bindValue("id", $idVendaLike);
@@ -298,7 +298,7 @@ class Venda
 
     public function selectVendaProdutoVenda($data_venda,  $pessoa_id_pessoa_cliente)
     {
-        $conexao = new Conexao("projeto_cristofarma", "localhost", "root", "");
+        $conexao = new Conexao();
 
         $dados  = $conexao->pdo->prepare("SELECT codigo_venda FROM venda WHERE data_venda = :id AND pessoa_id_pessoa_cliente = :fk"); // dados retornam como ARRAY
         $dados->bindValue("id", $data_venda);
@@ -308,6 +308,29 @@ class Venda
        
         return $dadosSelecionados;
     }
+
+    function calculaValorVenda($valor_venda_sem_desconto, $desconto)
+    {
+
+    $valor_venda_com_desconto = $valor_venda_sem_desconto - $desconto;
+
+    return $valor_venda_com_desconto;
+
+    }
+
+    function calculoFecharVendaCaixa($valor_venda, $valor_recebido)
+    {
+        
+    $troco = $valor_venda - $valor_recebido;
+
+    return $troco;
+
+    }
+
+    function calculaDescontoPorcentagem ( $valor_venda_sem_desconto, $porcentagem ) {
+
+        return ( $porcentagem / 100 ) * $valor_venda_sem_desconto;
+    }    
 
     
     //metodos de acesso 

@@ -83,22 +83,21 @@
                     name="fornecedor" size="25" value="<?php if (isset($_GET['id_fornecedor_produto_get_up'])){ $id_fornecedor_produto_get_up = addslashes($_GET['id_fornecedor_produto_get_up']); 
                         $retornoConsulta = $pessoa->selectPessoaFornecedor($id_fornecedor_produto_get_up); if(isset($retornoConsulta)){echo $retornoConsulta[0]['nome'];}}?>"><br><br>
 
-                <div id="selecionarFornecedor" style="font-size: 12px; margin-left: 5px; border: dotted 1px; width: 50px; height: 50px; float: left; 
-                    margin-left: 240px; margin-top: -8%;">
-                <a href="ConsultaFornecedor.php?buscaFornecedor=+" id="alinhamento"><img src="/img/search.png">Buscar</a>
+                <div id="selecionarFornecedor">
+                <a href="ConsultaFornecedor.php?buscaFornecedor=+" id="alinhamento" title="Selecionar Laboriatório"><img src="/img/search2.png"></a>
                 </div><br><br>
                 
                 <label for="descricaoProduto"> Descrição do Produto:</label><br>
-                <input id="descricaoProduto" class="form-control"  type="text" name="descricaoProduto" required size="60"> <br><br>
+                <input id="descricaoProduto" class="form-control"  type="text" name="descricaoProduto" required size="50"> <br><br>
                 
                 <label for="codigoDeBarras"> Código de Barras:</label><br>
-                <input id="codigoDeBarras" class="form-control"  type="text" type="text" name="codigoDeBarras" maxlength="60" required size="40"><br><br>              
+                <input id="codigoDeBarras" class="form-control"  type="text" type="text" name="codigoDeBarras" maxlength="40" required size="40"><br><br>              
 
                 <label for="precoCusto">Preço de Custo:</label><br>
-                <input id="precoCusto" class="form-control"  placeholder="R$" type="text" type="text" name="precoCusto" required size="20"><br><br>
+                <input id="precoCusto" class="form-control"  placeholder="R$" type="text" type="text" name="precoCusto" required size="10"><br><br>
                 
                 <label for="precoVenda">Preço de Venda:</label><br>
-                <input id="precoVenda" class="form-control"  placeholder="R$" type="text" type="text" name="precoVenda" required size="20"><br> <br>
+                <input id="precoVenda" class="form-control"  placeholder="R$" type="text" type="text" name="precoVenda" required size="10"><br> <br>
 
                 <input class="btn btn-outline-danger" type="submit" id="btnCadastrar" name="btnGravarClientes" style="margin-left: 40%; margin-top: 5%;"
                     value="<?php echo "Cadastrar"; ?>">

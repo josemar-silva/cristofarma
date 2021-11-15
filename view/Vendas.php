@@ -22,9 +22,8 @@
         $pessoa = new Pessoa();
         $venda = new Venda();
         $estoque = new Estoque();
-        
-        
     ?>
+    
     <title>Vendas</title>
 </head>
 
@@ -167,7 +166,7 @@ if (isset($_POST['fecharVenda']) && !empty($_POST['idClienteVenda']) && !empty($
                 $itemVenda->createItemVenda((int)$codigo_gerado_venda, (int)$product, (int)$quantidade_produto, (float)$valor_produto);
             }
 
-            // echo '<script> alert("Venda finalizada Com sucesso!")</script>';
+            echo '<script> alert("Venda finalizada Com sucesso!")</script>';
                 // session_destroy(); // encerrar a seção e destroi as variaves existentes nela
                     // echo '<META HTTP-EQUIV="REFRESH" CONTENT="0;URL=Vendas.php"/>'; // REFRESH para atualizar a página
 }
@@ -226,33 +225,35 @@ if (isset($_SESSION['venda'])) {
        </table>
     </div>
 </div>
-    <div id="adicionaPrudutoVenda" style="padding: 10px;" >
-                <a id="adicionar-produto" href="ConsultaProdutos.php?buscaProdutos=+"><img src="/img/search.png">Adcionar Produto</a>
+    <div id="adicionaPrudutoVenda" >
+                <a id="adicionar-produto" href="ConsultaProdutos.php?buscaProdutos=+" title="Buscar Produto"><img src="/img/search2.png"></a>
     </div>
         <div id="divDataHoraVenda">   
             <label>Data:</label>
             <input id="dataVenda" name="dataVenda" value="<?php date_default_timezone_set('America/Sao_Paulo');
                 echo date('d/m/Y'); ?>" 
                     style="color: blue; text-align: center; font-size: 20pt; border: none; display: inline;" 
-                    size="10" ></input>
+                    size="8" ></input><br><br> 
         </div>
-            <div id="divPagamentoTipo">           
-                <label id="labelTipoPagamento"> Tipo de Pagamento:</label>    
-                <select id="tipoPagamento" name="tipoPagamento" class="form-control"> 
-                    <option value="" selected required> </option> 
+            
+    <div id="divDabosVenda" style="width: 32%; float: right; margin-right: 0.5%; height: 540px; font-size: 13pt; padding: 15px;">
+    <legend style="border: solid 1px #8b0210; background-color: #8b0211; color: white;">DADOS DA VENDA</legend>
+        
+                    <!-- ==================== BUSCAR VENDEDOR =====================-->
+
+        <div id="vendedorSelecionado">
+
+        <div id="divPagamentoTipo" style="display: inline; width: 20%;">           
+            <label id="labelTipoPagamento" > Tipo de Pagamento:</label>    
+                <select id="tipoPagamento" name="tipoPagamento" class="form-control" style="display: inline; margin-left: 8%; width: 25%; text-align: center;"> 
                     <option value="a vista" >À Vista</option>
                     <option value="debito">Débito</option>
                     <option value="credito">Crédito</option>
                 </select>
-            </div><br>
-    <div id="divDabosVenda" style="width: 30%; float: right; margin-right: 0.5%; height: 540px; font-size: 13pt; padding: 15px;">
-    <legend style="border: solid 1px #8b0210; background-color: #8b0211; color: white;">DADOS DA VENDA</legend><br>
-        
-                    <!-- ==================== BUSCAR VENDEDOR =====================-->
+            </div><br><br>
 
-        <div id="vendedorSelecionado">      
                 <label id="labelVendedorSelecionado">Vendedor:</label>
-                                <select id="vendedor" name="vendedor" class="form-control" style="display: inline; margin-left: 8%;">
+                                <select id="vendedor" name="vendedor" class="form-control" style="display: inline; margin-left: 5%;">
                                     <option value=""  > Não Informado </option>
                                         <?php $dados = $pessoa->selectAllPessoaFuncionarioVendedor();
                                             if(count($dados) > 0)
@@ -279,7 +280,7 @@ if (isset($_SESSION['venda'])) {
                                                 }
                                             } 
                                         ?> 
-                            </select><br/><br/><br/><br>
+                            </select><br/><br/><br>
 
                            <!-- =========================== BUSCAR CLIENTE ===============================-->
 
@@ -314,11 +315,11 @@ if (isset($_SESSION['venda'])) {
                                 if(isset($retornoConsulta)){echo $retornoConsulta[0]['cpf_cnpj'];
                     }
                 }
-                    ?>"><br><br>
+                    ?>"><br><br><br>
 
                 <div id="adicionaClienteVenda">
-                        <a href="ConsultaClientes.php?buscaCliente=+"><img src="/img/search.png">Buscar Cliente</a>
-                </div><br><br>
+                        <a href="ConsultaClientes.php?buscaCliente=+" title="Buscar Cliente"><img src="/img/search2.png"></a>
+                </div>
 
             <?php
                  $valor_total_venda = array_sum($soma_total_venda);      
@@ -327,7 +328,7 @@ if (isset($_SESSION['venda'])) {
             <label id="total" for="totalSemDesconto"> Total: R$</label>
             <input id="totalSemDesconto" name="totalSemDesconto" class="form-control" size="6" placeholder="0.00" 
                 value="<?php if (isset($_SESSION['venda'])) {  echo number_format($valor_total_venda, 2, '.','.');  }  ?>"
-                    style="text-align: right; color: blue; font-size: 25px; padding: 5%; background-color: #FFFF00; font-weight: bolder;"> <br><br> 
+                    style="text-align: right; color: blue; font-size: 25px; padding: 5%; background-color: #FFFF00; font-weight: bolder;"> <br><br>
 
             <label id="desconto" for="desconto"> Desconto: R$</label>
             <input id="desconto" type="text" name="desconto" class="form-control" size="6" placeholder="0.00" 

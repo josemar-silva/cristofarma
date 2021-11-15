@@ -21,7 +21,7 @@ class ItemVenda
 
     public function createItemVenda($codigo_venda, $produto_id_produto, $quantidade_item, $valor_total_item){
 
-        $conexao = new Conexao("projeto_cristofarma", "localhost", "root", "");
+        $conexao = new Conexao();
 
         $dados  = $conexao->pdo->prepare("SELECT id_venda FROM venda WHERE codigo_venda = :cdv"); // dados retornam como ARRAY
         $dados->bindValue("cdv", $codigo_venda);
@@ -49,7 +49,7 @@ class ItemVenda
 
     public function deleteItemVenda($venda_id_venda, $produto_id_produto){
 
-        $conexao = new Conexao("projeto_cristofarma", "localhost", "root", "");
+        $conexao = new Conexao();
 
         $dados = $conexao->pdo->prepare(" DELETE FROM item_venda WHERE venda_id_venda = :fkv AND produto_id_produto = :fkp");
         $dados->bindValue("fkv", $venda_id_venda);
@@ -59,7 +59,7 @@ class ItemVenda
 
     public function updateItemVenda($codigo_venda, $produto_id_produto, $quantidade_item, $valor_total_item){
 
-        $conexao = new Conexao("projeto_cristofarma", "localhost", "root", "");
+        $conexao = new Conexao();
 
         $dados  = $conexao->pdo->prepare("SELECT id_venda FROM venda WHERE codigo_venda = :cdv"); // dados retornam como ARRAY
         $dados->bindValue("cdv", $codigo_venda);
@@ -85,7 +85,7 @@ class ItemVenda
 
     public function selectQuantidadeValor($codigo_venda, $produto_id_produto){
 
-        $conexao = new Conexao("projeto_cristofarma", "localhost", "root", "");
+        $conexao = new Conexao();
 
         $dados  = $conexao->pdo->prepare("SELECT id_venda FROM venda WHERE codigo_venda = :cdv"); // dados retornam como ARRAY
         $dados->bindValue("cdv", $codigo_venda);
@@ -114,7 +114,7 @@ class ItemVenda
 
     public function selectItemVendaLike($venda_id_venda, $produto_id_produto){
 
-        $conexao = new Conexao("projeto_cristofarma", "localhost", "root", "");
+        $conexao = new Conexao();
 
         $dadosSelecionados = array();
 
@@ -129,7 +129,7 @@ class ItemVenda
 
     public function selectAllItemVenda(){
 
-        $conexao = new Conexao("projeto_cristofarma", "localhost", "root", ""); 
+        $conexao = new Conexao();
 
         $dadosSelecionados = array();
 
@@ -142,7 +142,7 @@ class ItemVenda
 
     public function selectItemVendaLikeId($id_venda){
 
-        $conexao = new Conexao("projeto_cristofarma", "localhost", "root", ""); 
+        $conexao = new Conexao();
 
         $dadosSelecionados = array();
 

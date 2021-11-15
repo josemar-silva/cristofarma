@@ -51,20 +51,20 @@
             <legend>
                 <legend>RELATÓRIO DE VENDAS</legend>
             </legend>
-            <div style="margin-bottom: 7%;">
+            <div style="margin-bottom: 5%;">
 
             <input type="radio" id="tipoRelatorio" name="tipoRelatorio" value="data">&nbsp; &nbsp;
-            <label for="cliente">Pesqusa por Data:</label><br>
+            <label for="cliente">Pesqusa por Data:</label><br><br>
                 <label for="dataInicial" >Data Inicio:</label> &nbsp; 
-                <input type="date" id="getDataInicial" name="getDataInicial" class="form-control" style="display: inline;" > &nbsp; &nbsp;&nbsp; &nbsp;
+                <input type="date" id="getDataInicial" name="getDataInicial" class="form-control" style="display: inline; font-size: 13pt;" > &nbsp; &nbsp;&nbsp; &nbsp;
                 <label for="dataFinal">Data Fim:</label> &nbsp;
-                <input type="date" id="getDataFinal" name="getDataFinal" class="form-control" style="display: inline;"><br>
+                <input type="date" id="getDataFinal" name="getDataFinal" class="form-control" style="display: inline; font-size: 13pt;"><br>
             </div>
-        <div style="margin-bottom: 7%;">
+        <div style="margin-bottom: 5%;">
             <input type="radio" id="tipoRelatorio" name="tipoRelatorio" value="cliente">&nbsp; &nbsp;
-            <label for="cliente">Pesqusa por Cliente:</label><br>
+            <label for="cliente">Pesqusa por Cliente:</label><br><br>
             <label for="nomeDoCliente"> Cliente:</label>&nbsp; &nbsp;
-            <input type="search" id="nomeDoCliente" name="nomeDoCliente" class="form-control" size="40" placeholder="Nome do cliente" style="display: inline;"><br><br><br><br><br><br>
+            <input type="search" id="nomeDoCliente" name="nomeDoCliente" class="form-control" size="40" placeholder="Nome do cliente" style="display: inline; font-size: 13pt;"><br><br><br><br><br><br>
 
             <label>Pesqusa por Tipo Pagamento:</label><br><br>
             
@@ -78,11 +78,11 @@
             <label for="relatorioVendaCredito">Venda a Crédito</label>
         </div>
 
-        <div style="margin-bottom: 4%;">
+        <div style="margin-bottom: -3%;">
             <input type="radio" id="vendedor" name="tipoRelatorio" value="vendedor">&nbsp; &nbsp;
             <label for="vendedor">Pesqusar por Vendedor:</label>&nbsp; &nbsp;
-            <input type="text" id="nomeDoVendedor" name="nomeDoVendedor" class="form-control" size="40" placeholder="Nome do vendedor" style="display: inline;"><br>
-        </div>
+            <input type="text" id="nomeDoVendedor" name="nomeDoVendedor" class="form-control" size="40" placeholder="Nome do vendedor" style="display: inline; font-size: 13pt;"><br>
+        </div><br><br><br><br>
 
             <button class="btn btn-outline-danger" id="btnGerarRelatorioGerencial" name="btnGerarRelatorioGerencial" onclick="" style="margin-left: 40%;">Gerar Relatório</button>
 </fo    rm>

@@ -191,7 +191,8 @@
             }
             ?>
 
-            <select id="tipoCadastro" class="form-control" name="tipoCadastro" onchange="verifica(this.value)" <?php if(isset($retornoConsulta ) && $retornoTipoPessoa != 'funcionario'){ echo 'disable';}?>>
+            <select id="tipoCadastro" class="form-control" name="tipoCadastro" onchange="verifica(this.value)" style="display: inline;"
+                <?php if(isset($retornoConsulta ) && $retornoTipoPessoa != 'funcionario'){ echo 'disable';}?>>
                 <option value=""> </option>
                 <option value="funcionario" <?php if ($retornoTipoPessoa == 'cliente'){echo 'selected';}?>>Cliente</option>
                 <option value="funcionario" <?php if ($retornoTipoPessoa == 'fornecedor'){echo 'selected';}?>>Fornecedor</option>
@@ -199,10 +200,10 @@
             </select><br/>
 
             <label for="nome" id="nome">Nome:</label><br/>
-            <input id="nome" type="text" class="form-control" name="nome" size="70" autofocus required value="<?php if(isset($retornoConsulta)){echo $retornoConsulta[0]['nome'];}?>"><br/><br/>
+            <input id="nome" type="text" class="form-control" name="nome" size="40" autofocus required value="<?php if(isset($retornoConsulta)){echo $retornoConsulta[0]['nome'];}?>"><br/><br/>
 
             <label for="cpfAndCnpj" id="cpf">CPF/CNPJ:</label><br/>
-            <input id="cpfAndCnpj" class="form-control" type="text" name="cpf_cnpj" required size="25" value="<?php if(isset($retornoConsulta)){echo $retornoConsulta[0]['cpf_cnpj'];}?>"><br/><br/>
+            <input id="cpfAndCnpj" class="form-control" type="text" name="cpf_cnpj" required size="20" value="<?php if(isset($retornoConsulta)){echo $retornoConsulta[0]['cpf_cnpj'];}?>"><br/><br/>
 
             <label for="email" id="email">E-mail:</label><br/>
             <input id="email" class="form-control" type="email" name="email" size="60" required value="<?php if(isset($retornoConsulta)){echo $retornoConsulta[0]['email'];}?>"><br/><br/>
@@ -211,13 +212,13 @@
 
             <label for="telefoneCelular" id="telefoneCelular" style="margin-left: 35%;">Telefone Celular:</label><br/>
 
-            <input id="telefoneFixo" class="form-control" type="text" name="telefoneFixo" size="25" value="<?php if(isset($retornoConsulta)){echo $retornoConsulta[0]['telefone_fixo'];}?>">&nbsp; &nbsp;
+            <input id="telefoneFixo" class="form-control" type="text" name="telefoneFixo" size="20" value="<?php if(isset($retornoConsulta)){echo $retornoConsulta[0]['telefone_fixo'];}?>">&nbsp; &nbsp;
 
-            <input id="telefoneCelular" class="form-control" type="text" name="telefoneCelular" required size="25"  style="margin-left: 15%;" value="<?php if(isset($retornoConsulta)){echo $retornoConsulta[0]['telefone_celular'];}?>"><br/><br/>
+            <input id="telefoneCelular" class="form-control" type="text" name="telefoneCelular" required size="20"  style="margin-left: 15%;" value="<?php if(isset($retornoConsulta)){echo $retornoConsulta[0]['telefone_celular'];}?>"><br/><br/>
 
             <label id="funcao" style="display: inline;">Função:</label>
-            <label for="matricula" style="margin-left: 25%;">Matrícula:</label>
-            <label for="senha" style="margin-left: 27%;">Senha:</label><br/>
+            <label for="matricula" style="margin-left: 23%;">Matrícula:</label>
+            <label for="senha" style="margin-left: 20%;">Senha:</label><br/>
 
             <select id="listaFuncao" name="listaFuncao" class="form-control" required style="display: inline;">
                 <option value="" selected> </option>
@@ -226,16 +227,16 @@
                 <option value="operador de caixa" <?php if ($retornoFuncao == 'operador de caixa'){echo 'selected';}?>>Operador de Caixa</option>
             </select>  
 
-            <input id="matricula"  class="form-control"type="text" name="matricula" size="20" required style="margin-left: 10%;"
+            <input id="matricula"  class="form-control"type="text" name="matricula" size="10" required style="margin-left: 10%;"
                 value="<?php if(isset($retornoConsulta)){if (isset($retornoConsulta[0]['matricula'])){ 
                     echo $retornoConsulta[0]['matricula'];} else { echo '';}}?>">&nbsp; 
 
-            <input id="senha"  class="form-control"type="password" name="senha" size="20" style="margin-left: 10%;" 
+            <input id="senha"  class="form-control"type="password" name="senha" size="10" style="margin-left: 10%;" 
                 value="<?php if(isset($retornoConsulta)){if (isset($retornoConsulta[0]['senha'])){ 
                     echo $retornoConsulta[0]['senha'];} else { echo '';}}?>"> <br/><br/>
 
             <label for="endereco" id="endereco">Endereço:</label><br>
-            <input id="endereco" class="form-control"type="text" name="endereco" required size="90" 
+            <input id="endereco" class="form-control"type="text" name="endereco" required size="70" 
                 value="<?php if(isset($retornoConsulta)){echo $retornoConsulta[0]['endereco'];}?>" > <br>
 
             <input  class="btn btn-outline-danger" id="btnCadastrar" type="submit" name="btnGravarClientes" style="margin-left: 40%; margin-top: 5%;"

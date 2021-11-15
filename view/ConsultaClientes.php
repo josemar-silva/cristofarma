@@ -53,7 +53,7 @@ $pessoa = new Pessoa();
 
         <label style="margin-left: 25%;"></label>
         <input type="search" id="buscaCliente" class="form-control" name="buscaCliente" autofocus value="<?php if (isset($_GET['buscaCliente']) && !empty($_GET['buscaCliente']))
-                                                                                                                echo $_GET['buscaCliente']; ?>" size=" 60" class="form-control-busca" placeholder="Digte aqui para buscar" style="display: inline;">
+            echo $_GET['buscaCliente']; ?>" size=" 50" class="form-control-busca" placeholder="Digte aqui para buscar" style="display: inline; font-size: 13pt;">
 
         <button class="btn btn-outline-danger" id="btnBuscar" onclick="" style="width: 10%; padding: 2px; margin-left: 3%;">Buscar</button><br><br>
     </form>

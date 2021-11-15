@@ -30,7 +30,7 @@ class Pessoa
     public function createPessoa($nome, $cpf_cnpj, $tipo_pessoa, $email, $telefoneFixo, 
         $telefoneCelular, $endereco)
     {
-        $conexao = new Conexao("projeto_cristofarma", "localhost", "root", "");
+        $conexao = new Conexao();
         
         $dados = $conexao->pdo->prepare("SELECT id_pessoa FROM pessoa WHERE email = :e");
         //$cadastrar = $this->pdo->query("SELECT * id FROM pessoa WHERE email = ".$email);
@@ -58,8 +58,8 @@ class Pessoa
     public function createPessoaFuncionario($nome, $cpf_cnpj, $tipo_pessoa, $email, $telefoneFixo, 
         $telefoneCelular, $matricula, $senha, $funcao, $endereco)
     {
-        $conexao = new Conexao("projeto_cristofarma", "localhost", "root", "");
-        
+        $conexao = new Conexao();
+
         $dados = $conexao->pdo->prepare("SELECT id_pessoa FROM pessoa WHERE email = :e");
         //$cadastrar = $this->pdo->query("SELECT * id FROM pessoa WHERE email = ".$email);
         $dados->bindValue(":e", $email);
@@ -89,7 +89,7 @@ class Pessoa
     public function updatePessoaClienteFornecedor($id_upd, $nome, $cpf_cnpj, $tipo_pessoa, $email, $telefoneFixo, 
     $telefoneCelular, $endereco)
     {
-        $conexao = new Conexao("projeto_cristofarma", "localhost", "root", "");
+        $conexao = new Conexao();
 
         $dados = $conexao->pdo->prepare("UPDATE pessoa SET nome = :n, cpf_cnpj = :c, tipo_pessoa = :tp, 
         email = :e, telefone_fixo = :tf, telefone_celular = :tc, endereco = :ed WHERE id_pessoa = :id");
@@ -109,7 +109,7 @@ class Pessoa
     public function updatePessoaFuncionario($id_upd, $nome, $cpf_cnpj, $tipo_pessoa, $email, $telefoneFixo, 
     $telefoneCelular, $matricula, $funcao, $endereco)
     {
-        $conexao = new Conexao("projeto_cristofarma", "localhost", "root", "");
+        $conexao = new Conexao();
 
         $dados = $conexao->pdo->prepare("UPDATE pessoa SET nome = :n, cpf_cnpj = :c, tipo_pessoa = :tp, 
         email = :e, telefone_fixo = :tf, telefone_celular = :tc, matricula = :m, funcao = :f, endereco = :ed WHERE id_pessoa = :id");
@@ -128,7 +128,7 @@ class Pessoa
 
     public function deletePessoa($id_up)
     {
-        $conexao = new Conexao("projeto_cristofarma", "localhost", "root", "");
+        $conexao = new Conexao();
 
         $dados = $conexao->pdo->prepare("DELETE FROM pessoa WHERE id_pessoa = :id");
         $dados->bindValue("id", $id_up);
@@ -139,7 +139,7 @@ class Pessoa
     {
         $dadosSelecionados = array(); 
 
-        $conexao = new Conexao("projeto_cristofarma", "localhost", "root", "");
+        $conexao = new Conexao();
  
         $dados  = $conexao->pdo->prepare("SELECT * FROM pessoa WHERE id_pessoa = :id; " ); 
         $dados->bindValue("id", $id_up); 
@@ -153,7 +153,7 @@ class Pessoa
     {
         $dadosSelecionados = array(); // cria-se uma variavel ARRAY que armanenará a busca que o PDO retorna como ARRAY
 
-        $conexao = new Conexao("projeto_cristofarma", "localhost", "root", ""); // instancia nova conexão com o BD
+        $conexao = new Conexao();
  
         $dados  = $conexao->pdo->prepare("SELECT * FROM pessoa WHERE tipo_pessoa = 'cliente' AND id_pessoa = :id " ); // dados retornam como ARRAY
         $dados->bindValue("id", $id_up); // substituíção dos valores com o método BINDVALUE
@@ -167,7 +167,7 @@ class Pessoa
     {
         $dadosSelecionados = array(); // cria-se uma variavel ARRAY que armanenará a busca que o PDO retorna como ARRAY
 
-        $conexao = new Conexao("projeto_cristofarma", "localhost", "root", ""); // instancia nova conexão com o BD
+        $conexao = new Conexao();
  
         $dados  = $conexao->pdo->prepare("SELECT * FROM pessoa WHERE tipo_pessoa = 'fornecedor' AND id_pessoa = :id " ); // dados retornam como ARRAY
         $dados->bindValue("id", $id_up); // substituíção dos valores com o método BINDVALUE
@@ -181,7 +181,7 @@ class Pessoa
     {
         $dadosSelecionados = array(); // cria-se uma variavel ARRAY que armanenará a busca que o PDO retorna como ARRAY
 
-        $conexao = new Conexao("projeto_cristofarma", "localhost", "root", ""); // instancia nova conexão com o BD
+        $conexao = new Conexao();
  
         $dados  = $conexao->pdo->prepare("SELECT * FROM pessoa WHERE tipo_pessoa = 'funcionario' AND id_pessoa = :id " ); // dados retornam como ARRAY
         $dados->bindValue("id", $id_up); // substituíção dos valores com o método BINDVALUE
@@ -195,7 +195,7 @@ class Pessoa
     {
         $dadosSelecionados = array(); 
 
-        $conexao = new Conexao("projeto_cristofarma", "localhost", "root", "");
+        $conexao = new Conexao();
 
         $dadosSelecionados = array();
         $dados  = $conexao->pdo->query("SELECT * pessoa ORDER BY nome;");
@@ -205,7 +205,7 @@ class Pessoa
 
     public function selectAllPessoaCliente()
     {
-        $conexao = new Conexao("projeto_cristofarma", "localhost", "root", "");
+        $conexao = new Conexao();
 
         $dadosSelecionados = array();
         $dados  = $conexao->pdo->query("SELECT pessoa.id_pessoa, pessoa.nome, pessoa.cpf_cnpj, pessoa.tipo_pessoa,
@@ -217,7 +217,7 @@ class Pessoa
 
     public function selectAllPessoaFornecedor()
     {
-        $conexao = new Conexao("projeto_cristofarma", "localhost", "root", "");
+        $conexao = new Conexao();
 
         $dadosSelecionados = array();
         $dados  = $conexao->pdo->query("SELECT pessoa.id_pessoa, pessoa.nome, pessoa.cpf_cnpj, pessoa.tipo_pessoa,
@@ -242,7 +242,7 @@ class Pessoa
 
         $dadosSelecionados = array(); // cria-se uma variavel ARRAY que armanenará a busca que o PDO retorna como ARRAY
 
-        $conexao = new Conexao("projeto_cristofarma", "localhost", "root", ""); // instancia nova conexão com o BD
+        $conexao = new Conexao();
  
         $dados  = $conexao->pdo->prepare("SELECT * FROM pessoa WHERE funcao = 'vendedor' AND id_pessoa = :id" ); // dados retornam como ARRAY
         $dados->bindValue("id", $id_up); // substituíção dos valores com o método BINDVALUE
@@ -255,7 +255,7 @@ class Pessoa
     public function selectAllPessoaFuncionarioVendedor()
     {
 
-        $conexao = new Conexao("projeto_cristofarma", "localhost", "root", "");
+        $conexao = new Conexao();
 
         $dadosSelecionados = array();
         $dados  = $conexao->pdo->query("SELECT * FROM pessoa WHERE funcao = 'vendedor' ORDER BY nome");
@@ -265,7 +265,7 @@ class Pessoa
 
     public function consultaClienteFornecedorLike($consultaLike, $tipoConsulta){
 
-        $conexao = new Conexao("projeto_cristofarma", "localhost", "root", "");
+        $conexao = new Conexao();
 
         $dadosSelecionados = array();
 
@@ -283,7 +283,7 @@ class Pessoa
 
     public function funcionarioLogin($emailLogin, $senhaLogin){
 
-        $conexao = new Conexao("projeto_cristofarma", "localhost", "root", "");
+        $conexao = new Conexao();
 
         $dadosSelecionados = array();
 

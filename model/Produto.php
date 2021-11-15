@@ -21,7 +21,7 @@ class Produto
     }
         public function createProduto($produto_nome, $produto_preco_custo, $produto_preco_venda, $produto_codigo_barras, $pessoa_id_pessoa)
     {
-        $conexao = new Conexao("projeto_cristofarma", "localhost", "root", "");
+        $conexao = new Conexao();
 
         global $res2;
         $dados = $conexao->pdo->prepare("SELECT id_pessoa FROM pessoa WHERE nome  = :f");
@@ -55,7 +55,7 @@ class Produto
     {
         $dadosSelecionados = array(); // cria-se uma variavel ARRAY que armanenará a busca que o PDO retorna como ARRAY
 
-        $conexao = new Conexao("projeto_cristofarma", "localhost", "root", ""); // instancia nova conexão com o BD
+        $conexao = new Conexao();
  
         $dados  = $conexao->pdo->prepare("SELECT * FROM produto WHERE id_produto = :id" ); // dados retornam como ARRAY
         $dados->bindValue("id", $id_up); // substituíção dos valores com o método BINDVALUE
@@ -67,7 +67,7 @@ class Produto
 
     public function deleteProduto($id_up)
     {
-        $conexao = new Conexao("projeto_cristofarma", "localhost", "root", "");
+        $conexao = new Conexao();
 
         $dados = $conexao->pdo->prepare("DELETE FROM produto WHERE id_produto = :id");
         $dados->bindValue("id", $id_up);
@@ -76,7 +76,7 @@ class Produto
 
     public function selectAllProduto()
     {
-        $conexao = new Conexao("projeto_cristofarma", "localhost", "root", "");
+        $conexao = new Conexao();
 
         $dadosSelecionados = array();
         $dados  = $conexao->pdo->query("SELECT * FROM produto ORDER BY id_produto");
@@ -87,21 +87,22 @@ class Produto
     public function updateProduto($id_up, $produto_nome, $produto_preco_custo, $produto_preco_venda, 
         $produto_codigo_barras)
     {
-        $conexao = new Conexao("projeto_cristofarma", "localhost", "root", "");
-
+        $conexao = new Conexao();
         
-            $dados = $conexao->pdo->prepare("UPDATE produto SET produto.nome_produto = :pn, produto.preco_custo = :pc, 
-            produto.preco_venda = :pv, produto.codigo_barras = :cb WHERE produto.id_produto = :id");
-            $dados->bindValue(":pn", $produto_nome);
-            $dados->bindValue(":pc", $produto_preco_custo);
-            $dados->bindValue(":pv", $produto_preco_venda);
-            $dados->bindValue(":cb", $produto_codigo_barras);
-            $dados->bindValue(":id", $id_up);
-            $dados->execute();
+        $dados = $conexao->pdo->prepare("UPDATE produto SET produto.nome_produto = :pn, produto.preco_custo = :pc, 
+        produto.preco_venda = :pv, produto.codigo_barras = :cb WHERE produto.id_produto = :id");
+        $dados->bindValue(":pn", $produto_nome);
+        $dados->bindValue(":pc", $produto_preco_custo);
+        $dados->bindValue(":pv", $produto_preco_venda);
+        $dados->bindValue(":cb", $produto_codigo_barras);
+        $dados->bindValue(":id", $id_up);
+        $dados->execute();
+
+        return true;
 }
     public function consultaProdutoLike($consultaLike){
 
-        $conexao = new Conexao("projeto_cristofarma", "localhost", "root", "");
+        $conexao = new Conexao();
 
         $dadosSelecionados = array();
 

@@ -111,11 +111,11 @@
                 <legend>CADASTRO DE PRODUTOS</legend><br><br/><br/>
 
                 <label id="descricaoProduto">Descrição:</label><br/>
-                <input id="descricaoProduto" class="form-control" type="text" name="descricaoProduto" size="60" autofocus required
+                <input id="descricaoProduto" class="form-control" type="text" name="descricaoProduto" size="50" autofocus required
                     value="<?php if(isset($retornoConsulta)){echo $retornoConsulta['nome_produto'];}?>"><br/><br/>
 
                 <label id="codigoDeBarras">Código de Barras:</label><br/>
-                <input id="codigoDeBarras" class="form-control" type="text" maxlength="60" name="codigoDeBarras" size="60" required
+                <input id="codigoDeBarras" class="form-control" type="text" maxlength="60" name="codigoDeBarras" size="40" required
                     value="<?php if(isset($retornoConsulta)){echo $retornoConsulta['codigo_barras'];}?>"><br/><br/>
 
                     <?php
@@ -124,11 +124,11 @@
                     ?>
 
                 <label id="fornecedor">Laboratorio:</label><br/>
-                <input id="fornecedor" class="form-control" type="text" name="fornecedorSelecionado" size="60" required
+                <input id="fornecedor" class="form-control" type="text" name="fornecedorSelecionado" size="30" required
                     value="<?php if(isset($res)){echo $res[0]['nome'];} ?>"><br/><br/>
 
                 <label id="precoCusto">Preço de Custo:</label><br/>
-                <input id="precoCusto" class="form-control" type="text" name="precoCusto" size="" required
+                <input id="precoCusto" class="form-control" type="text" name="precoCusto" size="10" required
                     value="<?php if(isset($retornoConsulta)){echo $retornoConsulta['preco_custo'];}?>"><br/><br/>
 
                 <label id="precoVenda">Preço de Venda:</label><br/>

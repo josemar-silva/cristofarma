@@ -199,24 +199,24 @@
             </select><br/>
 
             <label for="nome" id="nome">Nome:</label><br/>
-            <input id="nome" type="text" class="form-control" name="nome" size="70" autofocus required value="<?php if(isset($retornoConsulta)){echo $retornoConsulta[0]['nome'];}?>"><br/><br/>
+            <input id="nome" type="text" class="form-control" name="nome" size="40" autofocus required value="<?php if(isset($retornoConsulta)){echo $retornoConsulta[0]['nome'];}?>"><br/><br/>
 
             <label for="cpfAndCnpj" id="cpf">CPF/CNPJ:</label><br/>
-            <input id="cpfAndCnpj" class="form-control" type="text" name="cpf_cnpj" size="25" value="<?php if(isset($retornoConsulta)){echo $retornoConsulta[0]['cpf_cnpj'];}?>"><br/><br/>
+            <input id="cpfAndCnpj" class="form-control" type="text" name="cpf_cnpj" size="22" value="<?php if(isset($retornoConsulta)){echo $retornoConsulta[0]['cpf_cnpj'];}?>"><br/><br/>
 
             <label for="email" id="email">E-mail:</label><br/>
-            <input id="email" class="form-control" type="email" name="email" size="60" value="<?php if(isset($retornoConsulta)){echo $retornoConsulta[0]['email'];}?>"><br/><br/>
+            <input id="email" class="form-control" type="email" name="email" size="50" value="<?php if(isset($retornoConsulta)){echo $retornoConsulta[0]['email'];}?>"><br/><br/>
 
             <label for="telefoneFixo" id="telefoneFixo">Telefone Fixo:</label>
 
             <label for="telefoneCelular" id="telefoneCelular" style="margin-left: 35%;">Telefone Celular:</label><br/>
 
-            <input id="telefoneFixo" class="form-control" type="text" name="telefoneFixo" size="25" value="<?php if(isset($retornoConsulta)){echo $retornoConsulta[0]['telefone_fixo'];}?>">&nbsp; &nbsp;
+            <input id="telefoneFixo" class="form-control" type="text" name="telefoneFixo" size="20" value="<?php if(isset($retornoConsulta)){echo $retornoConsulta[0]['telefone_fixo'];}?>">&nbsp; &nbsp;
 
-            <input id="telefoneCelular" class="form-control" type="text" name="telefoneCelular" size="25"  style="margin-left: 15%;" value="<?php if(isset($retornoConsulta)){echo $retornoConsulta[0]['telefone_celular'];}?>"><br/><br/>
+            <input id="telefoneCelular" class="form-control" type="text" name="telefoneCelular" size="20"  style="margin-left: 15%;" value="<?php if(isset($retornoConsulta)){echo $retornoConsulta[0]['telefone_celular'];}?>"><br/><br/>
 
             <label for="endereco" id="endereco">Endereço:</label><br>
-            <input id="endereco" class="form-control"type="text" name="endereco" size="90" 
+            <input id="endereco" class="form-control"type="text" name="endereco" size="70" 
                 value="<?php if(isset($retornoConsulta)){echo $retornoConsulta[0]['endereco'];}?>" > <br>
 
             <input  class="btn btn-outline-danger" id="btnCadastrar" type="submit" name="btnGravarClientes" style="margin-left: 40%; margin-top: 5%;"

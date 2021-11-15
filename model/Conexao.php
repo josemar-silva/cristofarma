@@ -4,11 +4,15 @@ class Conexao {
 
    public $pdo;
 
-    function __construct($dbname, $host, $user, $senha)
-    { //PARAMETROS CONEXÃO COM BANCO DE DADOS
+   public $dbname = "projeto_cristofarma";
+   public $host = "localhost";
+   public $user = "root";
+   public $senha = "";
 
+    function __construct()
+    {
         try {
-            $this->pdo  = new PDO("mysql:dbname=" . $dbname . ";host=" . $host, $user, $senha);
+            $this->pdo  = new PDO("mysql:dbname=" . $this->dbname . ";host=" . $this->host, $this->user, $this->senha);
         } catch (PDOException $e) {
             echo "Erro com Banco de Dados: " . $e->getMessage();
             exit();

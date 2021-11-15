@@ -57,7 +57,15 @@ section#principal {
 #cadastro input, label {
 
     display: inline-block;
+    font-size: 13pt;
   
+}
+
+option, select{
+
+    font-size: 13pt;
+    width: auto;
+    text-align: left;
 }
 
 
@@ -68,9 +76,15 @@ legend {
     margin-top: 0px;
 }
 
+input{
+
+    font-size: 13pt;
+}
+
 #notaFiscal input, label {
 
     display: inline-block;
+    font-size: 13pt;
 
 }
   .feather {
@@ -180,16 +194,46 @@ border: none;
   #adicionaPrudutoVenda {
 
     display: inline-block;
-    border: black dotted 1px;
-    width: 70px;
-    height: 70px;
+    width: 40px;
+    height: 40px;
     margin-left: 20px;
-    padding: 10px;
-    background-image: url(/img/serch.png);
+    background-image: url(/img/search2.png);
     background-repeat: no-repeat;
-    background-size: 100%; 
-    background-position: center;
+    background-size: cover;
+    overflow: hidden;
+    position: absolute;
+    margin-top: 1%;
 }
+
+#adicionaPrudutoVenda:hover {
+
+    width: 50px;
+    height: 5 0px;
+    margin-bottom: 10px;
+}
+
+#selecionarFornecedor{
+    
+    font-size: 12px;
+    margin-left: 5px;
+    width: 40px;
+    height: 40px;
+    float: left; 
+    background-image: url(/img/search2.png);
+    margin-left: 40%;
+    margin-top: -7%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    overflow: hidden; 
+}
+
+#selecionarFornecedor:hover{
+
+    width: 50px;
+    height: 50px;
+    margin-bottom: 10px;
+}
+
 
 #divDataHoraVenda{
 
@@ -202,28 +246,6 @@ border: none;
     font-size: 20px;
 }
 
-#divPagamentoTipo {
-
-    float: right; 
-    padding: 10px; 
-    width: 18%;
-    height: 50px;
-    font-size: 13pt;
-    margin-top: -2%;
-}
-
-#divPagamentoTipo select {
-
-    display: inline-block;
-
-}
-
-#divDabosVenda label{
-
-    font-weight: bold;
-    font-size: 15px;
-
-}
 
 #vendedorSelecionado {
 
@@ -250,15 +272,34 @@ border: none;
 #dadosClienteVenda input{
 
     display: inline-block;
+    font-size: 13pt;
 }
 
 #adicionaClienteVenda{
 
-    border: dotted 1px red;
-    width: 120px;
-    height: 20px;
-    float: right;
-    margin-top: -10%;
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    background-image: url(/img/search2.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    overflow: hidden;
+    margin-left: 24%;
+    margin-top: -8%;
+    position: absolute;
+}
+
+#adicionaClienteVenda :hover{
+    
+    width: 50px;
+    height: 50px;
+}
+
+#divDabosVenda label {
+
+    font-weight: bold;
+    font-size: 13pt;
+
 }
 
 #itensAdicionados {
@@ -266,7 +307,7 @@ border: none;
     border: rgba(168, 57, 68) solid 1px; 
     margin-left: 3px;
     float: left;
-    width: 69%;
+    width: 67%;
     height: 650px;
     display: block;
 }
@@ -477,7 +518,7 @@ border: none;
         margin-top: -3%;
     }
 
-    table tr, td {
+    table th, tr, td {
         font-size: 13pt;
     }
 
