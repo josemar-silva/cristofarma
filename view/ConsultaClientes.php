@@ -13,7 +13,7 @@ $pessoa = new Pessoa();
     <title>Pesquisar Clientes</title>
 </head>
 
-<body>
+<body >
     <header>
         <nav class="dp-menu">
             <ul>
