@@ -9,6 +9,7 @@ require_once 'Pessoa.php';
 
 
 class ProdutoCompra{
+    
     public int $id_compra;
     public int $quantidade_compra;
     public float $valor_total_compra;
