@@ -227,7 +227,7 @@ if (isset($_SESSION['venda'])) {
     </div>
 </div>
     <div id="adicionaPrudutoVenda" style="padding: 10px;" >
-                <a id="adicionar-produto" href="ConsultaProdutos.php?buscaProdutos=+"><img src="/img/search.png">Adcionar Produto</a>
+                <a id="adicionar-produto" href="ConsultaProdutos.php?buscaProdutos=+"><img src="\cristofarma\img\search.png">Adcionar Produto</a>
     </div>
         <div id="divDataHoraVenda">   
             <label>Data:</label>
