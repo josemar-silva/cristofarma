@@ -46,10 +46,10 @@
 
     </header>
 
-    <section id="principalRelatoriVendas">
-        <form id="relatorioGerencialVendas" style="margin-left: 5%;" action="RelatorioSaida.php" method="POST">
+    <section id="principalRelatoriVendas" > 
+        <form id="relatorio"  action="RelatorioSaida.php" method="POST">
             <legend>
-                <legend>RELATÓRIO DE VENDAS</legend>
+                <legend>FILTROS RELATÓRIOS DE VENDAS</legend>
             </legend>
             <div style="margin-bottom: 5%;">
 

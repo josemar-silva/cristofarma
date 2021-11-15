@@ -65,22 +65,26 @@ $pessoa = new Pessoa();
             <form class="border-bottom">
                 <table>
                     <table class="table table-hover">
-                        <tr>
-                            <th> ID FUNCIONÁRIO </th>
-                            <th> NOME DO FUNCIONÁRIO</th>
-                            <th> CPF/CNPJ</th>
-                            <th> EMAIL </th>
-                            <th> TELEFONE FIXO </th>
-                            <th> TELEFONE CELULAR </th>
-                            <th> MATRICULA </th>
-                            <th> FUNCAO </th>
-                            <th> ENDEREÇO DO FUNCIONÁRIO</th>
-                            <th> AÇÃO </th>
-                        </tr>
+
                     </table>
                     <div class="scroll" class="nav nav-pills nav-stacked" style="height: 450px; overflow-y: scroll;">
                         <table class="table table-hover">
-
+                            <div>
+                                <header class="header">
+                                    <tr>
+                                        <th> ID FUNCIONÁRIO </th>
+                                        <th> NOME DO FUNCIONÁRIO</th>
+                                        <th> CPF/CNPJ</th>
+                                        <th> EMAIL </th>
+                                        <th> TELEFONE FIXO </th>
+                                        <th> TELEFONE CELULAR </th>
+                                        <th> MATRICULA </th>
+                                        <th> FUNCAO </th>
+                                        <th> ENDEREÇO DO FUNCIONÁRIO</th>
+                                        <th> AÇÃO </th>
+                                    </tr>
+                                </header>
+                            </div>
                             <?php
 
 

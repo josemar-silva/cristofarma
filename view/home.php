@@ -9,7 +9,7 @@
     <title>Home</title>
 </head>
 
-<body>
+<bodys>
     <header>
     <nav class="dp-menu">
         <ul>

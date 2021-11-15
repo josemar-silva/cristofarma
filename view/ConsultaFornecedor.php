@@ -65,19 +65,23 @@ $pessoa = new Pessoa();
                 <form class="border-bottom">
                     <table>
                         <table class="table table-hover">
-                            <tr>
-                                <th> ID </th>
-                                <th> LABORATÓRIO</th>
-                                <th> CPF/CNPJ</th>
-                                <th> EMAIL </th>
-                                <th> TELEFONE FIXO </th>
-                                <th> TELEFONE CELULAR </th>
-                                <th> ENDEREÇO DO LABORATÓRIO</th>
-                                <th> AÇÃO </th>
-                            </tr>
                         </table>
                         <div class="scroll" class="nav nav-pills nav-stacked" style="height: 450px; overflow-y: scroll;">
                             <table class="table table-hover">
+                                <div>
+                                    <header class="header">
+                                        <tr>
+                                            <th> ID </th>
+                                            <th> LABORATÓRIO</th>
+                                            <th> CPF/CNPJ</th>
+                                            <th> EMAIL </th>
+                                            <th> TELEFONE FIXO </th>
+                                            <th> TELEFONE CELULAR </th>
+                                            <th> ENDEREÇO DO LABORATÓRIO</th>
+                                            <th> AÇÃO </th>
+                                        </tr>
+                                    </header>
+                                </div>
                                 <?php
 
                                 $dados = $pessoa->consultaClienteFornecedorLike($consultaLike = "%" . trim($_GET['buscaFornecedor']) . "%", $tipoConsulta);
@@ -113,8 +117,8 @@ $pessoa = new Pessoa();
                 </form>
             <?php
             }
-        ?>
-    </section>
+            ?>
+        </section>
 </body>
 
 </html>

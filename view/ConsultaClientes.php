@@ -13,7 +13,7 @@ $pessoa = new Pessoa();
     <title>Pesquisar Clientes</title>
 </head>
 
-<body>
+<body >
     <header>
         <nav class="dp-menu">
             <ul>
@@ -65,23 +65,24 @@ $pessoa = new Pessoa();
         ?>
             <table>
                 <table class="table table-hover">
-                    <tr>
-                    
 
-                        <th> ID </th>
-                        <th> NOME DO CLIENTE</th>
-                        <th> CPF/CNPJ</th>
-                        <th> EMAIL </th>
-                        <th> TELEFONE FIXO </th>
-                        <th> TELEFONE CELULAR </th>
-                        <th> ENDEREÇO DO CLIENTE</th>
-                        <th> AÇÃO </th>
-
-                    </tr>
                 </table>
                 <div class="scroll" class="nav nav-pills nav-stacked" style="height: 450px; overflow-y: scroll;">
                     <table class="table table-hover">
-
+                        <div>
+                            <header class="header">
+                                <tr>
+                                    <th> ID </th>
+                                    <th> NOME DO CLIENTE</th>
+                                    <th> CPF/CNPJ</th>
+                                    <th> EMAIL </th>
+                                    <th> TELEFONE FIXO </th>
+                                    <th> TELEFONE CELULAR </th>
+                                    <th> ENDEREÇO DO CLIENTE</th>
+                                    <th> AÇÃO </th>
+                                </tr>
+                            </header>
+                        </div>
 
                         <?php
 
