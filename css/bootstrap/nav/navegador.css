@@ -9417,6 +9417,15 @@ text-align: left;
 font-weight: bold;
 border-width:10px;
 border-color: lightcoral;
+background-color: red;
+
+ }
+ #icones{
+     text-align: center;
+     padding-bottom: 5px;
+     padding-top: 25px;
+     padding-right: 100px;
+     margin-left: 50px;
 
  }
 

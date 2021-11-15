@@ -9,65 +9,82 @@
     <title>Home</title>
 </head>
 
-<bodys>
+<body style="background-color: white;">
     <header>
-    <nav class="dp-menu">
-        <ul>
-            <li><a href="home.php">HOME</a></li>
-            <li><a href="#">PESQUISAR</a>
-                <ul>
-                    <li><a href="ConsultaClientes.php">Clientes</a></li>
-                    <li><a href="ConsultaFornecedor.php">Fornecedores</a></li>
-                    <li><a href="ConsultaFuncionarios.php">Funcionários</a></li>
-                    <li><a href="ConsultaProdutos.php">Produtos</a></li>                    
-                </ul>
-            </li>
-            <li><a href="Vendas.php">VENDAS</a></li>
-            <li><a href="Caixa.php">CAIXA</a></li>
-            <li><a href="#">PRODUTOS</a>
-                 <ul>
-                    <li><a href="CadastrarProdutos.php">Cadastro de Produtos</a></li>
-                    <li><a href="AlimentarEstoque.php">Estoque de Produtos</a></li>                                        
-                </ul>
-            </li>
-            <li><a href="Cadastros.php">CADASTROS</a></li>
-            <li><a href="CupomFiscal.php">CUPOM FISCAL</a></li>
-            <li><a href="#">RELATÓRIOS</a>
-                <ul>
-                    <li><a href="RelatorioVendas.php">Relatório de Vendas</a></li>
-                    <li><a href="RelatorioEstoque.php">Relatório Geral de Estoque</a></li>                                        
-                </ul>
-        </ul>
-    </nav>
-    <div id="divSair" >
-        <a href="index.php">Sair</a>
-    </div>
+        <nav class="dp-menu">
+            <ul>
+                <li><a href="home.php">HOME</a></li>
+                <li><a href="#">PESQUISAR</a>
+                    <ul>
+                        <li><a href="ConsultaClientes.php">Clientes</a></li>
+                        <li><a href="ConsultaFornecedor.php">Fornecedores</a></li>
+                        <li><a href="ConsultaFuncionarios.php">Funcionários</a></li>
+                        <li><a href="ConsultaProdutos.php">Produtos</a></li>
+                    </ul>
+                </li>
+                <li><a href="Vendas.php">VENDAS</a></li>
+                <li><a href="Caixa.php">CAIXA</a></li>
+                <li><a href="#">PRODUTOS</a>
+                    <ul>
+                        <li><a href="CadastrarProdutos.php">Cadastro de Produtos</a></li>
+                        <li><a href="AlimentarEstoque.php">Estoque de Produtos</a></li>
+                    </ul>
+                </li>
+                <li><a href="Cadastros.php">CADASTROS</a></li>
+                <li><a href="CupomFiscal.php">CUPOM FISCAL</a></li>
+                <li><a href="#">RELATÓRIOS</a>
+                    <ul>
+                        <li><a href="RelatorioVendas.php">Relatório de Vendas</a></li>
+                        <li><a href="RelatorioEstoque.php">Relatório Geral de Estoque</a></li>
+                    </ul>
+            </ul>
+        </nav>
+        <div id="divSair">
+            <a href="index.php">Sair</a>
+        </div>
     </header>
-    
-        <section id="principalHome" style="padding: 50px;">
-            <p><h1 id="nomeEmpresa" style="font-size: 64pt; color: #8b0211; text-align: center;" > DROGARIA CRISTOFARMA PLUS </h1></p>
-            <fieldset id="missao">
-                <legend>
-                    <h1>Missão:</h1>
-                </legend>
-                <p style="color: #8b0211;">
-                    "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-                    labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
-                    nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-                    velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident,
-                    sunt in culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum dolor sit amet,
-                    consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-                    labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
-                    nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-                    velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident,
-                    sunt in culpa qui officia deserunt mollit anim id est laborum."
-                </p>
-            </fieldset>
-            <div id="contatos" style="color: #8b0211; text-align: center; margin-top: 5%;">
-                <h1>Tele Entregas: (62) 3242-7373</h1>
-                <h1>WhatsApp: (62) 98437-1551 / (62) 99279-1340</h1>
-            </div>
-        </section>
+    <div id="icones">
+        <tr >
+            <th> <a style="margin-right: 20px;" href="ConsultaProdutos.php?buscaProdutos=+" title="Buscar Produto"><img src="\cristofarma\img\carrinho-de-compras.png"></a></th>
+            <th> <a style="margin-right: 20px;" href="Vendas.php" title="vendas"><img src="\cristofarma\img\vendas.png"></a></th>
+            <th> <a style="margin-right: 20px;" href="Cadastros.php" title="Cadastros"><img src="\cristofarma\img\cadastro.png"></a></th>
+            <th> <a style="margin-right: 20px;" href="Caixa.php" title="Caixa"><img src="\cristofarma\img\caixa-registradora.png"></a></th>
+            <th> <a style="margin-right: 20px;" href="CadastrarProdutos.php" title="Produtos"><img src="\cristofarma\img\produtos-de-higiene.png"></a></th>
+            <th> <a style="margin-right: 20px;" href="RelatorioVendas.php" title="Relatório Vendas"><img src="\cristofarma\img\relatorio-vendas.png"></a></th>
+            <th> <a style="margin-right: 20px;" href="AlimentarEstoque.php" title="Estoque"><img src="\cristofarma\img\estoque-pronto.png"></a></th>
+            <th> <a style="margin-right: 20px;" href="ConsultaFornecedor.php" title="Pesquisa fornecedores"><img src="\cristofarma\img\pesquisa-fornecedor.png"></a></th>
+            <th> <a style="margin-right: 20px;" href="ConsultaClientes.php" title="Pesquisa clientes"><img src="\cristofarma\img\pesquisar-clientes.png"></a></th>
+            <th> <a style="margin-right: 20px;" href="ConsultaProdutos.php" title="Pesquisa produtos"><img src="\cristofarma\img\pesquisa-produtos.png"></a></th>
+            <th> <a style="margin-right: 20px;" href="ConsultaFuncionarios.php" title="Pesquisa funcionarios"><img src="\cristofarma\img\pesquisa-funcionarios.png"></a></th>
+
+        </tr>
+    </div>
+    <section id="principalHome" style="padding: 50px;">
+        <p>
+        <h1 id="nomeEmpresa" style="font-size: 64pt; color: #8b0211; text-align: center;"> DROGARIA CRISTOFARMA PLUS </h1>
+        </p>
+        <fieldset id="missao">
+            <legend>
+                <h1>Missão:</h1>
+            </legend>
+            <p style="color: #8b0211;">
+                "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+                labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
+                nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
+                velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident,
+                sunt in culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum dolor sit amet,
+                consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+                labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
+                nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
+                velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident,
+                sunt in culpa qui officia deserunt mollit anim id est laborum."
+            </p>
+        </fieldset>
+        <div id="contatos" style="color: #8b0211; text-align: center; margin-top: 5%;">
+            <h1>Tele Entregas: (62) 3242-7373</h1>
+            <h1>WhatsApp: (62) 98437-1551 / (62) 99279-1340</h1>
+        </div>
+    </section>
 </body>
 
 </html>
