@@ -9407,6 +9407,17 @@ a.text-dark:focus {
 }
 .header{
     position: fixed;
-}
+
+ }
+ #relatorio{
+border-style: groove;
+margin-left: 25%;
+margin-right: 25%;
+text-align: left;
+font-weight: bold;
+border-width:10px;
+border-color: lightcoral;
+
+ }
 
 /*# sourceMappingURL=bootstrap.css.map */
