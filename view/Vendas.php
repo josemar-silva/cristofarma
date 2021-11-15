@@ -227,7 +227,7 @@ if (isset($_SESSION['venda'])) {
 </div>
     <div id="adicionaPrudutoVenda" >
                 <a id="adicionar-produto" href="ConsultaProdutos.php?buscaProdutos=+" title="Buscar Produto"><img src="/img/search2.png"></a>
-    </div>
+    </div><br>
         <div id="divDataHoraVenda">   
             <label>Data:</label>
             <input id="dataVenda" name="dataVenda" value="<?php date_default_timezone_set('America/Sao_Paulo');
