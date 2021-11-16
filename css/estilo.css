@@ -166,29 +166,28 @@ border: none;
 
 }
 
-  .btn-outline-danger {
+.btn-outline-danger {
 
     color: #fff;
-    background-color: #8b0210;
-    border-color: #f7f7f7;
-  }
+    background-color: #B22222;
+    border: #8b0210 solid 1px;
+
+}
   
 .btn-outline-danger:hover {
 
-    color: #ff0000;
-    background-color: transparent;
-    border-color: #8b0210 solid 1px;
-    font-weight: bold;
-    background-color: #D3D3D3;
-  }
+    color: #fff;
+    border: #fff solid 1px;
+    background-color: #800000;
+    position: relative ;
+}
 
-  .legend {
+.legend {
 
       color: brown;
+}
 
-  }
-
-  #adicionaPrudutoVenda {
+#adicionaPrudutoVenda {
 
     display: inline-block;
     width: 40px;
@@ -205,7 +204,7 @@ border: none;
 #adicionaPrudutoVenda:hover {
 
     width: 50px;
-    height: 5 0px;
+    height: 50px;
     margin-bottom: 10px;
 }
 
@@ -226,8 +225,8 @@ border: none;
 
 #selecionarFornecedor:hover{
 
-    width: 90px;
-    height: 90px;
+    width: 50px;
+    height: 50px;
     margin-bottom: 10px;
 }
 
@@ -288,14 +287,15 @@ border: none;
 
 #adicionaClienteVenda :hover{
     
-    width: 90px;
-    height: 90px;
+    width: 50px;
+    height: 50px;
 }
 
 #divDabosVenda label {
 
     font-weight: bold;
     font-size: 13pt;
+    color: black;
 
 }
 

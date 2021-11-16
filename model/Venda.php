@@ -309,27 +309,29 @@ class Venda
         return $dadosSelecionados;
     }
 
-    function calculaValorVenda($valor_venda_sem_desconto, $desconto)
+    function calculaValorVenda($valor_venda_sem_desconto, $desconto_calculado)
     {
 
-    $valor_venda_com_desconto = $valor_venda_sem_desconto - $desconto;
+    $valor_venda_com_desconto = $valor_venda_sem_desconto - $desconto_calculado;
 
     return $valor_venda_com_desconto;
 
     }
 
-    function calculoFecharVendaCaixa($valor_venda, $valor_recebido)
+    function calculoFecharVendaCaixa($valor_recebido, $valor_venda)
     {
         
-    $troco = $valor_venda - $valor_recebido;
+    $troco = $valor_recebido - $valor_venda;
 
     return $troco;
 
     }
 
-    function calculaDescontoPorcentagem ( $valor_venda_sem_desconto, $porcentagem ) {
+    function calculaDescontoPorcentagem ($valor_venda_sem_desconto, $porcentagem) {
 
-        return ( $porcentagem / 100 ) * $valor_venda_sem_desconto;
+        $return_procentagem = ($valor_venda_sem_desconto / 100) * $porcentagem;
+
+        return $return_procentagem;
     }    
 
     

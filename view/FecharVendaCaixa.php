@@ -91,7 +91,7 @@
          value="<?php echo $codigo_venda_return;?>" style="background-color: #8b0210; color: aqua; text-align: center; margin-top: -30%; border: none; 
             text-decoration: none; font-weight: bold; font-size: 15pt;"><br>
 
-                                            <!-- CABEÇALHO CUPOM VENDA -->
+                                        <!-- CABEÇALHO CUPOM VENDA -->
 
     <p id="cabecalho" style="color: white; font-size: 18pt;"> </p></legend>
      <div >
@@ -104,52 +104,48 @@
                 $itemVendaReturn = $itemVenda->selectItemVendaLikeId($id_venda);
                     
                 $complemento = 0;
-
-                ?><br>
-
+        ?><br>
                 <table style="width: 95%; text-align: right; color: white; margin-top: -2%; margin-left: 2%;">               
+    <?php
+        for ($i=0; $i < count($itemVendaReturn) ; $i++) 
+        {
+            echo "<tr>"; 
 
-                <?php
-                
-                for ($i=0; $i < count($itemVendaReturn) ; $i++) 
+            foreach ($itemVendaReturn[$i] as $key => $value) 
+            {
+                if ($key == "produto_id_produto") // ignorar coluna
                 {
-                    echo "<tr>"; 
+                    $dados = $produto->selectProduto($value);
+                    echo "<td style='text-align: left;'>".$complemento.$dados['id_produto']."</td>"; 
+                            
+                    echo "<td style='text-align: left;'>".$dados['nome_produto']."</td>"; 
+                }
+            }
+                    foreach ($itemVendaReturn[$i] as $key => $value) 
+                    {
+                        if ($key == "valor_total_item") // ignorar coluna
+                        {
+                            echo "<td>".$dados['preco_venda']."</td>";
+                        }
+                    }
 
                     foreach ($itemVendaReturn[$i] as $key => $value) 
                     {
-                        if ($key == "produto_id_produto") // ignorar coluna
+                        if ($key == "quantidade_item") // ignorar coluna
                         {
-                            $dados = $produto->selectProduto($value);
-                            echo "<td style='text-align: left;'>".$complemento.$dados['id_produto']."</td>"; 
-                            
-                                echo "<td style='text-align: left;'>".$dados['nome_produto']."</td>"; 
+                            echo "<td>".$value.'&nbsp unid'."</td>";
                         }
-                    } 
-                        foreach ($itemVendaReturn[$i] as $key => $value) 
-                        {
-                            if ($key == "valor_total_item") // ignorar coluna
-                            {
-                                echo "<td>".$dados['preco_venda']."</td>";
-                            }
-                        }
-
-                        foreach ($itemVendaReturn[$i] as $key => $value) 
-                        {
-                            if ($key == "quantidade_item") // ignorar coluna
-                            {
-                                echo "<td>".$value.'&nbsp unid'."</td>";
-                            }
-                        }
+                    }
                         
-                        foreach ($itemVendaReturn[$i] as $key => $value) 
+                    foreach ($itemVendaReturn[$i] as $key => $value) 
+                    {
+                        if ($key == "valor_total_item") // ignorar coluna
                         {
-                            if ($key == "valor_total_item") // ignorar coluna
-                            {
-                                echo "<td>".$value."</td>";
-                                echo "<td>"."</td>";
+                            echo "<td>".$value."</td>";
+                            echo "<td>"."</td>";
                                 
-                            }
                         }
+                    }
                         echo "</tr>";
                 }        
             }
@@ -163,50 +159,44 @@
         <?php 
             if (isset($ListVendaReturn) && !empty($ListVendaReturn))  {
                 echo 'Total Itens:&nbsp;'.$total_item_venda_return.'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;';
+                echo 'Desconto: R$ &nbsp;'.$ListVendaReturn[0]['desconto'].'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;';
+
                 echo 'Valor Total: R$ &nbsp;'.$valor_venda_return;
             }
         ?>
         
     </div>
-
-     </div>
+</div>
     </div>
+            <?php 
+                
+                if (isset($_POST['valorRecebido'])) {
 
-    <?php 
-        
-        
-    ?>
+                    $valorDigitado = filter_input(INPUT_POST, 'valorRecebido');
+ 
+                    $valorVenda = (float) addslashes($_POST['totalApagar']);
+                    $valorRecebido = (float) $valorDigitado;
+
+                    $troco = $venda->calculoFecharVendaCaixa($valorRecebido, $valorVenda);
+                }
+                
+            ?>
     
         <form id="fecharVendaCaixa" name="fecharVenda" action="" method="POST"> 
             <legend style="margin-bottom: 10%; font-size: 25pt; font-weight: bolder; color: blue;">FINALIZAR VENDA</legend>
 
             <label>Total a Pagar:</label><br>
             <input id="valorPagar" class="form-control" name="totalApagar" size="6" placeholder="R$" placeholder="R$" 
-                value="<?php if(isset($ListVendaReturn)){echo $valor_venda_return;}?>" ><br><br><br>
+                value="<?php if(isset($ListVendaReturn)){echo number_format($valor_venda_return, 2, '.','.');}?>" ><br><br><br>
 
             <label>Valor Recebido:</label><br>
             <input id="valorRecebido" class="form-control" name="valorRecebido" type="text" size="6" placeholder="R$" 
                 value="<?php                 
                             if (isset($_POST['valorRecebido'])) 
-                            { 
-                                $valorDigitado = filter_input(INPUT_POST, 'valorRecebido'); 
-
+                            {
                                 echo number_format($valorDigitado, 2, '.','.');
-  
-                                $valorVenda = (float) addslashes($_POST['totalApagar']);
-
-                                $valorRecebido = (float) addslashes($_POST['valorRecebido']);
-
-                                $troco = calculaTroco($valorVenda, $valorRecebido);
-                            } 
-                                                    
-            function calculaTroco($valorVenda, $valorRecebido)
-            {
-                $troco = $valorRecebido - $valorVenda;
-                                
-                return $troco;
-            }
-                    ?>"><br><br><br>
+                            }
+                        ?>"><br><br><br>
 
             <label>Troco:</label><br>
             <input id="troco" class="form-control" name="troco" size="6" placeholder="R$" 
