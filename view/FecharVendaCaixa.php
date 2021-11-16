@@ -88,7 +88,7 @@
          ?>
 
     <legend style="color: white; font-weight: bold; margin-top: 1%;"> VENDA Nº  <input id="saidaIdVendaFecharCaixa" size="8"
-         value="<?php echo $codigo_venda_return;?>" style="background-color: rgba(168, 57, 68); color: aqua; text-align: center; margin-top: -30%; border: none; 
+         value="<?php echo $codigo_venda_return;?>" style="background-color: #8b0210; color: aqua; text-align: center; margin-top: -30%; border: none; 
             text-decoration: none; font-weight: bold; font-size: 15pt;"><br>
 
                                             <!-- CABEÇALHO CUPOM VENDA -->
