@@ -70,7 +70,7 @@
         </ul>
     </nav>
     <div id="divSair" >
-        <a href="index.php">Sair</a>
+        <a href="../index.php">Sair</a>
     </div>
 
     </header>

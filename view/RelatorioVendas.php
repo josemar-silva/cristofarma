@@ -41,13 +41,13 @@
         </ul>
     </nav>
     <div id="divSair">
-        <a href="index.php">Sair</a>
+        <a href="../index.php">Sair</a>
     </div>
 
     </header>
 
     <section id="principalRelatoriVendas" > 
-        <form id="relatorio"  action="RelatorioSaida.php" method="POST">
+<form id="relatorio"  action="RelatorioSaida.php" method="POST">
             <legend>
                 <legend>FILTROS RELATÓRIOS DE VENDAS</legend>
             </legend>
@@ -85,7 +85,7 @@
         </div><br><br><br><br>
 
             <button class="btn btn-outline-danger" id="btnGerarRelatorioGerencial" name="btnGerarRelatorioGerencial" onclick="" style="margin-left: 40%;">Gerar Relatório</button>
-</fo    rm>
+</form>
     </section>
 </body>
 

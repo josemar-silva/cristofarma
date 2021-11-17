@@ -19,30 +19,6 @@
     padding: 10px;
 }
 
-#menu {
-
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    width: 200px;
-    background-color: #b2b0b4;
-    height: 650px;
-    float: left;
-    width: 10%;
-    display: block;
-}
-
-#menu {
-
-    display: block;
-    height: 70px;
-    border: rgb(228, 225, 225) solid 1px;
-    width: 100%;
-    border-collapse: collapse;
-    text-decoration: none;
-    text-align: center;
-}
-
 section#principal {
 
     border:#8b0210 solid 1px;
@@ -220,7 +196,8 @@ border: none;
     margin-top: -7%;
     background-repeat: no-repeat;
     background-size: cover;
-    overflow: hidden; 
+    overflow: hidden;
+    position: relative;
 }
 
 #selecionarFornecedor:hover{
@@ -506,7 +483,7 @@ border: none;
 
         width: 95%;
         height: 610px;
-        border: none    ;
+        border: none;
         margin-left: 2%;
     }
 

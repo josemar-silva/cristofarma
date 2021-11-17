@@ -45,7 +45,7 @@ $pessoa = new Pessoa();
         </nav>
     </header>
     <div id="divSair">
-        <a href="index.php">Sair</a>
+        <a href="../index.php">Sair</a>
     </div>
 
     <form action="ConsultaClientes.php" method="GET">

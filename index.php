@@ -44,7 +44,7 @@
         <?php
         ## =================== VALIDAR LOGIN ========================
 
-        require_once '../model/Pessoa.php';
+        require_once 'model/Pessoa.php';
         $pessoa = new Pessoa();
 
         if (isset($_POST['email']) && isset($_POST['senha'])) {
@@ -56,7 +56,7 @@
                
                         if ($login = $pessoa->funcionarioLogin($emailLogin, $senhaLogin)) {
 
-                            header("location: home.php");
+                            header("location: view/home.php");
 
                         } else {
                             

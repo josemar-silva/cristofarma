@@ -40,7 +40,7 @@
     </nav>
     </header>
     <div id="divSair" >
-        <a href="index.php">Sair</a>
+            <a href="../index.php">Sair</a>
     </div>
 
     <section id="principalNotaFiscal" style="height: 610px;; border: none;">
@@ -381,8 +381,9 @@
         </table>
         </form>
     </section>
-    <button class="btn btn-outline-danger"type="submit" id="btnGerarNotaFiscal" name="gerarCumpom" style="margin-left: 40%; margin-top: 1%;">Emitir Cupom Fiscal</button>
-
+    
+            <a class="btn btn-outline-danger"id="btnGerarNotaFiscal" name="gerarCumpom" href="CupomPdf.php" target="_blank"
+                style="margin-left: 40%; margin-top: 1%; color: white;">Emitir Cupom Fiscal</a>
 </body>
 
 </html>

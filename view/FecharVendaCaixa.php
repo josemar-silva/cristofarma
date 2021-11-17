@@ -47,7 +47,7 @@
         
 
     <div id="divSair"  >
-        <a href="index.php">Sair</a>
+        <a href="../index.php">Sair</a>
     </div>
 
     <div id="divDetalharVenda">

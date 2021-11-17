@@ -44,7 +44,7 @@ $pessoa = new Pessoa();
             </ul>
         </nav>
         <div id="divSair">
-            <a href="index.php">Sair</a>
+            <a href="../index.php">Sair</a>
         </div>
 
         <form action="ConsultaFornecedor.php" method="GET">

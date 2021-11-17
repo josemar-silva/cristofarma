@@ -59,7 +59,7 @@
     </nav>
     </header>
     <div id="divSair"    >
-        <a href="index.php">Sair</a>
+        <a href="../index.php">Sair</a>
     </div>
 <form method="POST">
     <div id="itensAdicionados">

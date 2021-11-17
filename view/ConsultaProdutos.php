@@ -59,7 +59,7 @@ $pessoa = new Pessoa();
 
     <section id="principalConsultaProdutos">
     <div id="divSair" >
-        <a href="index.php">Sair</a>
+        <a href="../index.php">Sair</a>
     </div>
        
 <form action="ConsultaProdutos.php" method="GET">

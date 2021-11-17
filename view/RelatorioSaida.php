@@ -41,7 +41,7 @@
     
     </header>
     <div id="divSair"  >
-        <a href="index.php">Sair</a>
+        <a href="../index.php">Sair</a>
     </div>
     <section id="principalSaidaRelatorio">
         <div id="saidaRelatorio">
