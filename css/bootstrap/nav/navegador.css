@@ -9424,9 +9424,15 @@ border-color: lightcoral;
      text-align: center;
      padding-bottom: 5px;
      padding-top: 25px;
-     padding-right: 100px;
+     padding-right: 50px;
      margin-left: 50px;
-
+ }
+ .bordaIcones{
+    border-width:1px;
+    border-top:17px;
+    border-bottom: 20px;  
+    border-style: solid;
+    border-color:#adb5bd;
  }
 
 /*# sourceMappingURL=bootstrap.css.map */

@@ -74,7 +74,7 @@ $pessoa = new Pessoa();
 
         <!---------------------- BUSCA %like% = 'quem contem'... ----------------------->
         <div>
-            <div class="scroll">
+            <div class="scroll" class="nav nav-pills nav-stacked" style="height: 450px; overflow-y: scroll;">
                 <table>
                     <?php
                     if (isset($_GET['buscaProdutos'])) {

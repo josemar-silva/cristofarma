@@ -45,17 +45,17 @@
     </header>
     <div id="icones">
         <tr >
-            <th> <a style="margin-right: 20px;" href="ConsultaProdutos.php?buscaProdutos=+" title="Buscar Produto"><img src="\cristofarma\img\carrinho-de-compras.png"></a></th>
-            <th> <a style="margin-right: 20px;" href="Vendas.php" title="vendas"><img src="\cristofarma\img\vendas.png"></a></th>
-            <th> <a style="margin-right: 20px;" href="Cadastros.php" title="Cadastros"><img src="\cristofarma\img\cadastro.png"></a></th>
-            <th> <a style="margin-right: 20px;" href="Caixa.php" title="Caixa"><img src="\cristofarma\img\caixa-registradora.png"></a></th>
-            <th> <a style="margin-right: 20px;" href="CadastrarProdutos.php" title="Produtos"><img src="\cristofarma\img\produtos-de-higiene.png"></a></th>
-            <th> <a style="margin-right: 20px;" href="RelatorioVendas.php" title="Relatório Vendas"><img src="\cristofarma\img\relatorio-vendas.png"></a></th>
-            <th> <a style="margin-right: 20px;" href="AlimentarEstoque.php" title="Estoque"><img src="\cristofarma\img\estoque-pronto.png"></a></th>
-            <th> <a style="margin-right: 20px;" href="ConsultaFornecedor.php" title="Pesquisa fornecedores"><img src="\cristofarma\img\pesquisa-fornecedor.png"></a></th>
-            <th> <a style="margin-right: 20px;" href="ConsultaClientes.php" title="Pesquisa clientes"><img src="\cristofarma\img\pesquisar-clientes.png"></a></th>
-            <th> <a style="margin-right: 20px;" href="ConsultaProdutos.php" title="Pesquisa produtos"><img src="\cristofarma\img\pesquisa-produtos.png"></a></th>
-            <th> <a style="margin-right: 20px;" href="ConsultaFuncionarios.php" title="Pesquisa funcionarios"><img src="\cristofarma\img\pesquisa-funcionarios.png"></a></th>
+            <th> <a class="bordaIcones" style="margin-right: 20px;" href="ConsultaProdutos.php?buscaProdutos=+" title="Buscar Produto"><img src="\cristofarma\img\carrinho-de-compras.png"></a></th>
+            <th> <a class="bordaIcones" style="margin-right: 20px;" href="Vendas.php" title="vendas"><img src="\cristofarma\img\vendas.png"></a></th>
+            <th> <a class="bordaIcones" style="margin-right: 20px;" href="Cadastros.php" title="Cadastros"><img src="\cristofarma\img\cadastro.png"></a></th>
+            <th> <a class="bordaIcones" style="margin-right: 20px;" href="Caixa.php" title="Caixa"><img src="\cristofarma\img\caixa-registradora.png"></a></th>
+            <th> <a class="bordaIcones" style="margin-right: 20px;" href="CadastrarProdutos.php" title="Produtos"><img src="\cristofarma\img\produtos-de-higiene.png"></a></th>
+            <th> <a class="bordaIcones" style="margin-right: 20px;" href="RelatorioVendas.php" title="Relatório Vendas"><img src="\cristofarma\img\relatorio-vendas.png"></a></th>
+            <th> <a class="bordaIcones" style="margin-right: 20px;" href="AlimentarEstoque.php" title="Estoque"><img src="\cristofarma\img\estoque-pronto.png"></a></th>
+            <th> <a class="bordaIcones" style="margin-right: 20px;" href="ConsultaFornecedor.php" title="Pesquisa fornecedores"><img src="\cristofarma\img\pesquisa-fornecedor.png"></a></th>
+            <th> <a class="bordaIcones" style="margin-right: 20px;" href="ConsultaClientes.php" title="Pesquisa clientes"><img src="\cristofarma\img\pesquisar-clientes.png"></a></th>
+            <th> <a class="bordaIcones" style="margin-right: 20px;" href="ConsultaProdutos.php" title="Pesquisa produtos"><img src="\cristofarma\img\pesquisa-produtos.png"></a></th>
+            <th> <a class="bordaIcones" style="margin-right: 20px;" href="ConsultaFuncionarios.php" title="Pesquisa funcionarios"><img src="\cristofarma\img\pesquisa-funcionarios.png"></a></th>
 
         </tr>
     </div>
