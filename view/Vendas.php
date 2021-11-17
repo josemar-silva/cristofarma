@@ -269,7 +269,7 @@ if (isset($_SESSION['venda'])) {
                 value="<?php if (isset($_GET['id_cliente_up_venda']) && 'id_cliente_up_venda' !== NULL) 
                 {
                         $id_cliente_get_up = addslashes($_GET['id_cliente_up_venda']); 
-                            $retornoConsulta = $pessoa->selectPessoaCliente($id_cliente_get_up); 
+                            $retornoConsulta = $pessoa->selectPessoaCliente($id_cliente_get_up);
                                 if(isset($retornoConsulta)){echo $retornoConsulta[0]['nome'];
                     }
                 } 
@@ -286,9 +286,9 @@ if (isset($_SESSION['venda'])) {
                 }
                     ?>"><br><br><br>
 
-                <div id="adicionaClienteVenda">
-                        <a href="ConsultaClientes.php?buscaCliente=+" title="Buscar Cliente"><img src="/img/search2.png"></a>
-                </div>
+        <div id="adicionaClienteVenda">
+            <a href="ConsultaClientes.php?buscaCliente=<?php echo $clienteSelect = filter_input(INPUT_POST, 'nomeCliente'); ?>" title="Buscar Cliente"><img src="/img/search2.png"></a>
+        </div>
 
                 <label id="labelVendedorSelecionado">Vendedor:</label>
                                 <select id="vendedor" name="vendedor" class="form-control" required style="display: inline; margin-left: 5%;">
