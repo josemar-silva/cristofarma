@@ -47,7 +47,7 @@
     </header>
 
     <section id="principalRelatoriVendas" > 
-<form id="relatorio"  action="RelatorioSaida.php" method="POST">
+<form id="relatorio"  action="RelatorioVendasSaida.php" method="POST">
             <legend>
                 <legend>FILTROS RELATÓRIOS DE VENDAS</legend>
             </legend>
@@ -85,7 +85,7 @@
         </div><br><br><br><br>
 
             <button class="btn btn-outline-danger" id="btnGerarRelatorioGerencial" name="btnGerarRelatorioGerencial" onclick="" style="text-align: center;">Gerar Relatório</button>
-</fo    rm>
+</form>
     </section>
 </body>
 

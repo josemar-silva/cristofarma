@@ -35,7 +35,6 @@ $pessoa = new Pessoa();
                     </ul>
                 </li>
                 <li><a href="Cadastros.php">CADASTROS</a></li>
-                <li><a href="CupomFiscal.php">CUPOM FISCAL</a></li>
                 <li><a href="#">RELATÓRIOS</a>
                     <ul>
                         <li><a href="RelatorioVendas.php">Relatório de Vendas</a></li>
@@ -72,7 +71,7 @@ $pessoa = new Pessoa();
                             <div>
                                 <header class="header">
                                     <tr>
-                                        <th> ID FUNCIONÁRIO </th>
+                                        <th> ID </th>
                                         <th> NOME DO FUNCIONÁRIO</th>
                                         <th> CPF/CNPJ</th>
                                         <th> EMAIL </th>

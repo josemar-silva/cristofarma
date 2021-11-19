@@ -65,7 +65,7 @@ $tipoRelatorio = filter_input(INPUT_POST, 'tipoRelatorio');
 
 
     echo '<tr>';
-        echo '<th> ID VENDA </th>';
+        echo '<th> CÓDIGO VENDA </th>';
         echo '<th> DATA VENDA</th>';
         echo '<th> NOME DO CLIENTE </th>';
         echo '<th> VENDEDOR </th>';
@@ -100,6 +100,7 @@ if (isset($_POST['btnGerarRelatorioGerencial']) && $tipoRelatorio == 'data')
        for ($i=0; $i < count($returnVendas) ; $i++) 
         { 
              echo "<tr>";
+
 
                 foreach ($returnVendas[$i] as $key => $value) 
                 {
@@ -167,11 +168,10 @@ if (isset($_POST['btnGerarRelatorioGerencial']) && $tipoRelatorio == 'data')
                     {
                         echo "<td>" .$value. "</td>";
                     }
-                }
-
+                }           $vendaDestalhar = $returnVendas[$i]['id_venda'];
                         ?>  
                             <td> 
-                                <a id="detalharVendaReatorio" href=" " style="font-size: 12px;">Detalhar</a>
+                                <a id="detalharVendaReatorio" href="DetalharVenda.php?id_venda_up=<?php echo $vendaDestalhar; ?>" style="font-size: 12px;">Detalhar</a>
                             </td>
                         <?php
 
@@ -180,10 +180,10 @@ if (isset($_POST['btnGerarRelatorioGerencial']) && $tipoRelatorio == 'data')
     }
 
     }
-}
+} 
                                                 // CONSULTA VENDA POR NOME CLIENTE 'LIKE'
 
-if (isset($_POST['btnGerarRelatorioGerencial']) && $tipoRelatorio == 'cliente')
+if (isset($_POST['btnGerarRelatorioGerencial']) && $tipoRelatorio == 'cliente' && !empty($_POST['nomeDoCliente']))
 {
 
     $returnVendas =  $vendaRelatorio->selectVendaClienteLike($nomeCliente = "%".trim($_POST['nomeDoCliente'])."%");
@@ -260,12 +260,11 @@ if (isset($_POST['btnGerarRelatorioGerencial']) && $tipoRelatorio == 'cliente')
                     {
                         echo "<td>" .$value. "</td>";
                     }
-                }
-
-                
+                } 
+                        $vendaDestalhar = $returnVendas[$i]['id_venda'];
             ?>  
                 <td> 
-                    <a id="detalharVendaReatorio" href=" " style="font-size: 12px;">Detalhar</a>
+                    <a id="detalharVendaReatorio" href="DetalharVenda.php?id_venda_up=<?php echo $vendaDestalhar;?>" style="font-size: 12px;">Detalhar</a>
                 </td>
             <?php
 
@@ -276,7 +275,7 @@ if (isset($_POST['btnGerarRelatorioGerencial']) && $tipoRelatorio == 'cliente')
 }
                                 // CONSULTA VENDA POR NOME CLIENTE + DATA INICIO E DATA FIM
 
-if (isset($_POST['btnGerarRelatorioGerencial']) && $tipoRelatorio == 'cliente')
+if (isset($_POST['btnGerarRelatorioGerencial']) && $tipoRelatorio == 'cliente' && !empty($_POST['nomeDoCliente']))
 {
 
     if (isset($_POST['getDataInicial']) && isset($_POST['getDataFinal']) && !empty($_POST['getDataInicial'])  && !empty($_POST['getDataFinal']))
@@ -361,10 +360,10 @@ if (isset($_POST['btnGerarRelatorioGerencial']) && $tipoRelatorio == 'cliente')
                         }
                     }
 
-                    
+                        $vendaDestalhar = $returnVendas[$i]['id_venda'];
                 ?>  
                     <td> 
-                        <a id="detalharVendaReatorio" href=" " style="font-size: 12px;">Detalhar</a>
+                        <a id="detalharVendaReatorio" href="DetalharVenda.php?id_venda_up=<?php echo $vendaDestalhar;?>" style="font-size: 12px;">Detalhar</a>
                     </td>
                 <?php
     
@@ -460,10 +459,10 @@ if (isset($_POST['btnGerarRelatorioGerencial']) && isset($_POST['tipoRelatorio']
                     }
                 }
 
-            
+                    $vendaDestalhar = $returnVendas[$i]['id_venda'];
             ?>  
                 <td> 
-                    <a id="detalharVendaReatorio" href=" " style="font-size: 12px;">Detalhar</a>
+                    <a id="detalharVendaReatorio" href="DetalharVenda.php?id_venda_up=<?php echo $vendaDestalhar;?>" style="font-size: 12px;">Detalhar</a>
                 </td>
             <?php
 
@@ -475,7 +474,7 @@ if (isset($_POST['btnGerarRelatorioGerencial']) && isset($_POST['tipoRelatorio']
 
                                                 // CONSULTA VENDA POR NOME VENDEDOR 'LIKE'
 
-if (isset($_POST['btnGerarRelatorioGerencial']) && $tipoRelatorio == 'vendedor')
+if (isset($_POST['btnGerarRelatorioGerencial']) && $tipoRelatorio == 'vendedor' && !empty($_POST['nomeDoVendedor']))
 {
 
     $returnVendas =  $vendaRelatorio->consultaVendaLikeVendedor($nomeVendedor = "%".trim($_POST['nomeDoVendedor'])."%");
@@ -559,9 +558,10 @@ if (isset($_POST['btnGerarRelatorioGerencial']) && $tipoRelatorio == 'vendedor')
                         echo "<td>" .$value. "</td>";
                     }
                 }                
+                    $vendaDestalhar = $returnVendas[$i]['id_venda'];
             ?>  
                 <td> 
-                    <a id="detalharVendaReatorio" href=" " style="font-size: 12px;">Detalhar</a>
+                    <a id="detalharVendaReatorio" href="DetalharVenda.php?id_venda_up=<?php echo $vendaDestalhar;?>" style="font-size: 12px;">Detalhar</a>
                 </td>
             <?php
 
@@ -657,10 +657,10 @@ if (isset($_POST['btnGerarRelatorioGerencial']) && $tipoRelatorio == 'vendedor')
                         }
                     }
 
-                    
+                        $vendaDestalhar = $returnVendas[$i]['id_venda'];
                 ?>  
                     <td> 
-                        <a id="detalharVendaReatorio" href=" " style="font-size: 12px;">Detalhar</a>
+                        <a id="detalharVendaReatorio" href="DetalharVenda.php?id_venda_up=<?php echo $vendaDestalhar;?>" style="font-size: 12px;">Detalhar</a>
                     </td>
                 <?php
     

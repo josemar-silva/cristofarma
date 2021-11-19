@@ -31,7 +31,6 @@
                 </ul>
             </li>
             <li><a href="Cadastros.php">CADASTROS</a></li>
-            <li><a href="CupomFiscal.php">CUPOM FISCAL</a></li>
             <li><a href="#">RELATÓRIOS</a>
                 <ul>
                     <li><a href="RelatorioVendas.php">Relatório de Vendas</a></li>
@@ -50,7 +49,7 @@
         <a href="../index.php">Sair</a>
     </div>
 
-    <div id="divDetalharVenda">
+    <div id="divDetalharVenda" style="background-color: #191970; border: none;" >
 
     <?php
             require_once '../model/Produto.php';
@@ -88,14 +87,11 @@
          ?>
 
     <legend style="color: white; font-weight: bold; margin-top: 1%;"> VENDA Nº  <input id="saidaIdVendaFecharCaixa" size="8"
-         value="<?php echo $codigo_venda_return;?>" style="background-color: #8b0210; color: aqua; text-align: center; margin-top: -30%; border: none; 
+         value="<?php echo $codigo_venda_return;?>" style="background-color: #191970; color: yellow ; text-align: center; margin-top: -30%; border: none; 
             text-decoration: none; font-weight: bold; font-size: 15pt;"><br>
 
-                                        <!-- CABEÇALHO CUPOM VENDA -->
-
-    <p id="cabecalho" style="color: white; font-size: 18pt;"> </p></legend>
-     <div >
-            <div  id="descricaoVendaCaixa" class="scroll">
+     <div>
+            <div  id="descricaoVendaCaixa" class="scroll" >
         <?php 
                                         // DETALHAR VENDA SELECIONADA
 
@@ -152,9 +148,9 @@
     ?>
     </table>
     
-           </div>
+           </div > 
 
-    <div id="resumoVenda" style=" color: white; font-size: 15pt; font-family: Arial, Helvetica, sans-serif; float: right; margin-right: 3%;">
+    <div id="resumoVenda" style=" color: white; font-size: 18pt; font-family: Arial, Helvetica, sans-serif; float: right; margin-right: 3%; margin-top: 1.5%;">
         
         <?php 
             if (isset($ListVendaReturn) && !empty($ListVendaReturn))  {

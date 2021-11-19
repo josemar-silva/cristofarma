@@ -47,7 +47,6 @@ $pessoa = new Pessoa();
                     </ul>
                 </li>
                 <li><a href="Cadastros.php">CADASTROS</a></li>
-                <li><a href="CupomFiscal.php">CUPOM FISCAL</a></li>
                 <li><a href="#">RELATÓRIOS</a>
                     <ul>
                         <li><a href="RelatorioVendas.php">Relatório de Vendas</a></li>
@@ -80,7 +79,7 @@ $pessoa = new Pessoa();
                     if (isset($_GET['buscaProdutos'])) {
                         echo '<table class="table table-hover">';
                         echo '<tr>';
-                        echo '<th> ID PRODUTO </th>';
+                        echo '<th> ID </th>';
                         echo '<th> NOME DO PRODUTO </th>';
                         echo '<th> PREÇO CUSTO </th>';
                         echo '<th> PREÇO VENDA </th>';

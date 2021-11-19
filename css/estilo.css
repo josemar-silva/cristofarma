@@ -360,6 +360,7 @@ border: none;
         margin-left: 1%;
         float: left;
         border-radius: 5%;
+        
     }
 
  
@@ -491,8 +492,3 @@ border: none;
 
         margin-top: -3%;
     }
-
-    table th, tr, td {
-        font-size: 15pt;
-    }
-
