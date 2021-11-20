@@ -10,6 +10,7 @@ $pessoa = new Pessoa();
     <meta charset="UTF-8" />
     <link rel="stylesheet" href="../css/bootstrap/nav/navegador.css">
     <link rel="stylesheet" href="../css/estilo.css">
+    <link rel="stylesheet" href="../css/fontawesome/css/all.css">
     <title>Pesquisar Clientes</title>
 </head>
 

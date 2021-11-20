@@ -10,7 +10,6 @@ $pessoa = new Pessoa();
     <meta charset="UTF-8" />
     <link rel="stylesheet" href="../css/bootstrap/nav/navegador.css">
     <link rel="stylesheet" href="../css/estilo.css">
-    <link rel="stylesheet" href="../css/fontawesome/css/all.css">
     <title>Pesquisar Clientes</title>
 </head>
 
@@ -63,9 +62,8 @@ $pessoa = new Pessoa();
         if (isset($_GET['buscaCliente'])) {
             $tipoConsulta = "cliente";
         ?>
-
             <div class="tableFixHead">
-                <table class="table table-striped table-hover" style="height: 450px; overflow-y: scroll;">
+                <table class="table table-striped table-hover">
                     <thead>
                         <tr>
                             <th> ID </th>
@@ -78,7 +76,6 @@ $pessoa = new Pessoa();
                             <th> AÇÃO </th>
                         </tr>
                     </thead>
-
                     <tbody>
                         <?php
 
@@ -100,9 +97,9 @@ $pessoa = new Pessoa();
                                 }
                         ?>
                                 <td>
-                                    <a id="acaoSelecionar" href="Vendas.php?id_cliente_up_venda=<?php echo $dados[$i]['id_pessoa']; ?>"><i class="fas fa-hand-pointer"></i><!--Selecionar--></a>
-                                    <a class="acaoVerde" id="acaoEditar" href="AtualizaCliente.php?id_get_up=<?php echo $dados[$i]['id_pessoa']; ?>"><i class="fas fa-edit"></i><!--Editar--></a>
-                                    <a class="acaoVermelho" id="acaoExcluir" href="ConsultaClientes.php?id_get_del=<?php echo $dados[$i]['id_pessoa']; ?>"><i class="fas fa-trash"></i><!--Excluir--></a>
+                                    <a id="acaoSelecionar" href="Vendas.php?id_cliente_up_venda=<?php echo $dados[$i]['id_pessoa']; ?>">Selecionar</a>
+                                    <a class="acaoVerde" id="acaoEditar" href="AtualizaCliente.php?id_get_up=<?php echo $dados[$i]['id_pessoa']; ?>">Editar</a>
+                                    <a class="acaoVermelho" id="acaoExcluir" href="ConsultaClientes.php?id_get_del=<?php echo $dados[$i]['id_pessoa']; ?>">Excluir</a>
                                     <!-- usar "echo $dados[$i]['id_pessoa']; "pegar ID desejado no array e passar como 'string' para o metodo $_GET-->
                                 </td>
                         <?php
@@ -110,7 +107,7 @@ $pessoa = new Pessoa();
                             }
                         }
                         ?>
-                    </tbody>
+                    </tbody>    
                 </table>
             </div>
         <?php
@@ -128,7 +125,6 @@ $pessoa = new Pessoa();
         $pessoa->deletePessoa($id_up);
         header("location: ConsultaClientes.php?buscaCliente=+"); #atualizar a pagina ao executar a exclusão
     }
-
     ?>
 </body>
 
