@@ -10,6 +10,7 @@ $pessoa = new Pessoa();
     <meta charset="UTF-8" />
     <link rel="stylesheet" href="../css/bootstrap/nav/navegador.css">
     <link rel="stylesheet" href="../css/estilo.css">
+    <link rel="stylesheet" href="../css/fontawesome/css/all.css">
     <title>Pesquisar Clientes</title>
 </head>
 
@@ -97,9 +98,9 @@ $pessoa = new Pessoa();
                                 }
                         ?>
                                 <td>
-                                    <a id="acaoSelecionar" href="Vendas.php?id_cliente_up_venda=<?php echo $dados[$i]['id_pessoa']; ?>">Selecionar</a>
-                                    <a class="acaoVerde" id="acaoEditar" href="AtualizaCliente.php?id_get_up=<?php echo $dados[$i]['id_pessoa']; ?>">Editar</a>
-                                    <a class="acaoVermelho" id="acaoExcluir" href="ConsultaClientes.php?id_get_del=<?php echo $dados[$i]['id_pessoa']; ?>">Excluir</a>
+                                    <a id="acaoSelecionar" href="Vendas.php?id_cliente_up_venda=<?php echo $dados[$i]['id_pessoa']; ?>"><i class="fas fa-hand-pointer"></i><!--Selecionar--></a>
+                                    <a class="acaoVerde" id="acaoEditar" href="AtualizaCliente.php?id_get_up=<?php echo $dados[$i]['id_pessoa']; ?>"><i class="fas fa-edit"></i><!--Editar--></a>
+                                    <a class="acaoVermelho" id="acaoExcluir" href="ConsultaClientes.php?id_get_del=<?php echo $dados[$i]['id_pessoa']; ?>"><i class="fas fa-trash"></i><!--Excluir--></a>
                                     <!-- usar "echo $dados[$i]['id_pessoa']; "pegar ID desejado no array e passar como 'string' para o metodo $_GET-->
                                 </td>
                         <?php
