@@ -12,10 +12,11 @@ $pessoa = new Pessoa();
     <meta charset="UTF-8" />
     <link rel="stylesheet" href="../css/bootstrap/nav/navegador.css">
     <link rel="stylesheet" href="../css/estilo.css">
+    <link rel="stylesheet" href="../css/fontawesome/css/all.css">
     <title>Pesquisar Produtos</title>
 </head>
 
-<body >
+<body>
     <header>
 
     </header>
@@ -57,36 +58,48 @@ $pessoa = new Pessoa();
     </header>
 
     <section id="principalConsultaProdutos">
-    <div id="divSair" >
-        <a href="../index.php">Sair</a>
-    </div>
-       
-<form action="ConsultaProdutos.php" method="GET">
-    <legend>CONSULTA PRDUTOS</legend><br><br>
-    
-    <label style="margin-left: 25%;"></label>
-    <input  type="search" id="buscaProdutos" class="form-control" name="buscaProdutos" autofocus value="<?php if (isset($_GET['buscaProdutos']) && !empty($_GET['buscaProdutos'])) 
-            echo $_GET['buscaProdutos'];?>" size=" 50" class="form-control-busca" placeholder="Digte aqui para buscar" style="display: inline; font-size: 13pt;">
+        <div id="divSair">
+            <a href="../index.php">Sair</a>
+        </div>
+
+        <form action="ConsultaProdutos.php" method="GET">
+            <legend>CONSULTA PRODUTOS</legend><br><br>
+
+            <label style="margin-left: 25%;"></label>
+            <input type="search" id="buscaProdutos" class="form-control" name="buscaProdutos" autofocus value="<?php if (isset($_GET['buscaProdutos']) && !empty($_GET['buscaProdutos']))
+                                                                                                                    echo $_GET['buscaProdutos']; ?>" size=" 50" class="form-control-busca" placeholder="Digte aqui para buscar" style="display: inline; font-size: 13pt;">
 
             <button class="btn btn-outline-danger" id="btnBuscar" onclick="" style="width: 10%; padding: 2px; margin-left: 3%;">Buscar</button><br><br>
         </form>
 
         <!---------------------- BUSCA %like% = 'quem contem'... ----------------------->
-        <div>
-            <div class="scroll" class="nav nav-pills nav-stacked" style="height: 450px; overflow-y: scroll;">
-                <table>
+        <div class="tableFixHead">
+            <table class="table table-striped table-hover">
+                <thead>
+                    <tr>
+                        <th> ID teste </th>
+                        <th> NOME DO PRODUTO </th>
+                        <th> PREÇO CUSTO </th>
+                        <th> PREÇO VENDA </th>
+                        <th> CÓDIGO DE BARRAS </th>
+                        <th> LABORATÓRIO </th>
+                        <th> AÇÃO </th>
+                    </tr>
+                </thead>
+
+                <tbody>
                     <?php
                     if (isset($_GET['buscaProdutos'])) {
-                        echo '<table class="table table-hover">';
-                        echo '<tr>';
-                        echo '<th> ID </th>';
-                        echo '<th> NOME DO PRODUTO </th>';
-                        echo '<th> PREÇO CUSTO </th>';
-                        echo '<th> PREÇO VENDA </th>';
-                        echo '<th> CÓDIGO DE BARRAS </th>';
-                        echo '<th> LABORATÓRIO </th>';
-                        echo '<th> AÇÃO </th>';
-                        echo '</tr>';
+                        // echo '<table class="table table-hover">';
+                        // echo '<tr>';
+                        // echo '<th> ID teste </th>';
+                        // echo '<th> NOME DO PRODUTO </th>';
+                        // echo '<th> PREÇO CUSTO </th>';
+                        // echo '<th> PREÇO VENDA </th>';
+                        // echo '<th> CÓDIGO DE BARRAS </th>';
+                        // echo '<th> LABORATÓRIO </th>';
+                        // echo '<th> AÇÃO </th>';
+                        // echo '</tr>';
 
                         $dados = $produto->consultaProdutoLike($consultaLike = "%" . trim($_GET['buscaProdutos']) . "%");
 
@@ -116,19 +129,23 @@ $pessoa = new Pessoa();
                                 }
                     ?>
                                 <td>
-                                    <a id="acaoSelecionar" href="Vendas.php?id_produto_up_venda=<?php echo $dados[$i]['id_produto']; ?>">Selecionar</a>
-                                    <a class="acaoVerde" id="acaoEditar" href="AtualizaProduto.php?id_get_up=<?php echo $dados[$i]['id_produto']; ?>">Editar</a>
-                                    <a class="acaoVermelho" id="acaoExcluir" href="ConsultaProdutos.php?id_get_del=<?php echo $dados[$i]['id_produto']; ?>">Excluir</a>
+                                    <a class=" my-2" id="acaoSelecionar" href="Vendas.php?id_produto_up_venda=<?php echo $dados[$i]['id_produto']; ?>"><i class="fas fa-hand-pointer"></i><!--Selecionar--></a>
+                                    <a class="acaoVerde my-2" id="acaoEditar" href="AtualizaProduto.php?id_get_up=<?php echo $dados[$i]['id_produto']; ?>"><i class="fas fa-edit"></i><!--Editar--></a>
+                                    <a class="acaoVermelho my-2" id="acaoExcluir" href="ConsultaProdutos.php?id_get_del=<?php echo $dados[$i]['id_produto']; ?>"><i class="fas fa-trash"></i><!--Excluir--></a>
                                     <!-- usar "echo $dados[$i]['id_pessoa']; "pegar ID desejado no array e passar como 'string' para o metodo $_GET-->
-                            </td>
+                                </td>
                     <?php
                                 echo "</tr>"; // fecha linha dos dados selecionados
                             }
                         }
-                    }
+                    } else {
+                        for ($i=0; $i < 15; $i++) {
+                            echo '<tr class="table-not-found"><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>';
+                        }
+                    }                        
                     ?>
-                </table>
-            </div>
+                </tbody>
+            </table>
         </div>
     </section>
 </body>

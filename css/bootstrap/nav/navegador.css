@@ -1635,7 +1635,7 @@ pre code {
 
 .table thead th {
     vertical-align: bottom;
-    border-bottom: 2px solid #5489be;
+    /* border-bottom: 2px solid #5489be; */
 }
 
 .table tbody+tbody {
@@ -9434,5 +9434,25 @@ border-color: lightcoral;
     border-style: solid;
     border-color:#adb5bd;
  }
+
+.tableFixHead          { overflow: auto; height: 450px; }
+.tableFixHead thead th { position: sticky; top: 0; }
+
+/* Just common table stuff. Really. */
+table  { border-collapse: collapse; width: 100%; }
+th, td { padding: 8px 16px; }
+
+.table-not-found {
+    height: 27.3px;
+}
+
+/* tr td {
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+} */
+
+
 
 /*# sourceMappingURL=bootstrap.css.map */
