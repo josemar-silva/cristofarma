@@ -5,6 +5,7 @@
     <meta charset="UTF-8" />
     <link rel="stylesheet" href="../css/bootstrap/nav/navegador.css">
     <link rel="stylesheet" href="../css/estilo.css">
+    <link rel="stylesheet" href="../css/fontawesome/css/all.css">
 
     <title>Caixa</title>
 </head>
@@ -130,8 +131,8 @@
                     }
         ?>
                          <td>
-                        <a class="acaoVerde" id="fecharVendaNoCaixa" href="FecharVendaCaixa.php?id_get_venda_up=<?php echo $dados[$i]['id_venda'];?>">Receber</a>
-                        <a class="acaoVermelho" id="cancelaNoVendaCaixa" href="">Cancelar</a>
+                        <a class="acaoVerde" id="fecharVendaNoCaixa" href="FecharVendaCaixa.php?id_get_venda_up=<?php echo $dados[$i]['id_venda'];?>"><i class="fas fa-vote-yea"></i>
+                        <a class="acaoVermelho" id="cancelaNoVendaCaixa" href=""><i class="fas fa-window-close"></i>
                         </td>
         <?php
                         echo "</tr>"; // fecha linha dos dados selecionados
