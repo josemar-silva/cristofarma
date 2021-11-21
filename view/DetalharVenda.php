@@ -61,7 +61,7 @@
         if (isset($_GET['id_venda_up'])) {
             $id_venda = $_GET['id_venda_up'];
 
-            $vendaReturn = $venda->selectVendaFechadaLikeId($id_venda);
+            $vendaReturn = $venda->selectVendaId($id_venda);
             
             $venda_id = $vendaReturn[0]['id_venda'];
 
@@ -86,7 +86,6 @@
                    
                $itemVendaReturn = $itemVenda->selectItemVendaLikeId($id_venda);
                    
-               $complemento = 0;
        ?><br>
                <table style="width: 96%; text-align: right; color: white; margin-top: -2%; margin-left: 2%;">               
    <?php
@@ -108,7 +107,7 @@
                if ($key == "produto_id_produto") // ignorar coluna
                {
                    $dados = $produto->selectProduto($value);
-                   echo "<td style='text-align: left;'>".$complemento.$dados['id_produto']."</td>"; 
+                   echo "<td style='text-align: left;'>".$dados['id_produto']."</td>"; 
                            
                    echo "<td style='text-align: left;'>".$dados['nome_produto']."</td>"; 
                }
@@ -162,9 +161,17 @@
 </div>
         </form>
     </section>
-    
-            <a class="btn btn-outline-danger"id="btnGerarNotaFiscal" name="gerarCumpom" href="CupomPdf.php?id_venda_cupom=<?php echo $id_venda; ?>" target="_blank"
-                style="margin-left: 45%; margin-top: 0%; color: white;">Emitir Cupom Fiscal</a>
+
+           <?php
+                 $status = $vendaReturn[0]['status_venda']; 
+
+                 if ($status == 'fechado') {
+             ?>  
+                     <a class="btn btn-outline-danger"id="btnGerarNotaFiscal" name="gerarCumpom" href="CupomPdf.php?id_venda_cupom=<?php echo $id_venda; ?>" target="_blank"
+                        style="margin-left: 45%; margin-top: 0%; color: white;">Emitir Cupom Fiscal</a>
+             <?php
+                 } 
+           ?>
 </body>
 
 </html>

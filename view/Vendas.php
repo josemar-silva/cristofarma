@@ -68,7 +68,7 @@
 <div class="scroll">
 
     <table>
-    <legend style="background-color: var(--cor-fundo) ; color: rgb(231, 225, 225);">REALIZAR VENDA/ORÇAMENTO</legend>
+    <legend style="background-color: #191970; color: white;">VENDA / ORÇAMENTO</legend>
 
     
         <tr>
@@ -92,7 +92,14 @@
         $mes = date('m');
         $dia = date('d');
         $countVendasDia = count($venda->selectAllVenda());
-        $codigo_gerado_venda = $ano.$mes.$dia.$countVendasDia; /* GERANDO CODIGO DA VENDA */
+        $codigo_gerado_venda = $ano.$mes.$dia.$countVendasDia;
+        $outputCodigoVenda = $codigo_gerado_venda; /* GERANDO CODIGO DA VENDA */
+
+        echo '<input id="codigoVenda" name="codigoVenda" value="'. $outputCodigoVenda .'"style="background-color: #191970; color: yellow; font-weight: bolder; text-align: 
+        center; font-size: 13pt; border: none; display: inline-block;" size="10" disabled></input>';
+
+    echo '</div>';
+
     
                         // ADIDIONANDO ITENS AO CARRINHO DE COMPRAS //
 
@@ -139,7 +146,7 @@ if (isset($_POST['fecharVenda']) && !empty($_POST['idClienteVenda']) && !empty($
 { 
             $vendaStatus = 'aberto';
 
-            $codigo_venda = addslashes($_POST['codigoVenda']);
+            $codigo_venda = $codigo_gerado_venda;
             $pessoa_id_pessoa_vendedor =  addslashes($_POST['vendedor']); 
             $pessoa_id_pessoa_cliente =  addslashes($_POST['idClienteVenda']);
             $data_venda = addslashes($_POST['dataVenda']);
@@ -161,7 +168,7 @@ if (isset($_POST['fecharVenda']) && !empty($_POST['idClienteVenda']) && !empty($
                 $quantidade_produto = $_SESSION['venda'][$product];
                 $valor_produto = $quantidade_produto*$prod['preco_venda'];
 
-                $itemVenda->createItemVenda((int)$codigo_gerado_venda, (int)$product, (int)$quantidade_produto, (float)$valor_produto);
+                $itemVenda->createItemVenda((int)$outputCodigoVenda, (int)$product, (int)$quantidade_produto, (float)$valor_produto);
             }
 
             echo '<script> alert("Venda finalizada Com sucesso!")</script>';
@@ -169,8 +176,7 @@ if (isset($_POST['fecharVenda']) && !empty($_POST['idClienteVenda']) && !empty($
                     // echo '<META HTTP-EQUIV="REFRESH" CONTENT="0;URL=Vendas.php"/>'; // REFRESH para atualizar a página
 }
 
-    echo '<input id="codigoVenda" name="codigoVenda" value="'. $codigo_gerado_venda .'"style="background-color: #feeaff;font-weight: bolder;; color: #161934; text-align: 
-        center; font-size: 15pt; border: none; display: inline-block;" size="10" ></input>';
+
             
         // EXCLUINDO OS ITENS DO CARRINHO DE COMPRAS //
 

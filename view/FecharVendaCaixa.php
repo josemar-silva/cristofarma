@@ -155,8 +155,6 @@
         <?php 
             if (isset($ListVendaReturn) && !empty($ListVendaReturn))  {
                 echo 'Total Itens:&nbsp;'.$total_item_venda_return.'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;';
-                echo 'Desconto: R$ &nbsp;'.$ListVendaReturn[0]['desconto'].'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;';
-
                 echo 'Valor Total: R$ &nbsp;'.$valor_venda_return;
             }
         ?>
@@ -200,18 +198,6 @@
                         echo number_format($troco, 2, '.','.');
                     }?>" disabled><br><br>
 
-        <Script>
-            $(document).ready(function () 
-            {
-                $('input').keypress(function (e) 
-                {
-                    var code = null;
-                    code = (e.keyCode ? e.keyCode : e.which);                
-                    return (code == 13) ? false : true;
-                 });
-            });
-        </Script>
-
             <button class="btn btn-outline-danger" id="btnFinalizar" name="btnFinalizar" onclick="" style="display: inline; margin-left: 8%; margin-top: 15%;">Finalizar</button>
             <button class="btn btn-outline-danger" id="btnCancelar" name="btnCancelar" onclick=""  style="display: inline; margin-left: 18%; margin-top: 15%;">Cancelar</button>
         </form>
@@ -221,7 +207,6 @@
                 
             if (isset($_POST['btnFinalizar'])) 
             {
-
                 if ($valorRecebido >= $valorVenda) {
 
                     $idVenda = $_GET['id_get_venda_up'];
@@ -238,11 +223,10 @@
 
                 } else {
 
-                    echo '<script> alert(" Valor recebido é menor que o valor da venda! Verifique novamente!")</script>';
+                    echo '<script> alert("Valor recebido é menor que o valor da venda! Verifique novamente!")</script>';
                 }
             }
         ?>
-        
     </div>
     </section>
 </body>

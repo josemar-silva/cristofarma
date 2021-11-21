@@ -61,22 +61,15 @@ class Venda
             return true;
 }
 
-    public function deleteVenda($data_venda, $idClienteVenda)
+    public function deleteVenda($cod_venda)
 {
     $conexao = new Conexao();
 
-    $fk_venda = array();
-
-    $dados = $conexao->pdo->prepare("SELECT id_venda FROM venda WHERE data_venda = :dv AND pessoa_id_pessoa_cliente = :fkp");
-    $dados->bindValue("dv", $data_venda);
-    $dados->bindValue("fkp", $idClienteVenda);
-    $dados->execute();
-    $res = $dados->fetch(PDO::FETCH_ASSOC);
-    $fk_venda = $res[0]['id_venda'];
-
     $dados = $conexao->pdo->prepare("DELETE FROM venda WHERE codigo_venda = :id");
-    $dados->bindValue("id", $fk_venda);
+    $dados->bindValue("id", $cod_venda);
     $dados->execute();
+
+    return true;
 }
 
     public function updateVenda($id_venda_up, $pessoa_id_pessoa_vendedor, $pessoa_id_pessoa_Cliente, $data_venda, $tipo_pagamento, $status_venda,
@@ -137,41 +130,22 @@ class Venda
 
         $dadosSelecionados = array();
 
-        $dados  = $conexao->pdo->query("SELECT * FROM venda ORDER BY data_venda DESC");
+        $dados  = $conexao->pdo->prepare("SELECT * FROM venda ORDER BY data_venda DESC");
         $dadosSelecionados = $dados->fetchAll(PDO::FETCH_ASSOC);
 
         return $dadosSelecionados;
     }
 
-    // public function selectVendaIdRelatorio($idVendaLike)
-    // {
-    //     $conexao = new Conexao();
+    public function selectVendaId($id_venda)
+    {
+        $conexao = new Conexao();
 
-    //     $dados  = $conexao->pdo->prepare("SELECT * FROM venda WHERE codigo_venda LIKE :id AND status_venda = 'fechado'"); // dados retornam como ARRAY
-    //     $dados->bindValue("id", $idVendaLike);
-    //     $dados->execute();
-    //     $dadosSelecionados = $dados->fetchAll(PDO::FETCH_ASSOC);    
-       
-    //     return $dadosSelecionados;
-    // }
-
-    // public function selectVendaLikeCpf($buscaCpf)
-    // {
-    //     $conexao = new Conexao();
-
-    //     $dados  = $conexao->pdo->prepare("SELECT id_pessoa FROM pessoa WHERE cpf_cnpj = :cpf"); // dados retornam como ARRAY
-    //     $dados->bindValue("cpf", $buscaCpf);
-    //     $dados->execute();
-    //     $dadosSelecionados = $dados->fetch(PDO::FETCH_ASSOC);
-    //     $idPessoa = $dadosSelecionados['id_pessoa'];
-
-    //     $dados  = $conexao->pdo->prepare("SELECT * FROM venda WHERE pessoa_id_pessoa_cliente = :fk  AND status_venda = 'fechado' "); // dados retornam como ARRAY
-    //     $dados->bindValue("fk", $idPessoa);
-    //     $dados->execute();
-    //     $dadosSelecionados = $dados->fetchAll(PDO::FETCH_ASSOC);
-       
-    //     return $dadosSelecionados;
-    // }
+        $dados = $conexao->pdo->prepare("SELECT * FROM venda WHERE id_venda = :id");
+        $dados->bindValue(":id", $id_venda);
+        $dados->execute();
+        $dadosSelecionados = $dados->fetchAll(PDO::FETCH_ASSOC);
+        return $dadosSelecionados;
+    }
 
     public function selectAllVendaAberta()
     {
@@ -192,7 +166,7 @@ class Venda
 
         $dadosSelecionados = array();
 
-        $dados  = $conexao->pdo->query("SELECT * FROM venda left JOIN pessoa ON pessoa_id_pessoa_cliente = id_pessoa where status_venda = 'fechado' 
+        $dados  = $conexao->pdo->prepare("SELECT * FROM venda left JOIN pessoa ON pessoa_id_pessoa_cliente = id_pessoa where status_venda = 'fechado' 
             ORDER BY data_venda DESC");
         $dadosSelecionados = $dados->fetchAll(PDO::FETCH_ASSOC);
 

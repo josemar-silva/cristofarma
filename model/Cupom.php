@@ -43,25 +43,7 @@
 
         return true;
     }
-
-    function deleteCupomFiscal() {
-
-    }
-
-    function updateCupomFiscal() {
-
-    }
-
-    function selectCupomFiscalLikeId() {
-
-    }
-
-    function selectCupomFiscalAll() {
-
-    }
 }
-
-
 ?>
 
     

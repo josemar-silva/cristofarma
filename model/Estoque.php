@@ -51,7 +51,6 @@ function updateEstoque($quantidade_estoque, $produto_id_produto)
     $dados->execute(); 
 
     return true;
-
 }
 
 function deleteEstoque($produto_id_produto)
@@ -69,17 +68,16 @@ function deleteEstoque($produto_id_produto)
     $dados->execute();
 
     return true;
-
 }
 
-function selectQuantidadeEstoqueForId($produto_id_produto)
+function selectQuantidadeEstoque($produto_id_produto)
 {
     $conexao = new Conexao();
 
-    $dados  = $conexao->pdo->prepare("SELECT id_produto FROM produto WHERE id_produto = :idp"); 
+    $dados  = $conexao->pdo->prepare("SELECT id_produto FROM produto WHERE id_produto = :idp");
     $dados->bindValue("idp", $produto_id_produto);
-    $dados->execute(); 
-    $resturn = $dados->fetch(PDO::FETCH_ASSOC); 
+    $dados->execute();
+    $resturn = $dados->fetch(PDO::FETCH_ASSOC);
     $id_produto = $resturn['id_produto'];
 
     $dados  = $conexao->pdo->prepare("SELECT quantidade_estoque FROM estoque WHERE produto_id_produto = :idp"); 
@@ -101,4 +99,26 @@ function selectAllEstoque()
     return $produto_estoque;
 }
 
+function estoqueAdd()
+{
+    $conexao = new Conexao();
+
+    $dados  = $conexao->pdo->prepare("SELECT * FROM estoque"); 
+    $dados->execute(); 
+    $produto_estoque = $dados->fetchAll(PDO::FETCH_ASSOC); 
+
+    return true;
+}
+
+function estoquerRemove()
+{
+    $conexao = new Conexao();
+
+    $dados  = $conexao->pdo->prepare("SELECT * FROM estoque"); 
+    $dados->execute(); 
+    $produto_estoque = $dados->fetchAll(PDO::FETCH_ASSOC); 
+
+    return true;
+}
+ 
 }
