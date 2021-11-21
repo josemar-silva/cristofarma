@@ -52,7 +52,7 @@ $pessoa = new Pessoa();
 
             <label style="margin-left: 25%;"></label>
             <input type="search" id="buscaFornecedor" class="form-control" name="buscaFornecedor" autofocus value="<?php if (isset($_GET['buscaFornecedor']) && !empty($_GET['buscaFornecedor']))
-                echo $_GET['buscaFornecedor']; ?>" size=" 50" class="form-control-busca" placeholder="Digte aqui para buscar" style="display: inline; font-size: 13pt;">
+                                                                                                                        echo $_GET['buscaFornecedor']; ?>" size=" 50" class="form-control-busca" placeholder="Digte aqui para buscar" style="display: inline; font-size: 13pt;">
 
             <button class="btn btn-outline-danger" id="btnBuscar" onclick="" style="width: 10%; padding: 2px; margin-left: 3%;">Buscar</button><br><br>
         </form>
@@ -62,59 +62,59 @@ $pessoa = new Pessoa();
             if (isset($_GET['buscaFornecedor'])) {
                 $tipoConsulta = "fornecedor";
             ?>
-                <form class="border-bottom">
-                    <table>
-                        <table class="table table-hover">
-                        </table>
-                        <div class="scroll" class="nav nav-pills nav-stacked" style="height: 450px; overflow-y: scroll;">
-                            <table class="table table-hover">
-                                <div>
-                                    <header class="header">
-                                        <tr>
-                                            <th> ID </th>
-                                            <th> LABORATÓRIO</th>
-                                            <th> CPF/CNPJ</th>
-                                            <th> EMAIL </th>
-                                            <th> TELEFONE FIXO </th>
-                                            <th> TELEFONE CELULAR </th>
-                                            <th> ENDEREÇO DO LABORATÓRIO</th>
-                                            <th> AÇÃO </th>
-                                        </tr>
-                                    </header>
-                                </div>
-                                <?php
+                <div class="tableFixHead">
+                    <table class="table table-striped table-hover">
+                        <thead>
+                            <tr>
+                                <th> ID </th>
+                                <th> LABORATÓRIO</th>
+                                <th> CPF/CNPJ</th>
+                                <th> EMAIL </th>
+                                <th> TELEFONE FIXO </th>
+                                <th> TELEFONE CELULAR </th>
+                                <th> ENDEREÇO DO LABORATÓRIO</th>
+                                <th> AÇÃO </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        <?php
+                        $dados = $pessoa->consultaClienteFornecedorLike($consultaLike = "%" . trim($_GET['buscaFornecedor']) . "%", $tipoConsulta);
 
-                                $dados = $pessoa->consultaClienteFornecedorLike($consultaLike = "%" . trim($_GET['buscaFornecedor']) . "%", $tipoConsulta);
+                        #echo"<pre>"; // organizar o array (matriz de array)
+                        #var_dump($dados); // imprimir na tela o resultado do array
+                        #echo"</pre>"; // organizar o array (matriz de array)
 
-                                #echo"<pre>"; // organizar o array (matriz de array)
-                                #var_dump($dados); // imprimir na tela o resultado do array
-                                #echo"</pre>"; // organizar o array (matriz de array)
+                        if (count($dados) > 0) {
+                            for ($i = 0; $i < count($dados); $i++) {
+                                echo "<tr>"; // abre a linha dos dados selecionados
 
-                                if (count($dados) > 0) {
-                                    for ($i = 0; $i < count($dados); $i++) {
-                                        echo "<tr>"; // abre a linha dos dados selecionados
-
-                                        foreach ($dados[$i] as $key => $value) {
-                                            if ($key != "matricula" && $key != "senha" && $key != "funcao" && $key != "tipo_pessoa") // ignorar coluna
-                                            {
-                                                echo "<td>" . $value . "</td>";
-                                            }
-                                        }
-                                ?>
-                                        <td>
-                                            <a id="acaoSelecionar" href="CadastrarProdutos.php?id_fornecedor_produto_get_up=<?php echo $dados[$i]['id_pessoa']; ?>">Selecionar</a>
-                                            <a class="acaoVerde" id="acaoEditar" href="AtualizaFornecedor.php?id_get_up=<?php echo $dados[$i]['id_pessoa']; ?>">Editar</a>
-                                            <a class="acaoVermelho" id="acaoExcluir" href="ConsultaFornecedor.php?id_get_del=<?php echo $dados[$i]['id_pessoa']; ?>">Excluir</a>
-                                            <!-- usar "echo $dados[$i]['id_pessoa']; "pegar ID desejado no array e passar como 'string' para o metodo $_GET-->
-                                        </td>
-                                <?php
-                                        echo "</tr>"; // fecha linha dos dados selecionados
+                                foreach ($dados[$i] as $key => $value) {
+                                    if ($key != "matricula" && $key != "senha" && $key != "funcao" && $key != "tipo_pessoa") // ignorar coluna
+                                    {
+                                        echo "<td>" . $value . "</td>";
                                     }
                                 }
-                                ?>
-                            </table>
-                        </div>
-                </form>
+                        ?>
+                                <td>
+                                    <a id="acaoSelecionar" href="CadastrarProdutos.php?id_fornecedor_produto_get_up=<?php echo $dados[$i]['id_pessoa']; ?>"><i class="fas fa-hand-pointer"></i>
+                                        <!--Selecionar-->
+                                    </a>
+                                    <a class="acaoVerde" id="acaoEditar" href="AtualizaFornecedor.php?id_get_up=<?php echo $dados[$i]['id_pessoa']; ?>"><i class="fas fa-edit"></i>
+                                        <!--Editar-->
+                                    </a>
+                                    <a class="acaoVermelho" id="acaoExcluir" href="ConsultaFornecedor.php?id_get_del=<?php echo $dados[$i]['id_pessoa']; ?>"><i class="fas fa-trash"></i>
+                                        <!--Excluir-->
+                                    </a>
+                                    <!-- usar "echo $dados[$i]['id_pessoa']; "pegar ID desejado no array e passar como 'string' para o metodo $_GET-->
+                                </td>
+                        <?php
+                                echo "</tr>"; // fecha linha dos dados selecionados
+                            }
+                        }
+                        ?>
+                        </tbody>
+                    </table>
+                </div>
             <?php
             }
             ?>
