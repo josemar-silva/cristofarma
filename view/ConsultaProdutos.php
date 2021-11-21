@@ -77,7 +77,7 @@ $pessoa = new Pessoa();
             <table class="table table-striped table-hover">
                 <thead>
                     <tr>
-                        <th> ID teste </th>
+                        <th> ID </th>
                         <th> NOME DO PRODUTO </th>
                         <th> PREÇO CUSTO </th>
                         <th> PREÇO VENDA </th>
