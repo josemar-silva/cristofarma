@@ -10,6 +10,7 @@ $pessoa = new Pessoa();
     <meta charset="UTF-8" />
     <link rel="stylesheet" href="../css/bootstrap/nav/navegador.css">
     <link rel="stylesheet" href="../css/estilo.css">
+    <link rel="stylesheet" href="../css/fontawesome/css/all.css">
     <title>Pesquisar Clientes</title>
 </head>
 
@@ -51,7 +52,7 @@ $pessoa = new Pessoa();
 
             <label style="margin-left: 25%;"></label>
             <input type="search" id="buscaFuncionario" class="form-control" name="buscaFuncionario" autofocus value="<?php if (isset($_GET['buscaFuncionario']) && !empty($_GET['buscaFuncionario']))
-                echo $_GET['buscaFuncionario']; ?>" size=" 50" class="form-control-busca" placeholder="Digte aqui para buscar" style="display: inline; font-size: 13pt;">
+                                                                                                                            echo $_GET['buscaFuncionario']; ?>" size=" 50" class="form-control-busca" placeholder="Digte aqui para buscar" style="display: inline; font-size: 13pt;">
 
             <button class="btn btn-outline-danger" id="btnBuscar" onclick="" style="width: 10%; padding: 2px; margin-left: 3%;">Buscar</button><br><br>
         </form>
@@ -61,63 +62,56 @@ $pessoa = new Pessoa();
             $tipoConsulta = "funcionario";
 
         ?>
-            <form class="border-bottom">
-                <table>
-                    <table class="table table-hover">
-
-                    </table>
-                    <div class="scroll" class="nav nav-pills nav-stacked" style="height: 450px; overflow-y: scroll;">
-                        <table class="table table-hover">
-                            <div>
-                                <header class="header">
-                                    <tr>
-                                        <th> ID </th>
-                                        <th> NOME DO FUNCIONÁRIO</th>
-                                        <th> CPF/CNPJ</th>
-                                        <th> EMAIL </th>
-                                        <th> TELEFONE FIXO </th>
-                                        <th> TELEFONE CELULAR </th>
-                                        <th> MATRICULA </th>
-                                        <th> FUNCAO </th>
-                                        <th> ENDEREÇO DO FUNCIONÁRIO</th>
-                                        <th> AÇÃO </th>
-                                    </tr>
-                                </header>
-                            </div>
-                            <?php
+            <div class="tableFixHead">
+                <table class="table table-striped table-hover">
+                    <thead>
+                        <tr>
+                            <th> ID </th>
+                            <th> NOME DO FUNCIONÁRIO</th>
+                            <th> CPF/CNPJ</th>
+                            <th> EMAIL </th>
+                            <th> TELEFONE FIXO </th>
+                            <th> TELEFONE CELULAR </th>
+                            <th> MATRICULA </th>
+                            <th> FUNCAO </th>
+                            <th> ENDEREÇO DO FUNCIONÁRIO</th>
+                            <th> AÇÃO </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php
 
 
-                            $dados = $pessoa->consultaClienteFornecedorLike($consultaLike = "%" . trim($_GET['buscaFuncionario']) . "%", $tipoConsulta);
+                        $dados = $pessoa->consultaClienteFornecedorLike($consultaLike = "%" . trim($_GET['buscaFuncionario']) . "%", $tipoConsulta);
 
 
-                            //echo"<pre>"; // organizar o array (matriz de array)
-                            //var_dump($dados); // imprimir na tela o resultado do array
-                            //echo"</pre>"; // organizar o array (matriz de array)
+                        //echo"<pre>"; // organizar o array (matriz de array)
+                        //var_dump($dados); // imprimir na tela o resultado do array
+                        //echo"</pre>"; // organizar o array (matriz de array)
 
-                            if (count($dados) > 0) {
-                                for ($i = 0; $i < count($dados); $i++) {
-                                    echo "<tr>"; // abre a linha dos dados selecionados
-                                    foreach ($dados[$i] as $key => $value) {
-                                        if ($key != "senha" && $key != "tipo_pessoa") // ignorar coluna
-                                        {
-                                            echo "<td>" . $value . "</td>";
-                                        }
+                        if (count($dados) > 0) {
+                            for ($i = 0; $i < count($dados); $i++) {
+                                echo "<tr>"; // abre a linha dos dados selecionados
+                                foreach ($dados[$i] as $key => $value) {
+                                    if ($key != "senha" && $key != "tipo_pessoa") // ignorar coluna
+                                    {
+                                        echo "<td>" . $value . "</td>";
                                     }
-                            ?>
-                                    <td>
-                                        <a class="acaoVerde" id="acaoEditar" href="AtualizaFuncionario.php?id_get_up=<?php echo $dados[$i]['id_pessoa']; ?>">Editar</a>
-                                        <a class="acaoVermelho" id="acaoExcluir" href="ConsultaFuncionarios.php?id_get_del=<?php echo $dados[$i]['id_pessoa']; ?>">Excluir</a>
-                                        <!-- usar "echo $dados[$i]['id_pessoa']; "pegar ID desejado no array e passar como 'string' para o metodo $_GET-->
-                                    </td>
-                            <?php
-                                    echo "</tr>"; // fecha linha dos dados selecionados
                                 }
+                        ?>
+                                <td>
+                                    <a class="acaoVerde" id="acaoEditar" href="AtualizaFuncionario.php?id_get_up=<?php echo $dados[$i]['id_pessoa']; ?>"><i class="fas fa-edit"></i><!--Editar--></a>
+                                    <a class="acaoVermelho" id="acaoExcluir" href="ConsultaFuncionarios.php?id_get_del=<?php echo $dados[$i]['id_pessoa']; ?>"><i class="fas fa-trash"></i><!--Excluir--></a>
+                                    <!-- usar "echo $dados[$i]['id_pessoa']; "pegar ID desejado no array e passar como 'string' para o metodo $_GET-->
+                                </td>
+                        <?php
+                                echo "</tr>"; // fecha linha dos dados selecionados
                             }
-                            ?>
-                        </table>
-                    </div>
+                        }
+                        ?>
+                    </tbody>
                 </table>
-            </form>
+            </div>
         <?php
         }
         ?>

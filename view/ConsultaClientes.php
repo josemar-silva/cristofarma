@@ -111,6 +111,7 @@ $pessoa = new Pessoa();
                     </tbody>    
                 </table>
             </div>
+        
         <?php
 
         }
