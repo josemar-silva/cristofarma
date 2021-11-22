@@ -1,0 +1,17 @@
+INSERT INTO `cupom_fiscal` (`id_cupom`, `venda_id_venda`, `valor_venda`, `valor_recebido`, `troco`, `cliente`) VALUES
+(1, 47, '33.00', '40.00', '7.00', 'larissa ramos'),
+(2, 51, '4.19', '5.00', '0.81', 'hugo estaneslau'),
+(3, 55, '14.43', '15.00', '0.57', 'ana beatriz castro veiga'),
+(4, 55, '14.43', '15.00', '0.57', 'ana beatriz castro veiga'),
+(7, 54, '12.99', '15.00', '2.01', 'renata souza'),
+(8, 55, '14.43', '20.00', '5.57', 'ana beatriz castro veiga'),
+(9, 55, '14.43', '20.00', '5.57', 'ana beatriz castro veiga'),
+(10, 66, '85.60', '90.00', '4.40', 'mateus sousa pires '),
+(11, 67, '9.49', '10.00', '0.51', 'larissa ramos'),
+(12, 68, '37.80', '40.00', '2.20', 'saul matuzinhos'),
+(13, 45, '4.00', '5.00', '1.00', 'saul matuzinhos'),
+(17, 58, '171.39', '200.00', '28.61', 'renata souza'),
+(18, 72, '70.70', '72.00', '1.30', 'maria aparecida da silva'),
+(19, 74, '4.55', '5.00', '0.45', 'maria rita'),
+(20, 46, '44.00', '50.00', '6.00', 'rhuan lacerda'),
+(21, 69, '4.69', '6.00', '1.31', 'mateus sousa pires ');
