@@ -32,7 +32,6 @@
                     </ul>
                 </li>
                 <li><a href="Cadastros.php">CADASTROS</a></li>
-                <li><a href="CupomFiscal.php">CUPOM FISCAL</a></li>
                 <li><a href="#">RELATÓRIOS</a>
                     <ul>
                         <li><a href="RelatorioVendas.php">Relatório de Vendas</a></li>

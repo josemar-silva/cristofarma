@@ -353,8 +353,6 @@ if (isset($_SESSION['venda'])) {
                     }
             </script>
 
-                    <!-- ======================================================================================== -->
-
             <button class="btn btn-outline-danger" id="btnFecharVenda" name="fecharVenda" onclick="" style="display: inline;">Fechar Venda</button>
             <button class="btn btn-outline-danger" id="btnCncelarVenda" name="cancelarVenda" onclick=" return confirmaCancelaVenda();" style="display: inline; margin-left: 10%;">Cancelar</button>
         </div>

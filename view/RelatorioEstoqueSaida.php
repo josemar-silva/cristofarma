@@ -42,19 +42,16 @@
     </div>
 
     </header>
+       <?php 
+            require_once '../model/Estoque.php';
+            require_once '../model/Produto.php';                
+        ?>
+
     <section id="principalEstoque">
-        <div id="relatorioGerencialVendas" style="margin-left: 5%;">
-                <legend style="text-align: left;">RELATÓRIO GERAL DE ESTOQUE</legend><br>
-            
-            <input type="radio" id="estoque" name="tipoRelatorioEstoque" value="estoque" checked>&nbsp; &nbsp;
-            <label for="estoque" style="font-size: 13pt;">Relatório de Estoque</label><br><br>
+        <div>
 
-<form action="RelatorioEstoqueSaida.php" method="POST">
 
-            
-<button class="btn btn-outline-danger" id="btnGerarRelatorioGerencial" name="btnGerarRelatorioGerencial" onclick="" style="margin-left: 40%;">Gerar Relatório</button>
-</form>        
-</div>
+        </div>
     </section>
 </body>
 

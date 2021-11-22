@@ -30,7 +30,6 @@
                 </ul>
             </li>
             <li><a href="Cadastros.php">CADASTROS</a></li>
-            <li><a href="CupomFiscal.php">CUPOM FISCAL</a></li>
             <li><a href="#">RELATÓRIOS</a>
                 <ul>
                     <li><a href="RelatorioVendas.php">Relatório de Vendas</a></li>
@@ -483,8 +482,9 @@ if (isset($_POST['fecharRelatorio'])) {
            
         </div>
 
-            <input  class="btn btn-outline-danger" id="fecharRelatorio" type="submit" name="fecharRelatorio" style="margin-left: 43%; margin-top: 1%;"
-               onclick="" value="<?php echo 'Fechar Relatório';?>">
+        <a type="submit" href="RelatorioVendas.php" class="btn btn-outline-danger" id="fecharRelatorio" type="submit" name="fecharRelatorio" 
+            style="margin-left: 43%; margin-top: 1%;">Fechar Relatório</a>
+    
     </section>
 </body>
 

@@ -1,6 +1,6 @@
 <?php
 require_once '../model/Produto.php';
-require_once '../model/Produto.php';
+require_once '../model/Pessoa.php';
 $produto = new Produto();
 $pessoa = new Pessoa();
 ?>
@@ -68,11 +68,11 @@ $pessoa = new Pessoa();
             <label style="margin-left: 25%;"></label>
             <input type="search" id="buscaProdutos" class="form-control" name="buscaProdutos" autofocus value="<?php if (isset($_GET['buscaProdutos']) && !empty($_GET['buscaProdutos']))
                                                                                                                     echo $_GET['buscaProdutos']; ?>" size=" 50" class="form-control-busca" placeholder="Digte aqui para buscar" style="display: inline; font-size: 13pt;">
-
             <button class="btn btn-outline-danger" id="btnBuscar" onclick="" style="width: 10%; padding: 2px; margin-left: 3%;">Buscar</button><br><br>
         </form>
 
-        <!---------------------- BUSCA %like% = 'quem contem'... ----------------------->
+                                 <!---------------------- BUSCA %like% = 'quem contem'... ----------------------->
+
         <div class="tableFixHead">
             <table class="table table-striped table-hover">
                 <thead>
@@ -139,8 +139,38 @@ $pessoa = new Pessoa();
                             }
                         }
                     } else {
-                        for ($i=0; $i < 15; $i++) {
-                            echo '<tr class="table-not-found"><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>';
+                        if (isset($_GET['buscaProduto'])) {
+
+                        $dados = $produto->consultaProdutoLike($consultaLike = "%" . trim($_GET['buscaProduto']) . "%");
+
+                        if (count($dados) > 0)  
+                        {
+                            for ($i = 0; $i < count($dados); $i++) {
+                                echo "<tr>";
+                                foreach ($dados[$i] as $key => $value) {
+                                    if ($key != "pessoa_id_pessoa") 
+                                    {
+                                        echo "<td>" . $value . "</td>";
+                                    }
+                                }
+                                foreach ($dados[$i] as $key => $value) {
+                                    if ($key == "pessoa_id_pessoa")
+                                    {
+                                        $id_up = $value;
+                                        $return = $pessoa->selectPessoaFornecedor($id_up);
+                                        $result = $return[0]['nome'];
+
+                                        echo "<td>" . $result . "</td>";
+                                    }
+                                }
+                    ?>
+                                <td>
+                                    <a class="" id="acaoSelecionar" href="AlimentarEstoque.php?id_produto_up_estoque=<?php echo $dados[$i]['id_produto']; ?>"><i class="fas fa-hand-pointer"></i><!--Selecionar--></a>
+                                </td>
+                    <?php
+                                echo "</tr>"; // fecha linha dos dados selecionados
+                            }
+                        }
                         }
                     }                        
                     ?>

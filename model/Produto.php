@@ -30,7 +30,7 @@ class Produto
         $res = $dados->fetchAll(PDO::FETCH_ASSOC);
         $res2 = $res['id_pessoa'];        
         
-        $dados = $conexao->pdo->prepare("SELECT id_produto  FROM produto WHERE codigo_barras = :cb");
+        $dados = $conexao->pdo->prepare("SELECT id_produto FROM produto WHERE codigo_barras = :cb");
         //$cadastrar = $this->pdo->query("SELECT * id FROM pessoa WHERE email = ".$email);
         $dados->bindValue(":cb", $produto_codigo_barras);
         $dados->execute();
