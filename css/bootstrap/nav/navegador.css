@@ -9413,10 +9413,9 @@ a.text-dark:focus {
 border-style: groove;
 margin-left: 3%;
 margin-right: 3%;
-text-align: center;
+text-align: left;
 font-weight: bold;
-border-width:10px;
-border-color: lightcoral;
+
 
 
  }
