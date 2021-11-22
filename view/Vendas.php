@@ -6,6 +6,7 @@
     <meta charset="UTF-8" />
     <link rel="stylesheet" href="../css/bootstrap/nav/navegador.css">
     <link rel="stylesheet" href="../css/estilo.css">
+    <link rel="stylesheet" href="../css/fontawesome/css/all.css">
 
 <?php
         session_start(); // trabalhar com informaçoes persistentes, sem perder os dados ao trocar de pagina ou arquivo //
