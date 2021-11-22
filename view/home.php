@@ -42,22 +42,6 @@
             <a href="../index.php">Sair</a>
         </div>
     </header>
-    <div id="icones">
-        <tr >
-            <th> <a class="bordaIcones" style="margin-right: 20px;" href="ConsultaProdutos.php?buscaProdutos=+" title="Buscar Produto"><img src="..\img\carrinho-de-compras.png"></a></th>
-            <th> <a class="bordaIcones" style="margin-right: 20px;" href="Vendas.php" title="vendas"><img src="../img/vendas.png"></a></th>
-            <th> <a class="bordaIcones" style="margin-right: 20px;" href="Cadastros.php" title="Cadastros"><img src="..\img\cadastro.png"></a></th>
-            <th> <a class="bordaIcones" style="margin-right: 20px;" href="Caixa.php" title="Caixa"><img src="..\img\caixa-registradora.png"></a></th>
-            <th> <a class="bordaIcones" style="margin-right: 20px;" href="CadastrarProdutos.php" title="Produtos"><img src="..\img\produtos-de-higiene.png"></a></th>
-            <th> <a class="bordaIcones" style="margin-right: 20px;" href="RelatorioVendas.php" title="Relatório Vendas"><img src="\img\relatorio-vendas.png"></a></th>
-            <th> <a class="bordaIcones" style="margin-right: 20px;" href="AlimentarEstoque.php" title="Estoque"><img src="../img\estoque-pronto.png"></a></th>
-            <th> <a class="bordaIcones" style="margin-right: 20px;" href="ConsultaFornecedor.php" title="Pesquisa fornecedores"><img src="\img\pesquisa-fornecedor.png"></a></th>
-            <th> <a class="bordaIcones" style="margin-right: 20px;" href="ConsultaClientes.php" title="Pesquisa clientes"><img src="..\img\pesquisar-clientes.png"></a></th>
-            <th> <a class="bordaIcones" style="margin-right: 20px;" href="ConsultaProdutos.php" title="Pesquisa produtos"><img src="..\img\pesquisa-produtos.png"></a></th>
-            <th> <a class="bordaIcones" style="margin-right: 20px;" href="ConsultaFuncionarios.php" title="Pesquisa funcionarios"><img src="..\img\pesquisa-funcionarios.png"></a></th>
-
-        </tr>
-    </div>
     <section id="principalHome" style="padding: 50px;">
         <p>
         <h1 id="nomeEmpresa" style="font-size: 64pt; color: #8b0211; text-align: center;"> DROGARIA CRISTOFARMA PLUS </h1>
