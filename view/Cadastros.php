@@ -193,7 +193,6 @@
     <div id="divSair">
       <a href="../index.php">Sair</a>
     </div>
-<<<<<<< HEAD
     </header>
     <section id="principal">
 
@@ -260,18 +259,6 @@
             <input  class="btn btn-outline-danger" id="btnCadastrar" type="submit" name="btnGravarClientes" style="margin-left: 40%; margin-top: 2%;"
                 value="<?php if (isset($_GET['id_get_up'])){echo 'Atualizar';} else {echo 'Cadastrar';}?>">
         </form>
-=======
-  </header>
-  <section id="principal">
-
-    <?php
-
-    if (isset($_GET['id_get_up'])) // VERIFICA SE CLICOU EM EDITAR
-    {
-      $id_up = addslashes($_GET['id_get_up']);
-      $retornoConsulta = $pessoa->selectPessoaCliente($id_up); #retorno da consulta armazenado na variavel $retornoConsulta
-    }
->>>>>>> aeeee11cc7aea39362bb1ad2c340d0b838dacab7
 
     ?>
     <form id="cadastro" method="POST">
