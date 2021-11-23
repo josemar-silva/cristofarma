@@ -12,11 +12,11 @@ $estoque = new Estoque();
 <html lang="pt">
 
 <head>
-    <meta charset="UTF-8" />
-    <link rel="stylesheet" href="../css/bootstrap/nav/navegador.css">
-    <link rel="stylesheet" href="../css/estilo.css">
-    <link rel="stylesheet" href="../css/fontawesome/css/all.css">
-    <title>Pesquisar Produtos</title>
+  <meta charset="UTF-8" />
+  <link rel="stylesheet" href="../css/bootstrap/nav/navegador.css">
+  <link rel="stylesheet" href="../css/estilo.css">
+  <link rel="stylesheet" href="../css/fontawesome/css/all.css">
+  <title>Pesquisar Produtos</title>
 </head>
 
 <body>
@@ -197,8 +197,8 @@ $estoque = new Estoque();
 
 if (isset($_GET['id_get_del'])) # verificando se existe dados selecionado para exclusão
 {
-    $id_up = addslashes($_GET['id_get_del']); # pegar ID desejado no array
-    $produto->deleteProduto($id_up);
-    header("location: ConsultaProdutos.php?buscaProdutos=+"); #atualizar a pagina ao executar a exclusão
+  $id_up = addslashes($_GET['id_get_del']); # pegar ID desejado no array
+  $produto->deleteProduto($id_up);
+  header("location: ConsultaProdutos.php?buscaProdutos=+"); #atualizar a pagina ao executar a exclusão
 }
 ?>

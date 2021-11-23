@@ -11,223 +11,211 @@
 
 <body>
     <header>
-    <nav class="dp-menu">
-        <ul>
-            <li><a href="home.php">HOME</a></li>
-            <li><a href="#">PESQUISAR</a>
-                <ul>
-                    <li><a href="ConsultaClientes.php">Clientes</a></li>
-                    <li><a href="ConsultaFornecedor.php">Fornecedores</a></li>
-                    <li><a href="ConsultaFuncionarios.php">Funcionários</a></li>
-                    <li><a href="ConsultaProdutos.php">Produtos</a></li>                    
-                </ul>
-            </li>
-            <li><a href="Vendas.php">VENDAS</a></li>
-            <li><a href="Caixa.php">CAIXA</a></li>
-            <li><a href="#">PRODUTOS</a>
-                 <ul>
-                    <li><a href="CadastrarProdutos.php">Cadastro de Produtos</a></li>
-                    <li><a href="AlimentarEstoque.php">Estoque de Produtos</a></li>                                        
-                </ul>
-            </li>
-            <li><a href="Cadastros.php">CADASTROS</a></li>
-            <li><a href="#">RELATÓRIOS</a>
-                <ul>
-                    <li><a href="RelatorioVendas.php">Relatório de Vendas</a></li>
-                    <li><a href="RelatorioEstoque.php">Relatório Geral de Estoque</a></li>                                        
-                </ul>
-        </ul>
-    </nav>
+        <nav class="dp-menu">
+            <ul>
+                <li><a href="home.php">HOME</a></li>
+                <li><a href="#">PESQUISAR</a>
+                    <ul>
+                        <li><a href="ConsultaClientes.php">Clientes</a></li>
+                        <li><a href="ConsultaFornecedor.php">Fornecedores</a></li>
+                        <li><a href="ConsultaFuncionarios.php">Funcionários</a></li>
+                        <li><a href="ConsultaProdutos.php">Produtos</a></li>
+                    </ul>
+                </li>
+                <li><a href="Vendas.php">VENDAS</a></li>
+                <li><a href="Caixa.php">CAIXA</a></li>
+                <li><a href="#">PRODUTOS</a>
+                    <ul>
+                        <li><a href="CadastrarProdutos.php">Cadastro de Produtos</a></li>
+                        <li><a href="AlimentarEstoque.php">Estoque de Produtos</a></li>
+                    </ul>
+                </li>
+                <li><a href="Cadastros.php">CADASTROS</a></li>
+                <li><a href="#">RELATÓRIOS</a>
+                    <ul>
+                        <li><a href="RelatorioVendas.php">Relatório de Vendas</a></li>
+                        <li><a href="RelatorioEstoque.php">Relatório Geral de Estoque</a></li>
+                    </ul>
+            </ul>
+        </nav>
 
     </header>
     <section id="principalCaaixa">
 
-    <div id="vendaDetalhada">
-        
+        <div id="vendaDetalhada">
 
-    <div id="divSair"  >
-        <a href="../index.php">Sair</a>
-    </div>
 
-    <div id="divDetalharVenda" style="background-color: #191970; border: none;" >
+            <div id="divSair">
+                <a href="../index.php">Sair</a>
+            </div>
 
-    <?php
-            require_once '../model/Produto.php';
-            require_once '../model/Venda.php';
-            require_once '../model/Cupom.php';
-        
+            <div id="divDetalharVenda" style="background-color: #191970; border: none;">
 
-            $produto = new Produto();
-            $itemVenda = new ItemVenda();
-            $pessoa = new Pessoa();
-            $venda = new Venda();
-            $estoque = new Estoque();
-            $cupom = new Cupom();
+                <?php
+                require_once '../model/Produto.php';
+                require_once '../model/Venda.php';
+                require_once '../model/Cupom.php';
 
-                                        // BUSCAR TODAS AS VENDAS COM STATUS ABERTO
 
-            if (isset($_GET['id_get_venda_up'])) {
-                $codigo_venda = $_GET['id_get_venda_up'];
-                
-                $ListVendaReturn = $venda->selectVendaAbertaLikeId($codigo_venda);
+                $produto = new Produto();
+                $itemVenda = new ItemVenda();
+                $pessoa = new Pessoa();
+                $venda = new Venda();
+                $estoque = new Estoque();
+                $cupom = new Cupom();
 
-                $id_venda = $ListVendaReturn[0]['id_venda'];
+                // BUSCAR TODAS AS VENDAS COM STATUS ABERTO
 
-                $codigo_venda_return = $ListVendaReturn[0]['codigo_venda'];
-                $valor_venda_return = $ListVendaReturn[0]['valor_venda_com_desconto'];
-                $total_item_venda_return = $ListVendaReturn[0]['total_item_venda'];
+                if (isset($_GET['id_get_venda_up'])) {
+                    $codigo_venda = $_GET['id_get_venda_up'];
 
-            }
-                
-            if (isset($_POST['btnCancelar'])) {
+                    $ListVendaReturn = $venda->selectVendaAbertaLikeId($codigo_venda);
 
-                echo '<script> alert("Deseja cancelar o recebimento?")</script>';
-                echo '<META HTTP-EQUIV="REFRESH" CONTENT="0;URL=Caixa.php"/>';
-            }
-         ?>
+                    $id_venda = $ListVendaReturn[0]['id_venda'];
 
-    <legend style="color: white; font-weight: bold; margin-top: 1%;"> VENDA Nº  <input id="saidaIdVendaFecharCaixa" size="8"
-         value="<?php echo $codigo_venda_return;?>" style="background-color: #191970; color: yellow ; text-align: center; margin-top: -30%; border: none; 
+                    $codigo_venda_return = $ListVendaReturn[0]['codigo_venda'];
+                    $valor_venda_return = $ListVendaReturn[0]['valor_venda_com_desconto'];
+                    $total_item_venda_return = $ListVendaReturn[0]['total_item_venda'];
+                }
+
+                if (isset($_POST['btnCancelar'])) {
+
+                    echo '<script> alert("Deseja cancelar o recebimento?")</script>';
+                    echo '<META HTTP-EQUIV="REFRESH" CONTENT="0;URL=Caixa.php"/>';
+                }
+                ?>
+
+                <legend style="color: white; font-weight: bold; margin-top: 1%;"> VENDA Nº <input id="saidaIdVendaFecharCaixa" size="8" value="<?php echo $codigo_venda_return; ?>" style="background-color: #191970; color: yellow ; text-align: center; margin-top: -30%; border: none; 
             text-decoration: none; font-weight: bold; font-size: 15pt;"><br>
 
-     <div>
-            <div  id="descricaoVendaCaixa" class="scroll" >
-        <?php 
-                                        // DETALHAR VENDA SELECIONADA
+                    <div>
+                        <div id="descricaoVendaCaixa" class="scroll">
+                            <?php
+                            // DETALHAR VENDA SELECIONADA
 
-            if (isset($ListVendaReturn) && !empty($ListVendaReturn))  {
-                    
-                $itemVendaReturn = $itemVenda->selectItemVendaLikeId($id_venda);
-                    
-                $complemento = 0;
-        ?><br>
-                <table style="width: 95%; text-align: right; color: white; margin-top: -2%; margin-left: 2%;">               
-    <?php
-        for ($i=0; $i < count($itemVendaReturn) ; $i++) 
-        {
-            echo "<tr>"; 
+                            if (isset($ListVendaReturn) && !empty($ListVendaReturn)) {
 
-            foreach ($itemVendaReturn[$i] as $key => $value) 
-            {
-                if ($key == "produto_id_produto") // ignorar coluna
-                {
-                    $dados = $produto->selectProduto($value);
-                    echo "<td style='text-align: left;'>".$complemento.$dados['id_produto']."</td>"; 
-                            
-                    echo "<td style='text-align: left;'>".$dados['nome_produto']."</td>"; 
-                }
-            }
-                    foreach ($itemVendaReturn[$i] as $key => $value) 
-                    {
-                        if ($key == "valor_total_item") // ignorar coluna
-                        {
-                            echo "<td>".$dados['preco_venda']."</td>";
-                        }
-                    }
+                                $itemVendaReturn = $itemVenda->selectItemVendaLikeId($id_venda);
 
-                    foreach ($itemVendaReturn[$i] as $key => $value) 
-                    {
-                        if ($key == "quantidade_item") // ignorar coluna
-                        {
-                            echo "<td>".$value.'&nbsp unid'."</td>";
-                        }
-                    }
-                        
-                    foreach ($itemVendaReturn[$i] as $key => $value) 
-                    {
-                        if ($key == "valor_total_item") // ignorar coluna
-                        {
-                            echo "<td>".$value."</td>";
-                            echo "<td>"."</td>";
-                                
-                        }
-                    }
-                        echo "</tr>";
-                }        
-            }
-    ?>
-    </table>
-    
-           </div > 
+                                $complemento = 0;
+                            ?><br>
+                                <table style="width: 95%; text-align: right; color: white; margin-top: -2%; margin-left: 2%;">
+                                <?php
+                                for ($i = 0; $i < count($itemVendaReturn); $i++) {
+                                    echo "<tr>";
 
-    <div id="resumoVenda" style=" color: white; font-size: 18pt; font-family: Arial, Helvetica, sans-serif; float: right; margin-right: 3%; margin-top: 1.5%;">
-        
-        <?php 
-            if (isset($ListVendaReturn) && !empty($ListVendaReturn))  {
-                echo 'Total Itens:&nbsp;'.$total_item_venda_return.'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;';
-                echo 'Valor Total: R$ &nbsp;'.$valor_venda_return;
-            }
-        ?>
-        
-    </div>
-</div>
-    </div>
-            <?php 
-                
-                if (isset($_POST['valorRecebido'])) {
+                                    foreach ($itemVendaReturn[$i] as $key => $value) {
+                                        if ($key == "produto_id_produto") // ignorar coluna
+                                        {
+                                            $dados = $produto->selectProduto($value);
+                                            echo "<td style='text-align: left;'>" . $complemento . $dados['id_produto'] . "</td>";
 
-                    $valorDigitado = filter_input(INPUT_POST, 'valorRecebido');
- 
-                    $valorVenda = (float) addslashes($_POST['totalApagar']);
-                    $valorRecebido = (float) $valorDigitado;
+                                            echo "<td style='text-align: left;'>" . $dados['nome_produto'] . "</td>";
+                                        }
+                                    }
+                                    foreach ($itemVendaReturn[$i] as $key => $value) {
+                                        if ($key == "valor_total_item") // ignorar coluna
+                                        {
+                                            echo "<td>" . $dados['preco_venda'] . "</td>";
+                                        }
+                                    }
 
-                    $troco = $venda->calculoFecharVendaCaixa($valorRecebido, $valorVenda);
-                }
-                
-            ?>
-    
-        <form id="fecharVendaCaixa" name="fecharVenda" action="" method="POST"> 
-            <legend style="margin-bottom: 10%; font-size: 25pt; font-weight: bolder; color: blue;">FINALIZAR VENDA</legend>
+                                    foreach ($itemVendaReturn[$i] as $key => $value) {
+                                        if ($key == "quantidade_item") // ignorar coluna
+                                        {
+                                            echo "<td>" . $value . '&nbsp unid' . "</td>";
+                                        }
+                                    }
 
-            <label>Total a Pagar:</label><br>
-            <input id="valorPagar" class="form-control" name="totalApagar" size="6" placeholder="R$" placeholder="R$" 
-                value="<?php if(isset($ListVendaReturn)){echo number_format($valor_venda_return, 2, '.','.');}?>" ><br><br><br>
-
-            <label>Valor Recebido:</label><br>
-            <input id="valorRecebido" class="form-control" name="valorRecebido" type="text" size="6" placeholder="R$" 
-                value="<?php                 
-                            if (isset($_POST['valorRecebido'])) 
-                            {
-                                echo number_format($valorDigitado, 2, '.','.');
+                                    foreach ($itemVendaReturn[$i] as $key => $value) {
+                                        if ($key == "valor_total_item") // ignorar coluna
+                                        {
+                                            echo "<td>" . $value . "</td>";
+                                            echo "<td>" . "</td>";
+                                        }
+                                    }
+                                    echo "</tr>";
+                                }
                             }
-                        ?>"><br><br><br>
+                                ?>
+                                </table>
 
-            <label>Troco:</label><br>
-            <input id="troco" class="form-control" name="troco" size="6" placeholder="R$" 
-                    value="<?php if (isset($valorDigitado)) {
-                        echo number_format($troco, 2, '.','.');
-                    }?>" disabled><br><br>
+                        </div>
 
-            <button class="btn btn-outline-danger" id="btnFinalizar" name="btnFinalizar" onclick="" style="display: inline; margin-left: 8%; margin-top: 15%;">Finalizar</button>
-            <button class="btn btn-outline-danger" id="btnCancelar" name="btnCancelar" onclick=""  style="display: inline; margin-left: 18%; margin-top: 15%;">Cancelar</button>
-        </form>
+                        <div id="resumoVenda" style=" color: white; font-size: 18pt; font-family: Arial, Helvetica, sans-serif; float: right; margin-right: 3%; margin-top: 1.5%;">
 
-        <?php
-                                    // CONFIRMAR RECEBIMENTO E MUDAR STATUS VENDA PARA "FECHADO" / GERAR RECIBO
-                
-            if (isset($_POST['btnFinalizar'])) 
-            {
+                            <?php
+                            if (isset($ListVendaReturn) && !empty($ListVendaReturn)) {
+                                echo 'Total Itens:&nbsp;' . $total_item_venda_return . '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;';
+                                echo 'Valor Total: R$ &nbsp;' . $valor_venda_return;
+                            }
+                            ?>
+
+                        </div>
+                    </div>
+            </div>
+            <?php
+
+            if (isset($_POST['valorRecebido'])) {
+
+                $valorDigitado = filter_input(INPUT_POST, 'valorRecebido');
+
+                $valorVenda = (float) addslashes($_POST['totalApagar']);
+                $valorRecebido = (float) $valorDigitado;
+
+                $troco = $venda->calculoFecharVendaCaixa($valorRecebido, $valorVenda);
+            }
+
+            ?>
+
+            <form id="fecharVendaCaixa" name="fecharVenda" action="" method="POST">
+                <legend style="margin-bottom: 10%; font-size: 25pt; font-weight: bolder; color: blue;">FINALIZAR VENDA</legend>
+
+                <label>Total a Pagar:</label><br>
+                <input id="valorPagar" class="form-control" name="totalApagar" size="6" placeholder="R$" placeholder="R$" value="<?php if (isset($ListVendaReturn)) {
+                                                                                                                                        echo number_format($valor_venda_return, 2, '.', '.');
+                                                                                                                                    } ?>"><br><br><br>
+
+                <label>Valor Recebido:</label><br>
+                <input id="valorRecebido" class="form-control" name="valorRecebido" type="text" size="6" placeholder="R$" value="<?php
+                                                                                                                                    if (isset($_POST['valorRecebido'])) {
+                                                                                                                                        echo number_format($valorDigitado, 2, '.', '.');
+                                                                                                                                    }
+                                                                                                                                    ?>"><br><br><br>
+
+                <label>Troco:</label><br>
+                <input id="troco" class="form-control" name="troco" size="6" placeholder="R$" value="<?php if (isset($valorDigitado)) {
+                                                                                                            echo number_format($troco, 2, '.', '.');
+                                                                                                        } ?>" disabled><br><br>
+
+                <button class="btn btn-outline-danger" id="btnFinalizar" name="btnFinalizar" onclick="" style="display: inline; margin-left: 8%; margin-top: 15%;">Finalizar</button>
+                <button class="btn btn-outline-danger" id="btnCancelar" name="btnCancelar" onclick="" style="display: inline; margin-left: 18%; margin-top: 15%;">Cancelar</button>
+            </form>
+
+            <?php
+            // CONFIRMAR RECEBIMENTO E MUDAR STATUS VENDA PARA "FECHADO" / GERAR RECIBO
+
+            if (isset($_POST['btnFinalizar'])) {
                 if ($valorRecebido >= $valorVenda) {
 
                     $idVenda = $_GET['id_get_venda_up'];
                     $vendaRes = $venda->selectVendaAbertaLikeId($idVenda);
-                                            
+
                     $codigoVenda = $vendaRes[0]['codigo_venda'];
-                                           
+
                     $idCliente = $vendaRes[0]['pessoa_id_pessoa_cliente'];
                     $clienteReturn = $pessoa->selectPessoaCliente($idCliente);
                     $cliente_cupom = $clienteReturn[0]['nome'];
-                                            
+
                     $cupom->createCupomFiscal($codigoVenda, $valorVenda, $valorRecebido, $troco, $cliente_cupom);
                     $venda->fecharVenda($codigoVenda);
-
                 } else {
 
                     echo '<script> alert("Valor recebido é menor que o valor da venda! Verifique novamente!")</script>';
                 }
             }
-        ?>
-    </div>
+            ?>
+        </div>
     </section>
 </body>
 
