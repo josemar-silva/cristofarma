@@ -175,6 +175,8 @@
         <form id="cadastro" method="POST">
 
             <legend>CADASTROS</legend>
+
+                <div  style="border: rgba(168, 57, 68) solid 1px; padding: 3%; border-radius: 5%;">
                 <label id="txtTipoCadastro">Tipo de cadastro:</label> &nbsp;
                 <select id="tipoCadastro" name="tipoCadastro" class="form-control"  style="display: inline;" autofocus required onchange="verifica(this.value)" >
                     <option value="" selected> </option>
@@ -218,9 +220,10 @@
             <input id="senha"  class="form-control"type="password" name="senha" size="10" style="margin-left: 10%;" value=""> <br/><br/>
 
             <label for="endereco" id="endereco">Endereço:</label><br>
-            <input id="endereco" class="form-control"type="text" name="endereco" size="60" value="" > <br>
+            <input id="endereco" class="form-control"type="text" name="endereco" size="60" value="" >
 
-            <input  class="btn btn-outline-danger" id="btnCadastrar" type="submit" name="btnGravarClientes" style="margin-left: 40%; margin-top: 3%;"
+                </div>
+            <input  class="btn btn-outline-danger" id="btnCadastrar" type="submit" name="btnGravarClientes" style="margin-left: 40%; margin-top: 2%;"
                 value="<?php if (isset($_GET['id_get_up'])){echo 'Atualizar';} else {echo 'Cadastrar';}?>">
         </form>
 

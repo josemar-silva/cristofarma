@@ -69,10 +69,10 @@ $pessoa = new Pessoa();
                         <tr>
                             <th> ID </th>
                             <th> NOME DO CLIENTE</th>
-                            <th> CPF/CNPJ</th>
+                            <th style="width: 10%;"> CPF/CNPJ</th>
                             <th> EMAIL </th>
-                            <th> TELEFONE FIXO </th>
-                            <th> TELEFONE CELULAR </th>
+                            <th style="width: 10%;"> TELEFONE FIXO </th>
+                            <th style="width: 10%;"> TELEFONE CELULAR </th>
                             <th> ENDEREÇO DO CLIENTE</th>
                             <th> AÇÃO </th>
                         </tr>

@@ -1,8 +1,11 @@
 <?php
 require_once '../model/Produto.php';
 require_once '../model/Pessoa.php';
+require_once '../model/Estoque.php';
+
 $produto = new Produto();
 $pessoa = new Pessoa();
+$estoque = new Estoque();
 ?>
 
 <!doctype html>
@@ -25,6 +28,7 @@ $pessoa = new Pessoa();
     {
         $id_up = addslashes($_GET['pesquisa']);
         $retornoConsulta = $produto->selectProduto($id_up); #retorno da consulta armazenado na variavel $retornoConsulta
+        echo $id_up;
     }
     ?>
     <header>
@@ -83,6 +87,7 @@ $pessoa = new Pessoa();
                         <th> PREÇO VENDA </th>
                         <th> CÓDIGO DE BARRAS </th>
                         <th> LABORATÓRIO </th>
+                        <th style="width: 5%;"> ESTOQUE</th>
                         <th> AÇÃO </th>
                     </tr>
                 </thead>
@@ -90,16 +95,6 @@ $pessoa = new Pessoa();
                 <tbody>
                     <?php
                     if (isset($_GET['buscaProdutos'])) {
-                        // echo '<table class="table table-hover">';
-                        // echo '<tr>';
-                        // echo '<th> ID teste </th>';
-                        // echo '<th> NOME DO PRODUTO </th>';
-                        // echo '<th> PREÇO CUSTO </th>';
-                        // echo '<th> PREÇO VENDA </th>';
-                        // echo '<th> CÓDIGO DE BARRAS </th>';
-                        // echo '<th> LABORATÓRIO </th>';
-                        // echo '<th> AÇÃO </th>';
-                        // echo '</tr>';
 
                         $dados = $produto->consultaProdutoLike($consultaLike = "%" . trim($_GET['buscaProdutos']) . "%");
 
@@ -127,6 +122,15 @@ $pessoa = new Pessoa();
                                         echo "<td>" . $result . "</td>";
                                     }
                                 }
+
+                                $returnEstoque = $estoque->selectQuantidadeEstoque($dados[$i]['id_produto']);
+
+                                if ($returnEstoque != null) {
+                                    echo '<td>'.$returnEstoque['quantidade_estoque'].'</td>';
+                                } else {
+                                    echo "<td>"; echo 'null'; echo "</td>";
+                                }
+                                
                     ?>
                                 <td>
                                     <a class="" id="acaoSelecionar" href="Vendas.php?id_produto_up_venda=<?php echo $dados[$i]['id_produto']; ?>"><i class="fas fa-hand-pointer"></i><!--Selecionar--></a>
@@ -162,6 +166,14 @@ $pessoa = new Pessoa();
 
                                         echo "<td>" . $result . "</td>";
                                     }
+                                }
+
+                                $returnEstoque = $estoque->selectQuantidadeEstoque($dados[$i]['id_produto']);
+
+                                if ($returnEstoque != null) {
+                                    echo '<td>'.$returnEstoque['quantidade_estoque'].'</td>';
+                                } else {
+                                    echo "<td>"; echo 'null'; echo "</td>";
                                 }
                     ?>
                                 <td>

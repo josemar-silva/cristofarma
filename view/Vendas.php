@@ -93,9 +93,10 @@
         $dia = date('d');
         $countVendasDia = count($venda->selectAllVenda());
         $codigo_gerado_venda = $ano.$mes.$dia.$countVendasDia;
+        echo $codigo_gerado_venda;
         $outputCodigoVenda = $codigo_gerado_venda; /* GERANDO CODIGO DA VENDA */
 
-        echo '<input id="codigoVenda" name="codigoVenda" value="'. $outputCodigoVenda .'"style="background-color: #191970; color: yellow; font-weight: bolder; text-align: 
+        echo '<input id="codigoVenda" name="codigoVenda" value="'. $codigo_gerado_venda .'"style="background-color: #191970; color: yellow; font-weight: bolder; text-align: 
         center; font-size: 13pt; border: none; display: inline-block;" size="10" disabled></input>';
 
     echo '</div>';
@@ -172,8 +173,8 @@ if (isset($_POST['fecharVenda']) && !empty($_POST['idClienteVenda']) && !empty($
             }
 
             echo '<script> alert("Venda finalizada Com sucesso!")</script>';
-                // session_destroy(); // encerrar a seção e destroi as variaves existentes nela
-                    // echo '<META HTTP-EQUIV="REFRESH" CONTENT="0;URL=Vendas.php"/>'; // REFRESH para atualizar a página
+                session_destroy(); // encerrar a seção e destroi as variaves existentes nela
+                    echo '<META HTTP-EQUIV="REFRESH" CONTENT="3;URL=Vendas.php"/>'; // REFRESH para atualizar a página
 }
 
 

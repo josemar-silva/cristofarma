@@ -42,17 +42,95 @@
     </div>
 
     </header>
-       <?php 
-            require_once '../model/Estoque.php';
-            require_once '../model/Produto.php';                
-        ?>
+<?php
+    require_once '../model/Produto.php';
+    require_once '../model/Pessoa.php';
+    require_once '../model/Estoque.php';
 
-    <section id="principalEstoque">
+    $produto = new Produto();
+    $pessoa = new Pessoa();
+    $estoque = new Estoque();
+?>
+
+    <section id="principalEstoque"><br>
         <div>
+            <legend>RELATÓRIO GERAL DE ESTOQUE</legend><br>
+        <div class="tableFixHead" style="width: 70%; height: 41em; margin-left: auto; margin-right: auto; border: #8b0210 solid 1px;">
+            <table class="table table-striped table-hover" >
+                <thead>
+                    <tr>
+                        <th style="width: 20%;"> CÓDIGO DE BARRAS </th>
+                        <th style="width: 10%;"> CÓDIGO </th>
+                        <th> DESCRIÇÃO DO PRODUTO </th>
+                        <th style="width: 20%;"> LABORATÓRIO </th>
+                        <th style="width: 10%;"> QTD </th>
+                    </tr>
+                </thead>
 
+                <tbody>
+                    <?php
+                        
+                        $dados = $produto->selectAllProduto();
 
-        </div>
+                        if (count($dados) > 0)  
+                        {
+                            for ($i = 0; $i < count($dados); $i++) {
+                                echo "<tr   >"; 
+                                foreach ($dados[$i] as $key => $value) {
+                                    if ($key == "codigo_barras") 
+                                    {
+                                        echo "<td>" . $value . "</td>";
+                                    }
+                                }
+                                foreach ($dados[$i] as $key => $value) {
+                                    if ($key == "id_produto") 
+                                    {
+                                        echo "<td>" . $value . "</td>";
+                                    }
+                                }
+                                foreach ($dados[$i] as $key => $value) {
+                                    if ($key == "nome_produto") 
+                                    {
+                                        echo "<td>" . $value . "</td>";
+                                    }
+                                }
+                                foreach ($dados[$i] as $key => $value) {
+                                    if ($key == "pessoa_id_pessoa") 
+                                    {
+                                        $id_up = $value;
+                                        $return = $pessoa->selectPessoaFornecedor($id_up);
+                                        $result = $return[0]['nome'];
+
+                                        echo "<td>" . $result . "</td>";
+                                    }
+                                }
+                                foreach ($dados[$i] as $key => $value) {
+                                    if ($key == "id_produto") 
+                                    {   
+                                        $id_up = $value;
+                                        $returnEstoque = $estoque->selectQuantidadeEstoque($id_up);
+
+                                        if ($returnEstoque != null) {
+                                            echo '<td>'.$returnEstoque['quantidade_estoque'].'</td>';
+                                        } else {
+                                            echo "<td>"; echo '0'; echo "</td>";
+                                        }
+                                    }
+                                }
+                    ?>
+                                
+                    <?php
+                                echo "</tr>";
+                            }
+                        } 
+                    ?>
+                </tbody>
+            </table>
+
+            
     </section>
+    <a type="submit" href="RelatorioEstoque.php" class="btn btn-outline-danger" id="fecharRelatorio" type="submit" name="fecharRelatorio" 
+            style="margin-left: 43%; margin-top: 1%;">Fechar Relatório</a>
 </body>
 
 </html>

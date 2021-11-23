@@ -72,10 +72,19 @@
                         $id_produto_estoque = addslashes($_GET['id_produto_up_estoque']);
                         $quantidadeAtual = addslashes($_POST['quantidadeEstoque']);
 
+                        if (addslashes($_POST['quantidadeEstoque'] == 0)) {
+                            $compra->createItemCompra($data_compra, $numero_nota, $quantidade_produto_compra, $id_produto_estoque);
+                            $estoque->createEstoque($quantidade_produto_compra, $id_produto_estoque);
+                            header("location: AlimentarEstoque.php");
+
+                        } else {
+
                         $quantidade_update = (int) $quantidadeAtual + (int) $quantidade_produto_compra;
 
                         $compra->createItemCompra($data_compra, $numero_nota, $quantidade_produto_compra, $id_produto_estoque);
                         $estoque->updateEstoque( $quantidade_update, $id_produto_estoque);
+                        }
+                    
                     }
                 }
             ?>
@@ -86,7 +95,7 @@
                 <div id="adicionaClienteVenda" style="margin-top: 13%; margin-left: 44%;">
                     <a href="ConsultaProdutos.php?buscaProduto=+" title="Buscar Produto"><img src="/img/search2.png"></a>
                 </div>
-
+               
                 <label id="labelDataCompra">Data da compra:</label>&nbsp;
                 <input type="date" id="dataCompra" name="dataCompra" class="form-control" style="display: inline; font-size: 13pt;" required></br><br>
 
@@ -135,7 +144,7 @@
                                         if(isset($retornoConsultaEstoque) && $retornoConsultaEstoque != null){                                         
                                                 echo $retornoConsultaEstoque['quantidade_estoque']; 
                                         } else {
-                                            var_dump($quantidadeAtual);
+                                            echo '0';
                                         }
                         } 
                             ?>" style="display: inline; font-size: 13pt;" ><br><br>

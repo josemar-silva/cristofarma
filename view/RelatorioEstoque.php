@@ -52,7 +52,7 @@
 <form action="RelatorioEstoqueSaida.php" method="POST">
 
             
-<button class="btn btn-outline-danger" id="btnGerarRelatorioGerencial" name="btnGerarRelatorioGerencial" onclick="" style="margin-left: 40%;">Gerar Relatório</button>
+<button class="btn btn-outline-danger" id="btnGerarRelatorioGerencial" name="btnGerarRelatorioGerencial" onclick="" style="margin-left: 40%; margin-top: 35.5%;">Gerar Relatório</button>
 </form>        
 </div>
     </section>

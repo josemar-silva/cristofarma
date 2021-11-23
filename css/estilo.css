@@ -37,7 +37,7 @@ section#principal {
 
 option, select{
 
-    font-size: 13pt;
+    font-size: 12pt;
     width: auto;
     text-align: left;
 }
@@ -55,12 +55,6 @@ input{
     font-size: 13pt;
 }
 
-#notaFiscal input, label {
-
-    display: inline-block;
-    font-size: 13pt;
-
-}
   .feather {
 
     width: 16px;
@@ -182,7 +176,7 @@ border: none;
     margin-bottom: 10px;
 }
 
-#selecionarFornecedor{
+div#selecionarFornecedor{
     
     font-size: 12px;
     margin-left: 5px;
@@ -190,8 +184,8 @@ border: none;
     height: 40px;
     float: left; 
     background-image: url(/img/search2.png);
-    margin-left: 40%;
-    margin-top: -7%;
+    margin-left: 50%;
+    margin-top: -6%;
     background-repeat: no-repeat;
     background-size: cover;
     overflow: hidden;

@@ -79,7 +79,7 @@ class Produto
         $conexao = new Conexao();
 
         $dadosSelecionados = array();
-        $dados  = $conexao->pdo->query("SELECT * FROM produto ORDER BY id_produto");
+        $dados  = $conexao->pdo->query("SELECT * FROM produto ORDER BY nome_produto");
         $dadosSelecionados = $dados->fetchAll(PDO::FETCH_ASSOC);
         return $dadosSelecionados;
     }

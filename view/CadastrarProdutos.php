@@ -77,14 +77,15 @@
             <form id="cadastro" method="POST">
                 <legend>CADASTRO DE PRODUTOS</legend><br>
 
+                <div style="border: rgba(168, 57, 68) solid 1px; padding: 3%; border-radius: 5%;">
                 <label for="fornecedor">Fornecedor:</label><br>
                 <input id="fornecedor" class="form-control" type="text" type="text" autofocus required  
                     name="fornecedor" size="25" value="<?php if (isset($_GET['id_fornecedor_produto_get_up'])){ $id_fornecedor_produto_get_up = addslashes($_GET['id_fornecedor_produto_get_up']); 
                         $retornoConsulta = $pessoa->selectPessoaFornecedor($id_fornecedor_produto_get_up); if(isset($retornoConsulta)){echo $retornoConsulta[0]['nome'];}}?>"><br><br>
 
-                <div id="selecionarFornecedor">
-                <a href="ConsultaFornecedor.php?buscaFornecedor=+" id="alinhamento" title="Selecionar Laboriatório"><img src="/img/search2.png"></a>
-                </div><br><br>
+                <div id="selecionarFornecedor" style="margin-left: 45%; margin-top: -8%;">
+                    <a href="ConsultaFornecedor.php?buscaFornecedor=+" id="alinhamento" title="Selecionar Laboriatório"><img src="/img/search2.png"></a>
+                </div><br>
                 
                 <label for="descricaoProduto"> Descrição do Produto:</label><br>
                 <input id="descricaoProduto" class="form-control"  type="text" name="descricaoProduto" required size="50"> <br><br>
@@ -97,6 +98,7 @@
                 
                 <label for="precoVenda">Preço de Venda:</label><br>
                 <input id="precoVenda" class="form-control"  placeholder="R$" type="text" type="text" name="precoVenda" required size="10"><br> <br>
+                </div>
 
                 <input class="btn btn-outline-danger" type="submit" id="btnCadastrar" name="btnGravarClientes" style="margin-left: 40%; margin-top: 5%;"
                     value="<?php echo "Cadastrar"; ?>">

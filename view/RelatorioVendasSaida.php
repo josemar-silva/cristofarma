@@ -64,6 +64,7 @@ $tipoRelatorio = filter_input(INPUT_POST, 'tipoRelatorio');
 
 
     echo '<tr>';
+    
         echo '<th> CÓDIGO VENDA </th>';
         echo '<th> DATA VENDA</th>';
         echo '<th> NOME DO CLIENTE </th>';
