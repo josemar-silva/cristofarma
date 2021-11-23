@@ -9444,6 +9444,9 @@ th, td { padding: 8px 16px; }
 .table-not-found {
     height: 27.3px;
 }
+#tamanho{
+   height: 600px;
+}
 
 /* tr td {
     height: 40px;
