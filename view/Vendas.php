@@ -77,7 +77,7 @@
                     <th> LABORATÓRIO </th>
                     <th> PREÇO UNID</th>
                     <th> QTD </th>
-                    <th id="get_rows_value"> R$ TOTAL </th>
+                    <th> R$ TOTAL </th>
                     <th> AÇÃO </th>
                   </tr>
                 </thead>
@@ -87,13 +87,6 @@
 
                   echo '<div id="divCodigoVenda" style="margin-left: 1%; width:98%; margin-top: -3.5%;" >';
                   echo '<label  style="font-weight: bolder; font-size: 15px; margin-left: 1%;color: rgb(231, 225, 225);">Código da Venda:</label>';
-
-
-    
-    
-    
-    echo '<div id="divCodigoVenda" style="margin-left: 1%; width:98%; margin-top: -3.5%;" >';
-    echo '<label style="font-weight: bolder; font-size: 15px; margin-left: 1%;color: rgb(231, 225, 225);">Código da Venda:</label>';
     
         date_default_timezone_set('America/Sao_Paulo');
         $ano = date('Y');
@@ -101,7 +94,6 @@
         $dia = date('d');
         $countVendasDia = count($venda->selectAllVenda());
         $codigo_gerado_venda = $ano.$mes.$dia.$countVendasDia;
-        echo $codigo_gerado_venda;
         $outputCodigoVenda = $codigo_gerado_venda; /* GERANDO CODIGO DA VENDA */
 
         echo '<input id="codigoVenda" name="codigoVenda" value="'. $codigo_gerado_venda .'"style="background-color: #191970; color: yellow; font-weight: bolder; text-align: 

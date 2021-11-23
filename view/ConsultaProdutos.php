@@ -77,24 +77,28 @@ $estoque = new Estoque();
 
                                  <!---------------------- BUSCA %like% = 'quem contem'... ----------------------->
 
-        <div class="tableFixHead">
-            <table class="table table-striped table-hover">
-                <thead>
-                    <tr>
-                        <th> ID </th>
-                        <th> NOME DO PRODUTO </th>
-                        <th> PREÇO CUSTO </th>
-                        <th> PREÇO VENDA </th>
-                        <th> CÓDIGO DE BARRAS </th>
-                        <th> LABORATÓRIO </th>
-                        <th style="width: 5%;"> ESTOQUE</th>
-                        <th> AÇÃO </th>
-                    </tr>
-                </thead>
-
-                <tbody>
+       
                     <?php
                     if (isset($_GET['buscaProdutos'])) {
+                    ?>
+
+                        <div class="tableFixHead">
+                        <table class="table table-striped table-hover">
+                            <thead>
+                                <tr>
+                                    <th> ID </th>
+                                    <th> NOME DO PRODUTO </th>
+                                    <th> PREÇO CUSTO </th>
+                                    <th> PREÇO VENDA </th>
+                                    <th> CÓDIGO DE BARRAS </th>
+                                    <th> LABORATÓRIO </th>
+                                    <th style="width: 5%;"> ESTOQUE</th>
+                                    <th> AÇÃO </th>
+                                </tr>
+                            </thead>
+            
+                            <tbody>
+                        <?PHP
 
                         $dados = $produto->consultaProdutoLike($consultaLike = "%" . trim($_GET['buscaProdutos']) . "%");
 
@@ -144,7 +148,24 @@ $estoque = new Estoque();
                         }
                     } else {
                         if (isset($_GET['buscaProduto'])) {
-
+                    ?>
+                            <div class="tableFixHead">
+                        <table class="table table-striped table-hover">
+                            <thead>
+                                <tr>
+                                    <th> ID </th>
+                                    <th> NOME DO PRODUTO </th>
+                                    <th> PREÇO CUSTO </th>
+                                    <th> PREÇO VENDA </th>
+                                    <th> CÓDIGO DE BARRAS </th>
+                                    <th> LABORATÓRIO </th>
+                                    <th style="width: 5%;"> ESTOQUE</th>
+                                    <th> AÇÃO </th>
+                                </tr>
+                            </thead>
+            
+                            <tbody>
+                    <?php
                         $dados = $produto->consultaProdutoLike($consultaLike = "%" . trim($_GET['buscaProduto']) . "%");
 
                         if (count($dados) > 0)  

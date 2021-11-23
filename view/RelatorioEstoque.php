@@ -41,7 +41,6 @@
       <a href="../index.php">Sair</a>
     </div>
 
-<<<<<<< HEAD
     </header>
     <section id="principalEstoque">
         <div id="relatorioGerencialVendas" style="margin-left: 5%;">
@@ -57,23 +56,6 @@
 </form>        
 </div>
     </section>
-=======
-  </header>
-  <section id="principalEstoque">
-    <div id="relatorioGerencialVendas" style="margin-left: 5%;">
-      <legend style="text-align: left;">RELATÓRIO GERAL DE ESTOQUE</legend><br>
-
-      <input type="radio" id="estoque" name="tipoRelatorioEstoque" value="estoque" checked>&nbsp; &nbsp;
-      <label for="estoque" style="font-size: 13pt;">Relatório de Estoque</label><br><br>
-
-      <form action="RelatorioEstoqueSaida.php" method="POST">
-
-
-        <button class="btn btn-outline-danger" id="btnGerarRelatorioGerencial" name="btnGerarRelatorioGerencial" onclick="" style="margin-left: 40%;">Gerar Relatório</button>
-      </form>
-    </div>
-  </section>
->>>>>>> aeeee11cc7aea39362bb1ad2c340d0b838dacab7
 </body>
 
 </html>
