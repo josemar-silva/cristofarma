@@ -6,6 +6,7 @@
   <meta charset="UTF-8" />
   <link rel="stylesheet" href="../css/bootstrap/nav/navegador.css">
   <link rel="stylesheet" href="../css/estilo.css">
+  <link rel="stylesheet" href="../css/fontawesome/css/all.css">
 
   <?php
   session_start(); // trabalhar com informaçoes persistentes, sem perder os dados ao trocar de pagina ou arquivo //
@@ -213,7 +214,7 @@
                         array_push($soma_total_venda, $soma); // ADICIONANDO OS VALORS AO ARRAY
                   ?>
 
-                        <td><a id="removeProdutoVenda" href="Vendas.php?removeProdutoVenda=<?php echo $dados['id_produto']; ?>"> X </a></td>
+                        <td><a id="removeProdutoVenda" href="Vendas.php?removeProdutoVenda=<?php echo $dados['id_produto']; ?>"><i class="fas fa-trash"></i></td>
                   <?php
                         echo '</tr>';
                       }
