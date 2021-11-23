@@ -63,13 +63,13 @@
     <form method="POST">
         <div id="itensAdicionados">
 
-            <section id="principalVendas">
-                <div  id="tamanho"  class="tableFixHead" >
-                <legend style="background-color: #191970; color: white;" >VENDA / ORÇAMENTO</legend>
-                    <table >
-                        <div >
-                            <table class="table table-striped table-hover" >
-                                <thead >
+            <section id="principalVendas" >
+                <div id="tamanho" class="tableFixHead">
+                    <legend style="background-color: #191970; color: white; ">VENDA / ORÇAMENTO</legend>
+                    <table>
+                        <div>
+                            <table class="table table-striped table-hover">
+                                <thead>
                                     <tr>
                                         <th> CODIGO PRODUTO </th>
                                         <th> DESCRIÇÃO DO PRODUTO </th>
@@ -85,7 +85,8 @@
 
 
                                     echo '<div id="divCodigoVenda" style="margin-left: 1%; width:98%; margin-top: -3.5%;" >';
-                                    echo '<label style="font-weight: bolder; font-size: 15px; margin-left: 1%;color: rgb(231, 225, 225);">Código da Venda:</label>';
+                                    echo '<label  style="font-weight: bolder; font-size: 15px; margin-left: 1%;color: rgb(231, 225, 225);">Código da Venda:</label>';
+
 
                                     date_default_timezone_set('America/Sao_Paulo');
                                     $ano = date('Y');
@@ -95,8 +96,8 @@
                                     $codigo_gerado_venda = $ano . $mes . $dia . $countVendasDia;
                                     $outputCodigoVenda = $codigo_gerado_venda; /* GERANDO CODIGO DA VENDA */
 
-                                    echo '<input id="codigoVenda" name="codigoVenda" value="' . $outputCodigoVenda . '"style="background-color: #191970; color: yellow; font-weight: bolder; text-align: 
-            center; font-size: 13pt; border: none; display: inline-block;" size="10" disabled></input>';
+                                    echo '<input  id="codigoVenda" name="codigoVenda" value="' . $outputCodigoVenda . '"style="background-color: #191970; color: yellow; font-weight: bolder; text-align: 
+                                    right; font-size: 13pt; border: none; display: inline-block;" size="10";disabled></input>;';;
 
                                     echo '</div>';
 

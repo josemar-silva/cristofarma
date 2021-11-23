@@ -9447,6 +9447,11 @@ th, td { padding: 8px 16px; }
 #tamanho{
    height: 600px;
 }
+#fixo{
+
+    position: fixed;
+  
+}
 
 /* tr td {
     height: 40px;
