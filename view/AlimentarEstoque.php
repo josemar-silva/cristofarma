@@ -3,7 +3,6 @@
     require_once '../model/Estoque.php';
     require_once '../model/ItemCompra.php';
 
-
     $estoque = new Estoque();
     $produto = new Produto();
     $compra = new ItemCompra();
@@ -61,7 +60,7 @@
             </legend>
 
             <?php
-                $acaoAtualizaEstoque = filter_input(INPUT_POST, 'gerenciaQuantidadeEstoque'); #filtrar valor que um inpult recebeu
+                $acaoAtualizaEstoque = filter_input(INPUT_POST, 'gerenciaEstoque'); #filtrar valor que um inpult recebeu
 
                 if ($acaoAtualizaEstoque == 'Atualizar Estoque'){
                     if (isset($_POST['dataCompra']) && isset($_POST['numeroNota'])) {
@@ -75,14 +74,16 @@
                         if (addslashes($_POST['quantidadeEstoque'] == 0)) {
                             $compra->createItemCompra($data_compra, $numero_nota, $quantidade_produto_compra, $id_produto_estoque);
                             $estoque->createEstoque($quantidade_produto_compra, $id_produto_estoque);
-                            header("location: AlimentarEstoque.php");
+
+                            echo '<script> alert("Estoque Alimentado com sucesso!")</script>';
 
                         } else {
 
-                        $quantidade_update = (int) $quantidadeAtual + (int) $quantidade_produto_compra;
+                          $compra->createItemCompra($data_compra, $numero_nota, $quantidade_produto_compra, $id_produto_estoque);
+                          $estoque->estoqueAdicionar($id_produto_estoque, $quantidade_produto_compra);
 
-                        $compra->createItemCompra($data_compra, $numero_nota, $quantidade_produto_compra, $id_produto_estoque);
-                        $estoque->updateEstoque( $quantidade_update, $id_produto_estoque);
+                          echo '<script> alert("Estoque Atualizado com sucesso!")</script>';
+
                         }
                     
                     }
@@ -154,7 +155,7 @@
                         value=" " style="display: inline; font-size: 13pt;" ><br><br>
                 </div> 
                         
-                        <input class="btn btn-outline-danger" id="gerenciaQuantidadeEstoque" type="submit" name="gerenciaQuantidadeEstoque" 
+                        <input class="btn btn-outline-danger" id="gerenciaEstoque" type="submit" name="gerenciaEstoque" 
             style="margin-left: 43%; margin-top: 1%;" onclick="" value="<?php echo 'Atualizar Estoque'; ?>">
 
             </form>

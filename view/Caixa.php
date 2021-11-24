@@ -1,3 +1,16 @@
+<?php
+    require_once '../model/Produto.php';
+    require_once '../model/ItemVenda.php';
+    require_once '../model/Pessoa.php';
+    require_once '../model/Venda.php';
+    require_once '../model/Estoque.php';
+
+    $produto = new Produto();
+    $itemVenda = new ItemVenda();
+    $pessoa = new Pessoa();
+    $venda = new Venda();
+    $estoque = new Estoque();
+?>
 <!doctype html>
 <html lang="pt">
 
@@ -51,46 +64,23 @@
 
             <div class="tableFixHead">
 
-                <table class="table table-striped table-hover">
+                <table class="table table-striped table-hover">            
                     <thead>
                         <tr>
                             <th> DATA </th>
                             <th> ID VENDA </th>
                             <th> NOME DO CLIENTE </th>
                             <th> VENDEDOR </th>
-                            <th> VALOR VENDA </th>
+                            <th style="width: 8%;"> VALOR VENDA </th>
                             <th> PAGAMENTO </th>
                             <th> SITUAÇÃO </th>
-                            <th> AÇÃO </th>
+                            <th style="width: 8%;"> AÇÃO </th>
                         </tr>
                     </thead>
                     <tbody>
                         <?php
-                        require_once '../model/Produto.php';
-                        require_once '../model/ItemVenda.php';
-                        require_once '../model/Pessoa.php';
-                        require_once '../model/Venda.php';
-                        require_once '../model/Estoque.php';
-
-                        $produto = new Produto();
-                        $itemVenda = new ItemVenda();
-                        $pessoa = new Pessoa();
-                        $venda = new Venda();
-                        $estoque = new Estoque();
-
+                      
                         $dados = $venda->selectAllVendaAberta();
-
-                        //echo '<table class="table table-hover">';
-                        //  echo '<tr>';
-                        //    echo '<th> DATA </th>';
-                        //  echo '<th> ID VENDA </th>';
-                        //echo '<th> NOME DO CLIENTE </th>';
-                        //echo '<th> VENDEDOR </th>';
-                        //echo '<th> VALOR VENDA </th>';
-                        //echo '<th> PAGAMENTO </th>';
-                        //echo '<th> SITUAÇÃO </th>';
-                        //echo '<th> AÇÃO </th>';
-                        //echo '</tr>';
 
                         if (count($dados) > 0) {
 
@@ -142,9 +132,16 @@
                                     }
                                 }
                         ?>
+
+            <script language=javascript>
+              function cancelarVenda() {
+                if (confirm("Venda não recebida no caixa! Desseja cancelar essa venda?"))
+                  alert("Venda cancelada!");
+              }
+            </script>
                                 <td>
                                     <a class="acaoVerde" id="fecharVendaNoCaixa" href="FecharVendaCaixa.php?id_get_venda_up=<?php echo $dados[$i]['id_venda']; ?>"><i class="fas fa-hand-holding-usd"></i>
-                                        <a class="acaoVermelho" id="cancelaNoVendaCaixa" href=""><i class="fas fa-window-close"></i>
+                                    <a class="acaoVermelho" id="cancelaNoVendaCaixa" namme="cancelaNoVendaCaixa" value="cancelaNoVendaCaixa" href="" onclick="cancelarVenda(); <?php $venda->deleteVenda($dados[$i]['id_venda']);?>"><i class="fas fa-window-close"></i>
                                 </td>
                         <?php
                                 echo "</tr>"; // fecha linha dos dados selecionados

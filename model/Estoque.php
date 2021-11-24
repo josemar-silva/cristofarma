@@ -35,7 +35,7 @@ function createEstoque($quantidade_estoque, $produto_id_produto)
 }
 
 
-function updateEstoque($quantidade_estoque, $produto_id_produto)
+function updateEstoque($produto_id_produto, $quantidade_estoque)
 {
     $conexao = new Conexao();
     
@@ -88,35 +88,36 @@ function selectQuantidadeEstoque($produto_id_produto)
     return $produto_estoque_quantidade;
 }
 
-function selectAllEstoque()
+function estoqueAdicionar($id_produto_adicionar, $quantidade_produto_adicionar)
 {
     $conexao = new Conexao();
 
-    $dados  = $conexao->pdo->prepare("SELECT * FROM estoque"); 
+    $dados  = $conexao->pdo->prepare("SELECT quantidade_estoque FROM estoque WHERE produto_id_produto = :idp");
+    $dados->bindValue("idp", $id_produto_adicionar);
     $dados->execute(); 
-    $produto_estoque = $dados->fetchAll(PDO::FETCH_ASSOC); 
+    $return_quantidade = $dados->fetch(PDO::FETCH_ASSOC);
+    $quantidade_estoque = $return_quantidade['quantidade_estoque'];
+    
+    $quantidade_estoque_update = (int) $quantidade_estoque + (int) $quantidade_produto_adicionar;
 
-    return $produto_estoque;
-}
-
-function estoqueAdd()
-{
-    $conexao = new Conexao();
-
-    $dados  = $conexao->pdo->prepare("SELECT * FROM estoque"); 
-    $dados->execute(); 
-    $produto_estoque = $dados->fetchAll(PDO::FETCH_ASSOC); 
+    $this->updateEstoque($id_produto_adicionar, $quantidade_estoque_update);
 
     return true;
 }
 
-function estoquerRemove()
+function estoqueRemover($id_produto_remover, $quantidade_produto_remover)
 {
     $conexao = new Conexao();
 
-    $dados  = $conexao->pdo->prepare("SELECT * FROM estoque"); 
+    $dados  = $conexao->pdo->prepare("SELECT quantidade_estoque FROM estoque WHERE produto_id_produto = :idp");
+    $dados->bindValue("idp", $id_produto_remover);
     $dados->execute(); 
-    $produto_estoque = $dados->fetchAll(PDO::FETCH_ASSOC); 
+    $return_quantidade = $dados->fetch(PDO::FETCH_ASSOC);
+    $quantidade_estoque = $return_quantidade['quantidade_estoque'];
+    
+    $quantidade_estoque_update = (int) $quantidade_estoque - (int) $quantidade_produto_remover;
+
+    $this->updateEstoque($id_produto_remover, $quantidade_estoque_update);
 
     return true;
 }

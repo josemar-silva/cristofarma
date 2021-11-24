@@ -114,7 +114,6 @@ class Produto
         return $dadosSelecionados;
 
     }
-
 }
  
 ?>

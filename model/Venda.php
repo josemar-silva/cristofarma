@@ -130,7 +130,7 @@ class Venda
 
         $dadosSelecionados = array();
 
-        $dados  = $conexao->pdo->prepare("SELECT * FROM venda ORDER BY data_venda DESC");
+        $dados  = $conexao->pdo->query("SELECT * FROM venda ORDER BY data_venda DESC");
         $dadosSelecionados = $dados->fetchAll(PDO::FETCH_ASSOC);
 
         return $dadosSelecionados;
@@ -168,6 +168,7 @@ class Venda
 
         $dados  = $conexao->pdo->prepare("SELECT * FROM venda left JOIN pessoa ON pessoa_id_pessoa_cliente = id_pessoa where status_venda = 'fechado' 
             ORDER BY data_venda DESC");
+
         $dadosSelecionados = $dados->fetchAll(PDO::FETCH_ASSOC);
 
         return $dadosSelecionados;
@@ -177,8 +178,9 @@ class Venda
     {
         $conexao = new Conexao();
 
-        $dados = $conexao->pdo->prepare("SELECT * FROM venda INNER JOIN pessoa ON pessoa_id_pessoa_cliente = id_pessoa WHERE data_venda >= :di 
-            AND data_venda <= :df ORDER BY data_venda DESC");
+        $dados = $conexao->pdo->prepare("SELECT * FROM venda INNER JOIN pessoa ON pessoa_id_pessoa_cliente = id_pessoa AND status_venda = 'fechado' 
+            WHERE data_venda >= :di AND data_venda <= :df ORDER BY data_venda DESC");
+
         $dados->bindValue(":di", $data_ini);
         $dados->bindValue(":df", $data_fim);
         $dados->execute();
@@ -191,8 +193,9 @@ class Venda
     {
         $conexao = new Conexao();
 
-        $dados = $conexao->pdo->prepare("SELECT * FROM venda JOIN pessoa ON pessoa_id_pessoa_cliente = id_pessoa
-             WHERE nome LIKE :lk AND tipo_pessoa = 'cliente'");
+        $dados = $conexao->pdo->prepare("SELECT * FROM venda JOIN pessoa ON pessoa_id_pessoa_cliente = id_pessoa AND status_venda = 'fechado'
+             WHERE nome LIKE :lk AND tipo_pessoa = 'cliente' ORDER BY data_venda DESC");
+
         $dados->bindValue(":lk", $nomeCliente);
         $dados->execute();
         $dadosPessoaSelecionados = $dados->fetchAll(PDO::FETCH_ASSOC);
@@ -206,6 +209,7 @@ class Venda
 
         $dados = $conexao->pdo->prepare("SELECT * FROM venda LEFT JOIN pessoa ON pessoa_id_pessoa_cliente = id_pessoa AND 
              WHERE nome LIKE :lk AND data_venda >= :di AND data_venda <= :df ORDER BY data_venda DESC");
+
         $dados->bindValue(":lk", $nomeCliente);
         $dados->bindValue(":di", $data_ini);
         $dados->bindValue(":df", $data_fim);
@@ -221,7 +225,8 @@ class Venda
 
         $dadosSelecionados = array();
 
-        $dados = $conexao->pdo->prepare("SELECT * FROM venda WHERE tipo_pagamento = :tp ORDER BY data_venda DESC");
+        $dados = $conexao->pdo->prepare("SELECT * FROM venda WHERE tipo_pagamento = :tp AND status_venda = 'fechado' ORDER BY data_venda DESC");
+
         $dados->bindValue(":tp", $tipoPagamento);
         $dados->execute();
         $dadosSelecionados = $dados->fetchAll(PDO::FETCH_ASSOC);
@@ -233,8 +238,9 @@ class Venda
     {
         $conexao = new Conexao();
 
-        $dados = $conexao->pdo->prepare("SELECT * FROM venda JOIN pessoa ON pessoa_id_pessoa_vendedor = id_pessoa
-             WHERE nome LIKE :lk AND tipo_pessoa = 'funcionario' AND funcao = 'vendedor'");
+        $dados = $conexao->pdo->prepare("SELECT * FROM venda JOIN pessoa ON pessoa_id_pessoa_vendedor = id_pessoa AND status_venda = 'fechado'
+             WHERE nome LIKE :lk AND tipo_pessoa = 'funcionario' AND funcao = 'vendedor' ORDER BY data_venda DESC");
+
         $dados->bindValue(":lk", $nomeVendedor);
         $dados->execute();
         $dadosPessoaSelecionados = $dados->fetchAll(PDO::FETCH_ASSOC);
@@ -248,6 +254,7 @@ class Venda
 
         $dados = $conexao->pdo->prepare("SELECT * FROM venda JOIN pessoa ON pessoa_id_pessoa_vendedor = id_pessoa
              WHERE nome LIKE :lk AND funcao = 'vendedor' AND data_venda >= :di AND data_venda <= :df ORDER BY data_venda DESC");
+
         $dados->bindValue(":lk", $nomeVendedor);
         $dados->bindValue(":di", $data_ini);
         $dados->bindValue(":df", $data_fim);
@@ -263,6 +270,7 @@ class Venda
         $conexao = new Conexao();
 
         $dados  = $conexao->pdo->prepare("SELECT * FROM venda WHERE id_venda = :id AND status_venda = 'aberto'"); // dados retornam como ARRAY
+
         $dados->bindValue("id", $idVendaLike);
         $dados->execute();
         $dadosSelecionados = $dados->fetchAll(PDO::FETCH_ASSOC);
@@ -275,6 +283,7 @@ class Venda
         $conexao = new Conexao();
 
         $dados  = $conexao->pdo->prepare("SELECT * FROM venda WHERE id_venda = :id AND status_venda = 'fechado'"); // dados retornam como ARRAY
+
         $dados->bindValue("id", $idVendaLike);
         $dados->execute();
         $dadosSelecionados = $dados->fetchAll(PDO::FETCH_ASSOC);
@@ -288,6 +297,7 @@ class Venda
         $conexao = new Conexao();
 
         $dados  = $conexao->pdo->prepare("SELECT codigo_venda FROM venda WHERE data_venda = :id AND pessoa_id_pessoa_cliente = :fk"); // dados retornam como ARRAY
+
         $dados->bindValue("id", $data_venda);
         $dados->bindValue("fk", $pessoa_id_pessoa_cliente);
         $dados->execute();
@@ -321,67 +331,6 @@ class Venda
         return $return_procentagem;
     }    
 
-    
-    //metodos de acesso 
-    function __getCodigoVenda()
-    {
-
-    }
-
-    function __setCodigoVenda()
-    {
-        
-    }
-
-    function __getValorSemDesconto()
-    {
-
-    }
-
-    function __setValorSemDesconto()
-    {
-        
-    }
-
-    function __getDesconto()
-    {
-
-    }
-
-    function __setDesconto()
-    {
-        
-    }
-
-    function __getValorComDesconto()
-    {
-
-    }
-
-    function __setValorComDesconto()
-    {
-        
-    }
-
-    function __getTipoPagamento()
-    {
-
-    }
-
-    function __setTipoPagamento()
-    {
-        
-    }
-
-    function __getDataVenda()
-    {
-
-    }
-
-    function __setDataVenda()
-    {
-        
-    }
 }
 
 

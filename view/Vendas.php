@@ -81,9 +81,8 @@
                     <th> AÇÃO </th>
                   </tr>
                 </thead>
-                <tbody>
+            <tbody>
                   <?php
-
 
                   echo '<div id="divCodigoVenda" style="margin-left: 1%; width:98%; margin-top: -3.5%;" >';
                   echo '<label  style="font-weight: bolder; font-size: 15px; margin-left: 1%;color: rgb(231, 225, 225);">Código da Venda:</label>';
@@ -93,6 +92,7 @@
         $mes = date('m');
         $dia = date('d');
         $countVendasDia = count($venda->selectAllVenda());
+        
         $codigo_gerado_venda = $ano.$mes.$dia.$countVendasDia;
         $outputCodigoVenda = $codigo_gerado_venda; /* GERANDO CODIGO DA VENDA */
 
@@ -100,7 +100,6 @@
         center; font-size: 13pt; border: none; display: inline-block;" size="10" disabled></input>';
 
                   echo '</div>';
-
 
                   // ADIDIONANDO ITENS AO CARRINHO DE COMPRAS //
 
@@ -118,7 +117,6 @@
                       // $itemVenda->updateItemVenda($cdv, $fk_id_produto, $update_quantidade, $update_valor_total_item);
                     }
                   }
-                  // CALCALAR VALORES DA VANDA
 
                   if (isset($_POST['desconto']) && isset($_POST['totalSemDesconto'])) {
                     $desc_porcentagem = filter_input(INPUT_POST, 'desconto');
@@ -172,6 +170,7 @@
                       $valor_produto = $quantidade_produto * $prod['preco_venda'];
 
                       $itemVenda->createItemVenda((int)$outputCodigoVenda, (int)$product, (int)$quantidade_produto, (float)$valor_produto);
+                      $estoque->estoqueRemover((int)$product, (int)$quantidade_produto);
                     }
 
             echo '<script> alert("Venda finalizada Com sucesso!")</script>';
@@ -223,10 +222,10 @@ if (isset($_SESSION['venda'])) {
 }
                                         // LIMPAR DAOS VARIAVIIS E CARRINHO AO FECHAR OU CANCELAR VENDA 
 
-    if (isset($_POST['cancelarVenda']) && isset($_SESSION['venda'])) 
+    if (isset($_POST['cancelarVenda'])) 
     {
         session_destroy();
-        echo '<META HTTP-EQUIV="REFRESH" CONTENT="0;URL=Vendas.php"/>';
+        echo '<META HTTP-EQUIV="REFRESH" CONTENT="0;URL=Vendas.php"/>'; 
     }
 ?>                      
        </table>
@@ -252,7 +251,7 @@ if (isset($_SESSION['venda'])) {
 
             <div id="divPagamentoTipo" style="display: inline; width: 20%;">
               <label id="labelTipoPagamento"> Tipo de Pagamento:</label>
-              <select id="tipoPagamento" name="tipoPagamento" required class="form-control" style="display: inline; margin-left: 8%; width: 25%; text-align: center;">
+              <select id="tipoPagamento" name="tipoPagamento" class="form-control" style="display: inline; margin-left: 8%; width: 25%; text-align: center;">
                 <option value="a vista">À Vista</option>
                 <option value="debito">Débito</option>
                 <option value="credito">Crédito</option>
@@ -272,7 +271,7 @@ if (isset($_SESSION['venda'])) {
                                                                                                                                           ?>"><br><br>
 
             <label id="labelNomeCliente">Nome:</label>
-            <input id="nomeCliente" type="search" class="form-control" name="nomeCliente" autofocus size="30" required style="margin-right: 11%;" value="<?php if (isset($_GET['id_cliente_up_venda']) && 'id_cliente_up_venda' !== NULL) {
+            <input id="nomeCliente" type="search" class="form-control" name="nomeCliente" autofocus size="30" style="margin-right: 11%;" value="<?php if (isset($_GET['id_cliente_up_venda']) && 'id_cliente_up_venda' !== NULL) {
                                                                                                                                                             $id_cliente_get_up = addslashes($_GET['id_cliente_up_venda']);
                                                                                                                                                             $retornoConsulta = $pessoa->selectPessoaCliente($id_cliente_get_up);
                                                                                                                                                             if (isset($retornoConsulta)) {
@@ -296,7 +295,7 @@ if (isset($_SESSION['venda'])) {
             </div>
 
             <label id="labelVendedorSelecionado">Vendedor:</label>
-            <select id="vendedor" name="vendedor" class="form-control" required style="display: inline; margin-left: 5%;">
+            <select id="vendedor" name="vendedor" class="form-control" style="display: inline; margin-left: 5%;">
               <option value=""> Não Informado </option>
               <?php $dados = $pessoa->selectAllPessoaFuncionarioVendedor();
               if (count($dados) > 0) {
@@ -305,7 +304,7 @@ if (isset($_SESSION['venda'])) {
                     if ($key == "id_pessoa") // IMPRIMIR VALOR SOMENTE SE...
                     {
               ?>
-                      <option value="<?php echo  $value; ?>" required>
+                      <option value="<?php echo  $value; ?>" >
                       <?php
                     }
                   }
@@ -344,14 +343,14 @@ if (isset($_SESSION['venda'])) {
             <!--======================== FUNCAO JAVASCRIPT COMFIRMAÇÃO ALERT ==============================-->
 
             <script language=javascript>
-              function confirmaCancelaVenda() {
-                if (confirm("Venda não finalizada, Deseja cancelar essa venda??"))
-                  alert("Venda cancelada com sucesso!.");
+              function confirmaCancelarVenda() {
+                if (confirm("Venda não finalizada, Deseja cancelar essa venda?"))
+                  alert("Venda cancelada!");
               }
             </script>
 
             <button class="btn btn-outline-danger" id="btnFecharVenda" name="fecharVenda" onclick="" style="display: inline;">Fechar Venda</button>
-            <button class="btn btn-outline-danger" id="btnCncelarVenda" name="cancelarVenda" onclick=" return confirmaCancelaVenda();" style="display: inline; margin-left: 10%;">Cancelar</button>
+            <button class="btn btn-outline-danger" id="btnCncelarVenda" name="cancelarVenda" onclick=" return confirmaCancelarVenda();" style="display: inline; margin-left: 10%;">Cancelar</button>
           </div>
         </div>
     </div>

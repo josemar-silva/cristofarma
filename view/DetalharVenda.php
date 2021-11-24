@@ -76,7 +76,7 @@
            text-decoration: none; font-size: 15pt;" disabled>
 
         <!-- CABEÇALHO CUPOM VENDA -->
-        <div style="height: 46em; width: 75%; margin-left: auto; margin-right: auto; background-color: #191970;">
+        <div style="height: 46em; width: 85%; margin-left: auto; margin-right: auto; background-color: #191970;">
           <div id="descricaoVendaCaixa" class="scroll" style="width: 100%; height: 42em; margin-left: auto; margin-right: auto; ">
             <?php
             // DETALHAR VENDA SELECIONADA
@@ -88,7 +88,7 @@
             ?><br>
               <table style="width: 96%; text-align: right; color: white; margin-top: -2%; margin-left: 2%;">
               <?php
-
+          echo '<thead>';
               echo '<tr>';
               echo '<th style="text-align: left; background-color: #8b0210; color: yellow; border: solid 1px #8b0210; "> CÓDIGO </th>';
               echo '<th  style="text-align: left; background-color: #8b0210; color: yellow; border: solid 1px 8b0210;"> DESCRIÇÃO DO PRODUTO</th>';
@@ -96,7 +96,9 @@
               echo '<th style="text-align: right; background-color: #8b0210; color: yellow; border: solid 1px 8b0210;"> QTD </th>';
               echo '<th style="text-align: right; background-color: #8b0210; color: yellow; border: solid 1px 8b0210;"> VALOR TOTAL';
               echo '</th>';
+          echo '</thead>';
 
+          echo '<tbody>';
               for ($i = 0; $i < count($itemVendaReturn); $i++) {
                 echo '<tr>';
 
@@ -131,6 +133,7 @@
                   }
                 }
                 echo "</tr>";
+                echo '</tbody>';
               }
             }
               ?>
@@ -138,17 +141,23 @@
 
           </div>
 
-          <div id="resumoVenda" style=" color: white; font-size: 15pt; font-family: Arial, Helvetica, sans-serif; float: right; 
-    margin-right: 3%; margin-top: 1%;">
+          <div id="resumoVenda">
 
-            <?php
+          <?php
             if (isset($vendaReturn) && !empty($vendaReturn)) {
-              echo 'Total Itens:&nbsp;' . $total_item_venda_return . '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;';
-              echo 'Valor sem Desconto: R$ &nbsp;' . $vendaReturn[0]['valor_venda_sem_desconto'] . '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;';
-              echo 'Desconto: R$ &nbsp;' . $vendaReturn[0]['desconto'] . '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;';
-              echo 'Total a Pagar: R$ &nbsp;' . $valor_venda_return;
+              echo '<span style=" color: white; font-size: 13pt; font-family: Arial, Helvetica, sans-serif; float: right; 
+              margin-right: 3%; margin-top: 1%"> Total a Pagar: R$ &nbsp;' . $valor_venda_return.'</span>';
+
+              echo '<span style=" color: white; font-size: 13pt; font-family: Arial, Helvetica, sans-serif; float: right; 
+                margin-right: 3%;  margin-top: 1%"> Desconto: R$ &nbsp;' . $vendaReturn[0]['desconto'].'</span>';
+
+              echo '<span style=" color: white; font-size: 13pt; font-family: Arial, Helvetica, sans-serif; float: right; 
+                margin-right: 3%;  margin-top: 1%"> Valor sem Desconto: R$ &nbsp;' . $vendaReturn[0]['valor_venda_sem_desconto'].'</span>';
+
+              echo '<span style=" color: white; font-size: 13pt; font-family: Arial, Helvetica, sans-serif; float: right; 
+                margin-right: 3%;  margin-top: 1%"> Total Itens:&nbsp;'.$total_item_venda_return.'</span>';             
             }
-            ?>
+          ?>
 
           </div>
         </div>
@@ -156,13 +165,13 @@
   </section>
 
   <?php
-  $status = $vendaReturn[0]['status_venda'];
+    $status = $vendaReturn[0]['status_venda'];
 
-  if ($status == 'fechado') {
-  ?>
-    <a class="btn btn-outline-danger" id="btnGerarNotaFiscal" name="gerarCumpom" href="CupomPdf.php?id_venda_cupom=<?php echo $id_venda; ?>" target="_blank" style="margin-left: 45%; margin-top: 0%; color: white;">Emitir Cupom Fiscal</a>
-  <?php
-  }
+    if ($status == 'fechado') {
+    ?>
+      <a class="btn btn-outline-danger" id="btnGerarNotaFiscal" name="gerarCumpom" href="CupomPdf.php?id_venda_cupom=<?php echo $id_venda; ?>" target="_blank" style="margin-left: 45%; margin-top: 0%; color: white;">Emitir Cupom Fiscal</a>
+    <?php
+    }
   ?>
 </body>
 

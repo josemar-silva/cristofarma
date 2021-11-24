@@ -62,7 +62,7 @@ $pessoa = new Pessoa();
 
 $tipoRelatorio = filter_input(INPUT_POST, 'tipoRelatorio');
 
-
+echo '<thead>';
     echo '<tr>';
         echo '<th> CÓDIGO VENDA </th>';
         echo '<th> DATA VENDA</th>';
@@ -75,11 +75,10 @@ $tipoRelatorio = filter_input(INPUT_POST, 'tipoRelatorio');
         echo '<th> PAGAMENTO </th>';
         echo '<th> STATUS </th>';
         echo '<th>AÇÃO</th>';
-
     echo '</tr>';
-
+echo '</thead>';
                                         // CONSULTA VENDA POR DATA INICIO E DATA FIM
-
+echo '<tbody>';
 if (isset($_POST['btnGerarRelatorioGerencial']) && $tipoRelatorio == 'data')
 {
     if (isset($_POST['getDataInicial']) && isset($_POST['getDataFinal']) && !empty($_POST['getDataInicial'])  && !empty($_POST['getDataFinal']))
@@ -99,8 +98,7 @@ if (isset($_POST['btnGerarRelatorioGerencial']) && $tipoRelatorio == 'data')
        for ($i=0; $i < count($returnVendas) ; $i++) 
         { 
              echo "<tr>";
-
-
+             
                 foreach ($returnVendas[$i] as $key => $value) 
                 {
                     if ($key == 'codigo_venda') 
@@ -123,13 +121,9 @@ if (isset($_POST['btnGerarRelatorioGerencial']) && $tipoRelatorio == 'data')
                 {   
                     if ($key == 'pessoa_id_pessoa_vendedor')
                     {
-                    
-                    ?>
-                
-                        <td> <?php $p = $pessoa->selectPessoaFuncionarioVendedor($value); echo $p[0]['nome'];?> </td>
-
-                    <?php   
-
+                        ?>
+                            <td> <?php $p = $pessoa->selectPessoaFuncionarioVendedor($value); echo $p[0]['nome'];?> </td>
+                        <?php   
                     }
                 } foreach ($returnVendas[$i] as $key => $value) 
                 {
@@ -174,10 +168,10 @@ if (isset($_POST['btnGerarRelatorioGerencial']) && $tipoRelatorio == 'data')
                             </td>
                         <?php
 
-                echo "</tr>"; 
+                echo "</tr>";
         } 
     }
-
+    echo '</tbody>';
     }
 } 
                                                 // CONSULTA VENDA POR NOME CLIENTE 'LIKE'
@@ -214,14 +208,10 @@ if (isset($_POST['btnGerarRelatorioGerencial']) && $tipoRelatorio == 'cliente' &
                 } foreach ($returnVendas[$i] as $key => $value) 
                 {   
                     if ($key == 'pessoa_id_pessoa_vendedor')
-                    {
-                    
-                    ?>
-                
-                        <td> <?php $p = $pessoa->selectPessoaFuncionarioVendedor($value); echo $p[0]['nome'];?> </td>
-
-                    <?php   
-
+                    {                   
+                        ?>
+                            <td> <?php $p = $pessoa->selectPessoaFuncionarioVendedor($value); echo $p[0]['nome'];?> </td>
+                        <?php   
                     }
                 } foreach ($returnVendas[$i] as $key => $value) 
                 {
@@ -270,7 +260,6 @@ if (isset($_POST['btnGerarRelatorioGerencial']) && $tipoRelatorio == 'cliente' &
                 echo "</tr>"; // fecha linha dos dados selecionados
         } 
     }
-     
 }
                                                 // CONSULTA VENDA POR TIPO DE PAGAMENTO
 
@@ -300,23 +289,17 @@ if (isset($_POST['btnGerarRelatorioGerencial']) && isset($_POST['tipoRelatorio']
                 {   
                     if ($key == 'pessoa_id_pessoa_cliente') 
                     {
-                    ?>
-                
-                        <td> <?php $p = $pessoa->selectPessoaCliente($value); echo $p[0]['nome'];?> </td>
-
-                    <?php 
+                        ?>                    
+                            <td> <?php $p = $pessoa->selectPessoaCliente($value); echo $p[0]['nome'];?> </td>
+                        <?php 
                     }
                 } foreach ($returnVendas[$i] as $key => $value) 
                 {   
                     if ($key == 'pessoa_id_pessoa_vendedor')
                     {
-                    
-                    ?>
-                
-                        <td> <?php $p = $pessoa->selectPessoaFuncionarioVendedor($value); echo $p[0]['nome'];?> </td>
-
-                    <?php   
-
+                        ?>
+                            <td> <?php $p = $pessoa->selectPessoaFuncionarioVendedor($value); echo $p[0]['nome'];?> </td>
+                        <?php   
                     }
                 } foreach ($returnVendas[$i] as $key => $value) 
                 {
@@ -355,7 +338,6 @@ if (isset($_POST['btnGerarRelatorioGerencial']) && isset($_POST['tipoRelatorio']
                         echo "<td>" .$value. "</td>";
                     }
                 }
-
                     $vendaDestalhar = $returnVendas[$i]['id_venda'];
             ?>  
                 <td> 
@@ -366,15 +348,104 @@ if (isset($_POST['btnGerarRelatorioGerencial']) && isset($_POST['tipoRelatorio']
                 echo "</tr>"; // fecha linha dos dados selecionados
         } 
     }
-
 }
-
                                                 // CONSULTA VENDA POR NOME VENDEDOR 'LIKE'
 
 if (isset($_POST['btnGerarRelatorioGerencial']) && $tipoRelatorio == 'vendedor' && !empty($_POST['nomeDoVendedor']))
 {
 
     $returnVendas =  $vendaRelatorio->consultaVendaLikeVendedor($nomeVendedor = "%".trim($_POST['nomeDoVendedor'])."%");
+
+    if(count($returnVendas) > 0)  
+    {
+       for ($i=0; $i < count($returnVendas) ; $i++) 
+        { 
+             echo "<tr>";
+
+                foreach ($returnVendas[$i] as $key => $value) 
+                {
+                    if ($key == 'codigo_venda') 
+                    {
+                        echo "<td>" .$value. "</td>";
+                    }
+                } foreach ($returnVendas[$i] as $key => $value) 
+                {
+                    if ($key == 'data_venda')  
+                    {
+                        echo "<td>" .$value. "</td>";
+                    }
+                } foreach ($returnVendas[$i] as $key => $value) 
+                {   
+                    if ($key == 'pessoa_id_pessoa_cliente') 
+                    {
+                        ?>
+                            <td> <?php $p = $pessoa->selectPessoaCliente($value); echo $p[0]['nome'];?> </td>
+                        <?php
+                    }
+                } foreach ($returnVendas[$i] as $key => $value) 
+                {   
+                    if ($key == 'pessoa_id_pessoa_vendedor')
+                    {               
+                        ?>           
+                            <td> <?php $p = $pessoa->selectPessoaFuncionarioVendedor($value); echo $p[0]['nome'];?> </td>
+                        <?php   
+                    }
+                } foreach ($returnVendas[$i] as $key => $value) 
+                {
+                    if ($key == 'valor_venda_sem_desconto') 
+                    {
+                        echo "<td>" .$value. "</td>";
+                    }
+                } foreach ($returnVendas[$i] as $key => $value) 
+                {
+                    if ($key == 'desconto')  
+                    {
+                        echo "<td>" .$value. "</td>";
+                    }
+                } foreach ($returnVendas[$i] as $key => $value) 
+                {
+                    if ($key == 'valor_venda_com_desconto') 
+                    {
+                        echo "<td>" .$value. "</td>";
+                    }
+                } foreach ($returnVendas[$i] as $key => $value) 
+                {
+                    if ($key == 'total_item_venda')  // IMPRIMIR VALOR SOMENTE SE...
+                    {
+                        echo "<td>" .$value. "</td>";
+                    }
+                } foreach ($returnVendas[$i] as $key => $value) 
+                {
+                    if ($key == 'tipo_pagamento')  // IMPRIMIR VALOR SOMENTE SE...
+                    {
+                        echo "<td>" .$value. "</td>";
+                    }
+                } foreach ($returnVendas[$i] as $key => $value) 
+                {
+                    if ($key == 'status_venda')  // IMPRIMIR VALOR SOMENTE SE...
+                    {
+                        echo "<td>" .$value. "</td>";
+                    }
+                }                
+                    $vendaDestalhar = $returnVendas[$i]['id_venda'];
+                    $status = $returnVendas[$i]['status_venda'];
+                ?>  
+                        <td> 
+                            <a id="detalharVendaReatorio" href="DetalharVenda.php?id_venda_up=<?php echo $vendaDestalhar;?>" 
+                                        style="font-size: 12px;">Detalhar</a>
+                        </td>
+                <?php
+
+                echo "</tr>"; // fecha linha dos dados selecionados
+        } 
+    }
+}
+                                            // RELATORIO GERAL DE VENDAS
+
+if (isset($_POST['btnGerarRelatorioGerencial']) && $tipoRelatorio == 'vendaGeral')
+{
+
+    $returnVendas =  $vendaRelatorio->selectAllVenda();
 
     if(count($returnVendas) > 0)  
     {
