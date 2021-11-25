@@ -71,9 +71,28 @@
         $total_item_venda_return = $vendaReturn[0]['total_item_venda'];
       }
       ?><br>
+                                                <!-- CANCELAR VENDA (ABERTA/FECHADA) E ESTORNA PRODUTOS AO ESTOQUE  -->
+<?php 
+      if (isset($_POST['cancelarVenda'])) {
+        $venda->estornarVenda($id_venda);
 
-      <legend style="color: white; float: left; font-size: 13pt; margin-top: -2%; color: blue;"> VENDA Nº <input id="saidaIdVendaFecharCaixa" size="8" value="<?php echo $codigo_venda_return; ?>" style=" color: red; text-align: center; margin-top: -30%; border: none; 
-           text-decoration: none; font-size: 15pt;" disabled>
+        $item_venda_estorno = $itemVenda->selectAllItemVendaLikeId($venda_id);
+        
+        for ($i = 0; $i < count($item_venda_estorno); $i++) {
+
+            $id_produto_estorno = $item_venda_estorno[$i]['produto_id_produto'];
+            $qtd_produto_estorno = $item_venda_estorno[$i]['quantidade_item'];
+
+            $estoque->estoqueAdicionar($id_produto_estorno, $qtd_produto_estorno);
+
+        }
+        
+        echo '<script> alert("Venda cancelada/estornada com sucesso!")</script>';
+      }
+    ?> 
+
+      <legend style="color: white; float: left; font-size: 12pt; margin-top: -2%; color: blue;"> VENDA Nº <input id="saidaIdVendaFecharCaixa" size="8" value="<?php echo $codigo_venda_return; ?>" style=" color: red; text-align: center; margin-top: -30%; border: none; 
+           text-decoration: none; font-size: 13pt;" disabled>
 
         <!-- CABEÇALHO CUPOM VENDA -->
         <div style="height: 46em; width: 85%; margin-left: auto; margin-right: auto; background-color: #191970;">
@@ -138,7 +157,6 @@
             }
               ?>
               </table>
-
           </div>
 
           <div id="resumoVenda">
@@ -155,24 +173,36 @@
                 margin-right: 3%;  margin-top: 1%"> Valor sem Desconto: R$ &nbsp;' . $vendaReturn[0]['valor_venda_sem_desconto'].'</span>';
 
               echo '<span style=" color: white; font-size: 13pt; font-family: Arial, Helvetica, sans-serif; float: right; 
-                margin-right: 3%;  margin-top: 1%"> Total Itens:&nbsp;'.$total_item_venda_return.'</span>';             
+                margin-right: 3%;  margin-top: 1%"> Total Itens:&nbsp;'.$total_item_venda_return.'</span>';   
+                
+              echo '<span style=" color: yellow; font-size: 13pt; font-family: Arial, Helvetica, sans-serif; float: left ; 
+                margin-left: 3%;  margin-top: 1%"> Situação:&nbsp;'.$vendaReturn[0]['status_venda'].'</span>';   
             }
           ?>
-
           </div>
         </div>
-    </form>
-  </section>
 
-  <?php
-    $status = $vendaReturn[0]['status_venda'];
+    <?php
+        $status = $vendaReturn[0]['status_venda'];
 
     if ($status == 'fechado') {
     ?>
-      <a class="btn btn-outline-danger" id="btnGerarNotaFiscal" name="gerarCumpom" href="CupomPdf.php?id_venda_cupom=<?php echo $id_venda; ?>" target="_blank" style="margin-left: 45%; margin-top: 0%; color: white;">Emitir Cupom Fiscal</a>
+        <a class="btn btn-outline-danger" id="btnGerarNotaFiscal" name="gerarCumpom" href="CupomPdf.php?id_venda_cupom=<?php echo $id_venda; ?>" 
+        target="_blank" style="margin-left: 3%; margin-right: 5%; margin-top: 1%; color: white;">Emitir Cupom Fiscal</a>
+        <input class="btn btn-outline-danger" type="submit"  id="cancelarVenda" name="cancelarVenda" value="Cancelar Venda" onclick="" style="margin-top: 1%;">
+
     <?php
+
+    } else {
+    ?>
+        <input class="btn btn-outline-danger" type="submit"  id="cancelarVenda" name="cancelarVenda" value="Estornar Venda" onclick="" style="margin-left: 7%; margin-right: 5%; margin-top: 1%;">
+
+    <?php
+    
     }
   ?>
+    </form>
+  </section>
 </body>
 
 </html>

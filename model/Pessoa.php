@@ -281,19 +281,19 @@ class Pessoa
 
     }
 
-    public function funcionarioLogin($emailLogin, $senhaLogin){
+    public function funcionarioLogin($usuarioLogin, $senhaLogin){
 
         $conexao = new Conexao();
 
         $dadosSelecionados = array();
 
-        $dados = $conexao->pdo->prepare("SELECT email, senha FROM pessoa WHERE email = :e AND senha = :s");
-        $dados->bindValue(":e", $emailLogin);
+        $dados = $conexao->pdo->prepare("SELECT matricula, senha FROM pessoa WHERE matricula = :m AND senha = :s");
+        $dados->bindValue(":m", $usuarioLogin);
         $dados->bindValue(":s", $senhaLogin);
         $dados->execute();
         $dadosSelecionados = $dados->fetchAll(PDO::FETCH_ASSOC);
 
-        if ($dadosSelecionados[0]['email'] == $emailLogin && $dadosSelecionados[0]['senha'] == $senhaLogin)
+        if ($dadosSelecionados[0]['matricula'] == $usuarioLogin && $dadosSelecionados[0]['senha'] == $senhaLogin)
         {
             $loginFuncionario = true;
         } else {

@@ -42,7 +42,6 @@ option, select{
     text-align: left;
 }
 
-
 legend {
 
     text-align: center;
@@ -55,12 +54,12 @@ input{
     font-size: 13pt;
 }
 
-  .feather {
+.feather {
 
     width: 16px;
     height: 16px;
     vertical-align: text-bottom;
-  }
+}
 
 #menu a.active {
 
@@ -91,8 +90,7 @@ input{
     text-decoration: none;
     display: inline-block;
     font-size: 19px;
-    box-shadow: 2px 3px 5px rgb(10 74 67 / 42%);
-    
+    box-shadow: 2px 3px 5px rgb(10 74 67 / 42%);   
 }
 
 .barrabotoes{
@@ -104,33 +102,32 @@ input{
 
 .index{
 
-width: 100vw;
-height: 100vh;
-background-color: #bebebe3a;
-display: flex;
-flex-direction: row;
-justify-content: center;
-align-items: center;
-text-align: center;
-font-style: oblique;
-color: lightseagreen;
-
+    width: 100vw;
+    height: 100vh;
+    background-color: #bebebe3a;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-style: oblique;
+    color: lightseagreen;
 }
 
 
 #login {
 
-width: 100vw;
-height: 100vh;
-background-color: #bebebe3a;
-display: block;
-flex-direction: row;
-justify-content: center;
-align-items: center;
-text-align: center;
-font-style: oblique;
-color: rgb(81, 21, 83);
-border: none;
+    width: 100vw;
+    height: 100vh;
+    background-color: #bebebe3a;
+    display: block;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-style: oblique;
+    color: rgb(81, 21, 83);
+    border: none;
 
 }
 
@@ -319,168 +316,167 @@ div#selecionarFornecedor{
         border-radius: 5%;  
 }
 
-    #fecharVendaCaixa label{
+#fecharVendaCaixa label{
 
-        text-transform: uppercase;
-        font-size: 13pt ;
-        font-weight: bolder;
-        float: right;
-        margin-right: 5%;
-    }
+    text-transform: uppercase;
+    font-size: 13pt ;
+    font-weight: bolder;
+    float: right;
+    margin-right: 5%;
+}
 
-    #fecharVendaCaixa input{
+#fecharVendaCaixa input{
 
-        font-size: 30pt;
-        height: auto;
-        text-align: right;
-        float: right;
-        margin-right: 5%;
-        background-color: #8b0210;
-        color: yellow;
-        font-weight: bold;
-        box-shadow: 5px 5px 0px #333;
-        -webkit-box-shadow: -25px 20px 20px rgb(92, 92, 70);
-        -moz-box-shadow: 5px 5px 0px #333;
-    }
+    font-size: 30pt;
+    height: auto;
+    text-align: right;
+    float: right;
+    margin-right: 5%;
+    background-color: #8b0210;
+    color: yellow;
+    font-weight: bold;
+    box-shadow: 5px 5px 0px #333;
+    -webkit-box-shadow: -25px 20px 20px rgb(92, 92, 70);
+    -moz-box-shadow: 5px 5px 0px #333;
+}
 
-    #divDetalharVenda {
+#divDetalharVenda {
 
-        border: rgba(168, 57, 68) solid 1px;
-        background-color: #8b0210;
-        width: 68%;
-        height: 660px;
-        margin-left: 1%;
-        float: left;
-        border-radius: 5%;
+    border: rgba(168, 57, 68) solid 1px;
+    background-color: #8b0210;
+    width: 68%;
+    height: 660px;
+    margin-left: 1%;
+    float: left;
+    border-radius: 5%;
         
-    }
-
+}
  
-    #descricaoVendaCaixa {
+#descricaoVendaCaixa {
         
-        background-color: #8b0210;
-        
-        width: 100%;
-        height: 42em;
-        padding: 1%;
-    }
+    background-color: #8b0210;
+       
+    width: 100%;
+    height: 42em;
+    padding: 1%;
+}
     
-    #descricaoVendaCaixa p {
+#descricaoVendaCaixa p {
 
-        color: white;
-        font-size: 15pt;
-        font-family: Arial, Helvetica, sans-serif;
-        text-align: center;
-    }
+    color: white;
+    font-size: 15pt;
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+}
 
-    #listaVendas{
+#listaVendas{
 
-        border: #8b0210 solid 1px; 
-        height: 650px;  
-        width: 98%;
-        float: left;
-        margin-left: 1%;
-    }
+    border: #8b0210 solid 1px; 
+    height: 650px;  
+    width: 98%;
+    float: left;
+    margin-left: 1%;
+}
 
-    .acaoVerde {
+.acaoVerde {
 
-        border: solid green 1px;
-        border-radius: 5px;
-        background-color: limegreen;
-        color: white;
-        text-decoration: none;
-        font-size: 12px;
-        padding: 7px;
-        margin-left: 5px;
-    }
+    border: solid green 1px;
+    border-radius: 5px;
+    background-color: limegreen;
+    color: white;
+    text-decoration: none;
+    font-size: 12px;
+    padding: 7px;
+    margin-left: 5px;
+}
 
-    .acaoVerde:hover {
+.acaoVerde:hover {
 
-        background-color: darkgreen;
-        text-decoration: none;
-        color: white;
-        text-transform: none;
-    }
+    background-color: darkgreen;
+    text-decoration: none;
+    color: white;
+    text-transform: none;
+}
 
-    .acaoVermelho {
+.acaoVermelho {
 
-        border: solid darkred 1px;
-        border-radius: 5px;
-        background-color: tomato;
-        color: white;
-        text-decoration: none;
-        font-size: 12px;
-        padding: 7px;
-        margin-top: 2px;
-        margin-left: 5px;
-    }
+    border: solid darkred 1px;
+    border-radius: 5px;
+    background-color: tomato;
+    color: white;
+    text-decoration: none;
+    font-size: 12px;
+    padding: 7px;
+    margin-top: 2px;
+    margin-left: 5px;
+}
 
-    .acaoVermelho:hover{
+.acaoVermelho:hover{
 
-        background-color: darkred;
-        text-decoration: none;
-        color: white;
-        text-transform: none;
+    background-color: darkred;
+    text-decoration: none;
+    color: white;
+    text-transform: none;
 
-    }
+}
 
-    #acaoSelecionar {
+#acaoSelecionar {
 
-        border: solid darkblue 1px;
-        border-radius: 5px;
-        background-color: royalblue;
-        color: white;
-        text-decoration: none;
-        font-size: 12px;
-        padding: 7px;
-        margin-top: 2px;
-        margin-left: 5px;
-    }
+    border: solid darkblue 1px;
+    border-radius: 5px;
+    background-color: royalblue;
+    color: white;
+    text-decoration: none;
+    font-size: 12px;
+    padding: 7px;
+    margin-top: 2px;
+    margin-left: 5px;
+}
 
-    #acaoSelecionar:hover {
+#acaoSelecionar:hover {
 
-        background-color: darkblue;
-    }
+    background-color: darkblue;
+}
 
-    .scroll {
+.scroll {
 
-        max-width: 100%;
-        overflow: auto;
-    }
+    max-width: 100%;
+    overflow: auto;
+}
 
-    #divSair {
+#divSair {
 
-        width: 2%;
-        font-size: 12pt;
-        float: right; 
-        margin-right: 1%;
-        margin-left: 80%;
-        margin-top: -3%;
-    }
+    width: 2%;
+    font-size: 12pt;
+    float: right; 
+    margin-right: 1%;
+    margin-left: 80%;
+    margin-top: -3%;
+}
 
-    #divSair a{
+#divSair a{
 
-        color: white;
-        font-weight: bolder;
-        padding: 3px;
-    }
+    color: white;
+    font-weight: bolder;
+    padding: 3px;
+}
 
-    #divSair a:hover{
+#divSair a:hover{
 
-        border: solid 1px white;
-        text-decoration: none;
-        border-radius: 20%;
-    }
+    border: solid 1px white;
+    text-decoration: none;
+    border-radius: 20%;
+}
 
-    #saidaRelatorio {
+#saidaRelatorio {
 
-        width: 95%;
-        height: 610px;
-        border: none;
-        margin-left: 2%;
-    }
+    width: 95%;
+    height: 610px;
+    border: none;
+    margin-left: 2%;
+}
 
-    #tableRelatorioVendasEstoque {
+#tableRelatorioVendasEstoque {
 
-        margin-top: -3%;
-    }
+    margin-top: -3%;
+}

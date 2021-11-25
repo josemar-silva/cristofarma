@@ -61,12 +61,12 @@ class Venda
             return true;
 }
 
-    public function deleteVenda($cod_venda)
+    public function estornarVenda($cod_venda)
 {
     $conexao = new Conexao();
 
-    $dados = $conexao->pdo->prepare("DELETE FROM venda WHERE codigo_venda = :id");
-    $dados->bindValue("id", $cod_venda);
+    $dados = $conexao->pdo->prepare("UPDATE venda SET status_venda = 'cancelado' WHERE id_venda = :cdv");
+    $dados->bindValue("cdv", $cod_venda);
     $dados->execute();
 
     return true;

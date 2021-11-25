@@ -114,7 +114,6 @@
 
                       $_SESSION['venda'][$fk_id_produto] += 1; // se a $_SESSION já existe é somado 1 ao seu valor que representa sua quantidade
 
-                      // $itemVenda->updateItemVenda($cdv, $fk_id_produto, $update_quantidade, $update_valor_total_item);
                     }
                   }
 
@@ -245,7 +244,7 @@ if (isset($_SESSION['venda'])) {
         <div id="divDabosVenda" style="width: 32%; float: right; margin-right: 0.5%; height: 540px; font-size: 13pt; padding: 15px;color:red">
           <legend style="border: solid 1px #8b0210; background-color: #8b0211; color: white;">DADOS DA VENDA</legend>
 
-          <!-- ==================== BUSCAR VENDEDOR =====================-->
+                                              <!-- ==================== BUSCAR VENDEDOR =====================-->
 
           <div id="vendedorSelecionado">
 
@@ -258,7 +257,7 @@ if (isset($_SESSION['venda'])) {
               </select>
             </div><br><br>
 
-            <!-- =========================== BUSCAR CLIENTE ===============================-->
+                                                <!-- =========================== BUSCAR CLIENTE ===============================-->
 
             <label for="idClienteVenda" st>ID Cliente:</label>
             <input id="idClienteVenda" type="text" name="idClienteVenda" class="form-control" size="5" style="margin-right: 54%;" value="<?php if (isset($_GET['id_cliente_up_venda']) && !empty(['id_cliente_up_venda'])) {
@@ -340,12 +339,11 @@ if (isset($_SESSION['venda'])) {
                                                                                                                             echo number_format($valor_total_venda, 2, '.', '.');
                                                                                                                           } ?>" style="text-align: right; color: blue; font-size: 25px; padding: 5%; background-color: #FFFF00; font-weight: bolder;"><br><br><br>
 
-            <!--======================== FUNCAO JAVASCRIPT COMFIRMAÇÃO ALERT ==============================-->
+                              <!--=========== FUNCAO JAVASCRIPT COMFIRMAÇÃO ALERT ==============-->
 
             <script language=javascript>
               function confirmaCancelarVenda() {
-                if (confirm("Venda não finalizada, Deseja cancelar essa venda?"))
-                  alert("Venda cancelada!");
+                if (confirm("Venda não finalizada, Deseja cancelar essa venda?"));
               }
             </script>
 

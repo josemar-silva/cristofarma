@@ -10,8 +10,8 @@ $donpdf = new Dompdf();
 
     // carregar o HTML
     $donpdf->loadHtml('<p id="cabecalho" font-size: 8px> DROGARIA CRISTOFARMA PLUS</p>
-                       <p> Tele-Entregas: (62) 3242-7373 / (62) 99279-1340  / WhatsApp: (62) 98437-1551 </p>
-                       <p> Rua Jassitata, Quadra: 07 Lote 31 Sala 05 - Bairro Cardoso I, Aparecida de Goiânia - GO </p>');
+    <p> Tele-Entregas: (62) 3242-7373 / (62) 99279-1340  / WhatsApp: (62) 98437-1551 </p>
+    <p> Rua Jassitata, Quadra: 07 Lote 31 Sala 05 - Bairro Cardoso I, Aparecida de Goiânia - GO </p>');
 
     // definir tamanho do papel (A4, A3, A2...) e modo paidagem (lasdscape) ou retrato (portrait)
     $donpdf->setPaper('A5', 'lasdscape');
@@ -41,6 +41,9 @@ $donpdf->stream("cupom.pdf", ["Attachment" => 0]);
   </header>
   <section>
 
+  <?php 
+    $html = '######';
+  ?>
 
   </section>
 </body>

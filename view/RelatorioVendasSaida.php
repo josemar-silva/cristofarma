@@ -48,8 +48,8 @@
                 <legend>RELATÓRIO DE VENDAS (<?php echo trim(filter_input(INPUT_POST, 'tipoRelatorio').')')?></legend><br>
             </legend>
 
-<div id="divRelatorioVendasEstoque">
-<table id="tableRelatorioVendasEstoque" class="table table-hover">
+<div id="divRelatorioVendasEstoque" class="tableFixHead">
+<table id="tableRelatorioVendasEstoque" class="table table-striped table-hover">
 
 <?php    
 
@@ -78,7 +78,7 @@ echo '<thead>';
     echo '</tr>';
 echo '</thead>';
                                         // CONSULTA VENDA POR DATA INICIO E DATA FIM
-echo '<tbody>';
+echo '<tbody><br><br><br>';
 if (isset($_POST['btnGerarRelatorioGerencial']) && $tipoRelatorio == 'data')
 {
     if (isset($_POST['getDataInicial']) && isset($_POST['getDataFinal']) && !empty($_POST['getDataInicial'])  && !empty($_POST['getDataFinal']))
@@ -171,7 +171,7 @@ if (isset($_POST['btnGerarRelatorioGerencial']) && $tipoRelatorio == 'data')
                 echo "</tr>";
         } 
     }
-    echo '</tbody>';
+   
     }
 } 
                                                 // CONSULTA VENDA POR NOME CLIENTE 'LIKE'
@@ -260,6 +260,7 @@ if (isset($_POST['btnGerarRelatorioGerencial']) && $tipoRelatorio == 'cliente' &
                 echo "</tr>"; // fecha linha dos dados selecionados
         } 
     }
+  
 }
                                                 // CONSULTA VENDA POR TIPO DE PAGAMENTO
 
@@ -348,6 +349,7 @@ if (isset($_POST['btnGerarRelatorioGerencial']) && isset($_POST['tipoRelatorio']
                 echo "</tr>"; // fecha linha dos dados selecionados
         } 
     }
+   
 }
                                                 // CONSULTA VENDA POR NOME VENDEDOR 'LIKE'
 
@@ -439,6 +441,7 @@ if (isset($_POST['btnGerarRelatorioGerencial']) && $tipoRelatorio == 'vendedor' 
                 echo "</tr>"; // fecha linha dos dados selecionados
         } 
     }
+ 
 }
                                             // RELATORIO GERAL DE VENDAS
 
@@ -538,7 +541,7 @@ if (isset($_POST['btnGerarRelatorioGerencial']) && $tipoRelatorio == 'vendaGeral
                 echo "</tr>"; // fecha linha dos dados selecionados
         } 
     }
-       
+   
 }
 
 if (isset($_POST['fecharRelatorio'])) {
@@ -547,7 +550,7 @@ if (isset($_POST['fecharRelatorio'])) {
 }
            
 ?>
-
+ </tbody>
 </table>
             </div>
            

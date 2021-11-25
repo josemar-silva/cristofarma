@@ -13,10 +13,12 @@
     
 </head>
 
+<h1>Sistema de Gerenciamento e Controle de Estoque para Farmácia - SisgeconFarm</h1>
 
-<body class="body">   
+<body class="body" style=" margin-left: auto; margin-right: auto;  margin-top: 6%;
+    ">   
 
-<legend id="sistemaDesenvolvedores"> Sistema de Gerenciamento e Controle de Estoque para Farmácias - Sisgecon-farm</legend><br><br>
+<legend id="sistemaDesenvolvedores">  </legend><br>
     
 
     <header>    
@@ -24,21 +26,21 @@
     </header>
 
     <section >
-        <h1>Bem Vindo!</h1><br><br/>
+        <h2>Bem Vindo!</h2><br>
         
-            <form id="login" method="POST">
-                <legend><h3>Informe o seu Login e Senha!</h3></legend>
+            <form id="login" action="" method="POST" style="border: double 2px; width: 30%; margin-top: 2%; margin-left: auto; margin-right: auto;  border-radius: 20px; height: 23em;  padding: 2%;">
+                <legend><h4>Informe o seu Login e Senha!</h4></legend><br><br>
 
-                <label for="email">E-mail:</label>
-                <input id="email" type="text" name="email" size="40" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"><br><br>
+                <label for="email">Usuário:</label>
+                <input id="usuario" type="text" name="usuario" size="30" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" 
+                    style="width: 50%; display: block; margin-left: auto; margin-right: auto; font-size: 13pt;"><br>
                 
                 <label for="senha">Senha:</label>
-                <input id="senha" type="password" name="senha" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" size = "60"><br><br>
+                <input id="senha" type="password" name="senha" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" 
+                    size = "30" style="width: 50%; display: block; margin-left: auto; margin-right: auto; font-size: 13pt;" ><br><br>
 
                 <button type="submit" id="btnEntrarLoginGerencial" name="entrarLoginGerencial" 
-                class="btn btn-outline-danger"> Entrar</button><br><br><br><br><br><br>
-                <!-- <button onclick="fechaAplication(this)" type="submit" id="btnSairLoginGerencial"  -->
-                <!-- name="sairLoginLoginGerencial" class="btn btn-outline-danger">Fechar</button><br><br> -->
+                class="btn btn-outline-danger"> Entrar</button>
             </form>
 
         <?php
@@ -47,20 +49,20 @@
         require_once 'model/Pessoa.php';
         $pessoa = new Pessoa();
 
-        if (isset($_POST['email']) && isset($_POST['senha'])) {
+        if (isset($_POST['usuario']) && isset($_POST['senha'])) {
 
-                $emailLogin = addslashes($_POST['email']);
+                $usuarioLogin = addslashes($_POST['usuario']);
                 $senhaLogin = addslashes($_POST['senha']);
 
-                if (!empty($emailLogin) && !empty($senhaLogin)) {
+                if (!empty($usuarioLogin) && !empty($senhaLogin)) {
                
-                        if ($login = $pessoa->funcionarioLogin($emailLogin, $senhaLogin)) {
+                        if ($login = $pessoa->funcionarioLogin($usuarioLogin, $senhaLogin)) {
 
                             header("location: view/home.php");
 
                         } else {
                             
-                            echo "<script> alert('e-mail ou senha incorretos! Tente novamente!')</script>";
+                            echo "<script> alert('Usuário ou senha incorretos! Tente novamente!')</script>";
                 }             
             } else { 
                 
@@ -76,7 +78,5 @@
 </html>
 
 <footer>
-    <h7>
-        by: Josemar Silva, Bruno Mikael, Junior Lima, Geovane Rodrigo
-    </h7>
+   
 </footer>

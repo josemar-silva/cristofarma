@@ -47,13 +47,12 @@ class ItemVenda
         return true;   
     }
 
-    public function deleteItemVenda($venda_id_venda, $produto_id_produto){
+    public function deleteItemVenda($venda_id_venda){
 
         $conexao = new Conexao();
 
-        $dados = $conexao->pdo->prepare(" DELETE FROM item_venda WHERE venda_id_venda = :fkv AND produto_id_produto = :fkp");
+        $dados = $conexao->pdo->prepare(" DELETE FROM item_venda WHERE venda_id_venda = :fkv");
         $dados->bindValue("fkv", $venda_id_venda);
-        $dados->bindValue("fkp", $produto_id_produto);
         $dados->execute();
     }
 
@@ -141,6 +140,20 @@ class ItemVenda
     }
 
     public function selectItemVendaLikeId($id_venda){
+
+        $conexao = new Conexao();
+
+        $dadosSelecionados = array();
+
+        $dados = $conexao->pdo->prepare(" SELECT * FROM item_venda WHERE venda_id_venda = :idv");
+        $dados->bindValue("idv", $id_venda);
+        $dados->execute();
+        $dadosSelecionados = $dados->fetchAll(PDO::FETCH_ASSOC);
+
+        return $dadosSelecionados;
+    }
+
+    public function selectAllItemVendaLikeId($id_venda){
 
         $conexao = new Conexao();
 

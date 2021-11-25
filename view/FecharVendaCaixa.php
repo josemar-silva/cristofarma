@@ -99,7 +99,7 @@
 
                                 $complemento = 0;
                             ?><br>
-                                <table style="width: 95%; text-align: right; color: white; margin-top: -2%; margin-left: 2%;">
+                                <table style="width: 95%; text-align: right; color: white; margin-top: -2%; margin-left: 2%; font-weight: normal; font-family: Times New 'Times New Roman', Times, serif" >
                                 <?php
                                 for ($i = 0; $i < count($itemVendaReturn); $i++) {
                                     echo "<tr>";
@@ -168,7 +168,8 @@
 
             ?>
 
-            <form id="fecharVendaCaixa" name="fecharVenda" action="" method="POST">
+        <form id="fecharVendaCaixa" name="fecharVenda" action="" method="POST">       
+        
                 <legend style="margin-bottom: 10%; font-size: 25pt; font-weight: bolder; color: blue;">FINALIZAR VENDA</legend>
 
                 <label>Total a Pagar:</label><br>
@@ -178,7 +179,7 @@
 
                 <label>Valor Recebido:</label><br>
                 <input id="valorRecebido" class="form-control" name="valorRecebido" type="text" size="6" placeholder="R$" value="<?php
-                                                                                                                                    if (isset($_POST['valorRecebido'])) {
+                                                                                                                                    if (isset($GET['valorRecebido'])) {
                                                                                                                                         echo number_format($valorDigitado, 2, '.', '.');
                                                                                                                                     }
                                                                                                                                     ?>"><br><br><br>
@@ -187,11 +188,12 @@
                 <input id="troco" class="form-control" name="troco" size="6" placeholder="R$" value="<?php if (isset($valorDigitado)) {
                                                                                                             echo number_format($troco, 2, '.', '.');
                                                                                                         } ?>" disabled><br><br>
+            
+            <button type="submit"  class="btn btn-outline-danger" id="btnCancelar" name="btnCancelar" onclick="" style="display: inline; margin-left: 18%; margin-top: 15%;">Cancelar</button>
+                
+        </form>
 
-                <button class="btn btn-outline-danger" id="btnFinalizar" name="btnFinalizar" onclick="" style="display: inline; margin-left: 8%; margin-top: 15%;">Finalizar</button>
-                <button class="btn btn-outline-danger" id="btnCancelar" name="btnCancelar" onclick="" style="display: inline; margin-left: 18%; margin-top: 15%;">Cancelar</button>
-            </form>
-
+       
             <?php
             // CONFIRMAR RECEBIMENTO E MUDAR STATUS VENDA PARA "FECHADO" / GERAR RECIBO
 
