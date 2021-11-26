@@ -17,6 +17,7 @@
 
   $pessoa =  new Pessoa();
 
+
   $tipo = filter_input(INPUT_POST, 'tipoCadastro'); #filtrar valor que um inpult recebeu
   if ($tipo != 'funcionario') {
     if (isset($_POST['nome'])) // CLICOU NO BOTAO CADASTRAR OU EDITAR
@@ -45,7 +46,7 @@
             $telefoneFixo,
             $telefoneCelular,
             $matricula,
-            $senha,
+            $senhaHash,
             $funcao,
             $endereco
           );
@@ -98,6 +99,8 @@
       $telefoneCelular = addslashes($_POST['telefoneCelular']);
       $matricula = addslashes($_POST['matricula']);
       $senha = addslashes($_POST['senha']);
+      $senhaRecebida = $senha;
+      $senhaHash = password_hash($senhaRecebida, PASSWORD_DEFAULT);
       $funcao = addslashes($_POST['listaFuncao']);
       $endereco = addslashes($_POST['endereco']);
 
@@ -113,7 +116,7 @@
           $telefoneFixo,
           $telefoneCelular,
           $matricula,
-          $senha,
+          $senhaHash,
           $funcao,
           $endereco
         );
@@ -135,6 +138,7 @@
       $telefoneCelular = addslashes($_POST['telefoneCelular']);
       $matricula = addslashes($_POST['matricula']);
       $senha = addslashes($_POST['senha']);
+      $senhaHash = password_hash($senha, PASSWORD_DEFAULT);
       $funcao = addslashes($_POST['listaFuncao']);
       $endereco = addslashes($_POST['endereco']);
 
@@ -149,7 +153,7 @@
           $telefoneFixo,
           $telefoneCelular,
           $matricula,
-          $senha,
+          $senhaHash,
           $funcao,
           $endereco
         )) {

@@ -15,8 +15,7 @@
 
 <h1>Sistema de Gerenciamento e Controle de Estoque para Farmácia - SisgeconFarm</h1>
 
-<body class="body" style=" margin-left: auto; margin-right: auto;  margin-top: 6%;
-    ">   
+<body class="body" style=" margin-left: auto; margin-right: auto;  margin-top: 6%;">   
 
 <legend id="sistemaDesenvolvedores">  </legend><br>
     
@@ -39,8 +38,7 @@
                 <input id="senha" type="password" name="senha" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" 
                     size = "30" style="width: 50%; display: block; margin-left: auto; margin-right: auto; font-size: 13pt;" ><br><br>
 
-                <button type="submit" id="btnEntrarLoginGerencial" name="entrarLoginGerencial" 
-                class="btn btn-outline-danger"> Entrar</button>
+                <button type="submit" id="btnEntrarLoginGerencial" name="entrarLoginGerencial" class="btn btn-outline-danger">Entrar</button>
             </form>
 
         <?php
@@ -51,18 +49,24 @@
 
         if (isset($_POST['usuario']) && isset($_POST['senha'])) {
 
-                $usuarioLogin = addslashes($_POST['usuario']);
-                $senhaLogin = addslashes($_POST['senha']);
+            $usuarioLogin = addslashes($_POST['usuario']);
+            $senhaLogin = addslashes($_POST['senha']);
 
-                if (!empty($usuarioLogin) && !empty($senhaLogin)) {
+            if (!empty($usuarioLogin) && !empty($senhaLogin)) 
+            {
+
+                $passwordHash = $pessoa->selectSenhaHash($usuarioLogin);
+                $password = $passwordHash['senha'];
+
+                $login =  password_verify($usuarioLogin, $password); // funcao que verifica se a hash gravada no BD confere com o password informado
                
-                        if ($login = $pessoa->funcionarioLogin($usuarioLogin, $senhaLogin)) {
+                    if ($login) {
 
-                            header("location: view/home.php");
+                        header("location: view/home.php");
 
-                        } else {
-                            
-                            echo "<script> alert('Usuário ou senha incorretos! Tente novamente!')</script>";
+                    } else {
+                             
+                        echo "<script> alert('Usuário ou senha incorretos! Tente novamente!')</script>";
                 }             
             } else { 
                 

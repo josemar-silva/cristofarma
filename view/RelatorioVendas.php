@@ -88,10 +88,10 @@
     </div><br>
 
         <input type="radio" id="vendaGeral" name="tipoRelatorio" value="vendaGeral">&nbsp; &nbsp;
-        <label for="vendaGeral">Reatório Geral de Vendas:</label><br><br>
+        <label for="vendaGeral">Reatório Geral de Vendas:</label><br><br><br>
         
       <button class="btn btn-outline-danger" id="btnGerarRelatorioGerencial" name="btnGerarRelatorioGerencial" onclick="" 
-      style="text-align: center; margin-left: 41%; margin-right: auto;" >Gerar Relatório</button>
+      style="text-align: center; margin-left: 44%; margin-right: auto;" >Gerar Relatório</button>
     </form>
   </section>
 </body>

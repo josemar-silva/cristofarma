@@ -557,7 +557,7 @@ if (isset($_POST['fecharRelatorio'])) {
         </div>
 
         <a type="submit" href="RelatorioVendas.php" class="btn btn-outline-danger" id="fecharRelatorio" type="submit" name="fecharRelatorio" 
-            style="margin-left: 43%; margin-top: 1%;">Fechar Relatório</a>
+            style="margin-left: 44%; margin-top: 1%;">Fechar Relatório</a>
     
     </section>
 </body>

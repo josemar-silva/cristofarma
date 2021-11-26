@@ -183,7 +183,7 @@ class Pessoa
 
         $conexao = new Conexao();
  
-        $dados  = $conexao->pdo->prepare("SELECT * FROM pessoa WHERE tipo_pessoa = 'funcionario' AND id_pessoa = :id " ); // dados retornam como ARRAY
+        $dados  = $conexao->pdo->prepare("SELECT * FROM pessoa WHERE tipo_pessoa = 'funcionario' AND id_pessoa = :id" ); // dados retornam como ARRAY
         $dados->bindValue("id", $id_up); // substituíção dos valores com o método BINDVALUE
         $dados->execute(); // comando que executa a busca no BD
         $dadosSelecionados = $dados->fetchAll(PDO::FETCH_ASSOC); // método fatch retorana um ARRAY, fatchAll retorna uma matriz
@@ -269,7 +269,7 @@ class Pessoa
 
         $dadosSelecionados = array();
 
-        $dados = $conexao->pdo->prepare("SELECT * FROM pessoa WHERE nome LIKE :lk AND tipo_pessoa = :tp 
+        $dados = $conexao->pdo->prepare("SELECT * FROM pessoa WHERE nome LIKE :lk AND nome NOT LIKE 'root' AND tipo_pessoa = :tp 
             ORDER BY nome ASC");
             
         $dados->bindValue(":lk", $consultaLike);
@@ -279,6 +279,18 @@ class Pessoa
 
         return $dadosSelecionados;
 
+    }
+
+    public function selectSenhaHash($usuarioLogin){
+
+        $conexao = new Conexao();
+
+        $dados = $conexao->pdo->prepare("SELECT senha FROM pessoa WHERE matricula = :m");
+        $dados->bindValue(":m", $usuarioLogin);
+        $dados->execute();
+        $dadosSelecionados = $dados->fetch(PDO::FETCH_ASSOC);
+
+        return $dadosSelecionados;
     }
 
     public function funcionarioLogin($usuarioLogin, $senhaLogin){
