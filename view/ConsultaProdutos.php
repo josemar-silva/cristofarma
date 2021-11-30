@@ -6,6 +6,8 @@ require_once '../model/Estoque.php';
 $produto = new Produto();
 $pessoa = new Pessoa();
 $estoque = new Estoque();
+$usuarioLogado = $pessoa->login();
+
 ?>
 
 <!doctype html>
@@ -63,7 +65,7 @@ $estoque = new Estoque();
 
     <section id="principalConsultaProdutos">
         <div id="divSair">
-            <a href="../index.php">Sair</a>
+            <a href="ConsultaProdutos.php?sair=<?php echo 1;?>">Sair</a>
         </div>
 
         <form action="ConsultaProdutos.php" method="GET">
@@ -77,7 +79,6 @@ $estoque = new Estoque();
 
                                  <!---------------------- BUSCA %like% = 'quem contem'... ----------------------->
 
-       
                     <?php
                     if (isset($_GET['buscaProdutos'])) {
                     ?>
