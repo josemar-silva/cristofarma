@@ -42,7 +42,7 @@
             </form>
 
         <?php
-        ## =================== VALIDAR LOGIN ========================
+                                    ## =================== VALIDAR LOGIN ========================
 
         require_once 'model/Pessoa.php';
         $pessoa = new Pessoa();
@@ -55,14 +55,18 @@
             if (!empty($usuarioLogin) && !empty($senhaLogin)) 
             {
 
-                $passwordHash = $pessoa->selectSenhaHash($usuarioLogin);
-                $password = $passwordHash['senha'];
+                $user = $pessoa->selectUsuarioLogin($usuarioLogin);
+                $userLogin = $user['matricula'];
+                $userPasswordHash = $user['senha'];
+                $userFuncao = $user['funcao'];
 
-                $login =  password_verify($usuarioLogin, $password); // funcao que verifica se a hash gravada no BD confere com o password informado
-               
+                $login =  password_verify($senhaLogin, $userPasswordHash); // funcao nativa do PHP que compara a hash gravada no BD com HASH do password informado (retorno==boolean)
+              
                     if ($login) {
-
+                        session_start();
+                        $_SESSION['login'] = array('user' => $userLogin, 'password' => $userPasswordHash, 'function'=> $userFuncao);
                         header("location: view/home.php");
+                        var_dump($_SESSION['login']);
 
                     } else {
                              
