@@ -39,17 +39,16 @@
     </nav>
   </header>
   <div id="divSair">
-    <a href="../index.php">Sair</a>
+    <a href="DetalharVenda.php?sair=<?php echo 1;?>">Sair</a>
   </div>
 
   <section id="detalharVenda" style="height: 610px;; border: none;">
     <form id="detalharVenda" style="margin-left: 1%; margin-right: 1%;" action="" method="POST">
 
-      <?php
+  <?php
       require_once '../model/Produto.php';
       require_once '../model/Venda.php';
       require_once '../model/Cupom.php';
-
 
       $produto = new Produto();
       $itemVenda = new ItemVenda();
@@ -57,6 +56,8 @@
       $venda = new Venda();
       $estoque = new Estoque();
       $cupom = new Cupom();
+
+      $usuarioLogado = $pessoa->login();
 
       if (isset($_GET['id_venda_up'])) {
         $id_venda = $_GET['id_venda_up'];
@@ -70,7 +71,7 @@
         $valor_venda_return = $vendaReturn[0]['valor_venda_com_desconto'];
         $total_item_venda_return = $vendaReturn[0]['total_item_venda'];
       }
-      ?><br>
+  ?><br>
                                                 <!-- CANCELAR VENDA (ABERTA/FECHADA) E ESTORNA PRODUTOS AO ESTOQUE  -->
 <?php 
       if (isset($_POST['cancelarVenda'])) {

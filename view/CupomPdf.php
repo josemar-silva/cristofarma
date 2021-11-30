@@ -1,5 +1,7 @@
 <?php
 
+
+
 // referenciar o DomPDF com namespace
 require_once '../vendor/autoload.php';
 

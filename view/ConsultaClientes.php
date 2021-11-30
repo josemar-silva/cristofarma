@@ -1,6 +1,9 @@
 <?php
 require_once '../model/Pessoa.php';
 $pessoa = new Pessoa();
+$usuarioLogado = $pessoa->login();
+
+              
 ?>
 
 <!doctype html>
@@ -45,7 +48,7 @@ $pessoa = new Pessoa();
         </nav>
     </header>
     <div id="divSair">
-        <a href="../index.php">Sair</a>
+        <a href="ConsultaClientes.php?sair=<?php echo 1;?>">Sair</a>
     </div>
 
     <form action="ConsultaClientes.php" method="GET">

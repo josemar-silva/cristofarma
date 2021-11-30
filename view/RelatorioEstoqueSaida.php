@@ -38,7 +38,7 @@
         </ul>
     </nav>
     <div id="divSair">
-        <a href="../index.php">Sair</a>
+        <a href="RelatorioEstoqueSaida.php?sair=<?php echo 1;?>">Sair</a>
     </div>
 
     </header>
@@ -50,6 +50,8 @@
     $produto = new Produto();
     $pessoa = new Pessoa();
     $estoque = new Estoque();
+
+    $usuarioLogado = $pessoa->login();
 ?>
 
     <section id="principalEstoque"><br>

@@ -12,6 +12,8 @@
 <body>
   <?php
 
+  
+
   require_once '../model/Conexao.php';
   require_once '../model/Pessoa.php';
   require_once '../model/Produto.php';
@@ -20,6 +22,7 @@
   $produto = new Produto();
   $estoque = new Estoque();
   $pessoa = new Pessoa();
+  $usuarioLogado = $pessoa->login();
 
 
   if (isset($_POST['descricaoProduto'])) {
@@ -69,7 +72,7 @@
       </ul>
     </nav>
     <div id="divSair">
-      <a href="../index.php">Sair</a>
+      <a href="CadastrarProdutos.php?sair=<?php echo 1;?>">Sair</a>
     </div>
 
     </header>

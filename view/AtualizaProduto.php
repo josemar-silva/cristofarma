@@ -13,12 +13,15 @@
 <body>
   <?php
 
+    
+
   require_once '../model/Conexao.php';
   require_once '../model/Pessoa.php';
   require_once '../model/Produto.php';
 
   $produto = new Produto();
   $pessoa = new Pessoa();
+  $usuarioLogado = $pessoa->login();
 
   if (isset($_GET['id_get_up']) && !empty($_GET['id_get_up'])) {
 
@@ -103,7 +106,7 @@
       </ul>
     </nav>
     <div id="divSair">
-      <a href="../index.php">Sair</a>
+      <a href="AtualizaProduto.php?sair=<?php echo 1;?>">Sair</a>
     </div>
 
   </header>

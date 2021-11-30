@@ -1,11 +1,15 @@
-<?php 
+<?php
     require_once '../model/Produto.php';
     require_once '../model/Estoque.php';
     require_once '../model/ItemCompra.php';
+    require_once '../model/Pessoa.php';
 
     $estoque = new Estoque();
     $produto = new Produto();
     $compra = new ItemCompra();
+    $pessoa = new Pessoa();
+
+    $usuarioLogado = $pessoa->login();
 ?>
 
 <!doctype html>
@@ -50,7 +54,7 @@
     </header>
 
     <div id="divSair"  >
-        <a href="../index.php">Sair</a>
+        <a href="AlimentarEstoque.php?sair=<?php echo 1; ?>">Sair</a>
     </div>
 
     <section id="principalAlimetarEstoque">

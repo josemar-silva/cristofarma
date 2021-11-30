@@ -16,6 +16,7 @@
   require_once '../model/Conexao.php';
 
   $pessoa =  new Pessoa();
+  $usuarioLogado = $pessoa->login();
 
 
   $tipo = filter_input(INPUT_POST, 'tipoCadastro'); #filtrar valor que um inpult recebeu
@@ -100,7 +101,9 @@
       $matricula = addslashes($_POST['matricula']);
       $senha = addslashes($_POST['senha']);
       $senhaRecebida = $senha;
+
       $senhaHash = password_hash($senhaRecebida, PASSWORD_DEFAULT);
+
       $funcao = addslashes($_POST['listaFuncao']);
       $endereco = addslashes($_POST['endereco']);
 
@@ -138,7 +141,9 @@
       $telefoneCelular = addslashes($_POST['telefoneCelular']);
       $matricula = addslashes($_POST['matricula']);
       $senha = addslashes($_POST['senha']);
-      $senhaHash = password_hash($senha, PASSWORD_DEFAULT);
+
+      $senhaHash = password_hash($senha, PASSWORD_DEFAULT); //  funcão nativa do PHP (BCRIPT) para gerar HASH da senha a ser cadastrada no BD
+
       $funcao = addslashes($_POST['listaFuncao']);
       $endereco = addslashes($_POST['endereco']);
 
@@ -195,7 +200,7 @@
       </ul>
     </nav>
     <div id="divSair">
-      <a href="../index.php">Sair</a>
+      <a href="Cadastros.php?sair=<?php echo 1;?>">Sair</a>
     </div>
     </header>
     <section id="principal">
@@ -229,7 +234,7 @@
             <input id="cpfAndCnpj" class="form-control" type="text" name="cpf_cnpj" size="20" maxlength="14" value="<?php if(isset($retornoConsulta)){echo $retornoConsulta[0]['cpf_cnpj'];}?>"><br/><br/>
 
             <label for="email" id="email">E-mail:</label><br/>
-            <input id="email" class="form-control" type="email" name="email" size="50" required value="<?php if(isset($retornoConsulta)){echo $retornoConsulta[0]['email'];}?>"><br/><br/>
+            <input id="email" class="form-control" type="email" name="email" size="50" value="<?php if(isset($retornoConsulta)){echo $retornoConsulta[0]['email'];}?>"><br/><br/>
 
             <label for="telefoneFixo" id="telefoneFixo">Telefone Fixo:</label>
 
@@ -239,7 +244,7 @@
                 data-mask-selectonfocus="true" size="20 value="<?php if(isset($retornoConsulta)){echo $retornoConsulta[0]['telefone_fixo'];}?>">&nbsp; &nbsp;
 
             <input id="telefoneCelular" class="form-control" type="text" name="telefoneCelular" data-mask="(00) 00000-0000" 
-                data-mask-selectonfocus="true" size="20"  required style="margin-left: 16%;" value="<?php if(isset($retornoConsulta)){echo $retornoConsulta[0]['telefone_celular'];}?>"><br/><br/>
+                data-mask-selectonfocus="true" size="20" style="margin-left: 16%;" value="<?php if(isset($retornoConsulta)){echo $retornoConsulta[0]['telefone_celular'];}?>"><br/><br/>
 
             <label id="funcao" style="display: inline;">Função:</label>
             <label for="matricula" style="margin-left: 23%;">Matrícula:</label>

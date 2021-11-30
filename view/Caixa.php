@@ -40,7 +40,7 @@
             </ul>
         </nav>
         <div id="divSair">
-            <a href="../index.php">Sair</a>
+            <a href="Caixa.php?sair=<?php echo 1;?>">Sair</a>
         </div>
 
     </header>
@@ -78,6 +78,7 @@
                         $venda = new Venda();
                         $estoque = new Estoque();
 
+                        $usuarioLogado = $pessoa->login();
                         $dados = $venda->selectAllVendaAberta();
 
                         if (count($dados) > 0) {
@@ -132,7 +133,6 @@
                         ?>
                                 <td>
                                     <a class="acaoVerde" id="fecharVendaNoCaixa" href="FecharVendaCaixa.php?id_get_venda_up=<?php echo $dados[$i]['id_venda']; ?>"><i class="fas fa-hand-holding-usd"></i>
-                                        <a class="acaoVermelho" id="cancelaNoVendaCaixa" href=""><i class="fas fa-window-close"></i>
                                 </td>
                         <?php
                                 echo "</tr>"; // fecha linha dos dados selecionados

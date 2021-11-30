@@ -1,3 +1,10 @@
+<?PHP
+      require_once '../model/Pessoa.php';
+  
+      $pessoa = new Pessoa();
+  
+      $usuarioLogado = $pessoa->login();
+?>
 <!doctype html>
 <html lang="pt">
 
@@ -40,7 +47,7 @@
       </ul>
     </nav>
     <div id="divSair">
-      <a href="../index.php">Sair</a>
+      <a href="RelatorioVendas.php?sair=<?php echo 1;?>">Sair</a>
     </div>
 
   </header>

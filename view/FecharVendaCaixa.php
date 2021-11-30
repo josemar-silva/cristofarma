@@ -46,7 +46,7 @@
 
 
             <div id="divSair">
-                <a href="../index.php">Sair</a>
+                <a href="FecharVendaCaixa.php?sair=<?php echo 1;?>">Sair</a>
             </div>
 
             <div id="divDetalharVenda" style="background-color: #191970; border: none;">
@@ -64,6 +64,8 @@
                 $estoque = new Estoque();
                 $cupom = new Cupom();
 
+                $usuarioLogado = $pessoa->login();
+
                 // BUSCAR TODAS AS VENDAS COM STATUS ABERTO
 
                 if (isset($_GET['id_get_venda_up'])) {
@@ -76,12 +78,6 @@
                     $codigo_venda_return = $ListVendaReturn[0]['codigo_venda'];
                     $valor_venda_return = $ListVendaReturn[0]['valor_venda_com_desconto'];
                     $total_item_venda_return = $ListVendaReturn[0]['total_item_venda'];
-                }
-
-                if (isset($_POST['btnCancelar'])) {
-
-                    echo '<script> alert("Deseja cancelar o recebimento?")</script>';
-                    echo '<META HTTP-EQUIV="REFRESH" CONTENT="0;URL=Caixa.php"/>';
                 }
                 ?>
 
@@ -164,6 +160,10 @@
                 $valorRecebido = (float) $valorDigitado;
 
                 $troco = $venda->calculoFecharVendaCaixa($valorRecebido, $valorVenda);
+
+                $_SESSION['valorRecebido']['valorDigitado'] = $valorRecebido;
+                $_SESSION['totalApagar']['valorDigitado'] = $valorVenda;
+                $_SESSION['troco']['valorDigitado'] = $troco;
             }
 
             ?>
@@ -179,25 +179,30 @@
 
                 <label>Valor Recebido:</label><br>
                 <input id="valorRecebido" class="form-control" name="valorRecebido" type="text" size="6" placeholder="R$" value="<?php
-                                                                                                                                    if (isset($GET['valorRecebido'])) {
-                                                                                                                                        echo number_format($valorDigitado, 2, '.', '.');
+                                                                                                                                    if (isset($_SESSION['valorRecebido']['valorDigitado'])) {
+                                                                                                                                        echo number_format($_SESSION['valorRecebido']['valorDigitado'], 2, '.', '.');
                                                                                                                                     }
                                                                                                                                     ?>"><br><br><br>
 
                 <label>Troco:</label><br>
-                <input id="troco" class="form-control" name="troco" size="6" placeholder="R$" value="<?php if (isset($valorDigitado)) {
-                                                                                                            echo number_format($troco, 2, '.', '.');
+                <input id="troco" class="form-control" name="troco" size="6" placeholder="R$" value="<?php if (isset($_SESSION['valorRecebido']['valorDigitado'])) {
+                                                                                                            echo number_format($_SESSION['troco']['valorDigitado'], 2, '.', '.');
                                                                                                         } ?>" disabled><br><br>
             
-            <button type="submit"  class="btn btn-outline-danger" id="btnCancelar" name="btnCancelar" onclick="" style="display: inline; margin-left: 18%; margin-top: 15%;">Cancelar</button>
+            <!-- <button type="submit"  class="btn btn-outline-danger" id="receber" name="receber" onclick="" style="display: inline; margin-left: 30%; margin-top: 20%; font-size: 22pt;">Receber</button> -->
+            <input type="submit" class="btn btn-outline-danger" id="receber" name="receber" onclick="" style="display: inline; margin-right: 20%; color: white; margin-top: 20%; font-size: 22pt;" 
+                value="<?php if (isset($_SESSION['valorRecebido']['valorDigitado'])) { echo 'Receber Venda';} else { echo 'Calcular Troco';}?>"> 
                 
         </form>
-
-       
             <?php
+            if (isset($_POST['receber'])) {
+
+                $receber = filter_input(INPUT_POST, 'receber'); 
+            }
+
             // CONFIRMAR RECEBIMENTO E MUDAR STATUS VENDA PARA "FECHADO" / GERAR RECIBO
 
-            if (isset($_POST['btnFinalizar'])) {
+            if (isset($receber) && $receber == 'Receber Venda') {
                 if ($valorRecebido >= $valorVenda) {
 
                     $idVenda = $_GET['id_get_venda_up'];
@@ -211,6 +216,9 @@
 
                     $cupom->createCupomFiscal($codigoVenda, $valorVenda, $valorRecebido, $troco, $cliente_cupom);
                     $venda->fecharVenda($codigoVenda);
+
+                    echo '<script> alert("Venda recebida com sucesso!")</script>';
+                    echo '<META HTTP-EQUIV="REFRESH" CONTENT="2;URL=Caixa.php"/>'; // REFRESH para atualizar a página
                 } else {
 
                     echo '<script> alert("Valor recebido é menor que o valor da venda! Verifique novamente!")</script>';

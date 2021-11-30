@@ -281,11 +281,11 @@ class Pessoa
 
     }
 
-    public function selectSenhaHash($usuarioLogin){
+    public function selectUsuarioLogin($usuarioLogin){
 
         $conexao = new Conexao();
 
-        $dados = $conexao->pdo->prepare("SELECT senha FROM pessoa WHERE matricula = :m");
+        $dados = $conexao->pdo->prepare("SELECT matricula, senha, funcao FROM pessoa WHERE matricula = :m AND tipo_pessoa = 'funcionario'");
         $dados->bindValue(":m", $usuarioLogin);
         $dados->execute();
         $dadosSelecionados = $dados->fetch(PDO::FETCH_ASSOC);
@@ -293,26 +293,28 @@ class Pessoa
         return $dadosSelecionados;
     }
 
-    public function funcionarioLogin($usuarioLogin, $senhaLogin){
+    public function login(){
 
-        $conexao = new Conexao();
+        session_start();
+              if (!isset($_SESSION['user']) && !isset($_SESSION['login']['password']) && !isset($_SESSION['login']['function'])) {
+                
+                if ($_SESSION['user'] == null && $_SESSION['password'] == null && $_SESSION['function'] == null ) {
 
-        $dadosSelecionados = array();
+                  echo '<script> alert("Por favor entre com seu usuário!")</script>';
+                  echo '<META HTTP-EQUIV="REFRESH" CONTENT="0;URL=../index.php"/>';
+                }
+              }
+              
+              if (isset($_GET['sair']) && $v = $_GET['sair'] == 1) {
 
-        $dados = $conexao->pdo->prepare("SELECT matricula, senha FROM pessoa WHERE matricula = :m AND senha = :s");
-        $dados->bindValue(":m", $usuarioLogin);
-        $dados->bindValue(":s", $senhaLogin);
-        $dados->execute();
-        $dadosSelecionados = $dados->fetchAll(PDO::FETCH_ASSOC);
+                $_SESSION['login']['user'] = null;
+                $_SESSION['login']['password'] = null;
+                $_SESSION['login']['function'] = null;
+              
+                echo '<META HTTP-EQUIV="REFRESH" CONTENT="0;URL=../index.php"/>';
+              }
 
-        if ($dadosSelecionados[0]['matricula'] == $usuarioLogin && $dadosSelecionados[0]['senha'] == $senhaLogin)
-        {
-            $loginFuncionario = true;
-        } else {
-            $loginFuncionario = false;
-        }
-
-        return $loginFuncionario;
+              return $_SESSION['login'];
     }
   
 }

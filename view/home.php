@@ -39,9 +39,20 @@
       </ul>
     </nav>
     <div id="divSair">
-      <a href="../index.php">Sair</a>
+      <a id="sair" href="home.php?sair=<?php echo 1; ?>">Sair</a>
     </div>
   </header>
+
+          <?php
+              require_once '../model/Pessoa.php';
+
+              $pessoa = new Pessoa();
+             
+              // CHAMADO A FUNÇÃO QUE CHECA O LOGIN E VERIFICA SE CLICOU EM SAIR PARA DESLOGAR USUÁRIO
+
+              $usuarioLogado = $pessoa->login();
+          ?>
+
   <section id="principalHome" style="padding: 50px;">
     <p>
     <h1 id="nomeEmpresa" style="font-size: 64pt; color: #8b0211; text-align: center;"> DROGARIA CRISTOFARMA PLUS </h1>

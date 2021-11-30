@@ -1,6 +1,7 @@
 <?php
 require_once '../model/Pessoa.php';
 $pessoa = new Pessoa();
+$usuarioLogado = $pessoa->login();
 ?>
 
 <!doctype html>
@@ -44,7 +45,7 @@ $pessoa = new Pessoa();
       </ul>
     </nav>
     <div id="divSair">
-      <a href="../index.php">Sair</a>
+      <a href="ConsultaFornecedor.php?sair=<?php echo 1;?>">Sair</a>
     </div>
 
     <form action="ConsultaFornecedor.php" method="GET">
@@ -79,10 +80,6 @@ $pessoa = new Pessoa();
             <tbody>
               <?php
               $dados = $pessoa->consultaClienteFornecedorLike($consultaLike = "%" . trim($_GET['buscaFornecedor']) . "%", $tipoConsulta);
-
-              #echo"<pre>"; // organizar o array (matriz de array)
-              #var_dump($dados); // imprimir na tela o resultado do array
-              #echo"</pre>"; // organizar o array (matriz de array)
 
               if (count($dados) > 0) {
                 for ($i = 0; $i < count($dados); $i++) {

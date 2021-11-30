@@ -12,10 +12,14 @@
 <body>
   <?php
 
+ 
+
   require_once '../model/Pessoa.php';
   require_once '../model/Conexao.php';
 
   $pessoa =  new Pessoa();
+
+  $usuarioLogado = $pessoa->login();
 
   $tipo = filter_input(INPUT_POST, 'tipoCadastro'); #filtrar valor que um inpult recebeu
   if ($tipo != 'funcionario') {
@@ -188,7 +192,7 @@
     </nav>
     </nav>
     <div id="divSair">
-      <a href="../index.php">Sair</a>
+      <a href="AtualizaCliente.php?sair=<?php echo 1;?>">Sair</a>
     </div>
 
   </header>

@@ -40,7 +40,7 @@
     
     </header>
     <div id="divSair"  >
-        <a href="../index.php">Sair</a>
+        <a href="RelatorioVendasSaida.php">Sair</a>
     </div>
     <section id="principalSaidaRelatorio">
         <div id="saidaRelatorio">
@@ -51,7 +51,8 @@
 <div id="divRelatorioVendasEstoque" class="tableFixHead">
 <table id="tableRelatorioVendasEstoque" class="table table-striped table-hover">
 
-<?php    
+<?php
+    
 
 require_once '../model/Pessoa.php';
 require_once '../model/Venda.php';
@@ -59,6 +60,8 @@ require_once '../model/Produto.php';
 
 $vendaRelatorio = new Venda();
 $pessoa = new Pessoa();
+
+$usuarioLogado = $pessoa->login();
 
 $tipoRelatorio = filter_input(INPUT_POST, 'tipoRelatorio');
 

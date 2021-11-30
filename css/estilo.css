@@ -139,7 +139,7 @@ input{
 
 }
   
-.btn-outline-danger:hover {
+.btn-outline-danger:hover , #receber{
 
     color: #fff;
     border: #fff solid 1px;
@@ -271,7 +271,7 @@ div#selecionarFornecedor{
     margin-left: 3px;
     float: left;
     width: 67%;
-    height: 650px;
+    height: 660px;
     display: block;
 }
 

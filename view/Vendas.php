@@ -8,8 +8,7 @@
   <link rel="stylesheet" href="../css/estilo.css">
   <link rel="stylesheet" href="../css/fontawesome/css/all.css">
 
-  <?php
-  session_start(); // trabalhar com informaçoes persistentes, sem perder os dados ao trocar de pagina ou arquivo //
+<?php
 
   require_once '../model/Produto.php';
   require_once '../model/ItemVenda.php';
@@ -23,7 +22,9 @@
   $pessoa = new Pessoa();
   $venda = new Venda();
   $estoque = new Estoque();
-  ?>
+
+  $usuarioLogado = $pessoa->login();
+?>
 
   <title>Vendas</title>
 </head>
@@ -59,15 +60,15 @@
     </nav>
   </header>
   <div id="divSair">
-    <a href="../index.php">Sair</a>
+    <<a id="sair" href="Vendas.php?sair=<?php echo 1; ?>">Sair</a>
   </div>
   <form method="POST">
-    <div id="itensAdicionados">
+    <div id="itensAdicionados" style=" height: 665px;">
 
       <section id="principalVendas">
         <div id="tamanho" class="tableFixHead">
           <legend style="background-color: #191970; color: white; ">VENDA / ORÇAMENTO</legend>
-          <table>
+          <table >
             <div>
               <table class="table table-striped table-hover">
                 <thead>
@@ -120,26 +121,24 @@
                   if (isset($_POST['desconto']) && isset($_POST['totalSemDesconto'])) {
                     $desc_porcentagem = filter_input(INPUT_POST, 'desconto');
 
-
                     $venda_sem_desconto = (float) addslashes($_POST['totalSemDesconto']);
-
                     $venda_com_desconto =  (float) addslashes($_POST['totalComDesconto']);
-
                     $porcentagem = (float) $desc_porcentagem;
 
                     $desconto_calculado = $venda->calculaDescontoPorcentagem($venda_sem_desconto, $porcentagem);
-
                     $return_calculo_venda = $venda->calculaValorVenda($venda_sem_desconto, $desconto_calculado);
                   }
 
-                  // CRIAR VENDA E ITEM_VENDA
+                                                            // CRIAR VENDA E ITEM_VENDA
 
-                  if (isset($_POST['fecharVenda']) && !empty($_POST['idClienteVenda']) && !empty($_POST['vendedor']) && !empty($_POST['tipoPagamento'])) {
+                  if (isset($_POST['fecharVenda']) && !empty($_POST['nomeCliente']) && !empty($_POST['vendedor']) && !empty($_POST['tipoPagamento'])) {
+                    if ($btnFecharVenda = filter_input(INPUT_POST, 'fecharVenda') == 'Fechar Venda') {
+                      
                     $vendaStatus = 'aberto';
 
                     $codigo_venda = $codigo_gerado_venda;
                     $pessoa_id_pessoa_vendedor =  addslashes($_POST['vendedor']);
-                    $pessoa_id_pessoa_cliente =  addslashes($_POST['idClienteVenda']);
+                    $pessoa_id_pessoa_cliente =  $_SESSION['cliente'];
                     $data_venda = addslashes($_POST['dataVenda']);
                     $tipo_pagamento = addslashes($_POST['tipoPagamento']);
                     $status_venda = $vendaStatus;
@@ -150,18 +149,8 @@
 
                     $total_item_venda = array_sum($_SESSION['venda']);
 
-                    $venda->createVenda(
-                      $codigo_venda,
-                      $pessoa_id_pessoa_vendedor,
-                      $pessoa_id_pessoa_cliente,
-                      $data_venda,
-                      $tipo_pagamento,
-                      $status_venda,
-                      $valor_venda_sem_desconto,
-                      $desconto,
-                      $valor_venda_com_desconto,
-                      $total_item_venda
-                    );
+                    $venda->createVenda( $codigo_venda, $pessoa_id_pessoa_vendedor, $pessoa_id_pessoa_cliente, $data_venda, $tipo_pagamento,
+                      $status_venda, $valor_venda_sem_desconto, $desconto, $valor_venda_com_desconto, $total_item_venda);
 
                     foreach ($_SESSION['venda'] as $product => $value) {
                       $prod = $produto->selectProduto($product);
@@ -171,15 +160,13 @@
                       $itemVenda->createItemVenda((int)$outputCodigoVenda, (int)$product, (int)$quantidade_produto, (float)$valor_produto);
                       $estoque->estoqueRemover((int)$product, (int)$quantidade_produto);
                     }
-
-            echo '<script> alert("Venda finalizada Com sucesso!")</script>';
-                session_destroy(); // encerrar a seção e destroi as variaves existentes nela
-                    echo '<META HTTP-EQUIV="REFRESH" CONTENT="3;URL=Vendas.php"/>'; // REFRESH para atualizar a página
+                      echo '<script> alert("Venda finalizada Com sucesso!")</script>';
+                      session_destroy(); // encerrar a seção e destroi as variaves existentes nela
+                      echo '<META HTTP-EQUIV="REFRESH" CONTENT="3;URL=Vendas.php"/>'; // REFRESH para atualizar a página
+                    }
 }
 
-
-            
-        // EXCLUINDO OS ITENS DO CARRINHO DE COMPRAS //
+                                        // EXCLUINDO OS ITENS DO CARRINHO DE COMPRAS //
 
  if (isset($_GET['removeProdutoVenda']))
  {  
@@ -187,7 +174,7 @@
             unset($_SESSION['venda'][$fk_id_produto]);
                 echo '<META HTTP-EQUIV="REFRESH" CONTENT="0;URL=Vendas.php"/>'; // REFRESH para atualizar a página
  }
-        // EXIBINDO DADOS DOS ITENS NO CARRINHO DE COMPRAS //
+                                          // EXIBINDO DADOS DOS ITENS NO CARRINHO DE COMPRAS //
 
 $soma_total_venda = array(); // ARRAY PARA SOMAR TODOS OS VALORES TOTAIS DOS ITENS ADICIONAIS
 
@@ -221,10 +208,12 @@ if (isset($_SESSION['venda'])) {
 }
                                         // LIMPAR DAOS VARIAVIIS E CARRINHO AO FECHAR OU CANCELAR VENDA 
 
-    if (isset($_POST['cancelarVenda'])) 
+    if (isset($cancelar)) 
     {
-        session_destroy();
-        echo '<META HTTP-EQUIV="REFRESH" CONTENT="0;URL=Vendas.php"/>'; 
+        unset($_SESSION['venda']);
+        var_dump($_SESSION['venda']);
+
+        echo '<META HTTP-EQUIV="REFRESH" CONTENT="0;URL=Vendas.php"/>';
     }
 ?>                      
        </table>
@@ -245,7 +234,6 @@ if (isset($_SESSION['venda'])) {
           <legend style="border: solid 1px #8b0210; background-color: #8b0211; color: white;">DADOS DA VENDA</legend>
 
                                               <!-- ==================== BUSCAR VENDEDOR =====================-->
-
           <div id="vendedorSelecionado">
 
             <div id="divPagamentoTipo" style="display: inline; width: 20%;">
@@ -255,39 +243,23 @@ if (isset($_SESSION['venda'])) {
                 <option value="debito">Débito</option>
                 <option value="credito">Crédito</option>
               </select>
-            </div><br><br>
+            </div><br><br><br>
+                                                      <!-- =========================== BUSCAR CLIENTE ===============================-->
 
-                                                <!-- =========================== BUSCAR CLIENTE ===============================-->
-
-            <label for="idClienteVenda" st>ID Cliente:</label>
-            <input id="idClienteVenda" type="text" name="idClienteVenda" class="form-control" size="5" style="margin-right: 54%;" value="<?php if (isset($_GET['id_cliente_up_venda']) && !empty(['id_cliente_up_venda'])) {
-                                                                                                                                            $id_cliente_get_up = addslashes($_GET['id_cliente_up_venda']);
-                                                                                                                                            $retornoConsulta = $pessoa->selectPessoaCliente($id_cliente_get_up);
-                                                                                                                                            if (isset($retornoConsulta)) {
-                                                                                                                                              echo $retornoConsulta[0]['id_pessoa'];
-                                                                                                                                            }
-                                                                                                                                          }
-                                                                                                                                          ?>"><br><br>
+            <?php if (isset($_GET['id_cliente_up_venda']) && !empty(['id_cliente_up_venda'])) {
+                $id_cliente_get_up = $retornoConsulta = $pessoa->selectPessoaCliente(addslashes($_GET['id_cliente_up_venda']));
+                $_SESSION['cliente'] = $id_cliente_get_up[0]['id_pessoa'];
+            } ?>
 
             <label id="labelNomeCliente">Nome:</label>
             <input id="nomeCliente" type="search" class="form-control" name="nomeCliente" autofocus size="30" style="margin-right: 11%;" value="<?php if (isset($_GET['id_cliente_up_venda']) && 'id_cliente_up_venda' !== NULL) {
-                                                                                                                                                            $id_cliente_get_up = addslashes($_GET['id_cliente_up_venda']);
-                                                                                                                                                            $retornoConsulta = $pessoa->selectPessoaCliente($id_cliente_get_up);
-                                                                                                                                                            if (isset($retornoConsulta)) {
-                                                                                                                                                              echo $retornoConsulta[0]['nome'];
-                                                                                                                                                            }
-                                                                                                                                                          }
-                                                                                                                                                          ?>"><br><br>
+              $id_cliente_get_up = addslashes($_GET['id_cliente_up_venda']); $retornoConsulta = $pessoa->selectPessoaCliente($_SESSION['cliente']);
+                if (isset($retornoConsulta)) { echo $retornoConsulta[0]['nome'];}} ?>"><br><br>
 
             <label id="labelCpf">CPF:</label>
             <input id="cpfCliente" type="text" name="cpfCliente" class="form-control" size="16" style="margin-right: 35%;" value="<?php if (isset($_GET['id_cliente_up_venda']) && !empty(['id_cliente_up_venda'])) {
-                                                                                                                                    $id_cliente_get_up = addslashes($_GET['id_cliente_up_venda']);
-                                                                                                                                    $retornoConsulta = $pessoa->selectPessoaCliente($id_cliente_get_up);
-                                                                                                                                    if (isset($retornoConsulta)) {
-                                                                                                                                      echo $retornoConsulta[0]['cpf_cnpj'];
-                                                                                                                                    }
-                                                                                                                                  }
-                                                                                                                                  ?>"><br><br><br>
+              $id_cliente_get_up = addslashes($_GET['id_cliente_up_venda']); $retornoConsulta = $pessoa->selectPessoaCliente($_SESSION['cliente']);
+                if (isset($retornoConsulta)) { echo $retornoConsulta[0]['cpf_cnpj'];}}?>"><br><br><br>
 
             <div id="adicionaClienteVenda">
               <a href="ConsultaClientes.php?buscaCliente=<?php echo $clienteSelect = filter_input(INPUT_POST, 'nomeCliente'); ?>" title="Buscar Cliente"><img src="/img/search2.png"></a>
@@ -327,13 +299,13 @@ if (isset($_SESSION['venda'])) {
                                                                                                                             echo number_format($valor_total_venda, 2, '.', '.');
                                                                                                                           }  ?>" style="text-align: right; color: blue; font-size: 25px; padding: 5%; background-color: #FFFF00; font-weight: bolder;"> <br><br>
 
-            <label id="desconto" for="desconto"> Desconto: R$</label>
+            <label id="desconto" for="desconto"> Desconto: %</label>
             <input id="desconto" type="text" name="desconto" class="form-control" size="6" placeholder="%" value="<?php if (isset($desc_porcentagem)) {
-                                                                                                                    echo $desc_porcentagem . '%';
+                                                                                                                    echo $desc_porcentagem;
                                                                                                                   }  ?>" style="text-align: right; color: blue; font-size: 25px; padding: 5%; background-color: #FFFF00; font-weight: bolder;"><br><br>
 
             <label for="totalComDesconto" id="totalComDesconto">Total com Desconto: R$</label>
-            <input id="totalComDesconto" name="totalComDesconto" class="form-control" size="6" placeholder="0.00" value=" <?php if (isset($desc_porcentagem)) {
+            <input id="totalComDesconto" name="totalComDesconto" class="form-control" size="6" placeholder="0.00" value=" <?php if (isset($desc_porcentagem) && $desc_porcentagem > 0) {
                                                                                                                             echo number_format($return_calculo_venda, 2, '.', '.');
                                                                                                                           } else {
                                                                                                                             echo number_format($valor_total_venda, 2, '.', '.');
@@ -347,8 +319,17 @@ if (isset($_SESSION['venda'])) {
               }
             </script>
 
-            <button class="btn btn-outline-danger" id="btnFecharVenda" name="fecharVenda" onclick="" style="display: inline;">Fechar Venda</button>
-            <button class="btn btn-outline-danger" id="btnCncelarVenda" name="cancelarVenda" onclick=" return confirmaCancelarVenda();" style="display: inline; margin-left: 10%;">Cancelar</button>
+            <?php $btnFecharVenda = false;
+              if (isset($_POST['fecharVenda'])) {
+                $btnFecharVenda = true;
+              }
+            ?>
+
+            <!-- <button class="btn btn-outline-danger" id="btnFecharVenda" name="fecharVenda" onclick="" style="display: inline;">Fechar Venda</button> -->
+            <input type="button" class="btn btn-outline-danger" id="btnCncelarVenda" name="cancelarVenda" onclick=" return confirmaCancelarVenda();" style="display: inline; margin-left: 10%;" value="Cancelar">
+            
+            <input type="submit" class="btn btn-outline-danger" id="btnFecharVenda" name="fecharVenda" onclick="" style="display: inline; margin-left: 5%;"
+              value="<?php if ($btnFecharVenda == false) { echo 'Fechar Pedido';} else { echo 'Fechar Venda'; } ?>">
           </div>
         </div>
     </div>
