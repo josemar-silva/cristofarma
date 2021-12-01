@@ -15,6 +15,13 @@ $donpdf = new Dompdf();
     <p> Tele-Entregas: (62) 3242-7373 / (62) 99279-1340  / WhatsApp: (62) 98437-1551 </p>
     <p> Rua Jassitata, Quadra: 07 Lote 31 Sala 05 - Bairro Cardoso I, Aparecida de Goiânia - GO </p>');
 
+  ob_start();
+
+    require __DIR__ . "/DetalharVenda.php";
+  
+  $pdf = ob_get_clean();
+  echo $pdf;
+
     // definir tamanho do papel (A4, A3, A2...) e modo paidagem (lasdscape) ou retrato (portrait)
     $donpdf->setPaper('A5', 'lasdscape');
 

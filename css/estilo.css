@@ -480,3 +480,16 @@ div#selecionarFornecedor{
 
     margin-top: -3%;
 }
+
+#receber:hover {
+
+    background-color: blue;
+
+}
+
+#receber {
+
+color: #fff;
+    background-color: #B22222;
+    border: #8b0210 solid 1px;
+}

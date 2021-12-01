@@ -135,7 +135,7 @@ class Pessoa
         $dados->execute();
     }
 
-    public function selectPessoa($id_up)
+    public function selectPessoaId($id_up)
     {
         $dadosSelecionados = array(); 
 

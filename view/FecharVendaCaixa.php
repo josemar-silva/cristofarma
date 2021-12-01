@@ -191,7 +191,7 @@
             
             <!-- <button type="submit"  class="btn btn-outline-danger" id="receber" name="receber" onclick="" style="display: inline; margin-left: 30%; margin-top: 20%; font-size: 22pt;">Receber</button> -->
             <input type="submit" class="btn btn-outline-danger" id="receber" name="receber" onclick="" style="display: inline; margin-right: 20%; color: white; margin-top: 20%; font-size: 22pt;" 
-                value="<?php if (isset($_SESSION['valorRecebido']['valorDigitado'])) { echo 'Receber Venda';} else { echo 'Calcular Troco';}?>"> 
+                value="<?php if (isset($_SESSION['valorRecebido']['valorDigitado']) && $_SESSION['valorRecebido']['valorDigitado'] >= $valor_venda_return) { echo 'Receber Venda';} else { echo 'Calcular Troco';}?>"> 
                 
         </form>
             <?php

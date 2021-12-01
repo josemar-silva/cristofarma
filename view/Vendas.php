@@ -60,7 +60,7 @@
     </nav>
   </header>
   <div id="divSair">
-    <<a id="sair" href="Vendas.php?sair=<?php echo 1; ?>">Sair</a>
+    <a id="sair" href="Vendas.php?sair=<?php echo 1; ?>">Sair</a>
   </div>
   <form method="POST">
     <div id="itensAdicionados" style=" height: 665px;">

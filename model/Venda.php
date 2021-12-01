@@ -203,21 +203,21 @@ class Venda
        return $dadosPessoaSelecionados;
     }
 
-    public function selectVendaClienteLikeDataLike($nomeCliente,  $data_ini,  $data_fim)
-    {
-        $conexao = new Conexao();
+    // public function selectVendaClienteLikeDataLike($nomeCliente,  $data_ini,  $data_fim)
+    // {
+    //     $conexao = new Conexao();
 
-        $dados = $conexao->pdo->prepare("SELECT * FROM venda LEFT JOIN pessoa ON pessoa_id_pessoa_cliente = id_pessoa AND 
-             WHERE nome LIKE :lk AND data_venda >= :di AND data_venda <= :df ORDER BY data_venda DESC");
+    //     $dados = $conexao->pdo->prepare("SELECT * FROM venda LEFT JOIN pessoa ON pessoa_id_pessoa_cliente = id_pessoa AND 
+    //          WHERE nome LIKE :lk AND data_venda >= :di AND data_venda <= :df ORDER BY data_venda DESC");
 
-        $dados->bindValue(":lk", $nomeCliente);
-        $dados->bindValue(":di", $data_ini);
-        $dados->bindValue(":df", $data_fim);
-        $dados->execute();
-        $dadosPessoaSelecionados = $dados->fetchAll(PDO::FETCH_ASSOC);
+    //     $dados->bindValue(":lk", $nomeCliente);
+    //     $dados->bindValue(":di", $data_ini);
+    //     $dados->bindValue(":df", $data_fim);
+    //     $dados->execute();
+    //     $dadosPessoaSelecionados = $dados->fetchAll(PDO::FETCH_ASSOC);
 
-        return $dadosPessoaSelecionados;
-    }
+    //     return $dadosPessoaSelecionados;
+    // }
 
     public function selectVendaAllLikePagamento($tipoPagamento)
     {
@@ -248,22 +248,22 @@ class Venda
        return $dadosPessoaSelecionados;
     }
 
-    public function selectVendaVendedorLikeDataLike($nomeVendedor,  $data_ini,  $data_fim)
-    {
-        $conexao = new Conexao();
+    // public function selectVendaVendedorLikeDataLike($nomeVendedor,  $data_ini,  $data_fim)
+    // {
+    //     $conexao = new Conexao();
 
-        $dados = $conexao->pdo->prepare("SELECT * FROM venda JOIN pessoa ON pessoa_id_pessoa_vendedor = id_pessoa
-             WHERE nome LIKE :lk AND funcao = 'vendedor' AND data_venda >= :di AND data_venda <= :df ORDER BY data_venda DESC");
+    //     $dados = $conexao->pdo->prepare("SELECT * FROM venda JOIN pessoa ON pessoa_id_pessoa_vendedor = id_pessoa
+    //          WHERE nome LIKE :lk AND funcao = 'vendedor' AND data_venda >= :di AND data_venda <= :df ORDER BY data_venda DESC");
 
-        $dados->bindValue(":lk", $nomeVendedor);
-        $dados->bindValue(":di", $data_ini);
-        $dados->bindValue(":df", $data_fim);
+    //     $dados->bindValue(":lk", $nomeVendedor);
+    //     $dados->bindValue(":di", $data_ini);
+    //     $dados->bindValue(":df", $data_fim);
 
-        $dados->execute();
-        $dadosPessoaSelecionados = $dados->fetchAll(PDO::FETCH_ASSOC);
+    //     $dados->execute();
+    //     $dadosPessoaSelecionados = $dados->fetchAll(PDO::FETCH_ASSOC);
 
-        return $dadosPessoaSelecionados;
-    }
+    //     return $dadosPessoaSelecionados;
+    // }
 
     public function selectVendaAbertaLikeId($idVendaLike)
     {
@@ -287,21 +287,6 @@ class Venda
         $dados->bindValue("id", $idVendaLike);
         $dados->execute();
         $dadosSelecionados = $dados->fetchAll(PDO::FETCH_ASSOC);
-       
-        return $dadosSelecionados;
-    }
-
-
-    public function selectVendaProdutoVenda($data_venda,  $pessoa_id_pessoa_cliente)
-    {
-        $conexao = new Conexao();
-
-        $dados  = $conexao->pdo->prepare("SELECT codigo_venda FROM venda WHERE data_venda = :id AND pessoa_id_pessoa_cliente = :fk"); // dados retornam como ARRAY
-
-        $dados->bindValue("id", $data_venda);
-        $dados->bindValue("fk", $pessoa_id_pessoa_cliente);
-        $dados->execute();
-        $dadosSelecionados = $dados->fetch(PDO::FETCH_ASSOC);
        
         return $dadosSelecionados;
     }

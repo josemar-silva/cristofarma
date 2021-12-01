@@ -34,7 +34,6 @@ function createEstoque($quantidade_estoque, $produto_id_produto)
     return true;   
 }
 
-
 function updateEstoque($produto_id_produto, $quantidade_estoque)
 {
     $conexao = new Conexao();
