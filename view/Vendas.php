@@ -208,7 +208,7 @@ if (isset($_SESSION['venda'])) {
 }
                                         // LIMPAR DAOS VARIAVIIS E CARRINHO AO FECHAR OU CANCELAR VENDA 
 
-    if (isset($cancelar)) 
+    if (isset($btnFecharVenda)) 
     {
         unset($_SESSION['venda']);
         var_dump($_SESSION['venda']);
@@ -316,6 +316,8 @@ if (isset($_SESSION['venda'])) {
             <script language=javascript>
               function confirmaCancelarVenda() {
                 if (confirm("Venda não finalizada, Deseja cancelar essa venda?"));
+
+                let cancelar = 1;
               }
             </script>
 
