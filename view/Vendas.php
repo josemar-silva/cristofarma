@@ -161,7 +161,8 @@
                       $estoque->estoqueRemover((int)$product, (int)$quantidade_produto);
                     }
                       echo '<script> alert("Venda finalizada Com sucesso!")</script>';
-                      session_destroy(); // encerrar a seção e destroi as variaves existentes nela
+                      unset($_SESSION['venda']);
+                      unset($_SESSION['cliente']); // encerrar a seção e destroi as variaves existentes nela
                       echo '<META HTTP-EQUIV="REFRESH" CONTENT="3;URL=Vendas.php"/>'; // REFRESH para atualizar a página
                     }
 }
@@ -208,11 +209,10 @@ if (isset($_SESSION['venda'])) {
 }
                                         // LIMPAR DAOS VARIAVIIS E CARRINHO AO FECHAR OU CANCELAR VENDA 
 
-    if (isset($btnFecharVenda)) 
+    if (isset($_POST['cancelarVenda']))
     {
         unset($_SESSION['venda']);
-        var_dump($_SESSION['venda']);
-
+        unset($_SESSION['cliente']);
         echo '<META HTTP-EQUIV="REFRESH" CONTENT="0;URL=Vendas.php"/>';
     }
 ?>                      
@@ -283,7 +283,7 @@ if (isset($_SESSION['venda'])) {
                     if ($key == "nome") // IMPRIMIR VALOR SOMENTE SE...
                     {
                       ?>
-                        <?php echo  $value; ?> </option> <?php
+                        <?php echo $value; ?> </option> <?php
                                                         }
                                                       }
                                                     }
@@ -317,7 +317,6 @@ if (isset($_SESSION['venda'])) {
               function confirmaCancelarVenda() {
                 if (confirm("Venda não finalizada, Deseja cancelar essa venda?"));
 
-                let cancelar = 1;
               }
             </script>
 
@@ -327,10 +326,16 @@ if (isset($_SESSION['venda'])) {
               }
             ?>
 
+           
+
             <!-- <button class="btn btn-outline-danger" id="btnFecharVenda" name="fecharVenda" onclick="" style="display: inline;">Fechar Venda</button> -->
-            <input type="button" class="btn btn-outline-danger" id="btnCncelarVenda" name="cancelarVenda" onclick=" return confirmaCancelarVenda();" style="display: inline; margin-left: 10%;" value="Cancelar">
+            <?php if ( $btnFecharVenda == true) {
+              echo '<input type="submit" class="btn btn-outline-danger" id="btnCancelarVenda" name="cancelarVenda" onclick=" return confirmaCancelarVenda();" style="display: inline; margin-left: 10%;" value="Cancelar">';
+            } else {
+              echo '<input type="button" class="btn btn-outline-danger" id="" name="" onclick="" style="display: inline; margin-left: 10%;" value="Limpar">';
+            } ?>
             
-            <input type="submit" class="btn btn-outline-danger" id="btnFecharVenda" name="fecharVenda" onclick="" style="display: inline; margin-left: 5%;"
+            <input type="submit" class="btn btn-outline-danger" id="btnFecharVenda" name="fecharVenda" onclick="" style="display: inline; margin-left: 0%; float: left;"
               value="<?php if ($btnFecharVenda == false) { echo 'Fechar Pedido';} else { echo 'Fechar Venda'; } ?>">
           </div>
         </div>

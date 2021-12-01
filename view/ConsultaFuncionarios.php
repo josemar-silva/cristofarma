@@ -78,7 +78,10 @@ $usuarioLogado = $pessoa->login();
               <th> MATRICULA </th>
               <th> FUNCAO </th>
               <th> ENDEREÇO DO FUNCIONÁRIO</th>
-              <th> AÇÃO </th>
+              <?php 
+                    if ($usuarioLogado['function'] == 'gerente') { 
+              ?>       <th> AÇÃO </th> 
+              <?php } ?>
             </tr>
           </thead>
           <tbody>
@@ -101,16 +104,21 @@ $usuarioLogado = $pessoa->login();
                     echo "<td>" . $value . "</td>";
                   }
                 }
+
+      if ($usuarioLogado['function'] == 'gerente') {
+          ?>
+            <td>
+              <a class="acaoVerde" id="acaoEditar" href="AtualizaFuncionario.php?id_get_up=<?php echo $dados[$i]['id_pessoa']; ?>"><i class="fas fa-edit"></i>
+                      
+              </a>
+              <a class="acaoVermelho" id="acaoExcluir" href="ConsultaFuncionarios.php?id_get_del=<?php echo $dados[$i]['id_pessoa']; ?>"><i class="fas fa-trash"></i>
+                      
+              </a>
+              </td>
+          <?php
+                }
             ?>
-                <td>
-                  <a class="acaoVerde" id="acaoEditar" href="AtualizaFuncionario.php?id_get_up=<?php echo $dados[$i]['id_pessoa']; ?>"><i class="fas fa-edit"></i>
-                    <!--Editar-->
-                  </a>
-                  <a class="acaoVermelho" id="acaoExcluir" href="ConsultaFuncionarios.php?id_get_del=<?php echo $dados[$i]['id_pessoa']; ?>"><i class="fas fa-trash"></i>
-                    <!--Excluir-->
-                  </a>
-                  <!-- usar "echo $dados[$i]['id_pessoa']; "pegar ID desejado no array e passar como 'string' para o metodo $_GET-->
-                </td>
+                
             <?php
                 echo "</tr>"; // fecha linha dos dados selecionados
               }

@@ -89,79 +89,82 @@
       }
     }
   } else {
+        if (isset($usuarioLogado) && $usuarioLogado["function"] == 'gerente') {
+          if (isset($_GET['id_get_up']) && !empty($_GET['id_get_up'])) {
 
-    if (isset($_GET['id_get_up']) && !empty($_GET['id_get_up'])) {
-
-      $id_upd = addslashes($_GET['id_get_up']);
-      $nome = addslashes($_POST['nome']); # verificando se existe dados dentro do parametro/variavel
-      $cpf_cnpj = addslashes($_POST['cpf_cnpj']);
-      $tipo_pessoa = addslashes($_POST['tipoCadastro']);
-      $email = addslashes($_POST['email']);
-      $telefoneFixo = addslashes($_POST['telefoneFixo']);
-      $telefoneCelular = addslashes($_POST['telefoneCelular']);
-      $matricula = addslashes($_POST['matricula']);
-      $funcao = addslashes($_POST['listaFuncao']);
-      $endereco = addslashes($_POST['endereco']);
-
-      if (!empty($nome) && !empty($email) && !empty($tipo))  // validar se há ao menos um dado a ser cadastrado
-
-      {
-        $pessoa->updatePessoaFuncionario(
-          $id_upd,
-          $nome,
-          $cpf_cnpj,
-          $tipo_pessoa,
-          $email,
-          $telefoneFixo,
-          $telefoneCelular,
-          $matricula,
-          $funcao,
-          $endereco
-        );
-
-        header("location: ConsultaFuncionarios.php?buscaFuncionario=$nome");
-      } else {
-        echo "Preencha todos os campos!";
-      }
-      echo '<script> alert("Cadastro realizado com sucesso!")</script>';
-    } else
-    //--------------------------CADASTRAR-----------------------------
-    {
-
-      $nome = addslashes($_POST['nome']); # verificando se existe dados dentro do parametro/variavel
-      $cpf_cnpj = addslashes($_POST['cpf_cnpj']);
-      $tipo_pessoa = addslashes($_POST['tipoCadastro']);
-      $email = addslashes($_POST['email']);
-      $telefoneFixo = addslashes($_POST['telefoneFixo']);
-      $telefoneCelular = addslashes($_POST['telefoneCelular']);
-      $matricula = addslashes($_POST['matricula']);
-      $senha = addslashes($_POST['senha']);
-      $funcao = addslashes($_POST['listaFuncao']);
-      $endereco = addslashes($_POST['endereco']);
-
-      if (!empty($nome) && !empty($email) && !empty($tipo))  // validar se há ao menos um dado a ser cadastrado
-
-      {
-        if (!$pessoa->createPessoaFuncionario(
-          $nome,
-          $cpf_cnpj,
-          $tipo_pessoa,
-          $email,
-          $telefoneFixo,
-          $telefoneCelular,
-          $matricula,
-          $senha,
-          $funcao,
-          $endereco
-        )) {
-          echo "Este cadastro já existe!";
+            $id_upd = addslashes($_GET['id_get_up']);
+            $nome = addslashes($_POST['nome']); # verificando se existe dados dentro do parametro/variavel
+            $cpf_cnpj = addslashes($_POST['cpf_cnpj']);
+            $tipo_pessoa = addslashes($_POST['tipoCadastro']);
+            $email = addslashes($_POST['email']);
+            $telefoneFixo = addslashes($_POST['telefoneFixo']);
+            $telefoneCelular = addslashes($_POST['telefoneCelular']);
+            $matricula = addslashes($_POST['matricula']);
+            $funcao = addslashes($_POST['listaFuncao']);
+            $endereco = addslashes($_POST['endereco']);
+      
+            if (!empty($nome) && !empty($email) && !empty($tipo))  // validar se há ao menos um dado a ser cadastrado
+      
+            {
+              $pessoa->updatePessoaFuncionario(
+                $id_upd,
+                $nome,
+                $cpf_cnpj,
+                $tipo_pessoa,
+                $email,
+                $telefoneFixo,
+                $telefoneCelular,
+                $matricula,
+                $funcao,
+                $endereco
+              );
+      
+              header("location: ConsultaFuncionarios.php?buscaFuncionario=$nome");
+            } else {
+              echo "Preencha todos os campos!";
+            }
+            echo '<script> alert("Cadastro realizado com sucesso!")</script>';
+          } else
+          //--------------------------CADASTRAR-----------------------------
+          {
+      
+            $nome = addslashes($_POST['nome']); # verificando se existe dados dentro do parametro/variavel
+            $cpf_cnpj = addslashes($_POST['cpf_cnpj']);
+            $tipo_pessoa = addslashes($_POST['tipoCadastro']);
+            $email = addslashes($_POST['email']);
+            $telefoneFixo = addslashes($_POST['telefoneFixo']);
+            $telefoneCelular = addslashes($_POST['telefoneCelular']);
+            $matricula = addslashes($_POST['matricula']);
+            $senha = addslashes($_POST['senha']);
+            $funcao = addslashes($_POST['listaFuncao']);
+            $endereco = addslashes($_POST['endereco']);
+      
+            if (!empty($nome) && !empty($email) && !empty($tipo))  // validar se há ao menos um dado a ser cadastrado
+      
+            {
+              if (!$pessoa->createPessoaFuncionario(
+                $nome,
+                $cpf_cnpj,
+                $tipo_pessoa,
+                $email,
+                $telefoneFixo,
+                $telefoneCelular,
+                $matricula,
+                $senha,
+                $funcao,
+                $endereco
+              )) {
+                echo "Este cadastro já existe!";
+              }
+            } else {
+              echo "Preencha todos os campos!";
+            }
+            echo '<script> alert("Cadastro realizado com sucesso!")</script>';
+            header("location: ConsultaFuncionarios.php?buscaFuncionario=+");
+          }
+        } else {
+          echo '<script> alert("Usuário não tem permissão para esta ação!")</script>';
         }
-      } else {
-        echo "Preencha todos os campos!";
-      }
-      echo '<script> alert("Cadastro realizado com sucesso!")</script>';
-      header("location: ConsultaFuncionarios.php?buscaFuncionario=+");
-    }
   }
 
   ?>

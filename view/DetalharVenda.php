@@ -75,7 +75,8 @@
                                                 <!-- CANCELAR VENDA (ABERTA/FECHADA) E ESTORNA PRODUTOS AO ESTOQUE  -->
 <?php 
       if (isset($_POST['cancelarVenda'])) {
-        $venda->estornarVenda($id_venda);
+        if ($usuarioLogado['function'] == 'gerente') {
+          $venda->estornarVenda($id_venda);
 
         $item_venda_estorno = $itemVenda->selectAllItemVendaLikeId($venda_id);
         
@@ -85,10 +86,13 @@
             $qtd_produto_estorno = $item_venda_estorno[$i]['quantidade_item'];
 
             $estoque->estoqueAdicionar($id_produto_estorno, $qtd_produto_estorno);
-
         }
-        
-        echo '<script> alert("Venda cancelada/estornada com sucesso!")</script>';
+          echo '<script> alert("Venda cancelada/estornada com sucesso!")</script>';
+          
+        } else 
+        {
+          echo '<script> alert("Usuário não tem permissão para esta ação!")</script>';
+        }
       }
     ?> 
 

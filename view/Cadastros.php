@@ -18,7 +18,6 @@
   $pessoa =  new Pessoa();
   $usuarioLogado = $pessoa->login();
 
-
   $tipo = filter_input(INPUT_POST, 'tipoCadastro'); #filtrar valor que um inpult recebeu
   if ($tipo != 'funcionario') {
     if (isset($_POST['nome'])) // CLICOU NO BOTAO CADASTRAR OU EDITAR
@@ -88,86 +87,89 @@
       }
     }
   } else {
+        if (isset($usuarioLogado) && $usuarioLogado["function"] == 'gerente') {
+          if (isset($_GET['id_get_up']) && !empty($_GET['id_get_up'])) {
 
-    if (isset($_GET['id_get_up']) && !empty($_GET['id_get_up'])) {
-
-      $id_upd = addslashes($_GET['id_get_up']);
-      $nome = addslashes($_POST['nome']); # verificando se existe dados dentro do parametro/variavel
-      $cpf_cnpj = addslashes($_POST['cpf_cnpj']);
-      $tipo_pessoa = addslashes($_POST['tipoCadastro']);
-      $email = addslashes($_POST['email']);
-      $telefoneFixo = addslashes($_POST['telefoneFixo']);
-      $telefoneCelular = addslashes($_POST['telefoneCelular']);
-      $matricula = addslashes($_POST['matricula']);
-      $senha = addslashes($_POST['senha']);
-      $senhaRecebida = $senha;
-
-      $senhaHash = password_hash($senhaRecebida, PASSWORD_DEFAULT);
-
-      $funcao = addslashes($_POST['listaFuncao']);
-      $endereco = addslashes($_POST['endereco']);
-
-      if (!empty($nome) && !empty($email) && !empty($tipo))  // validar se há ao menos um dado a ser cadastrado
-
-      {
-        $pessoa->updatePessoaFuncionario(
-          $id_upd,
-          $nome,
-          $cpf_cnpj,
-          $tipo_pessoa,
-          $email,
-          $telefoneFixo,
-          $telefoneCelular,
-          $matricula,
-          $senhaHash,
-          $funcao,
-          $endereco
-        );
-
-        //header("location: Cadastros.php");
-
-      } else {
-        echo "Preencha todos os campos!";
-      }
-    } else
-    //--------------------------CADASTRAR-----------------------------
-    {
-
-      $nome = addslashes($_POST['nome']); # verificando se existe dados dentro do parametro/variavel
-      $cpf_cnpj = addslashes($_POST['cpf_cnpj']);
-      $tipo_pessoa = addslashes($_POST['tipoCadastro']);
-      $email = addslashes($_POST['email']);
-      $telefoneFixo = addslashes($_POST['telefoneFixo']);
-      $telefoneCelular = addslashes($_POST['telefoneCelular']);
-      $matricula = addslashes($_POST['matricula']);
-      $senha = addslashes($_POST['senha']);
-
-      $senhaHash = password_hash($senha, PASSWORD_DEFAULT); //  funcão nativa do PHP (BCRIPT) para gerar HASH da senha a ser cadastrada no BD
-
-      $funcao = addslashes($_POST['listaFuncao']);
-      $endereco = addslashes($_POST['endereco']);
-
-      if (!empty($nome) && !empty($email) && !empty($tipo))  // validar se há ao menos um dado a ser cadastrado
-
-      {
-        if (!$pessoa->createPessoaFuncionario(
-          $nome,
-          $cpf_cnpj,
-          $tipo_pessoa,
-          $email,
-          $telefoneFixo,
-          $telefoneCelular,
-          $matricula,
-          $senhaHash,
-          $funcao,
-          $endereco
-        )) {
-          echo "Este cadastro já existe!";
-        }
-      } else {
-        echo '<script> alert("Preencha todos os campos!")</script>';
-      }
-    }
+            $id_upd = addslashes($_GET['id_get_up']);
+            $nome = addslashes($_POST['nome']); # verificando se existe dados dentro do parametro/variavel
+            $cpf_cnpj = addslashes($_POST['cpf_cnpj']);
+            $tipo_pessoa = addslashes($_POST['tipoCadastro']);
+            $email = addslashes($_POST['email']);
+            $telefoneFixo = addslashes($_POST['telefoneFixo']);
+            $telefoneCelular = addslashes($_POST['telefoneCelular']);
+            $matricula = addslashes($_POST['matricula']);
+            $senha = addslashes($_POST['senha']);
+            $senhaRecebida = $senha;
+      
+            $senhaHash = password_hash($senhaRecebida, PASSWORD_DEFAULT);
+      
+            $funcao = addslashes($_POST['listaFuncao']);
+            $endereco = addslashes($_POST['endereco']);
+      
+            if (!empty($nome) && !empty($email) && !empty($tipo))  // validar se há ao menos um dado a ser cadastrado
+      
+            {
+              $pessoa->updatePessoaFuncionario(
+                $id_upd,
+                $nome,
+                $cpf_cnpj,
+                $tipo_pessoa,
+                $email,
+                $telefoneFixo,
+                $telefoneCelular,
+                $matricula,
+                $senhaHash,
+                $funcao,
+                $endereco
+              );
+      
+              //header("location: Cadastros.php");
+      
+            } else {
+              echo "Preencha todos os campos!";
+            }
+          } else
+          //--------------------------CADASTRAR-----------------------------
+          {
+      
+            $nome = addslashes($_POST['nome']); # verificando se existe dados dentro do parametro/variavel
+            $cpf_cnpj = addslashes($_POST['cpf_cnpj']);
+            $tipo_pessoa = addslashes($_POST['tipoCadastro']);
+            $email = addslashes($_POST['email']);
+            $telefoneFixo = addslashes($_POST['telefoneFixo']);
+            $telefoneCelular = addslashes($_POST['telefoneCelular']);
+            $matricula = addslashes($_POST['matricula']);
+            $senha = addslashes($_POST['senha']);
+      
+            $senhaHash = password_hash($senha, PASSWORD_DEFAULT); //  funcão nativa do PHP (BCRIPT) para gerar HASH da senha a ser cadastrada no BD
+      
+            $funcao = addslashes($_POST['listaFuncao']);
+            $endereco = addslashes($_POST['endereco']);
+      
+            if (!empty($nome) && !empty($email) && !empty($tipo))  // validar se há ao menos um dado a ser cadastrado
+      
+            {
+              if (!$pessoa->createPessoaFuncionario(
+                $nome,
+                $cpf_cnpj,
+                $tipo_pessoa,
+                $email,
+                $telefoneFixo,
+                $telefoneCelular,
+                $matricula,
+                $senhaHash,
+                $funcao,
+                $endereco
+              )) {
+                echo "Este cadastro já existe!";
+              }
+            } else {
+              echo '<script> alert("Preencha todos os campos!")</script>';
+            }
+          }
+        } else {
+            echo '<script> alert("Usuário não tem permissão para esta ação!")</script>';
+          }
   }
 
   ?>

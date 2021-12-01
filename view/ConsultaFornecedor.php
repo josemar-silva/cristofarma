@@ -93,16 +93,17 @@ $usuarioLogado = $pessoa->login();
                   }
               ?>
                   <td>
-                    <a id="acaoSelecionar" href="CadastrarProdutos.php?id_fornecedor_produto_get_up=<?php echo $dados[$i]['id_pessoa']; ?>"><i class="fas fa-hand-pointer"></i>
-                      <!--Selecionar-->
-                    </a>
-                    <a class="acaoVerde" id="acaoEditar" href="AtualizaFornecedor.php?id_get_up=<?php echo $dados[$i]['id_pessoa']; ?>"><i class="fas fa-edit"></i>
-                      <!--Editar-->
-                    </a>
-                    <a class="acaoVermelho" id="acaoExcluir" href="ConsultaFornecedor.php?id_get_del=<?php echo $dados[$i]['id_pessoa']; ?>"><i class="fas fa-trash"></i>
-                      <!--Excluir-->
-                    </a>
-                    <!-- usar "echo $dados[$i]['id_pessoa']; "pegar ID desejado no array e passar como 'string' para o metodo $_GET-->
+                    <a id="acaoSelecionar" href="CadastrarProdutos.php?id_fornecedor_produto_get_up=<?php echo $dados[$i]['id_pessoa']; ?>"><i class="fas fa-hand-pointer"></i></a>
+                    
+                    <?php 
+                      if ($usuarioLogado['function'] == 'gerente') {
+                        ?>
+                          <a class="acaoVerde" id="acaoEditar" href="AtualizaFornecedor.php?id_get_up=<?php echo $dados[$i]['id_pessoa']; ?>"><i class="fas fa-edit"></i></a>
+                          <a class="acaoVermelho" id="acaoExcluir" href="ConsultaFornecedor.php?id_get_del=<?php echo $dados[$i]['id_pessoa']; ?>"><i class="fas fa-trash"></i></a>
+                      <?php
+                      }
+                    ?>
+                   
                   </td>
               <?php
                   echo "</tr>"; // fecha linha dos dados selecionados

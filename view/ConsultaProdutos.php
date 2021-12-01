@@ -94,7 +94,7 @@ $usuarioLogado = $pessoa->login();
                                     <th> CÓDIGO DE BARRAS </th>
                                     <th> LABORATÓRIO </th>
                                     <th style="width: 5%;"> ESTOQUE</th>
-                                    <th> AÇÃO </th>
+                                    <th> AÇÃO </th> 
                                 </tr>
                             </thead>
             
@@ -137,12 +137,18 @@ $usuarioLogado = $pessoa->login();
                                 }
                                 
                     ?>
-                                <td>
-                                    <a class="" id="acaoSelecionar" href="Vendas.php?id_produto_up_venda=<?php echo $dados[$i]['id_produto']; ?>"><i class="fas fa-hand-pointer"></i><!--Selecionar--></a>
-                                    <a class="acaoVerde my-2" id="acaoEditar" href="AtualizaProduto.php?id_get_up=<?php echo $dados[$i]['id_produto']; ?>"><i class="fas fa-edit"></i><!--Editar--></a>
-                                    <a class="acaoVermelho my-2" id="acaoExcluir" href="ConsultaProdutos.php?id_get_del=<?php echo $dados[$i]['id_produto']; ?>"><i class="fas fa-trash"></i><!--Excluir--></a>
-                                    <!-- usar "echo $dados[$i]['id_pessoa']; "pegar ID desejado no array e passar como 'string' para o metodo $_GET-->
-                                </td>
+                        <td>
+                            <a class="" id="acaoSelecionar" href="Vendas.php?id_produto_up_venda=<?php echo $dados[$i]['id_produto']; ?>"><i class="fas fa-hand-pointer"></i><!--Selecionar--></a>
+                                   
+                    <?php 
+                        if ($usuarioLogado['function'] == 'gerente') {
+                    ?>
+                            <a class="acaoVerde my-2" id="acaoEditar" href="AtualizaProduto.php?id_get_up=<?php echo $dados[$i]['id_produto']; ?>"><i class="fas fa-edit"></i><!--Editar--></a>
+                            <a class="acaoVermelho my-2" id="acaoExcluir" href="ConsultaProdutos.php?id_get_del=<?php echo $dados[$i]['id_produto']; ?>"><i class="fas fa-trash"></i><!--Excluir--></a>
+                    <?php
+                        }
+                    ?>
+                        </td>
                     <?php
                                 echo "</tr>"; // fecha linha dos dados selecionados
                             }
@@ -161,7 +167,7 @@ $usuarioLogado = $pessoa->login();
                                     <th> CÓDIGO DE BARRAS </th>
                                     <th> LABORATÓRIO </th>
                                     <th style="width: 5%;"> ESTOQUE</th>
-                                    <th> AÇÃO </th>
+                                    <th> AÇÃO </th> 
                                 </tr>
                             </thead>
             

@@ -22,8 +22,15 @@
   $produto = new Produto();
   $estoque = new Estoque();
   $pessoa = new Pessoa();
+
   $usuarioLogado = $pessoa->login();
 
+                                    // CONDIÇÃO PARA ACESSAR CADASTRO E GERENCIAR ESTOQUE
+
+  if ($usuarioLogado['function'] != 'gerente') {
+    echo '<script> alert("Usuário não tem permissão para esta ação!")</script>';
+    echo '<META HTTP-EQUIV="REFRESH" CONTENT="0;URL=home.php"/>';
+  }
 
   if (isset($_POST['descricaoProduto'])) {
     $produto_nome = addslashes($_POST['descricaoProduto']);

@@ -1,9 +1,8 @@
 <?php
-require_once '../model/Pessoa.php';
-$pessoa = new Pessoa();
-$usuarioLogado = $pessoa->login();
+    require_once '../model/Pessoa.php';
 
-              
+    $pessoa = new Pessoa();
+    $usuarioLogado = $pessoa->login();              
 ?>
 
 <!doctype html>

@@ -217,6 +217,10 @@
                     $cupom->createCupomFiscal($codigoVenda, $valorVenda, $valorRecebido, $troco, $cliente_cupom);
                     $venda->fecharVenda($codigoVenda);
 
+                    unset($_SESSION['valorRecebido']);
+                    unset($_SESSION['totalApagar']);
+                    unset($_SESSION['troco']);
+
                     echo '<script> alert("Venda recebida com sucesso!")</script>';
                     echo '<META HTTP-EQUIV="REFRESH" CONTENT="2;URL=Caixa.php"/>'; // REFRESH para atualizar a página
                 } else {
