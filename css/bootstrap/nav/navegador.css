@@ -9346,6 +9346,7 @@ a.text-dark:focus {
     list-style-type: none;
     padding: 0;
     text-align: center;
+    z-index:1;
 }
 
 .dp-menu ul {

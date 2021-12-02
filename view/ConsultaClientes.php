@@ -18,7 +18,7 @@
 
 <body>
     <header>
-        <nav class="dp-menu">
+        <div class="dp-menu">
             <ul>
                 <li><a href="home.php">HOME</a></li>
                 <li><a href="#">PESQUISAR</a>
@@ -44,7 +44,7 @@
                         <li><a href="RelatorioEstoque.php">Relatório Geral de Estoque</a></li>
                     </ul>
             </ul>
-        </nav>
+        </div>
     </header>
     <div id="divSair">
         <a href="ConsultaClientes.php?sair=<?php echo 1;?>">Sair</a>
