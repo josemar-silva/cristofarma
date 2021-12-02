@@ -38,12 +38,10 @@
                     </ul>
             </ul>
         </nav>
-
     </header>
     <section id="principalCaaixa">
 
         <div id="vendaDetalhada">
-
 
             <div id="divSair">
                 <a href="FecharVendaCaixa.php?sair=<?php echo 1;?>">Sair</a>
@@ -56,7 +54,6 @@
                 require_once '../model/Venda.php';
                 require_once '../model/Cupom.php';
 
-
                 $produto = new Produto();
                 $itemVenda = new ItemVenda();
                 $pessoa = new Pessoa();
@@ -66,7 +63,7 @@
 
                 $usuarioLogado = $pessoa->login();
 
-                // BUSCAR TODAS AS VENDAS COM STATUS ABERTO
+                                                // BUSCAR TODAS AS VENDAS COM STATUS ABERTO
 
                 if (isset($_GET['id_get_venda_up'])) {
                     $codigo_venda = $_GET['id_get_venda_up'];
@@ -87,7 +84,7 @@
                     <div>
                         <div id="descricaoVendaCaixa" class="scroll">
                             <?php
-                            // DETALHAR VENDA SELECIONADA
+                                                        // DETALHAR VENDA SELECIONADA
 
                             if (isset($ListVendaReturn) && !empty($ListVendaReturn)) {
 
@@ -200,7 +197,7 @@
                 $receber = filter_input(INPUT_POST, 'receber'); 
             }
 
-            // CONFIRMAR RECEBIMENTO E MUDAR STATUS VENDA PARA "FECHADO" / GERAR RECIBO
+                                            // CONFIRMAR RECEBIMENTO E MUDAR STATUS VENDA PARA "FECHADO" / GERAR RECIBO
 
             if (isset($receber) && $receber == 'Receber Venda') {
                 if ($valorRecebido >= $valorVenda) {

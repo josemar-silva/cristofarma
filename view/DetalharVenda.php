@@ -12,34 +12,12 @@
   <header>
     <nav class="dp-menu">
       <ul>
-        <li><a href="home.php">HOME</a></li>
-        <li><a href="#">PESQUISAR</a>
-          <ul>
-            <li><a href="ConsultaClientes.php">Clientes</a></li>
-            <li><a href="ConsultaFornecedor.php">Fornecedores</a></li>
-            <li><a href="ConsultaFuncionarios.php">Funcionários</a></li>
-            <li><a href="ConsultaProdutos.php">Produtos</a></li>
-          </ul>
-        </li>
-        <li><a href="Vendas.php">VENDAS</a></li>
-        <li><a href="Caixa.php">CAIXA</a></li>
-        <li><a href="#">PRODUTOS</a>
-          <ul>
-            <li><a href="CadastrarProdutos.php">Cadastro de Produtos</a></li>
-            <li><a href="AlimentarEstoque.php">Estoque de Produtos</a></li>
-          </ul>
-        </li>
-        <li><a href="Cadastros.php">CADASTROS</a></li>
-        <li><a href="#">RELATÓRIOS</a>
-          <ul>
-            <li><a href="RelatorioVendas.php">Relatório de Vendas</a></li>
-            <li><a href="RelatorioEstoque.php">Relatório Geral de Estoque</a></li>
-          </ul>
+       <legend style="color: white; font-weight: bold; font-size: 18pt;">VENDA DETALHADA</legend>
       </ul>
     </nav>
   </header>
   <div id="divSair">
-    <a href="DetalharVenda.php?sair=<?php echo 1;?>">Sair</a>
+    <a href="" onclick="window.close()">Sair</a>
   </div>
 
   <section id="detalharVenda" style="height: 610px;; border: none;">
@@ -72,7 +50,7 @@
         $total_item_venda_return = $vendaReturn[0]['total_item_venda'];
       }
   ?><br>
-                                                <!-- CANCELAR VENDA (ABERTA/FECHADA) E ESTORNA PRODUTOS AO ESTOQUE  -->
+                                          <!-- CANCELAR VENDA (ABERTA/FECHADA) E ESTORNA PRODUTOS AO ESTOQUE  -->
 <?php 
       if (isset($_POST['cancelarVenda'])) {
         if ($usuarioLogado['function'] == 'gerente') {

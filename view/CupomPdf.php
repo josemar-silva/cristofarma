@@ -1,35 +1,30 @@
 <?php
+    // referenciar o DomPDF com namespace
+    require_once '../vendor/autoload.php';
 
+    // carregar o DomPDF
+    use Dompdf\Dompdf;
 
+    $donpdf = new Dompdf();
 
-// referenciar o DomPDF com namespace
-require_once '../vendor/autoload.php';
+    $teste = 'Josemar da Silva Lima';
+    $teste2 = 'DESENVOLVEDOR WEB';
 
-// carregar o DomPDF
-use Dompdf\Dompdf;
+        // carregar o HTML
+        $donpdf->loadHtml('<p> DROGARIA CRISTOFARMA PLUS </p>
+        <p> Tele-Entregas: (62) 3242-7373 / (62) 99279-1340  / WhatsApp: (62) 98437-1551 </p>
+        <p> Rua Jassitata, Quadra: 07 Lote 31 Sala 05 - Bairro Cardoso I, Aparecida de Goiânia - GO </p>
+        <p>Nome:'.$teste.'</p>
+        <p>Profissão:'.$teste2.'</p>');
 
-$donpdf = new Dompdf();
+        // definir tamanho do papel (A4, A3, A2...) e modo paisagem (lasdscape) ou retrato (portrait)
+        $donpdf->setPaper('A4', 'lasdscape');
 
-    // carregar o HTML
-    $donpdf->loadHtml('<p id="cabecalho" font-size: 8px> DROGARIA CRISTOFARMA PLUS</p>
-    <p> Tele-Entregas: (62) 3242-7373 / (62) 99279-1340  / WhatsApp: (62) 98437-1551 </p>
-    <p> Rua Jassitata, Quadra: 07 Lote 31 Sala 05 - Bairro Cardoso I, Aparecida de Goiânia - GO </p>');
+    //renderizar o HTML
+    $donpdf->render();
 
-  ob_start();
-
-    require __DIR__ . "/DetalharVenda.php";
-  
-  $pdf = ob_get_clean();
-  echo $pdf;
-
-    // definir tamanho do papel (A4, A3, A2...) e modo paidagem (lasdscape) ou retrato (portrait)
-    $donpdf->setPaper('A5', 'lasdscape');
-
-//renderizar o HTML
-$donpdf->render();
-
-//exibir a pagina ("Attachment" => true) ou baixar direto o arquivo PDF ("Attachment" => false)
-$donpdf->stream("cupom.pdf", ["Attachment" => 0]);
+    //exibir a pagina ("Attachment" => true) ou baixar direto o arquivo PDF ("Attachment" => false)
+    $donpdf->stream("cupom.pdf", ["Attachment" => 0]);
 ?>
 
 <!doctype html>
@@ -43,22 +38,15 @@ $donpdf->stream("cupom.pdf", ["Attachment" => 0]);
   <title> Cupom Fiscal </title>
 </head>
 
-
 <body>
   <header>
 
   </header>
-  <section>
+          <section>
 
-  <?php 
-    $html = '######';
-  ?>
-
-  </section>
+          </section>
 </body>
-
-</html>
-
+    </html>
 <footer>
 
 </footer>

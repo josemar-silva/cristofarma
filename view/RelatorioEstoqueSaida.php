@@ -131,8 +131,8 @@
 
             
     </section>
-    <a type="submit" href="RelatorioEstoque.php" class="btn btn-outline-danger" id="fecharRelatorio" type="submit" name="fecharRelatorio" 
-            style="margin-left: 43%; margin-top: 1%;">Fechar Relatório</a>
+    <a type="submit" class="btn btn-outline-danger" id="fecharRelatorio" type="submit" name="fecharRelatorio"  href="RelatorioEstoque.php"
+          onclick=""  style="margin-left: 43%; margin-top: 1%;">Fechar Relatório</a>
 </body>
 
 </html>

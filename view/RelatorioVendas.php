@@ -53,14 +53,14 @@
   </header>
 
   <section id="principalRelatoriVendas" >
-    <form id="relatorio" action="RelatorioVendasSaida.php" method="POST" style="border: none;">
+    <form id="relatorio" action="RelatorioVendasSaida.php" method="POST" style="border: none; font-weight: normal;">
       <legend>
         <legend>FILTROS RELATÓRIOS DE VENDAS</legend>
       </legend>
     <div style="margin-bottom: 5%;">
 
         <input type="radio" id="tipoRelatorio" name="tipoRelatorio" value="data">&nbsp; &nbsp;
-        <label for="cliente">Pesqusa por Data:</label><br><br>
+        <label for="cliente" style="font-weight: bold;">Pesqusa por Data:</label><br><br>
         <label for="dataInicial" style="margin-left: 5%;">Data Inicio:</label> &nbsp;
         <input type="date" id="getDataInicial" name="getDataInicial" class="form-control" style="display: inline; font-size: 13pt;"> &nbsp; &nbsp;&nbsp; &nbsp;
         <label for="dataFinal">Data Fim:</label> &nbsp;
@@ -70,20 +70,20 @@
     <div style="margin-bottom: 5%;  margin-top: -2%;">
 
         <input type="radio" id="tipoRelatorio" name="tipoRelatorio" value="cliente">&nbsp; &nbsp;
-        <label for="cliente">Pesqusa por Cliente:</label><br><br>
+        <label for="cliente" style="font-weight: bold;">Pesqusa por Cliente:</label><br><br>
         <label for="labelNomeDoCliente" style="margin-left: 5%;"> Cliente:</label>&nbsp; &nbsp;
         <input type="text" id="nomeDoCliente" name="nomeDoCliente" class="form-control" size="40" placeholder="Nome do cliente" 
             style="display: inline; font-size: 13pt;"><br><br><br>
 
         <input type="radio" id="vendedor" name="tipoRelatorio" value="vendedor">&nbsp; &nbsp;
-        <label for="vendedor">Pesqusar por Vendedor:</label><br><br>
+        <label for="vendedor" style="font-weight: bold;">Pesqusar por Vendedor:</label><br><br>
         <label for="labelNomeDoVendedor" style="margin-left: 5%;"> Vendedor:</label>&nbsp; &nbsp;
         <input type="text" id="nomeDoVendedor" name="nomeDoVendedor" class="form-control" size="40" placeholder="Nome do vendedor" style="display: inline; font-size: 13pt;"><br>
     </div>
 
     <div style="margin-bottom: 2%; margin-top: -2%;">
 
-        <label>Pesqusa por Tipo Pagamento:</label><br><br>
+        <label style="font-weight: bold;">Pesqusa por Tipo Pagamento:</label><br><br>
         <input type="radio" id="relatorioVendaAvista" name="tipoRelatorio" value="a vista" style="margin-left: 5%;">&nbsp; &nbsp;
         <label for="relatorioVendaAvista">Venda à Vista</label>&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;
 
@@ -95,7 +95,7 @@
     </div><br>
 
         <input type="radio" id="vendaGeral" name="tipoRelatorio" value="vendaGeral">&nbsp; &nbsp;
-        <label for="vendaGeral">Reatório Geral de Vendas:</label><br><br><br>
+        <label for="vendaGeral" style="font-weight: bold;">Reatório Geral de Vendas:</label><br><br><br>
         
       <button class="btn btn-outline-danger" id="btnGerarRelatorioGerencial" name="btnGerarRelatorioGerencial" onclick="" 
       style="text-align: center; margin-left: 44%; margin-right: auto;" >Gerar Relatório</button>

@@ -167,7 +167,8 @@ if (isset($_POST['btnGerarRelatorioGerencial']) && $tipoRelatorio == 'data')
                 }           $vendaDestalhar = $returnVendas[$i]['id_venda'];
                         ?>  
                             <td> 
-                                <a id="detalharVendaReatorio" href="DetalharVenda.php?id_venda_up=<?php echo $vendaDestalhar; ?>" style="font-size: 12px;">Detalhar</a>
+                            <a id="detalharVendaReatorio" href="DetalharVenda.php?id_venda_up=<?php echo $vendaDestalhar;?>"  target="_blank" onclick="window.open(this.href, this.target, 'width=1100,height=700'); return false;"
+                                         style="font-size: 12px;">Detalhar</a>
                             </td>
                         <?php
 
@@ -256,7 +257,8 @@ if (isset($_POST['btnGerarRelatorioGerencial']) && $tipoRelatorio == 'cliente' &
                         $vendaDestalhar = $returnVendas[$i]['id_venda'];
             ?>  
                 <td> 
-                    <a id="detalharVendaReatorio" href="DetalharVenda.php?id_venda_up=<?php echo $vendaDestalhar;?>" style="font-size: 12px;">Detalhar</a>
+                <a id="detalharVendaReatorio" href="DetalharVenda.php?id_venda_up=<?php echo $vendaDestalhar;?>"  target="_blank" onclick="window.open(this.href, this.target, 'width=1100,height=700'); return false;"
+                                         style="font-size: 12px;">Detalhar</a>
                 </td>
             <?php
 
@@ -345,7 +347,8 @@ if (isset($_POST['btnGerarRelatorioGerencial']) && isset($_POST['tipoRelatorio']
                     $vendaDestalhar = $returnVendas[$i]['id_venda'];
             ?>  
                 <td> 
-                    <a id="detalharVendaReatorio" href="DetalharVenda.php?id_venda_up=<?php echo $vendaDestalhar;?>" style="font-size: 12px;">Detalhar</a>
+                <a id="detalharVendaReatorio" href="DetalharVenda.php?id_venda_up=<?php echo $vendaDestalhar;?>"  target="_blank" onclick="window.open(this.href, this.target, 'width=1100,height=700'); return false;"
+                                         style="font-size: 12px;">Detalhar</a>
                 </td>
             <?php
 
@@ -436,8 +439,8 @@ if (isset($_POST['btnGerarRelatorioGerencial']) && $tipoRelatorio == 'vendedor' 
                     $status = $returnVendas[$i]['status_venda'];
                 ?>  
                         <td> 
-                            <a id="detalharVendaReatorio" href="DetalharVenda.php?id_venda_up=<?php echo $vendaDestalhar;?>" 
-                                        style="font-size: 12px;">Detalhar</a>
+                        <a id="detalharVendaReatorio" href="DetalharVenda.php?id_venda_up=<?php echo $vendaDestalhar;?>"  target="_blank" onclick="window.open(this.href, this.target, 'width=1100,height=700'); return false;"
+                                         style="font-size: 12px;">Detalhar</a>
                         </td>
                 <?php
 
@@ -536,8 +539,8 @@ if (isset($_POST['btnGerarRelatorioGerencial']) && $tipoRelatorio == 'vendaGeral
                     $status = $returnVendas[$i]['status_venda'];
                 ?>  
                         <td> 
-                            <a id="detalharVendaReatorio" href="DetalharVenda.php?id_venda_up=<?php echo $vendaDestalhar;?>" 
-                                        style="font-size: 12px;">Detalhar</a>
+                            <a id="detalharVendaReatorio" href="DetalharVenda.php?id_venda_up=<?php echo $vendaDestalhar;?>"  target="_blank" onclick="window.open(this.href, this.target, 'width=1100,height=700'); return false;"
+                                         style="font-size: 12px;">Detalhar</a>
                         </td>
                 <?php
 

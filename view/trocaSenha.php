@@ -33,7 +33,7 @@
                     $senhaUpdate = addslashes($_POST['novaSenha']);
                     $novaSenhaHash = password_hash($senhaUpdate, PASSWORD_DEFAULT);
     
-                    if ($pessoa->mudarSenha($matriculaUpdate, $novaSenhaHash)) {
+                    if ($pessoa->mudarSenha($matriculaUpdate, $novaSenhaHash) && !empty(addslashes($_POST['novaSenha']))) {
                         
                         echo '<script> alert("Senha alterada com sucesso!")</script>';
                         ?> <script> window.close(); </script> <?php
