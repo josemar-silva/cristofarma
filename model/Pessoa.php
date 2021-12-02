@@ -281,6 +281,24 @@ class Pessoa
 
     }
 
+    public function mudarSenha($matricula_up_pass, $senha_hash_update){
+
+        $conexao = new Conexao();
+ 
+        $dados  = $conexao->pdo->prepare("SELECT id_pessoa FROM pessoa WHERE matricula = :m;" ); 
+        $dados->bindValue(":m", $matricula_up_pass); 
+        $dados->execute(); 
+        $dadosSelecionados = $dados->fetch(PDO::FETCH_ASSOC);
+        $id_update_pass = $dadosSelecionados['id_pessoa'];
+        
+        $dados = $conexao->pdo->prepare("UPDATE pessoa SET senha = :s WHERE id_pessoa = :id");
+        $dados->bindValue(":s", $senha_hash_update);
+        $dados->bindValue(":id", $id_update_pass );
+        $dados->execute();
+
+        return true;
+    }
+
     public function selectUsuarioLogin($usuarioLogin){
 
         $conexao = new Conexao();
@@ -296,7 +314,7 @@ class Pessoa
     public function login(){
 
         session_start();
-              if (!isset($_SESSION['user']) && !isset($_SESSION['login']['password']) && !isset($_SESSION['login']['function'])) {
+              if (!isset($_SESSION['login']['user']) && !isset($_SESSION['login']['password']) && !isset($_SESSION['login']['function'])) {
                 
                 if ($_SESSION['user'] == null && $_SESSION['password'] == null && $_SESSION['function'] == null ) {
 

@@ -87,13 +87,13 @@
             <form id="cadastro" method="POST">
                 <legend>CADASTRO DE PRODUTOS</legend><br>
 
-                <div style="border: rgba(168, 57, 68) solid 1px; padding: 3%; border-radius: 5%;">
+                <div style="border: rgba(168, 57, 68) solid 1px; padding: 5% 10%; border-radius: 5%; width: 100%;">
                 <label for="fornecedor">Fornecedor:</label><br>
                 <input id="fornecedor" class="form-control" type="text" type="text" autofocus required  
                     name="fornecedor" size="25" value="<?php if (isset($_GET['id_fornecedor_produto_get_up'])){ $id_fornecedor_produto_get_up = addslashes($_GET['id_fornecedor_produto_get_up']); 
                         $retornoConsulta = $pessoa->selectPessoaFornecedor($id_fornecedor_produto_get_up); if(isset($retornoConsulta)){echo $retornoConsulta[0]['nome'];}}?>"><br><br>
 
-                <div id="selecionarFornecedor" style="margin-left: 45%; margin-top: -8%;">
+                <div id="selecionarFornecedor" style="margin-left: 52%; margin-top: -9%;">
                     <a href="ConsultaFornecedor.php?buscaFornecedor=+" id="alinhamento" title="Selecionar Laboriatório"><img src="/img/search2.png"></a>
                 </div><br>
                 

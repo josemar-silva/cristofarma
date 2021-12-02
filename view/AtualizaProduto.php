@@ -119,45 +119,49 @@
       $retornoConsulta = $produto->selectProduto($id_up); #retorno da consulta armazenado na variavel $retornoConsulta
     }
     ?>
-    <form id="cadastro" method="POST">
-      <legend>CADASTRO DE PRODUTOS</legend><br><br /><br />
+   <legend>ATUALIZAR CADASTRO DE PRODUTOS</legend>
 
-      <label id="descricaoProduto">Descrição:</label><br />
-      <input id="descricaoProduto" class="form-control" type="text" name="descricaoProduto" size="50" autofocus required value="<?php if (isset($retornoConsulta)) {
-                                                                                                                                  echo $retornoConsulta['nome_produto'];
-                                                                                                                                } ?>"><br /><br />
+   <form action=""  id="cadastro" method="POST" >
+   <div style="border: solid darkred 1px; border-radius: 5%; padding: 5% 10%; width: 100%; margin-left: -1%; margin-right: auto;">
 
-      <label id="codigoDeBarras">Código de Barras:</label><br />
-      <input id="codigoDeBarras" class="form-control" type="text" maxlength="60" name="codigoDeBarras" size="40" required value="<?php if (isset($retornoConsulta)) {
-                                                                                                                                    echo $retornoConsulta['codigo_barras'];
-                                                                                                                                  } ?>"><br /><br />
 
-      <?php
-      $consultaLike = $retornoConsulta['pessoa_id_pessoa'];
-      $res = $pessoa->selectPessoaFornecedor($consultaLike);
-      ?>
+<label id="descricaoProduto">Descrição:</label><br />
+<input id="descricaoProduto" class="form-control" type="text" name="descricaoProduto" size="50" autofocus required value="<?php if (isset($retornoConsulta)) {
+                                                                                                                            echo $retornoConsulta['nome_produto'];
+                                                                                                                          } ?>"><br /><br />
 
-      <label id="fornecedor">Laboratorio:</label><br />
-      <input id="fornecedor" class="form-control" type="text" name="fornecedorSelecionado" size="30" required value="<?php if (isset($res)) {
-                                                                                                                        echo $res[0]['nome'];
-                                                                                                                      } ?>"><br /><br />
+<label id="codigoDeBarras">Código de Barras:</label><br />
+<input id="codigoDeBarras" class="form-control" type="text" maxlength="60" name="codigoDeBarras" size="40" required value="<?php if (isset($retornoConsulta)) {
+                                                                                                                              echo $retornoConsulta['codigo_barras'];
+                                                                                                                            } ?>"><br /><br />
 
-      <label id="precoCusto">Preço de Custo:</label><br />
-      <input id="precoCusto" class="form-control" type="text" name="precoCusto" size="10" required value="<?php if (isset($retornoConsulta)) {
-                                                                                                            echo $retornoConsulta['preco_custo'];
-                                                                                                          } ?>"><br /><br />
+<?php
+$consultaLike = $retornoConsulta['pessoa_id_pessoa'];
+$res = $pessoa->selectPessoaFornecedor($consultaLike);
+?>
 
-      <label id="precoVenda">Preço de Venda:</label><br />
-      <input id="precoVenda" class="form-control" type="text" name="precoVenda" size="10" required value="<?php if (isset($retornoConsulta)) {
-                                                                                                            echo $retornoConsulta['preco_venda'];
-                                                                                                          } ?>"><br />
+<label id="fornecedor">Laboratorio:</label><br />
+<input id="fornecedor" class="form-control" type="text" name="fornecedorSelecionado" size="30" required value="<?php if (isset($res)) {
+                                                                                                                  echo $res[0]['nome'];
+                                                                                                                } ?>"><br /><br />
 
-      <input class="btn btn-outline-danger" id="btnCadastrar" type="submit" id="btnCadastrar" name="btnGravarClientes" style="margin-left: 40%; margin-top: 5%;" value="<?php if (isset($_GET['id_get_up'])) {
-                                                                                                                                                                          echo 'Atualizar';
-                                                                                                                                                                        } else {
-                                                                                                                                                                          echo 'Cadastrar';
-                                                                                                                                                                        } ?>">
-    </form>
+<label id="precoCusto">Preço de Custo:</label><br />
+<input id="precoCusto" class="form-control" type="text" name="precoCusto" size="10" required value="<?php if (isset($retornoConsulta)) {
+                                                                                                      echo $retornoConsulta['preco_custo'];
+                                                                                                    } ?>"><br /><br />
+
+<label id="precoVenda">Preço de Venda:</label><br />
+<input id="precoVenda" class="form-control" type="text" name="precoVenda" size="10" required value="<?php if (isset($retornoConsulta)) {
+                                                                                                      echo $retornoConsulta['preco_venda'];
+                                                                                                    } ?>"><br /><br />
+</div>
+
+<input class="btn btn-outline-danger" id="btnCadastrar" type="submit" id="btnCadastrar" name="btnGravarClientes" style="margin-left: 40%; margin-top: 5%;" value="<?php if (isset($_GET['id_get_up'])) {
+                                                                                                                                                                    echo 'Atualizar';
+                                                                                                                                                                  } else {
+                                                                                                                                                                    echo 'Cadastrar';
+                                                                                                                                                                  } ?>">
+   </form>
   </section>
 </body>
 

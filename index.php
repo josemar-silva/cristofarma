@@ -27,7 +27,9 @@
     <section >
         <h2>Bem Vindo!</h2><br>
         
-            <form id="login" action="" method="POST" style="border: double 2px; width: 30%; margin-top: 2%; margin-left: auto; margin-right: auto;  border-radius: 20px; height: 23em;  padding: 2%;">
+            <form id="login" action="" method="POST" style="border: double 2px; width: 30%; margin-top: 2%; margin-left: auto; margin-right: auto;
+              border-radius: 20px; height: 23em;  padding: 2%;">
+              
                 <legend><h4>Informe o seu Login e Senha!</h4></legend><br><br>
 
                 <label for="email">Usuário:</label>
@@ -38,7 +40,7 @@
                 <input id="senha" type="password" name="senha" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" 
                     size = "30" style="width: 50%; display: block; margin-left: auto; margin-right: auto; font-size: 13pt;" ><br><br>
 
-                <button type="submit" id="btnEntrarLoginGerencial" name="entrarLoginGerencial" class="btn btn-outline-danger">Entrar</button>
+                <button type="submit" id="btnEntrarLoginGerencial" name="entrarLoginGerencial" class="btn btn-outline-danger" style="border: 1px white solid; color: white;">Entrar</button>
             </form>
 
         <?php
@@ -66,7 +68,7 @@
                         session_start();
                         $_SESSION['login'] = array('user' => $userLogin, 'password' => $userPasswordHash, 'function'=> $userFuncao);
                         header("location: view/home.php");
-                        var_dump($_SESSION['login']);
+                        // var_dump($_SESSION['login']);
 
                     } else {
                              

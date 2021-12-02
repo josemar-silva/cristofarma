@@ -166,6 +166,21 @@ input{
     margin-top: 1%;
 }
 
+#limpaDadosFecharCaixa {
+
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    margin-left: 20px;
+    background-image: url(/img/limpar.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    overflow: hidden;
+    position: absolute;
+    margin-top: 10%;
+
+}
+
 #adicionaPrudutoVenda:hover {
 
     width: 50px;
@@ -483,7 +498,9 @@ div#selecionarFornecedor{
 
 #receber:hover {
 
-    background-color: blue;
+    color: #fff;
+    border: #fff solid 1px;
+    background-color: #191970;
 
 }
 

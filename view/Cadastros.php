@@ -218,9 +218,9 @@
         ?>
         <form id="cadastro" method="POST">
 
-            <legend>CADASTROS</legend>
+            <legend>CADASTRAR CLIENTES / FUNCIONÁRIOS / FORNECEDORES</legend>
 
-                <div  style="border: rgba(168, 57, 68) solid 1px; padding: 3%; border-radius: 5%;">
+                <div  style="border: rgba(168, 57, 68) solid 1px; padding: 3% 10%; border-radius: 5%; width: 110%; margin-left: -7%;">
                 <label id="txtTipoCadastro">Tipo de cadastro:</label> &nbsp;
                 <select id="tipoCadastro" name="tipoCadastro" class="form-control"  style="display: inline;" autofocus required onchange="verifica(this.value)" >
                     <option value="" selected> </option>

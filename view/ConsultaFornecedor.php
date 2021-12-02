@@ -74,7 +74,10 @@ $usuarioLogado = $pessoa->login();
                 <th> TELEFONE FIXO </th>
                 <th> TELEFONE CELULAR </th>
                 <th> ENDEREÇO DO LABORATÓRIO</th>
-                <th> AÇÃO </th>
+                <?php 
+                    if ($usuarioLogado['function'] == 'gerente') { 
+                ?>       <th> AÇÃO </th> 
+                <?php } ?>
               </tr>
             </thead>
             <tbody>
@@ -92,19 +95,18 @@ $usuarioLogado = $pessoa->login();
                     }
                   }
               ?>
-                  <td>
-                    <a id="acaoSelecionar" href="CadastrarProdutos.php?id_fornecedor_produto_get_up=<?php echo $dados[$i]['id_pessoa']; ?>"><i class="fas fa-hand-pointer"></i></a>
-                    
                     <?php 
                       if ($usuarioLogado['function'] == 'gerente') {
+                        
                         ?>
+                        <td>
+                          <a id="acaoSelecionar" href="CadastrarProdutos.php?id_fornecedor_produto_get_up=<?php echo $dados[$i]['id_pessoa']; ?>"><i class="fas fa-hand-pointer"></i></a>
                           <a class="acaoVerde" id="acaoEditar" href="AtualizaFornecedor.php?id_get_up=<?php echo $dados[$i]['id_pessoa']; ?>"><i class="fas fa-edit"></i></a>
                           <a class="acaoVermelho" id="acaoExcluir" href="ConsultaFornecedor.php?id_get_del=<?php echo $dados[$i]['id_pessoa']; ?>"><i class="fas fa-trash"></i></a>
+                          </td>
                       <?php
                       }
                     ?>
-                   
-                  </td>
               <?php
                   echo "</tr>"; // fecha linha dos dados selecionados
                 }
