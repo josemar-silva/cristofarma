@@ -35,7 +35,7 @@
     
                     if ($pessoa->mudarSenha($matriculaUpdate, $novaSenhaHash)) {
                         
-                        echo '<script> alert("Senha auterada com sucesso!")</script>';
+                        echo '<script> alert("Senha alterada com sucesso!")</script>';
                         ?> <script> window.close(); </script> <?php
                     } else {
 

@@ -139,7 +139,7 @@
                     $codigo_venda = $codigo_gerado_venda;
                     $pessoa_id_pessoa_vendedor =  addslashes($_POST['vendedor']);
                     $pessoa_id_pessoa_cliente =  $_SESSION['cliente'];
-                    $data_venda = addslashes($_POST['dataVenda']);
+                    $data_venda = $date;
                     $tipo_pagamento = addslashes($_POST['tipoPagamento']);
                     $status_venda = $vendaStatus;
 
@@ -222,12 +222,12 @@ if (isset($_SESSION['venda'])) {
     <div id="adicionaPrudutoVenda" >
                 <a id="adicionar-produto" href="ConsultaProdutos.php?buscaProdutos=+" title="Buscar Produto"><img src="/img/search2.png"></a>
     </div><br>
-        <div id="divDataHoraVenda">   
+        <div id="divDataHoraVenda">
+        <?php date_default_timezone_set('America/Sao_Paulo');
+                $date = date('d/m/Y'); ?>   
             <label style="color:red">Data:</label>
-            <input id="dataVenda" name="dataVenda" value="<?php date_default_timezone_set('America/Sao_Paulo');
-                echo date('d/m/Y'); ?>" 
-                    style="color: blue; text-align: center; font-size: 20pt; border: none; display: inline; background-color: #feeaff;font-weight: bolder;; color: #161934;" 
-                    size="8" ></input><br><br>
+            <input id="dataVenda" name="dataVenda" value="<?php echo $date; ?>" style="color: blue; text-align: center; font-size: 20pt; border: none; display: inline; background-color: #feeaff;font-weight: bolder;; color: #161934;" 
+                    size="8" disabled></input><br><br>
         </div>
 
         <div id="divDabosVenda" style="width: 32%; float: right; margin-right: 0.5%; height: 540px; font-size: 13pt; padding: 15px;color:red">

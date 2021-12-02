@@ -306,7 +306,7 @@
 <?php $newPassword;?> 
 
 <?php ?>
-<a id="trocarSenha" name=" trocarSenha" onclick="" href="trocaSenha.php?matricula_up=<?php echo $retornoConsulta[0]['matricula'] ?>" target="_blank" style="margin-left: 3%;">Esqueci a senha</a> <br /><br />
+<a id="trocarSenha" name=" trocarSenha" onclick="window.open(this.href, this.target, 'width=604,height=450'); return false;" href="TrocaSenha.php?matricula_up=<?php echo $retornoConsulta[0]['matricula'] ?>" target="_blank" style="margin-left: 3%;">Esqueci a senha</a> <br /><br />
 
 <label for="endereco" id="endereco">Endereço:</label><br>
 <input id="endereco" class="form-control" type="text" name="endereco" required size="70" value="<?php if (isset($retornoConsulta)) {
