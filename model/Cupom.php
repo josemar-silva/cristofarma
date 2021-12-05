@@ -21,7 +21,7 @@
 
     }
 
-    function createCupomFiscal($codigo_venda, $valor_venda, $valor_recebido, $troco, $cliente) {
+    public function createCupomFiscal($codigo_venda, $valor_venda, $valor_recebido, $troco, $cliente) {
 
         $conexao = new Conexao();
 
@@ -42,6 +42,21 @@
         $dados->execute();
 
         return true;
+    }
+
+    public function selecCupomByIdVenda($id_venda_cupom){
+
+        $conexao = new Conexao();
+
+        $cupom = array();
+
+        $dados  = $conexao->pdo->prepare("SELECT * FROM cupom_fiscal WHERE venda_id_venda = :idv"); // dados retornam como ARRAY
+        $dados->bindValue("idv", $id_venda_cupom);
+        $dados->execute(); 
+        $cupom = $dados->fetchAll(PDO::FETCH_ASSOC);
+        
+        return $cupom;
+    
     }
 }
 ?>

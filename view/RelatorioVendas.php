@@ -58,7 +58,6 @@
         <legend>FILTROS RELATÓRIOS DE VENDAS</legend>
       </legend>
     <div style="margin-bottom: 5%;">
-
         <input type="radio" id="tipoRelatorio" name="tipoRelatorio" value="data">&nbsp; &nbsp;
         <label for="cliente" style="font-weight: bold;">Pesqusa por Data:</label><br><br>
         <label for="dataInicial" style="margin-left: 5%;">Data Inicio:</label> &nbsp;

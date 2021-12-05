@@ -140,10 +140,13 @@ class Venda
     {
         $conexao = new Conexao();
 
+        $dadosSelecionados = array();
+
         $dados = $conexao->pdo->prepare("SELECT * FROM venda WHERE id_venda = :id");
         $dados->bindValue(":id", $id_venda);
         $dados->execute();
         $dadosSelecionados = $dados->fetchAll(PDO::FETCH_ASSOC);
+
         return $dadosSelecionados;
     }
 

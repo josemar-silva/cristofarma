@@ -24,6 +24,7 @@
     <form id="detalharVenda" style="margin-left: 1%; margin-right: 1%;" action="" method="POST">
 
   <?php
+
       require_once '../model/Produto.php';
       require_once '../model/Venda.php';
       require_once '../model/Cupom.php';
