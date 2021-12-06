@@ -130,7 +130,7 @@ class Venda
 
         $dadosSelecionados = array();
 
-        $dados  = $conexao->pdo->query("SELECT * FROM venda ORDER BY data_venda DESC");
+        $dados  = $conexao->pdo->query("SELECT * FROM venda ORDER BY data_venda ASC");
         $dadosSelecionados = $dados->fetchAll(PDO::FETCH_ASSOC);
 
         return $dadosSelecionados;
@@ -157,7 +157,7 @@ class Venda
         $dadosSelecionados = array();
 
         $dados  = $conexao->pdo->query("SELECT * FROM venda LEFT JOIN pessoa ON pessoa_id_pessoa_cliente = id_pessoa WHERE status_venda = 'aberto' 
-             ORDER BY data_venda DESC");
+             ORDER BY data_venda ASC");
         $dadosSelecionados = $dados->fetchAll(PDO::FETCH_ASSOC);
 
         return $dadosSelecionados;
@@ -170,7 +170,7 @@ class Venda
         $dadosSelecionados = array();
 
         $dados  = $conexao->pdo->prepare("SELECT * FROM venda left JOIN pessoa ON pessoa_id_pessoa_cliente = id_pessoa where status_venda = 'fechado' 
-            ORDER BY data_venda DESC");
+            ORDER BY data_venda ASC");
 
         $dadosSelecionados = $dados->fetchAll(PDO::FETCH_ASSOC);
 
@@ -182,7 +182,7 @@ class Venda
         $conexao = new Conexao();
 
         $dados = $conexao->pdo->prepare("SELECT * FROM venda INNER JOIN pessoa ON pessoa_id_pessoa_cliente = id_pessoa AND status_venda = 'fechado' 
-            WHERE data_venda >= :di AND data_venda <= :df ORDER BY data_venda DESC");
+            WHERE data_venda >= :di AND data_venda <= :df ORDER BY data_venda ASC");
 
         $dados->bindValue(":di", $data_ini);
         $dados->bindValue(":df", $data_fim);
@@ -197,7 +197,7 @@ class Venda
         $conexao = new Conexao();
 
         $dados = $conexao->pdo->prepare("SELECT * FROM venda JOIN pessoa ON pessoa_id_pessoa_cliente = id_pessoa AND status_venda = 'fechado'
-             WHERE nome LIKE :lk AND tipo_pessoa = 'cliente' ORDER BY data_venda DESC");
+             WHERE nome LIKE :lk AND tipo_pessoa = 'cliente' ORDER BY data_venda ASC");
 
         $dados->bindValue(":lk", $nomeCliente);
         $dados->execute();
@@ -228,7 +228,7 @@ class Venda
 
         $dadosSelecionados = array();
 
-        $dados = $conexao->pdo->prepare("SELECT * FROM venda WHERE tipo_pagamento = :tp AND status_venda = 'fechado' ORDER BY data_venda DESC");
+        $dados = $conexao->pdo->prepare("SELECT * FROM venda WHERE tipo_pagamento = :tp AND status_venda = 'fechado' ORDER BY data_venda ASC");
 
         $dados->bindValue(":tp", $tipoPagamento);
         $dados->execute();
@@ -242,7 +242,7 @@ class Venda
         $conexao = new Conexao();
 
         $dados = $conexao->pdo->prepare("SELECT * FROM venda JOIN pessoa ON pessoa_id_pessoa_vendedor = id_pessoa AND status_venda = 'fechado'
-             WHERE nome LIKE :lk AND tipo_pessoa = 'funcionario' AND funcao = 'vendedor' ORDER BY data_venda DESC");
+             WHERE nome LIKE :lk AND tipo_pessoa = 'funcionario' AND funcao = 'vendedor' ORDER BY data_venda ASC");
 
         $dados->bindValue(":lk", $nomeVendedor);
         $dados->execute();

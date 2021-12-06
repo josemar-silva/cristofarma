@@ -175,10 +175,10 @@
                                                                                                                                     } ?>"><br><br><br>
 
                 <label>Valor Recebido:</label><br>
-                <input id="valorRecebido" class="form-control" name="valorRecebido" type="text" size="6" placeholder="R$" value="<?php
-                                                                                                                                    if (isset($_SESSION['valorRecebido']['valorDigitado'])) {
+                <input id="valorRecebido" class="form-control" name="valorRecebido" type="text" size="6" placeholder="R$" value="<?php if ($ListVendaReturn[0]['tipo_pagamento'] != 'a vista') { echo number_format($valor_venda_return, 2, '.', '.');} else{ if (isset($_SESSION['valorRecebido']['valorDigitado'])) {
                                                                                                                                         echo number_format($_SESSION['valorRecebido']['valorDigitado'], 2, '.', '.');
-                                                                                                                                    }
+                                                                                                                                    }   }
+                                                                                                                                   
                                                                                                                                     ?>"><br><br><br>
 
                 <label>Troco:</label><br>

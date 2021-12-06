@@ -87,6 +87,9 @@
 
                   echo '<div id="divCodigoVenda" style="margin-left: 1%; width:98%; margin-top: -3.5%;" >';
                   echo '<label  style="font-weight: bolder; font-size: 15px; margin-left: 1%;color: rgb(231, 225, 225);">Código da Venda:</label>';
+
+                  date_default_timezone_set('America/Sao_Paulo');
+                  $date = date('d/m/Y');
     
         date_default_timezone_set('America/Sao_Paulo');
         $ano = date('Y');
@@ -223,8 +226,7 @@ if (isset($_SESSION['venda'])) {
                 <a id="adicionar-produto" href="ConsultaProdutos.php?buscaProdutos=+" title="Buscar Produto"><img src="/img/search2.png"></a>
     </div><br>
         <div id="divDataHoraVenda">
-        <?php date_default_timezone_set('America/Sao_Paulo');
-                $date = date('d/m/Y'); ?>   
+          
             <label style="color:red">Data:</label>
             <input id="dataVenda" name="dataVenda" value="<?php echo $date; ?>" style="color: blue; text-align: center; font-size: 20pt; border: none; display: inline; background-color: #feeaff;font-weight: bolder;; color: #161934;" 
                     size="8" disabled></input><br><br>
@@ -262,7 +264,7 @@ if (isset($_SESSION['venda'])) {
                 if (isset($retornoConsulta)) { echo $retornoConsulta[0]['cpf_cnpj'];}}?>"><br><br><br>
 
             <div id="adicionaClienteVenda">
-              <a href="ConsultaClientes.php?buscaCliente=<?php echo $clienteSelect = filter_input(INPUT_POST, 'nomeCliente'); ?>" title="Buscar Cliente"><img src="/img/search2.png"></a>
+              <a href="ConsultaClientes.php?id_cliente_up_venda=<?php echo $clienteSelect = filter_input(INPUT_POST, 'nomeCliente'); ?>" title="Buscar Cliente"><img src="/img/search2.png"></a>
             </div>
 
             <label id="labelVendedorSelecionado">Vendedor:</label>
