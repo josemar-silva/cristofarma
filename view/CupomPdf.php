@@ -27,7 +27,7 @@
 
     $cabecalho ='<h2 style="text-align: center;"> CUPOM FISCAL </h2>
     <h4 style="text-align: center; margin-top: -15px"> DROGARIA CRISTOFARMA PLUS</h4>
-    <h6 style="text-align: center; margin-top: -15px"> Drogaria Cristofarma Plus Comercial de Medicamentos - EIRELI CNPJ: 27.922.519/0001-83 </h6>
+    <h6 style="text-align: center; margin-top: -15px"> Drogaria Cristofarma Plus Comercial de Medicamentos - EIRELI / CNPJ: 27.922.519/0001-83 </h6>
     <h6 style="text-align: center; margin-top: -20px;"> Tele-Entregas: (62) 3242-7373 / (62) 99279-1340  /  (62) 98437-1551 </h6>
     <h6 style="text-align: center; margin-top: -20px; border-bottom: dashed 1px black;"> Endereço: Rua Jassitata Quadra: 07 Lote 31 Sala 05 
       Bairro Cardoso I <br> Aparecida de Goiânia - GO, 74933-211<br><br></h6>';

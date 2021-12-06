@@ -177,7 +177,7 @@
 
     <?php
 
-    } else {
+    } elseif ($status == 'aberto'){
     ?>
         <input class="btn btn-outline-danger" type="submit"  id="cancelarVenda" name="cancelarVenda" value="Estornar Venda" onclick="" style="margin-left: 7%; margin-right: 5%; margin-top: 1%;">
 
