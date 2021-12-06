@@ -171,8 +171,8 @@
     if ($status == 'fechado') {
     ?>
         <a class="btn btn-outline-danger" id="btnGerarNotaFiscal" name="gerarCumpom" href="CupomPdf.php?id_venda_cupom=<?php echo $id_venda; ?>" 
-        target="_blank" style="margin-left: 3%; margin-right: 5%; margin-top: 1%; color: white;">Emitir Cupom Fiscal</a>
-        <input class="btn btn-outline-danger" type="submit"  id="gerarCupom" name="gerarCupom" value="Cancelar Venda" onclick="" style="margin-top: 1%;">
+        target="_blank" style="margin-left: 3%; margin-right: 5%; margin-top: 1%; color: white;" onclick="window.close()">Emitir Cupom Fiscal</a>
+        <input class="btn btn-outline-danger" type="submit"  id="cancelarVenda" name="cancelarVenda" value="Cancelar Venda" onclick="" style="margin-top: 1%;">
 
     <?php
 
