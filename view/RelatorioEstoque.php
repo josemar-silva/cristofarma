@@ -51,6 +51,10 @@
     <section id="principalEstoque">
         <div id="relatorioGerencialVendas" style="margin-left: 5%;">
                 <legend style="text-align: left;">RELATÓRIO GERAL DE ESTOQUE</legend><br>
+
+      <div id="imgRelatorio" style=" float: right; background-repeat: no-repeat; overflow: hidden; background-image: url(../img/estoque.png); width: 40%; height: 40em;
+               background-size: 93%; opacity: 0.3; margin-right: 3%;">   
+      </div>
             
             <input type="radio" id="estoque" name="tipoRelatorioEstoque" value="estoque" checked>&nbsp; &nbsp;
             <label for="estoque" style="font-size: 13pt;">Relatório de Estoque</label><br><br>

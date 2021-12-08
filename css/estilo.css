@@ -37,7 +37,7 @@ section#principal {
 
 option, select{
 
-    font-size: 12pt;
+    font-size: 13pt;
     width: auto;
     text-align: left;
 }
@@ -510,4 +510,9 @@ div#selecionarFornecedor{
 color: #fff;
     background-color: #B22222;
     border: #8b0210 solid 1px;
+}
+
+#limpaValorRecebido:hover{
+    border: black 3px solid;
+    border-radius: 10%;
 }

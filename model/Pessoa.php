@@ -328,6 +328,7 @@ class Pessoa
                 $_SESSION['login']['user'] = null;
                 $_SESSION['login']['password'] = null;
                 $_SESSION['login']['function'] = null;
+                session_destroy();
               
                 echo '<META HTTP-EQUIV="REFRESH" CONTENT="0;URL=../index.php"/>';
               }

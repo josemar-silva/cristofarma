@@ -73,13 +73,13 @@
               <table class="table table-striped table-hover">
                 <thead>
                   <tr>
-                    <th> CODIGO PRODUTO </th>
+                    <th style="width: 7%;"> CODIGO </th>
                     <th> DESCRIÇÃO DO PRODUTO </th>
-                    <th> LABORATÓRIO </th>
-                    <th> PREÇO UNID</th>
-                    <th> QTD </th>
-                    <th> R$ TOTAL </th>
-                    <th> AÇÃO </th>
+                    <th style="width: 18%;"> LABORATÓRIO </th>
+                    <th style="width: 8%;">  PREÇO UNID</th>
+                    <th style="width: 5%;"> QTD </th>
+                    <th style="width: 8%;"> R$ TOTAL </th>
+                    <th style="width: 8%;"> AÇÃO </th>
                   </tr>
                 </thead>
             <tbody>
@@ -166,7 +166,7 @@
                       echo '<script> alert("Venda finalizada Com sucesso!")</script>';
                       unset($_SESSION['venda']);
                       unset($_SESSION['cliente']); // encerrar a seção e destroi as variaves existentes nela
-                      echo '<META HTTP-EQUIV="REFRESH" CONTENT="3;URL=Vendas.php"/>'; // REFRESH para atualizar a página
+                      echo '<META HTTP-EQUIV="REFRESH" CONTENT="2;URL=Vendas.php"/>'; // REFRESH para atualizar a página
                     }
 }
 
@@ -296,21 +296,17 @@ if (isset($_SESSION['venda'])) {
             $valor_total_venda = array_sum($soma_total_venda);
             ?>
 
-            <label id="total" for="totalSemDesconto"> Total: R$</label>
-            <input id="totalSemDesconto" name="totalSemDesconto" class="form-control" size="6" placeholder="0.00" value="<?php if (isset($_SESSION['venda'])) {
-                                                                                                                            echo number_format($valor_total_venda, 2, '.', '.');
-                                                                                                                          }  ?>" style="text-align: right; color: blue; font-size: 25px; padding: 5%; background-color: #FFFF00; font-weight: bolder;"> <br><br>
+  <label id="total" for="totalSemDesconto"> Total: R$</label>
+  <input id="totalSemDesconto" name="totalSemDesconto" class="form-control" size="6" placeholder="0.00" value="<?php if (isset($_SESSION['venda'])) {
+    echo number_format($valor_total_venda, 2, '.', '.');} ?>" style="text-align: right; color: blue; font-size: 25px; padding: 5%; background-color: #FFFF00; font-weight: bolder;"> <br><br>
 
-            <label id="desconto" for="desconto"> Desconto: %</label>
-            <input id="desconto" type="text" name="desconto" class="form-control" size="6" placeholder="%" value="<?php if (isset($desc_porcentagem)) {
-                                                                                                                    echo $desc_porcentagem;
-                                                                                                                  }  ?>" style="text-align: right; color: blue; font-size: 25px; padding: 5%; background-color: #FFFF00; font-weight: bolder;"><br><br>
+  <label id="desconto" for="desconto"> Desconto: %</label>
+  <input id="desconto" type="text" name="desconto" class="form-control" size="6" placeholder="%" value="<?php if (isset($desc_porcentagem)) {echo $desc_porcentagem;} ?>" 
+    style="text-align: right; color: blue; font-size: 25px; padding: 5%; background-color: #FFFF00; font-weight: bolder;"><br><br>
 
-            <label for="totalComDesconto" id="totalComDesconto">Total com Desconto: R$</label>
-            <input id="totalComDesconto" name="totalComDesconto" class="form-control" size="6" placeholder="0.00" value=" <?php if (isset($desc_porcentagem) && $desc_porcentagem > 0) {
-                                                                                                                            echo number_format($return_calculo_venda, 2, '.', '.');
-                                                                                                                          } else {
-                                                                                                                            echo number_format($valor_total_venda, 2, '.', '.');
+  <label for="totalComDesconto" id="totalComDesconto">Total com Desconto: R$</label>
+  <input id="totalComDesconto" name="totalComDesconto" class="form-control" size="6" placeholder="0.00" value=" <?php if (isset($desc_porcentagem) && $desc_porcentagem > 0) {
+    echo number_format($return_calculo_venda, 2, '.', '.'); } else { echo number_format($valor_total_venda, 2, '.', '.');
                                                                                                                           } ?>" style="text-align: right; color: blue; font-size: 25px; padding: 5%; background-color: #FFFF00; font-weight: bolder;"><br><br><br>
 
                               <!--=========== FUNCAO JAVASCRIPT COMFIRMAÇÃO ALERT ==============-->
@@ -327,8 +323,6 @@ if (isset($_SESSION['venda'])) {
                 $btnFecharVenda = true;
               }
             ?>
-
-           
 
             <!-- <button class="btn btn-outline-danger" id="btnFecharVenda" name="fecharVenda" onclick="" style="display: inline;">Fechar Venda</button> -->
             <?php if ( $btnFecharVenda == true) {

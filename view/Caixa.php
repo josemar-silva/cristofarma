@@ -54,14 +54,14 @@
                 <table class="table table-striped table-hover">
                     <thead>
                         <tr>
-                            <th> DATA </th>
-                            <th> ID VENDA </th>
+                            <th style="width: 10%;"> DATA </th>
+                            <th style="width: 10%;"> ID VENDA </th>
                             <th> NOME DO CLIENTE </th>
                             <th> VENDEDOR </th>
-                            <th> VALOR VENDA </th>
-                            <th> PAGAMENTO </th>
-                            <th> SITUAÇÃO </th>
-                            <th> AÇÃO </th>
+                            <th style="width: 8%;"> VALOR VENDA </th>
+                            <th style="width: 8%;"> PAGAMENTO </th>
+                            <th style="width: 8%;"> SITUAÇÃO </th>
+                            <th style="width: 8%;"> AÇÃO </th>
                         </tr>
                     </thead>
                     <tbody>

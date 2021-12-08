@@ -67,7 +67,7 @@
     <section id="principalAlimetarEstoque">
         <div id="alimentaEstoque">
             <legend>
-                <legend>ALIMENTAR ESTOQUE</legend><br>
+                <legend>ALIMENTAR ESTOQUE</legend>
             </legend>
 
             <?php
@@ -102,7 +102,7 @@
             ?>
  
             <form action="" method="POST">
-                <div style="width: 55%; height: 40em; margin-left: auto; margin-right: auto; border:#8b0210 solid 1px; border-radius: 5%; padding: 3%;">
+                <div style="width: 55%; height: 42em; margin-left: auto; margin-right: auto; border:#8b0210 solid 1px; border-radius: 5%; padding: 3%;">
 
                 <div id="adicionaClienteVenda" style="margin-top: 13%; margin-left: 44%;">
                     <a href="ConsultaProdutos.php?buscaProduto=+" title="Buscar Produto"><img src="/img/search2.png"></a>
@@ -134,7 +134,21 @@
                                         if(isset($retornoProduto)){echo $retornoProduto['nome_produto'];
                             }
                         } 
-                            ?>" style="display: inline; font-size: 15pt;"><br><br>      
+                            ?>" style="display: inline; font-size: 15pt;"><br><br>
+
+                    <label id="labelNomeProduto">Laboratório/Fornecedor:</label>
+                    <input id="nomeProduto" type="text" class="form-control" name="nomeProduto" autofocus size="30" required value="<?php if (isset($_GET['id_produto_up_estoque']) && !empty(['id_produto_up_estoque'])) 
+                        {
+                                $id_produto_estoque = addslashes($_GET['id_produto_up_estoque']); 
+                                    $retornoProduto = $produto->selectProduto($id_produto_estoque);
+
+                                    $consultaLike = $retornoProduto['pessoa_id_pessoa'];
+                                    $res = $pessoa->selectPessoaFornecedor($consultaLike);
+
+                                        if(isset($retornoProduto)){echo $res[0]['nome'];
+                            }
+                        } 
+                            ?>" style="display: inline; font-size: 15pt;"><br><br> 
 
                     <label id="labelCodigoBarras">Código de barras:</label>
                     <input id="codigoBarras" type="text" name="codigoBarras " class="form-control" size="30" 
@@ -163,8 +177,8 @@
 
                     <label id="labelQuantidade">Quantidade à adcionar:</label>&nbsp;
                     <input id="quantidadeAdd" type="text" class="form-control" name="quantidadeAdd" autofocus size="5" required
-                        value=" " style="display: inline; font-size: 13pt;" ><br><br>
-                </div> 
+                        value=" " style="display: inline; font-size: 13pt;" ><br>
+                </div><br>
                         
                         <input class="btn btn-outline-danger" id="gerenciaEstoque" type="submit" name="gerenciaEstoque" 
             style="margin-left: 43%; margin-top: 1%;" onclick="" value="<?php echo 'Atualizar Estoque'; ?>">

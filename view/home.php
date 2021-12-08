@@ -55,8 +55,11 @@
 
   <section id="principalHome" style="padding: 50px;">
     <p>
-    <h1 id="nomeEmpresa" style="font-size: 64pt; color: #8b0211; text-align: center;"> DROGARIA CRISTOFARMA PLUS </h1>
+      <h1 id="nomeEmpresa" style="font-size: 64pt; color: #8b0211; text-align: center;"> DROGARIA CRISTOFARMA PLUS </h1>
     </p>
+
+      <h2 style="font-size: 28pt; color: #8b0211; text-align: center;">Comércio varejista de produtos farmacêuticos, sem manipulação de fórmulas</h2><br>
+    
     <fieldset id="missao">
       <legend>
         <h1>Missão:</h1>

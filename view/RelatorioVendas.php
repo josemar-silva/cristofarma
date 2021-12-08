@@ -52,7 +52,10 @@
 
   </header>
 
-  <section id="principalRelatoriVendas" >
+  <section id="principalRelatoriVendas">
+      <div id="imgRelatorio" style="float: right; background-repeat: no-repeat; overflow: hidden; background-image: 
+            url(../img/relatorio_vendas.png); width: 40%; height: 50em; margin-right: 1%; background-size: 100%; opacity: 0.2; ">   
+      </div>
     <form id="relatorio" action="RelatorioVendasSaida.php" method="POST" style="border: none; font-weight: normal;">
       <legend>
         <legend>FILTROS RELATÓRIOS DE VENDAS</legend>

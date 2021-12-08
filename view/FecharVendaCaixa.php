@@ -185,12 +185,19 @@
                 <input id="troco" class="form-control" name="troco" size="6" placeholder="R$" value="<?php if (isset($_SESSION['valorRecebido']['valorDigitado'])) {
                                                                                                             echo number_format($_SESSION['troco']['valorDigitado'], 2, '.', '.');
                                                                                                         } ?>" disabled><br><br>
+               
             
             <!-- <button type="submit"  class="btn btn-outline-danger" id="receber" name="receber" onclick="" style="display: inline; margin-left: 30%; margin-top: 20%; font-size: 22pt;">Receber</button> -->
-            <input type="submit" class="btn btn-outline-danger" id="receber" name="receber" onclick="" style="display: inline; margin-right: 20%; color: white; margin-top: 20%; font-size: 22pt;" 
-                value="<?php if (isset($_SESSION['valorRecebido']['valorDigitado']) && $_SESSION['valorRecebido']['valorDigitado'] >= $valor_venda_return) { echo 'Receber Venda';} else { echo 'Calcular Troco';}?>"> 
-                
+            <input type="submit" class="btn btn-outline-danger" id="receber" name="receber" onclick="" style="display: inline; margin-right: 18%; color: white; margin-top: 20%; font-size: 22pt;" 
+                value="<?php if (isset($_SESSION['valorRecebido']['valorDigitado']) && $_SESSION['valorRecebido']['valorDigitado'] >= $valor_venda_return) { echo 'Receber Venda';} else { echo 'Calcular Troco';}?>">             
         </form>
+
+        <a id="limpaValorRecebido" title="Limpar Valor Recebido" onclick="<?php if (isset($_SESSION['valorRecebido']['valorDigitado'])) {
+            unset($_SESSION['valorRecebido']['valorDigitado']); } ?>" href="" style="width: 50px; height: 50px; float: right; margin-top: -24%; 
+                margin-right: 23%; display: block; background-repeat: no-repeat;
+                    background-size: cover; overflow: hidden; background-image: url(../img/limparDados.png)" >
+        <img src="../img/limparDados.png"></a>
+
             <?php
             if (isset($_POST['receber'])) {
 

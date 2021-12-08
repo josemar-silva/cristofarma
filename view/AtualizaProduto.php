@@ -136,8 +136,8 @@
                                                                                                                             } ?>"><br /><br />
 
 <?php
-$consultaLike = $retornoConsulta['pessoa_id_pessoa'];
-$res = $pessoa->selectPessoaFornecedor($consultaLike);
+  $consultaLike = $retornoConsulta['pessoa_id_pessoa'];
+  $res = $pessoa->selectPessoaFornecedor($consultaLike);
 ?>
 
 <label id="fornecedor">Laboratorio:</label><br />
