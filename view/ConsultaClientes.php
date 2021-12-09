@@ -2,7 +2,7 @@
     require_once '../model/Pessoa.php';
 
     $pessoa = new Pessoa();
-    $usuarioLogado = $pessoa->login();              
+   // $usuarioLogado = $pessoa->login();              
 ?>
 
 <!doctype html>
