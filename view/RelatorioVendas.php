@@ -100,7 +100,7 @@
         <label for="vendaGeral" style="font-weight: bold;">Reatório Geral de Vendas:</label><br><br><br>
         
       <button class="btn btn-outline-danger" id="btnGerarRelatorioGerencial" name="btnGerarRelatorioGerencial" onclick="" 
-      style="text-align: center; margin-left: 44%; margin-right: auto;" >Gerar Relatório</button>
+      style="text-align: center; margin-left: 42%; margin-right: auto;" >Gerar Relatório</button>
     </form>
   </section>
 </body>
