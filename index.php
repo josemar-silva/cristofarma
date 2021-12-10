@@ -15,7 +15,7 @@
 
 <h1>Sistema de Gerenciamento e Controle de Estoque para Farmácia - SisgeconFarm</h1>
 
-<body class="body" style=" margin-left: auto; margin-right: auto;  margin-top: 6%;">   
+<body class="body" style=" margin-left: auto; margin-right: auto;  margin-top: 6%; background-image: url(../img/logo.png);">   
 
 <legend id="sistemaDesenvolvedores">  </legend><br>
     
