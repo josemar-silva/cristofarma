@@ -52,17 +52,23 @@
         <div id="relatorioGerencialVendas" style="margin-left: 5%;">
                 <legend style="text-align: left;">RELATÓRIO GERAL DE ESTOQUE</legend><br>
 
-      <div id="imgRelatorio" style=" float: right; background-repeat: no-repeat; overflow: hidden; background-image: url(../img/estoque.png); width: 40%; height: 40em;
+      
+      <div id="imgRelatorio" style=" float: right; background-repeat: no-repeat; overflow: hidden; background-image: url(../img/comprimido.png); width: 40%; height: 42em;
                background-size: 93%; opacity: 0.3; margin-right: 3%;">   
       </div>
             
             <input type="radio" id="estoque" name="tipoRelatorioEstoque" value="estoque" checked>&nbsp; &nbsp;
             <label for="estoque" style="font-size: 13pt;">Relatório de Estoque</label><br><br>
 
+            <div id="imgRelatorio" style=" float: left; background-repeat: no-repeat; overflow: hidden; background-image: url(../img/pilulas.png); width: 30%; height: 30em;
+              background-size: 90%; opacity: 0.3; margin-left: 10%; margin-top: 7%;">   
+      </div>
+
+
 <form action="RelatorioEstoqueSaida.php" method="POST">
 
             
-<button class="btn btn-outline-danger" id="btnGerarRelatorioGerencial" name="btnGerarRelatorioGerencial" onclick="" style="margin-left: 40%; margin-top: 35.5%;">Gerar Relatório</button>
+<button class="btn btn-outline-danger" id="btnGerarRelatorioGerencial" name="btnGerarRelatorioGerencial" onclick="" style="margin-left: auto; margin-right: auto; margin-top: 34%; position: absolute">Gerar Relatório</button>
 </form>        
 </div>
     </section>

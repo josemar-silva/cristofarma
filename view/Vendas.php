@@ -76,7 +76,7 @@
                     <th style="width: 7%;"> CODIGO </th>
                     <th> DESCRIÇÃO DO PRODUTO </th>
                     <th style="width: 18%;"> LABORATÓRIO </th>
-                    <th style="width: 8%;">  PREÇO UNID</th>
+                    <th style="width: 8%;">  R$ UNID</th>
                     <th style="width: 5%;"> QTD </th>
                     <th style="width: 8%;"> R$ TOTAL </th>
                     <th style="width: 8%;"> AÇÃO </th>

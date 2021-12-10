@@ -57,7 +57,7 @@
     <section id="principalEstoque"><br>
         <div>
             <legend>RELATÓRIO GERAL DE ESTOQUE</legend><br>
-        <div class="tableFixHead" style="width: 85%; height: 41em; margin-left: auto; margin-right: auto; border: #8b0210 solid 1px;">
+        <div class="tableFixHead" style="width: 90%; height: 41em; margin-left: auto; margin-right: auto; border: #8b0210 solid 1px;">
             <table class="table table-striped table-hover" >
                 <thead>
                     <tr>
