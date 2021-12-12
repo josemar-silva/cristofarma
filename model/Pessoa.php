@@ -333,7 +333,7 @@ class Pessoa
                 echo '<META HTTP-EQUIV="REFRESH" CONTENT="0;URL=../index.php"/>';
               }
 
-              return $_SESSION['login'];
+            return $_SESSION['login'];
     }
   
 }
