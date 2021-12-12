@@ -60,7 +60,7 @@
             <input type="radio" id="estoque" name="tipoRelatorioEstoque" value="estoque" checked>&nbsp; &nbsp;
             <label for="estoque" style="font-size: 13pt;">Relatório de Estoque</label><br><br>
 
-            <div id="imgRelatorio" style=" float: left; background-repeat: no-repeat; overflow: hidden; background-image: url(../img/pilulas.png); width: 30%; height: 30em;
+      <div id="imgRelatorio" style=" float: left; background-repeat: no-repeat; overflow: hidden; background-image: url(../img/pilulas.png); width: 30%; height: 30em;
               background-size: 90%; opacity: 0.3; margin-left: 10%; margin-top: 7%;">   
       </div>
 
@@ -70,7 +70,7 @@
             
 <button class="btn btn-outline-danger" id="btnGerarRelatorioGerencial" name="btnGerarRelatorioGerencial" onclick="" style="margin-left: auto; margin-right: auto; margin-top: 34%; position: absolute">Gerar Relatório</button>
 </form>        
-</div>
+      </div>
     </section>
 </body>
 

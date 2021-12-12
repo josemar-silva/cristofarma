@@ -21,6 +21,8 @@
 
 section#principal {
 
+    border: solid 1px;
+
     width: 50%;
     height: 650px;
     display: block;
@@ -486,10 +488,10 @@ div#selecionarFornecedor{
 
 #saidaRelatorio {
 
-    width: 95%;
+    width: 99%;
     height: 610px;
     border: none;
-    margin-left: 2%;
+    margin-left: 5px;
 }
 
 #tableRelatorioVendasEstoque {

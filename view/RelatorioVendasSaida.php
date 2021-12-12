@@ -43,7 +43,7 @@
         <a href="RelatorioVendasSaida.php">Sair</a>
     </div>
     <section id="principalSaidaRelatorio">
-        <div id="saidaRelatorio">
+        <div id="saidaRelatorio" style="width: 99%; margin-left: 5px;">
             <legend>
                 <legend>RELATÓRIO DE VENDAS (<?php echo trim(filter_input(INPUT_POST, 'tipoRelatorio').')')?></legend><br>
             </legend>

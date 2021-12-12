@@ -1,0 +1,23 @@
+Requisitos :
+
+VS Code
+PHP 7.4.22
+XAMPP v3.3.0
+MySQL Workbench 8.0 CE
+
+1º Instalado os programas acima, faça a extração da pasta "CRISTOFARMA" e cola ela dentro da pasta
+C:\xampp\htdocs.
+
+2º A documentação e modelos de banco estão dentro da pasta CRISTOFARMA.
+
+3º Os arquivos PHP estao na pasta C:\xampp\htdocs\cristofarma\view e C:\xampp\htdocs\cristofarma\model, inicie no servidor XAMPP o APACHE 
+e o MySQL
+
+4º clica em "Admin" em cada um deles para abrir os mesmo no navegador.
+
+5º Ao clicar em Admin no MySQL do XAMPP irá abrir o banco no PhpMyAdmin.
+
+6º Ao clicar em Admin no Apache em XAMPP irá abrir o diretório C:\xampp\htdocs, navegue até a pasta CRISTOFARMA, onde será apresentado a tela de Login, index.php, essa tela ainda nao tem link para as demais
+
+7º Para iniciar a navegação pelo site/sistema, na barra de endereço digite: http://localhost/cristofarma/index.php onde será
+iniciada a tela de login.

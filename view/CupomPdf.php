@@ -37,7 +37,7 @@
 
     $resumo_venda_html = '<div id="resumo_venda"><h6 style=" text-align: right; margin-right: 4%">'.'<div style="float: left;"> PAGAMENTO: '.$venda_cupom[0]['tipo_pagamento'].'</div>'.
                             '<div> TOTAL ITENS: '.$venda_cupom[0]['total_item_venda'].'</div>'.
-                            '<div style="float: left; margin-left: -25%"> CLIENTE: '.$cupom_venda_cupom[0]['cliente'].'</div>'.
+                            '<div style="float: left; margin-left: -24%"> CLIENTE: '.$cupom_venda_cupom[0]['cliente'].'</div>'.
                               '<div>TOTAL VENDA: R$ '.$venda_cupom[0]['valor_venda_sem_desconto'].'</div>'.
                                 '<div> DESCONTO: R$ '.$venda_cupom[0]['desconto'].'</div>'.
                                   '<div> TOTAL A PAGAR: R$ '.$venda_cupom[0]['valor_venda_com_desconto'].'</div>'.'<br>'.

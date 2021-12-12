@@ -75,12 +75,15 @@
         nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
         velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident,
         sunt in culpa qui officia deserunt mollit anim id est laborum."
-      </p>
+      </p> 
     </fieldset>
     <div id="contatos" style="color: #8b0211; text-align: center; margin-top: 5%;">
       <h1>Tele Entregas: (62) 3242-7373</h1>
       <h1>WhatsApp: (62) 98437-1551 / (62) 99279-1340</h1>
     </div>
+          <div id="SaidaUsuarioLogado" style="position: absolute; margin-left: -3%; margin-top: 3%; font-size: 10px;"><?php if (isset($usuarioLogado)) {
+            echo ('Usuário logado: '.$usuarioLogado['user']);} ?>
+          </div>
   </section>
 </body>
 
