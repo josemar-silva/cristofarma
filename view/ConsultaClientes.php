@@ -65,7 +65,7 @@
         if (isset($_GET['buscaCliente'])) {
             $tipoConsulta = "cliente";
         ?>
-            <div class="tableFixHead">
+            <div class="tableFixHead"  style="height: 40em;">
                 <table class="table table-striped table-hover">
                     <thead>
                         <tr>

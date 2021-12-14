@@ -63,7 +63,7 @@ $usuarioLogado = $pessoa->login();
       if (isset($_GET['buscaFornecedor'])) {
         $tipoConsulta = "fornecedor";
       ?>
-        <div class="tableFixHead">
+        <div class="tableFixHead"  style="height: 40em;">
           <table class="table table-striped table-hover">
             <thead>
               <tr>
