@@ -66,7 +66,7 @@
     <div id="itensAdicionados" style=" height: 665px;">
 
       <section id="principalVendas">
-        <div id="tamanho" class="tableFixHead">
+        <div id="tamanho" class="tableFixHead" style="height: 50em;">
           <legend style="background-color: #191970; color: white; ">VENDA / ORÇAMENTO</legend>
           <table >
             <div>
