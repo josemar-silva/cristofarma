@@ -17,7 +17,7 @@ e o MySQL
 
 5º Ao clicar em Admin no MySQL do XAMPP irá abrir o banco no PhpMyAdmin.
 
-6º Ao clicar em Admin no Apache em XAMPP irá abrir o diretório C:\xampp\htdocs, navegue até a pasta CRISTOFARMA, onde será apresentado a tela de Login, index.php, esse tela  tem link para as demais
+6º Ao clicar em Admin no Apache em XAMPP irá abrir o diretório C:\xampp\htdocs, navegue até a pasta CRISTOFARMA, onde será apresentado a tela de Login, index.php, esse tela tem link para as demais
 
 7º Para iniciar a navegação pelo site/sistema, na barra de endereço digite: http://localhost/cristofarma/index.php onde será
 iniciada a tela de login.

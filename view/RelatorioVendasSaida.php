@@ -40,15 +40,15 @@
     
     </header>
     <div id="divSair"  >
-        <a href="RelatorioVendasSaida.php">Sair</a>
+        <a href="RelatorioVendas.php">Sair</a>
     </div>
     <section id="principalSaidaRelatorio">
-        <div id="saidaRelatorio" style="width: 99%; margin-left: 5px;">
+        <div id="saidaRelatorio" style="width: 99%; margin-left: 5px; height: 49em;">
             <legend>
                 <legend>RELATÓRIO DE VENDAS (<?php echo trim(filter_input(INPUT_POST, 'tipoRelatorio').')')?></legend><br>
             </legend>
 
-<div id="divRelatorioVendasEstoque" class="tableFixHead">
+<div id="divRelatorioVendasEstoque" class="tableFixHead" style=" height: 42em;">
 <table id="tableRelatorioVendasEstoque" class="table table-striped table-hover">
 
 <?php
@@ -563,7 +563,7 @@ if (isset($_POST['fecharRelatorio'])) {
         </div>
 
         <a type="submit" href="RelatorioVendas.php" class="btn btn-outline-danger" id="fecharRelatorio" type="submit" name="fecharRelatorio" 
-            style="margin-left: 44%; margin-top: 1%;">Fechar Relatório</a>
+            style="margin-left: 44%; margin-top: 0%;">Fechar Relatório</a>
     
     </section>
 </body>
