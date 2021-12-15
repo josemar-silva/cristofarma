@@ -17,7 +17,7 @@ e o MySQL
 
 5º Ao clicar em Admin no MySQL do XAMPP irá abrir o banco no PhpMyAdmin.
 
-6º Ao clicar em Admin no Apache em XAMPP irá abrir o diretório C:\xampp\htdocs, navegue até a pasta CRISTOFARMA, onde será apresentado a tela de Login, index.php, esse tela  tem link para as demais
+6º Ao clicar em Admin no Apache em XAMPP irá abrir o diretório C:\xampp\htdocs, navegue até a pasta CRISTOFARMA, onde será apresentado a tela de Login, index.php, esse tela tem link para as demais
 
 7º Para iniciar a navegação pelo site/sistema, na barra de endereço digite: http://localhost/cristofarma/index.php onde será
 iniciada a tela de login.
@@ -26,7 +26,17 @@ Links Git
 
 HTTPS
 https://github.com/josemar-silva/cristofarma.git
+
 SSH
 git@github.com:josemar-silva/cristofarma.git
+
 GitHub CLI
 gh repo clone josemar-silva/cristofarma
+
+INSTRUÇÕES BÁSICAS DE USO: 
+
+ - Ao abrir o sistema faça o LOGIN com usuário "root" e SENHA "root", este usuário possui todas as permissões de GERENTE, os demais usuários nao possuem acesso a inclusão, edição e remoção de cadastros de PRODUTOS, FUNCIONÁRIOS E DE FORNECEDORES, alteração de senhas e também nao fazem CANCELAMENTO ou ESTORNO de VENDAS. Ficando somente com acesso ilimitado ao cadastro de clientes e consultas diversas.
+
+ - Na tela de VENDAS, selecione todos os produtos desejados, se necessário insira o desconto a ser dado e então selecione o CLIENTE, TIPO DE PAGAMENTO e VENDEDOR, fecha o pedido e finalize a VENDA.
+
+ - 
