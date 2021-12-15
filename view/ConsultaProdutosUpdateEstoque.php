@@ -68,23 +68,22 @@ $usuarioLogado = $pessoa->login();
             <a href="ConsultaProdutos.php?sair=<?php echo 1;?>">Sair</a>
         </div>
 
-        <form action="ConsultaProdutos.php" method="GET">
+        <form action="ConsultaProdutosUpdateEstoque.php" method="GET">
             <legend>CONSULTA PRODUTOS</legend><br><br>
 
             <label style="margin-left: 25%;"></label>
-            <input type="search" id="buscaProdutos" class="form-control" name="buscaProdutos" autofocus value="<?php if (isset($_GET['buscaProdutos']) && !empty($_GET['buscaProdutos']))
-                                                                                                                    echo $_GET['buscaProdutos'];
-                                                                                                                      ?>" size=" 50" class="form-control-busca" placeholder="Digte aqui para buscar" style="display: inline; font-size: 13pt;">
+            <input type="search" id="buscaProdutos" class="form-control" name="buscaProdutoUpestoque" autofocus value="<?php if (isset($_GET['buscaProdutoUpestoque']) && !empty($_GET['buscaProdutoUpestoque']))
+                                                                                                                    echo $_GET['buscaProdutoUpestoque'];?>" size=" 50" class="form-control-busca" placeholder="Digte aqui para buscar" style="display: inline; font-size: 13pt;">
             <button class="btn btn-outline-danger" id="btnBuscar" onclick="" style="width: 10%; padding: 2px; margin-left: 3%;">Buscar</button><br><br>
         </form>
 
                                  <!---------------------- BUSCA %like% = 'quem contem'... ----------------------->
 
                     <?php
-                    if (isset($_GET['buscaProdutos'])) {
+                    
+                        if (isset($_GET['buscaProdutoUpestoque'])) {
                     ?>
-
-                        <div class="tableFixHead" style="height: 40em;">
+                            <div class="tableFixHead">
                         <table class="table table-striped table-hover">
                             <thead>
                                 <tr>
@@ -100,26 +99,21 @@ $usuarioLogado = $pessoa->login();
                             </thead>
             
                             <tbody>
-                        <?PHP
+                    <?php
+                        $dados = $produto->consultaProdutoLike($consultaLike = "%" . trim($_GET['buscaProdutoUpestoque']) . "%");
 
-                        $dados = $produto->consultaProdutoLike($consultaLike = "%" . trim($_GET['buscaProdutos']) . "%");
-
-                        //echo"<pre>"; // organizar o array (matriz de array)
-                        //var_dump($dados); // imprimir na tela o resultado do array
-                        //echo"</pre>"; // organizar o array (matriz de array)
-
-                        if (count($dados) > 0)  // LERO OS DADOS E ESCREVER NO FORM
+                        if (count($dados) > 0)  
                         {
                             for ($i = 0; $i < count($dados); $i++) {
-                                echo "<tr>"; // abre a linha dos dados selecionados
+                                echo "<tr>";
                                 foreach ($dados[$i] as $key => $value) {
-                                    if ($key != "pessoa_id_pessoa") // ignorar coluna ID
+                                    if ($key != "pessoa_id_pessoa") 
                                     {
                                         echo "<td>" . $value . "</td>";
                                     }
                                 }
                                 foreach ($dados[$i] as $key => $value) {
-                                    if ($key == "pessoa_id_pessoa") // ignorar coluna ID
+                                    if ($key == "pessoa_id_pessoa")
                                     {
                                         $id_up = $value;
                                         $return = $pessoa->selectPessoaFornecedor($id_up);
@@ -136,25 +130,15 @@ $usuarioLogado = $pessoa->login();
                                 } else {
                                     echo "<td>"; echo 'null'; echo "</td>";
                                 }
-                                
                     ?>
-                        <td>
-                            <a class="" id="acaoSelecionar" href="Vendas.php?id_produto_up_venda=<?php echo $dados[$i]['id_produto']; ?>"><i class="fas fa-hand-pointer"></i><!--Selecionar--></a>
-                                   
-                    <?php 
-                        if ($usuarioLogado['function'] == 'gerente') {
-                    ?>
-                            <a class="acaoVerde my-2" id="acaoEditar" href="AtualizaProduto.php?id_get_up=<?php echo $dados[$i]['id_produto']; ?>"><i class="fas fa-edit"></i><!--Editar--></a>
-                            <a class="acaoVermelho my-2" id="acaoExcluir" href="ConsultaProdutos.php?id_get_del=<?php echo $dados[$i]['id_produto']; ?>"><i class="fas fa-trash"></i><!--Excluir--></a>
-                    <?php
-                        }
-                    ?>
-                        </td>
+                                <td>
+                                    <a class="" id="acaoSelecionar" href="AlimentarEstoque.php?id_produto_up_estoque=<?php echo $dados[$i]['id_produto']; ?>"><i class="fas fa-hand-pointer"></i><!--Selecionar--></a>
+                                </td>
                     <?php
                                 echo "</tr>"; // fecha linha dos dados selecionados
                             }
                         }
-                    } 
+                        }                        
                     ?>
                 </tbody>
             </table>

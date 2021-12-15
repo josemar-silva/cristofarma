@@ -105,7 +105,7 @@
                 <div style="width: 55%; height: 42em; margin-left: auto; margin-right: auto; border:#8b0210 solid 1px; border-radius: 5%; padding: 3%;">
 
                 <div id="adicionaClienteVenda" style="margin-top: 13%; margin-left: 44%;">
-                    <a href="ConsultaProdutos.php?buscaProduto=+" title="Buscar Produto"><img src="/img/search2.png"></a>
+                    <a href="ConsultaProdutosUpdateEstoque.php" title="Buscar Produto"><img src="/img/search2.png"></a>
                 </div>
                
                 <label id="labelDataCompra">Data da compra:</label>&nbsp;
